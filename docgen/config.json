@@ -1,0 +1,13 @@
+{
+    "sources": [
+        {
+            "module": "typescene",
+            "misc_path": "content/typescene",
+            "out": "../docs/ref",
+            "json_index": "../_data/index.json",
+            "json_content": "../assets/ref.json",
+            "layout": "ref_doc",
+            "base_url": "./"
+        }
+    ]
+}

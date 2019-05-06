@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: "en" %}
+
+<div class="subpagetitle_container">
+    <section class="wrapper">
+        <p class="subtitle"><a href="/docs"><b>{{ site.data.docs[lang].ref_doc_name }}</b></a></p>
+        <h1>{{ page.title }}</h1>
+        {% if page.pageintro %}
+            <p class="style--pageintro">{{ page.pageintro }}</p>
+        {% endif %}
+    </section>
+</div>
+
+<article class="wrapper wrapper--page">
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper_column--nav">
+            <div class="nav_cell fixed_cell">
+                {{ page.nav | markdownify }}
+            </div>
+        </div>
+
+        <div class="wrapper_column">
+            {{ content }}
+        </div>
+    </div>
+</article>

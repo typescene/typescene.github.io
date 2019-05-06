@@ -1,0 +1,19 @@
+{
+  "name": "docgen",
+  "version": "1.0.0",
+  "description": "Documentation generator for the Typescene website",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p src",
+    "start": "node dist",
+    "postinstall": "npm run build && npm start"
+  },
+  "keywords": [],
+  "author": "Jelmer Cormont",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "typescene": "^2.12.2",
+    "typescript": "3.4.5"
+  }
+}

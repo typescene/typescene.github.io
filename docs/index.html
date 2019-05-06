@@ -1,0 +1,53 @@
+---
+layout: default
+title: Documentation
+lang: en
+---
+
+<div class="pagetitle_container">
+    <section class="wrapper">
+        <h1>Documentation</h1>
+    </section>
+</div>
+
+<article class="wrapper wrapper--page">
+    <div class="wrapper_columns">
+        <div class="wrapper_column">
+            <h3>Start Here</h3>
+            <p>If you’re new to Typescene, read these short articles to get a basic understanding of the framework:</p>
+            <ul>
+                {% for g in site.data.docs.en.pages.introduction %}
+                    <li><a href="{{ g.url }}">{{ g.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <h3>Guides</h3>
+            <p>Follow along with these guides to learn more about each topic:</p>
+            <ul>
+                {% for g in site.data.docs.en.pages.guides %}
+                    <li><a href="{{ g.url }}">{{ g.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <hr>
+            <p>
+                <i>Documentation generated for Typescene version {{ site.data.index.version }}</i>
+            </p>
+        </div>
+
+        <div class="wrapper_column wrapper_column--sidebar">
+            <h3>API Reference</h3>
+            <p><b>Tip:</b> use the “Docs” link at the top or hit the <code>/</code> key on any page to search.</p>
+
+            <table class="table--ref">
+                {% for page in site.data.index.index %}
+                <tr>
+                    <td>{{ page.type }}</td>
+                    <td><a href="/docs/ref/{{page.id}}">{{ page.id }}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</article>

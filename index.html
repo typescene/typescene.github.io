@@ -1,12 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Typescene (coming soon)</title>
-</head>
-<body>
-    <p>Watch this space for updates.</p>
-</body>
-</html>
+---
+layout: default
+lang: en
+---
+
+<div class="titlebackdrop_container">
+    <div class="titlebackdrop"></div>
+    <div class="wrapper wrapper--tight">
+        <h2 class="displaytitle">Build apps with confidence</h2>
+        <p>
+            Typescene is a robust front end library written in TypeScript: strongly typed, no dependencies, no nonsense.
+        </p>
+    </div>
+</div>
+
+<section class="wrapper wrapper--encroach refblock_container">
+    <div class="refblock">
+        <div class="refblock_block">
+            <h3><a href="/docs/introduction/goals">Why Typescene?</a></h3>
+            <p>Start here for a high level overview of the framework. Or use this to convince your boss.</p>
+            <p><a href="/docs/introduction/goals">Read more ▸</a></p>
+        </div>
+    </div>
+    <div class="refblock">
+        <div class="refblock_block">
+            <h3><a href="/docs/introduction/overview">Architecture Overview</a></h3>
+            <p>Read this to get an understanding of what a web application made with Typescene looks like.</p>
+            <p><a href="/docs/introduction/overview">Read more ▸</a></p>
+        </div>
+    </div>
+    <div class="refblock">
+        <div class="refblock_block">
+            <h3><a href="/docs">Guides & Docs</a></h3>
+            <p>Browse all documentation guides, or search for detailed information on any of the API exports.</p>
+            <p><a href="/docs">View topics ▸</a></p>
+        </div>
+    </div>
+</section>
+
+<p class="style--dim">
+    Typescene is free and open source.
+    <a href="https://patreon.com/typescene" target="_blank">Support on Patreon.</a>
+    <a href="https://github.com/typescene" target="_blank">Contribute on Github.</a>
+</p>
+
+<article class="wrapper wrapper--home">
+    {% capture content %}{% include_relative _index.md %}{% endcapture %}
+    {{ content | markdownify }}
+</article>
+
+<div style="background: #fff; padding: 3rem 0; margin-bottom: -5rem">
+    <section class="wrapper_columns" style="max-width: 54rem; margin: 0 auto">
+        <div class="wrapper_column" style="max-width: 16rem">
+            <a href="/" class="logo_link">
+                <img src="/assets/logo_flat.png" alt="Typescene logo" class="topnav_logo">
+                <span class="topnav_title">Typescene</span>
+            </a>
+        </div>
+        <div class="wrapper_column">
+            <div class="wrapper_columns">
+                <div class="wrapper_column nav_cell">
+                    <h4>Getting Started</h4>
+                    <ul>
+                        <li><a href="/docs/introduction/goals">Why Typescene?</a></li>
+                        <li><a href="/docs/introduction/overview">Architecture</a></li>
+                        <li><a href="/docs/introduction/installation">Installation</a></li>
+                        <li><a href="/docs/guides/first">First Project</a></li>
+                    </ul>
+                </div>
+                <div class="wrapper_column nav_cell">
+                    <h4>Resources</h4>
+                    <ul style="list-style-type: none">
+                        <li><a href="/docs">Documentation</a></li>
+                        <li><a href="https://github.com/typescene/typescene/issues" target="_blank">Github Issues <img src="/assets/icons/appexit.svg" alt="External website" style="width: .785rem"></a></li>
+                        <li><a href="https://twitter.com/typescene" target="_blank">Twitter <img src="/assets/icons/appexit.svg" alt="External website" style="width: .785rem"></a></li>
+                        <li><a href="https://patreon.com/typescene" target="_blank">Patreon  <img src="/assets/icons/appexit.svg" alt="External website" style="width: .785rem"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

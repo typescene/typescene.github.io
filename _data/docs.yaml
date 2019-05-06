@@ -1,0 +1,30 @@
+en:
+  copyright: 2019 Typescene contributors
+  docs_name: Docs
+  ref_doc_name: Documentation
+  page_introduction_name: Start here
+  page_guides_name: Guides
+  footer_text: |
+    Find Typescene on
+    <a href="https://twitter.com/typescene" target="_blank">Twitter</a>,
+    <a href="https://github.com/typescene" target="_blank">Github</a>, and
+    <a href="https://patreon.com/typescene" target="_blank">Patreon</a>
+
+  pages:
+    introduction:
+      - url: /docs/introduction/goals
+        name: Why Typescene?
+      - url: /docs/introduction/overview
+        name: Architecture Overview
+      - url: /docs/introduction/installation
+        name: Installation
+
+    guides:
+      - url: /docs/guides/first
+        name: Your first project
+      - url: /docs/guides/managed-objects
+        name: Working with managed objects
+      - url: /docs/guides/activities
+        name: Understanding Activities
+      - url: /docs/guides/ui
+        name: Creating the UI
