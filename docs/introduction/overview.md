@@ -2,6 +2,7 @@
 permalink: /docs/introduction/overview
 layout: doc_subpage
 title: Architecture Overview
+description: A high level overview of Typescene's architecture. Read this to get an understanding of what a web application made with Typescene looks like.
 nav: |
     * [Components](#components)
     * [Managed Objects](#managedobjects)

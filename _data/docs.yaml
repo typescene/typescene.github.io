@@ -6,9 +6,9 @@ en:
   page_guides_name: Guides
   footer_text: |
     Find Typescene on
-    <a href="https://twitter.com/typescene" target="_blank">Twitter</a>,
-    <a href="https://github.com/typescene" target="_blank">Github</a>, and
-    <a href="https://patreon.com/typescene" target="_blank">Patreon</a>
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a>,
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>, and
+    <a href="https://patreon.com/typescene" target="_blank" rel="noopener">Patreon</a>
 
   pages:
     introduction:

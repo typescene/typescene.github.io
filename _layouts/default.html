@@ -3,6 +3,9 @@
 <html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
+    {% if page.description %}
+        <meta name="Description" content="{{ page.description }}">
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% if page.title == "Typescene" %}
@@ -10,6 +13,16 @@
     {% else %}
         <title>{{ page.title | append: " - Typescene" }}</title>
     {% endif %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96048899-3');
+    </script>
+    <!-- end GA -->
     <link rel="stylesheet" href="/assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Mono|Roboto:100,300,500,300i,500i" rel="stylesheet">
 </head>
@@ -22,7 +35,7 @@
             </a>
             <ul class="topnav_links">
                 <li><a href="#" onclick="return showDocWidget()"><img src="/assets/icons/search-reverse.svg" alt="" width=16 style="position: relative; top: .125rem">&nbsp; {{ site.data.docs[lang].docs_name }}</a></li>
-                <li><a href="https://github.com/typescene/typescene" target="_blank">Github</a></li>
+                <li><a href="https://github.com/typescene/typescene" target="_blank" rel="noopener">Github</a></li>
             </ul>
         </section>
     </nav>

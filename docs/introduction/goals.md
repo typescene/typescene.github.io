@@ -2,6 +2,7 @@
 permalink: /docs/introduction/goals
 layout: doc_subpage
 title: Introduction
+description: An introduction to the Typescene framework and an explanation of its design principles.
 pageintro: Typescene is a no-nonsense, zero-dependency, strongly typed, minimal framework that helps to build maintainable applications for the Web.
 nav: |
     * [Maintainability](#maintainability)

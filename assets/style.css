@@ -295,6 +295,10 @@ li pre {
     padding-left: .75rem;
     border-left: .25rem solid #08d;
 }
+.nav_cell li > a, .sidebar_cell li > a {
+    display: inline-block;
+    min-height: 1.75rem;
+}
 .titlebackdrop_container {
     overflow: hidden;
     position: relative;
