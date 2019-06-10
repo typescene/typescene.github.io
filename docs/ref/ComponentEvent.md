@@ -16,7 +16,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ComponentEvent {#ComponentEvent}
 {:.spec}
 
-Event that is emitted on a particular [`Component`](./Component) instance.
+Event that is emitted on a particular [`Component`](./Component) instance, with reference to the source component as [`source`](#ComponentEvent:source).
 
 ### Constructor
 ```typescript

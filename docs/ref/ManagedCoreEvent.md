@@ -18,7 +18,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedCoreEvent {#ManagedCoreEvent}
 {:.spec}
 
-Core event that is not propagated by default (see [`ManagedObject.propagateChildEvents`](./ManagedObject#ManagedObject:propagateChildEvents)).
+Core event that is _not propagated_ by default (see [`ManagedObject.propagateChildEvents`](./ManagedObject#ManagedObject:propagateChildEvents)).
 
 ### Constructor
 ```typescript

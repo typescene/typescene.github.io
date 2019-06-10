@@ -52,10 +52,10 @@ The current theme. This value may be changed but it is not observed.
 {:.spec}
 
 ```typescript
-(bg: string): "rgba(0,0,0,.8)" | "rgba(255,255,255,.95)"
+(bg: string): string
 ```
 {:.declarationspec}
-Returns a suitable text color for given background color.
+Returns a suitable text color for given background color (mostly black, or mostly white).
 
 
 

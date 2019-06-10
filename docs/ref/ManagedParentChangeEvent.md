@@ -15,7 +15,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedParentChangeEvent {#ManagedParentChangeEvent}
 {:.spec}
 
-Event that is emitted when a managed object is assigned to a managed child reference (see [`@managedChild`](./managedChild) decorator).
+Event that is emitted when a managed object is assigned to a managed child reference property (see [`@managedChild`](./managedChild) decorator); the child object emits this event, with [`parent`](#ManagedParentChangeEvent:parent) set to the _new_ parent object.
 
 ### Constructor
 ```typescript

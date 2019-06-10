@@ -53,7 +53,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ComponentList {#ComponentList}
 {:.spec}
 
-A component that encapsulates a list of child components.
+Component that encapsulates a list of child components.
 
 ### Constructor
 ```typescript
@@ -81,7 +81,7 @@ Propagate component events for all components in the list. See [`ManagedList.pro
 (...components: T[]): this
 ```
 {:.declarationspec}
-Add one or more child components to the list.
+Add one or more child components to the list (see [`ManagedList.add`](./ManagedList#ManagedList:add)).
 
 
 
@@ -92,7 +92,7 @@ Add one or more child components to the list.
 (): this
 ```
 {:.declarationspec}
-Clear the list.
+Clear the list (see [`ManagedList.clear`](./ManagedList#ManagedList:clear)).
 
 
 
@@ -103,7 +103,7 @@ Clear the list.
 number
 ```
 {:.declarationspec}
-The number of components currently in the list.
+The number of components currently in the list (see [`ManagedList.count`](./ManagedList#ManagedList:count)).
 
 
 
@@ -125,7 +125,7 @@ Returns the component with given ID (see [`ManagedObject.managedId`](./ManagedOb
 (): T
 ```
 {:.declarationspec}
-Returns the first component in the list.
+Returns the first component in the list (see [`ManagedList.first`](./ManagedList#ManagedList:first)).
 
 
 
@@ -136,7 +136,7 @@ Returns the first component in the list.
 (callback: (target: T) => any): boolean
 ```
 {:.declarationspec}
-Returns true if given callback function returns a truthy value for at least one of the components in this list.
+Returns true if given callback function returns a truthy value for at least one of the components in this list (see [`ManagedList.some`](./ManagedList#ManagedList:some)).
 
 
 
@@ -147,7 +147,7 @@ Returns true if given callback function returns a truthy value for at least one 
 (callback: (target: T) => any): boolean
 ```
 {:.declarationspec}
-Returns true if given callback function returns a truthy value for every component in this list (or if the list is empty).
+Returns true if given callback function returns a truthy value for every component in this list, or if the list is empty (see [`ManagedList.every`](./ManagedList#ManagedList:every)).
 
 
 
@@ -169,7 +169,7 @@ Iterates over the components in this list (see [`ManagedList.forEach`](./Managed
 (component: T): boolean
 ```
 {:.declarationspec}
-Returns true if given component is currently included in this list.
+Returns true if given component is currently included in this list (see [`ManagedList.includes`](./ManagedList#ManagedList:includes)).
 
 
 
@@ -213,7 +213,7 @@ Insert a component in this list (see [`ManagedList.insert`](./ManagedList#Manage
 (): T
 ```
 {:.declarationspec}
-Returns the last component in the list.
+Returns the last component in the list (see [`ManagedList.last`](./ManagedList#ManagedList:last)).
 
 
 
@@ -224,7 +224,7 @@ Returns the last component in the list.
 <TResult>(callback: (target: T) => TResult): TResult[]
 ```
 {:.declarationspec}
-Iterates over the objects in this list and returns an array with results. See [`ManagedList.map`](./ManagedList#ManagedList:map).
+Iterates over the objects in this list and returns an array with results (see [`ManagedList.map`](./ManagedList#ManagedList:map)).
 
 
 
@@ -235,7 +235,7 @@ Iterates over the objects in this list and returns an array with results. See [`
 <K extends keyof T>(propertyName: K): T[K][]
 ```
 {:.declarationspec}
-Returns an array with the values of given property for all components in the list.
+Returns an array with the values of given property for all components in the list (see [`ManagedList.pluck`](./ManagedList#ManagedList:pluck)).
 
 
 
@@ -246,7 +246,7 @@ Returns an array with the values of given property for all components in the lis
 (component: T): this
 ```
 {:.declarationspec}
-Remove given component from the list. Does not throw an error if the component was not included in the list.
+Remove given component from the list. Does not throw an error if the component was not included in the list (see [`ManagedList.remove`](./ManagedList#ManagedList:remove)).
 
 
 
@@ -257,7 +257,7 @@ Remove given component from the list. Does not throw an error if the component w
 (components: Iterable<T>): this
 ```
 {:.declarationspec}
-Replace the components in the list with given components. See [`ManagedList.replace`](./ManagedList#ManagedList:replace).
+Replace the components in the list with given components (see [`ManagedList.replace`](./ManagedList#ManagedList:replace)).
 
 
 
@@ -268,7 +268,7 @@ Replace the components in the list with given components. See [`ManagedList.repl
 (n: number, startingFrom?: T): T[]
 ```
 {:.declarationspec}
-Returns an array with given number of components taken from the list. See [`ManagedList.take`](./ManagedList#ManagedList:take).
+Returns an array with given number of components taken from the list (see [`ManagedList.take`](./ManagedList#ManagedList:take)).
 
 
 
@@ -279,7 +279,7 @@ Returns an array with given number of components taken from the list. See [`Mana
 (n: number, endingAt?: T): T[]
 ```
 {:.declarationspec}
-Returns an array with given number of components taken from the list. See [`ManagedList.takeLast`](./ManagedList#ManagedList:takeLast).
+Returns an array with given number of components taken from the list (see [`ManagedList.takeLast`](./ManagedList#ManagedList:takeLast)).
 
 
 
@@ -290,7 +290,7 @@ Returns an array with given number of components taken from the list. See [`Mana
 (): T[]
 ```
 {:.declarationspec}
-Returns an array with all components currently in this list.
+Returns an array with all components currently in this list (see [`ManagedList.toArray`](./ManagedList#ManagedList:toArray)).
 
 
 

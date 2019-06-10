@@ -30,7 +30,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedService <span class="spec_tag">abstract</span> {#ManagedService}
 {:.spec}
 
-Represents a named service that can be referenced by other classes using the [`@service`](./service) decorator after registering the object with a well known name.
+Managed service base class. Represents a service that can be referenced by other classes using the [`@service`](./service) decorator after registering the object with a well known name.
 
 ### Constructor
 ```typescript

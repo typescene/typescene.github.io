@@ -63,9 +63,9 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ViewActivity {#ViewActivity}
 {:.spec}
 
-Represents an application activity with content that can be rendered when activated.
+View activity base class. Represents an application activity with content that can be rendered when activated.
 
-**Note:** This class is similar to [`ViewComponent`](./ViewComponent), but has additional functionality to allow it to be used as an application activity (derived from [`AppActivity`](./AppActivity)).
+**Note:** Nothing is rendered if the [`placement`](#ViewActivity:placement) property is undefined (default). Make sure this property is set to a [`UIRenderPlacement`](./UIRenderPlacement) value before rendering, or use a specific view activity class such as [`PageViewActivity`](./PageViewActivity).
 
 ### Constructor
 ```typescript

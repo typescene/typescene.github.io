@@ -32,7 +32,7 @@ Event that is emitted when a change occurs to a managed object, list/map, or ref
 Readonly<ManagedChangeEvent>
 ```
 {:.declarationspec}
-Frozen base change event that can be used instead of creating a new base instance.
+Frozen base change event that can be re-used instead of creating a new `ManagedChangeEvent` instance for every change.
 
 
 

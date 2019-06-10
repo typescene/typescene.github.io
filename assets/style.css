@@ -43,7 +43,7 @@ h3 {
 h4 {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-weight: 500;
-    font-size: .75rem;
+    font-size: .825rem;
     line-height: 1em;
     margin: 0 0 .5rem;
     text-transform: uppercase;
@@ -115,6 +115,9 @@ h3 a, h3 a:active, h3 a:hover, h3 a:visited,
 .logo_link, .logo_link:active, .logo_link:hover, .logo_link:visited {
     color: inherit;
     text-decoration: none;
+}
+p.fullWidthImage > img {
+    max-width: 100%;
 }
 .style--dim {
     opacity: .5;
@@ -219,6 +222,7 @@ h3 a, h3 a:active, h3 a:hover, h3 a:visited,
     margin: 0 0 -1rem -1.5rem;
 }
 .wrapper_column {
+    width: 0;
     flex: 1 1 19rem;
     padding: 0 0 1rem 1.5rem;
 }
@@ -240,7 +244,6 @@ article pre {
     background: rgba(255,255,255,.65);
     box-shadow: 0 .125rem 1.25rem -.5rem rgba(0,0,0,.25);
     overflow: auto;
-    max-height: 80vh;
 }
 li pre {
     margin: .5rem -.25rem;

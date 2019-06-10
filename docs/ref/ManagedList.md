@@ -56,7 +56,7 @@ pageintro: |
 ---
 
 ### Managed objects
-This class is part of a group of _managed object_ classes. See [Working with managed objects](/docs/guides/managed-objects) for details.
+This class is part of a group of _managed object_ classes. See [Understanding components](/docs/guides/components) for details.
 
 #### See also {#see_also}
 [`ManagedMap`](./ManagedMap), [`ManagedObject`](./ManagedObject), [`ManagedReference`](./ManagedReference).
@@ -65,7 +65,7 @@ This class is part of a group of _managed object_ classes. See [Working with man
 ## ![](/assets/icons/spec-class.svg)class ManagedList {#ManagedList}
 {:.spec}
 
-Represents an ordered list of (unique) managed objects.
+Represents an list of managed objects. The objects in the list are _ordered_ and _unique_, ensuring that there are no gaps or repeated list items.
 
 ### Constructor
 ```typescript
@@ -130,7 +130,7 @@ Add one or more objects (or managed lists or maps) to the end of this list.
 (target: T, before?: T): this
 ```
 {:.declarationspec}
-Insert an object (or managed list or map) in this list.
+Insert an object (or managed list or map) into this list.
 
 - `target` — the object to be added to the list.
 

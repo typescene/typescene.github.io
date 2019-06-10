@@ -6,7 +6,6 @@ nav: |
   * [**class ManagedObject**](#ManagedObject)
   * [.observe()](#ManagedObject:observe)
   * [.handle()](#ManagedObject:handle)
-  * [.addGlobalClassInitializer()](#ManagedObject:addGlobalClassInitializer)
   * [.managedId](#ManagedObject:managedId)
   * [.managedState](#ManagedObject:managedState)
   * [.getReferenceCount()](#ManagedObject:getReferenceCount)
@@ -22,7 +21,6 @@ nav: |
   * [.onManagedStateDeactivatingAsync()](#ManagedObject:onManagedStateDeactivatingAsync)
   * [.onManagedStateInactiveAsync()](#ManagedObject:onManagedStateInactiveAsync)
   * [.onManagedStateDestroyingAsync()](#ManagedObject:onManagedStateDestroyingAsync)
-  * [.createManagedReferenceProperty()](#ManagedObject:createManagedReferenceProperty)
 layout: ref_doc
 ---
 
@@ -75,21 +73,10 @@ This function finds all methods on the observer class (but NOT on base classes, 
 [2]. <T extends ManagedObject>(this: ManagedObjectConstructor<T>, handlers: { [eventName: string]: (this: T, e: ManagedEvent) => void; }): void
 ```
 {:.declarationspec}
-**[1]** Attach a fixed event handler for _all instances_ of a derived class.
+**[1]** Attach an event handler to be invoked for all events that are emitted on _all instances_ of a class.
 
 
-**[2]** Attach event handlers for _all instances_ of a derived class. The event name ([`ManagedEvent.name`](./ManagedEvent#ManagedEvent:name) property) is used to find an event handler in given object. See also [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe) for a more advanced way to observe events as well as property changes.
-
-
-
-## ![](/assets/icons/spec-method.svg).addGlobalClassInitializer() <span class="spec_tag">static</span> {#ManagedObject:addGlobalClassInitializer}
-{:.spec}
-
-```typescript
-<T>(f: () => void | T): void | T
-```
-{:.declarationspec}
-Add a callback that is invoked by the constructor of this class, the first time an instance is created. The callback always runs only once. If an instance of this class has already been constructed, the callback is invoked immediately and its return value is returned.
+**[2]** Attach event handlers for _all instances_ of a derived class. The event name ([`ManagedEvent.name`](./ManagedEvent#ManagedEvent:name) property) is used to find an event handler in given object.
 
 
 
@@ -128,7 +115,7 @@ The current lifecycle state of this managed object.
 {:.declarationspec}
 Returns the current number of managed references that point to this object.
 
-**Note:** Observer classes (see [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe)) may use the `onReferenceCountChangeAsync` method to observe this value asynchronously.
+**Note:** Observers (see [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe)) may use an `onReferenceCountChangeAsync` method to observe this value asynchronously.
 
 
 
@@ -160,7 +147,7 @@ The object itself is never returned, even if it contains a managed child referen
 
 The object itself is never returned, even if it contains a managed child reference that points to itself (or if parents recursively reference the object or each other).
 
-**Note:** The reference to the managed parent (but not its events) can be observed by an observer class (see [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe)) using an `onManagedParentChange` or `onManagedParentChangeAsync` method.
+**Note:** The reference to the managed parent (but not its events) can be observed (see [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe)) using an `onManagedParentChange` or `onManagedParentChangeAsync` method on the observer.
 
 
 
@@ -235,6 +222,8 @@ Deactivate this managed object, if it is currently active (i.e. change state to 
 {:.declarationspec}
 Destroy this managed object (i.e. change state to `DESTROYING` and then to [`DESTROYED`](./DESTROYED), clear all managed references from and to this object, and destroy all managed children).
 
+**Note:** Managed child objects are automatically destroyed when their parent's reference (decorated with [`@managedChild`](./managedChild)) is cleared or changed, or the child object is removed from a managed list or map that is itself a managed child, OR when the parent object itself is destroyed. Managed objects are also automatically destroyed when one or more of their own properties (those decorated with [`@managedDependency`](./managedDependency)) are cleared or changed, or the dependency object itself is destroyed.
+
 
 
 ## ![](/assets/icons/spec-method.svg).onManagedStateActivatingAsync() <span class="spec_tag">protected</span> {#ManagedObject:onManagedStateActivatingAsync}
@@ -289,31 +278,4 @@ Callback invoked immediately after state has changed to 'inactive' and before an
 ```
 {:.declarationspec}
 Callback invoked when changing state to 'destroyed', to be overridden.
-
-
-
-## ![](/assets/icons/spec-method.svg).createManagedReferenceProperty() <span class="spec_tag">static</span> {#ManagedObject:createManagedReferenceProperty}
-{:.spec}
-
-```typescript
-<T extends ManagedObject>(object: T, propertyKey: keyof T, isChildReference?: boolean, isDependency?: boolean, preAssignHandler?: (this: T, target: ManagedObject) => void, eventHandler?: (this: T, event: ManagedEvent) => void, readonlyRef?: ManagedReference<...>): void
-```
-{:.declarationspec}
-Amend given property (on object or prototype) to turn it into a managed reference property.
-
-- `object` — the instance or prototype object in which to amend given property.
-
-- `propertyKey` — the property to be amended.
-
-- `isChildReference` — true if this reference should be a managed parent-child reference; automatically asserts a parent-child dependency between the referencing object and referenced object(s), recursively extending to objects in referenced managed lists, maps, and reference instances.
-
-- `isDependency` — true if the containing object should be destroyed when a referenced object is destroyed.
-
-- `preAssignHandler` — an optional handler that is invoked before a new reference is actually assigned, can be used to validate the target.
-
-- `eventHandler` — an optional handler that is called when an event occurs on the currently referenced object.
-
-- `readonlyRef` — optionally, a read-only managed reference object; when provided, the property will not be writable, and reading it results in the _target_ of the reference object.
-
-**Returns:** the newly applied property descriptor.
 

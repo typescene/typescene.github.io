@@ -54,7 +54,9 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class DialogViewActivity {#DialogViewActivity}
 {:.spec}
 
-Represents an application activity with a view that is rendered as a modal dialog.
+Represents an application activity with a view that is rendered as a modal dialog (when active).
+
+Use [`UIComponent.position`](./UIComponent#UIComponent:position) ([`UIStyle.Position`](./UIStyle#UIStyle:Position), specifically the `gravity` property) to determine the position of the dialog UI.
 
 ### Constructor
 ```typescript

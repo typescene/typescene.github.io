@@ -39,7 +39,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedRecord {#ManagedRecord}
 {:.spec}
 
-Represents data that is managed as a single unit, with managed inward and outward references.
+Managed record base class. Represents data that is managed (as [`ManagedObject`](./ManagedObject)), with additional methods to managed inward references — especially useful for constructing the application model.
 
 ### Constructor
 ```typescript

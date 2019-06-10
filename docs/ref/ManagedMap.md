@@ -44,7 +44,7 @@ pageintro: |
 ---
 
 ### Managed objects
-This class is part of a group of _managed object_ classes. See [Working with managed objects](/docs/guides/managed-objects) for details.
+This class is part of a group of _managed object_ classes. See [Understanding components](/docs/guides/components) for details.
 
 #### See also {#see_also}
 [`ManagedList`](./ManagedList), [`ManagedObject`](./ManagedObject), [`ManagedReference`](./ManagedReference).
@@ -53,7 +53,7 @@ This class is part of a group of _managed object_ classes. See [Working with man
 ## ![](/assets/icons/spec-class.svg)class ManagedMap {#ManagedMap}
 {:.spec}
 
-Represents an unordered list that maps keys (strings) to managed objects.
+Represents an _unordered_ list of managed objects that are indexed using unique key strings.
 
 ### Constructor
 ```typescript

@@ -54,7 +54,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class PageViewActivity {#PageViewActivity}
 {:.spec}
 
-Represents an application activity with a view that is rendered as a full page.
+Represents an application activity with a view that is rendered as a full page (when active).
 
 ### Constructor
 ```typescript

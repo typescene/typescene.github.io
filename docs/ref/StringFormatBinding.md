@@ -11,6 +11,7 @@ nav: |
   * [.id](#StringFormatBinding:id)
   * [.propertyName](#StringFormatBinding:propertyName)
   * [.parent](#StringFormatBinding:parent)
+  * [.ignoreUnbound](#StringFormatBinding:ignoreUnbound)
   * [.addFilter()](#StringFormatBinding:addFilter)
 layout: ref_doc
 ---
@@ -20,7 +21,7 @@ layout: ref_doc
 
 Represents a set of bindings (see [`Binding`](./Binding)) that are compiled into a single string value.
 
-String format bindings should be created using the [`bindf`](./bindf) function instead of this constructor.
+String format bindings should be created using the [`bindf`](./bindf) function.
 
 ### Constructor
 ```typescript
@@ -82,6 +83,17 @@ Binding
 ```
 {:.declarationspec}
 Inherited from [`Binding.parent`](./Binding#Binding:parent).
+
+
+
+## ![](/assets/icons/spec-property.svg).ignoreUnbound {#StringFormatBinding:ignoreUnbound}
+{:.spec}
+
+```typescript
+boolean
+```
+{:.declarationspec}
+Inherited from [`Binding.ignoreUnbound`](./Binding#Binding:ignoreUnbound).
 
 
 

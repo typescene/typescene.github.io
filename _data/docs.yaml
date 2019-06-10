@@ -22,9 +22,9 @@ en:
     guides:
       - url: /docs/guides/first
         name: Your first project
-      - url: /docs/guides/managed-objects
-        name: Working with managed objects
+      - url: /docs/guides/components
+        name: Understanding components
       - url: /docs/guides/activities
-        name: Understanding Activities
+        name: Advanced Activities
       - url: /docs/guides/ui
         name: Creating the UI

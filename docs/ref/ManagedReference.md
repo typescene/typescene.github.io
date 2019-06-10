@@ -38,16 +38,18 @@ pageintro: |
 ---
 
 ### Managed objects
-This class is part of a group of _managed object_ classes. See [Working with managed objects](/docs/guides/managed-objects) for details.
+This class is part of a group of _managed object_ classes. See [Understanding components](/docs/guides/components) for details.
 
 #### See also {#see_also}
 [`ManagedList`](./ManagedList), [`ManagedMap`](./ManagedMap), [`ManagedObject`](./ManagedObject).
-
 
 ## ![](/assets/icons/spec-class.svg)class ManagedReference {#ManagedReference}
 {:.spec}
 
 Independent reference to a managed object, list, map, or other managed reference.
+
+This class can be used to _encapsulate_ references to managed objects, not as a property of another managed object but as a reference on its own.
+
 
 ### Constructor
 ```typescript

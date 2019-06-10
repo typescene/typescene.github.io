@@ -10,6 +10,7 @@ nav: |
   * [.propertyName](#Binding:propertyName)
   * [.bindings](#Binding:bindings)
   * [.parent](#Binding:parent)
+  * [.ignoreUnbound](#Binding:ignoreUnbound)
   * [.addFilter()](#Binding:addFilter)
   * [.filters](#Binding:filters)
 layout: ref_doc
@@ -18,13 +19,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class Binding {#Binding}
 {:.spec}
 
-Represents a value to be included in [`Component`](./Component) presets (using the static [`Component.with`](./Component#Component:with) method), to be updated asynchronously from a property on active composite objects (see [`@compose`](./compose)).
+Component property binding base class.
 
-Bindings should be created using the [`bind`](./bind) and [`bindf`](./bindf) functions, and assigned to a property of a single object passed to [`Component.with`](./Component#Component:with).
+Bindings should be created using the [`bind`](./bind) and [`bindf`](./bindf) functions, and used as a property of the object passed to [`Component.with`](./Component#Component:with).
 
 ### Constructor
 ```typescript
-(source?: string, defaultValue?: any): Binding
+(source?: string, defaultValue?: any, ignoreUnbound?: boolean): Binding
 ```
 {:.declarationspec}
 
@@ -93,6 +94,17 @@ Binding
 ```
 {:.declarationspec}
 Parent binding, if any (e.g. for nested bindings in string format bindings).
+
+
+
+## ![](/assets/icons/spec-property.svg).ignoreUnbound {#Binding:ignoreUnbound}
+{:.spec}
+
+```typescript
+boolean
+```
+{:.declarationspec}
+Set to true to ignore this binding when a component is added to a composite parent that has not been preset with this binding (to avoid the 'Binding not found for X' error), which can happen if a component is not added through [`@compose`](./compose) but as a regular child object using [`@managedChild`](./managedChild).
 
 
 

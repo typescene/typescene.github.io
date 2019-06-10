@@ -4,11 +4,13 @@ nav: |
 
   #### Declarations
   * [**class Application**](#Application)
+  * [.run()](#Application:run)
   * [.active](#Application:active)
   * [.name](#Application:name)
   * [.activities](#Application:activities)
   * [.renderContext](#Application:renderContext)
   * [.activationContext](#Application:activationContext)
+  * [.activate()](#Application:activate)
   * [.activateAsync()](#Application:activateAsync)
   * [.deactivateAsync()](#Application:deactivateAsync)
   * [.destroyAsync()](#Application:destroyAsync)
@@ -48,13 +50,32 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class Application {#Application}
 {:.spec}
 
-Represents an independent part of the user interface.
+Represents the application itself, encapsulates activities ([`AppActivity`](./AppActivity) components) and contexts for rendering and activation using URL-like paths.
+
+Use the static [`run`](#Application:run) method to create and activate an application using a set of activity constructors, or create an application class that includes activities as sub components (properties decorated using the [`@compose`](./compose) decorator). For a manually created class, an instance must be created and activated (see [`activate`](#Application:activate)) for the application to start.
+
+**Note:** Do not use the `Application` class directly, as it will __not__ initialize rendering or activation contexts. Instead, use platform specific application classes such as `BrowserApplication` that is exported by the `@typescene/webapp` package.
 
 ### Constructor
 ```typescript
 (): Application
 ```
 {:.declarationspec}
+
+
+
+## ![](/assets/icons/spec-method.svg).run() <span class="spec_tag">static</span> {#Application:run}
+{:.spec}
+
+```typescript
+(...activities: (((new (...args: any[]) => Component) & (new () => AppActivity)) | ((new (a: never, b: never, c: never, d: never, e: never, f: never) => Component) & (new () => AppActivity)))[]): Application
+```
+{:.declarationspec}
+Create an application that includes given activities, and start it immediately.
+
+**Returns:** the application instance.
+
+**Note:** Calling this method directly on `Application` creates an application without any context (i.e. [`activationContext`](#Application:activationContext) and [`renderContext`](#Application:renderContext)). Instead, use a constructor that is meant for a specific platform (e.g. `BrowserApplication`).
 
 
 
@@ -110,6 +131,19 @@ AppActivationContext
 ```
 {:.declarationspec}
 Activity activation context as a managed child object, propagated to all (nested) [`AppComponent`](./AppComponent) instances.
+
+
+
+## ![](/assets/icons/spec-method.svg).activate() {#Application:activate}
+{:.spec}
+
+```typescript
+(): this
+```
+{:.declarationspec}
+Activate this application asynchronously, immediately creating all primary activities; any errors during activation are handled by logging them to the console (uses [`UnhandledErrorEmitter`](./UnhandledErrorEmitter)).
+
+**Returns:** the application itself.
 
 
 

@@ -35,6 +35,10 @@ layout: ref_doc
 
 Abstract base class definition for a [`ManagedService`](./ManagedService) that provides internationalization features.
 
+To implement i18n in an application, extend this class and register an instance for the current locale before rendering the UI. Alternatively, use [`UIRenderContext.emitRenderChange`](./UIRenderContext#UIRenderContext:emitRenderChange) after registering a new service to update the UI. In the application's implementation of the `I18nService` class, the methods [`tt`](./tt) and and [`getNonTranslatable`](#I18nService:getNonTranslatable) must be defined.
+
+**Note:** The service name _must_ remain `"Core.I18n"` (default, assigned by this base class) for global functions such as 'tt' to work.
+
 ### Constructor
 ```typescript
 (name?: string): I18nService
@@ -74,7 +78,7 @@ Locale identifier (e.g. `en-US`).
 {:.declarationspec}
 Translate and/or format given value, based on given type string (defaults to 'translate' for strings passed to the [`tt`](./tt) function, or 'datetime' for Date values).
 
-**Note:** Use the [`tt`](./tt) function instead where possible, since that also removes `***{...}***` tags which can be used for unique string identifiers or comments to translators.
+**Note:** Use the [`tt`](./tt) function instead where possible, which also removes `***{...}***` tags which can be used for unique string identifiers or comments to translators. This method should not need to remove those tags by itself.
 
 
 
@@ -85,7 +89,7 @@ Translate and/or format given value, based on given type string (defaults to 'tr
 (): { [text: string]: any; }
 ```
 {:.declarationspec}
-Returns an object with property names set to strings that should have been translated, but for which a translation was not available.
+Returns an object with property names set to strings that should have been translated, but for which a translation was not available (abstract).
 
 
 

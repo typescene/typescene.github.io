@@ -1,5 +1,5 @@
 # UICell:pageintro
-The `UICell` component groups other components together within its own visual boundaries.
+The `UICell` component groups other components together within its own boundaries.
 
 ---
 # UICell

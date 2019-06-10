@@ -2,7 +2,7 @@ import { bind, bindf, tl, UIBorderlessTextField, UICell, UIExpandedLabel, UIFlow
 
 export default UIFlowCell.with(
     {
-        dimensions: { width: "100%", maxWidth: 360 },
+        dimensions: { width: "100%", maxWidth: 384 },
         css: { className: "docwidget_cell" },
         background: "@background",
         borderColor: "@primary",

@@ -12,8 +12,8 @@
   "author": "Jelmer Cormont",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^12.0.0",
-    "typescene": "^2.12.2",
+    "@types/node": "^12.0.1",
+    "typescene": "^2.12.3",
     "typescript": "3.4.5"
   }
 }

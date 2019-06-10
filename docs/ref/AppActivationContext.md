@@ -35,7 +35,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class AppActivationContext {#AppActivationContext}
 {:.spec}
 
-Represents the application state using a single path in URL format.
+Represents the application state using a single path in URL format. Used by [`Application`](./Application) and [`AppActivity`](./AppActivity) classes to implement routing behaviors.
 
 ### Constructor
 ```typescript

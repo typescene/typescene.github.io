@@ -41,11 +41,11 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ViewComponent {#ViewComponent}
 {:.spec}
 
-Represents an application component that encapsulates and renders its view made up of UI components (or other renderable components, e.g. `ViewComponent` instances).
+Represents an application component that encapsulates a view made up of UI components (or other renderable components, such as nested `ViewComponent` instances).
 
-The encapsulated view is only created the first time this component is rendered. After that, all UI component events are propagated from the encapsulated view to the `ViewComponent` instance.
+The encapsulated view is created the first time this component is rendered. After that, all UI events are propagated from the encapsulated view to the `ViewComponent` instance.
 
-**Note:** This class is similar in functionality to [`ViewActivity`](./ViewActivity), but view _activities_ can be added to an application and activated using its activation context (router). View components can only be used as child components of other view components, UI components, or as a child component of a view activity.
+**Note:** This class is similar in functionality to [`ViewActivity`](./ViewActivity), but `ViewComponent` views are created immediately, whereas view activities need to be activated first before their views are created.
 
 ### Constructor
 ```typescript

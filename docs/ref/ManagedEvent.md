@@ -12,7 +12,7 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedEvent {#ManagedEvent}
 {:.spec}
 
-Event that can be emitted on a managed object, list/map, or reference, to be received by any object that references it.
+Event that can be emitted on a managed object, list/map, or reference, to be handled by objects that reference the emitting object.
 
 **Note:** Event instances may be frozen and reused for better performance. See [`ManagedEvent.freeze`](./ManagedEvent#ManagedEvent:freeze).
 
