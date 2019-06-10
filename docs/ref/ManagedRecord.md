@@ -107,7 +107,7 @@ Returns an array of unique records that contain managed references to this objec
 {:.spec}
 
 ```typescript
-(): ManagedRecord
+<TResult = this>(): TResult
 ```
 {:.declarationspec}
 Returns the next record in a parent list (i.e. a list that is a child object of another record).
@@ -118,7 +118,7 @@ Returns the next record in a parent list (i.e. a list that is a child object of 
 {:.spec}
 
 ```typescript
-(): any
+<TResult = this>(): TResult
 ```
 {:.declarationspec}
 Returns the previous record in a parent list (i.e. a list that is a child object of another record).

@@ -105,7 +105,7 @@ The application name.
 {:.spec}
 
 ```typescript
-ComponentList<AppActivity>
+AppActivityList
 ```
 {:.declarationspec}
 List of root activities, as child components.

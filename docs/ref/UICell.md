@@ -109,7 +109,7 @@ nav: |
   * [.focusedSelectedDropShadow](#UICell:HighlightProperties:focusedSelectedDropShadow)
 layout: ref_doc
 pageintro: |
-  The <code>UICell</code> component groups other components together within its own visual boundaries.
+  The <code>UICell</code> component groups other components together within its own boundaries.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UICell {#UICell}

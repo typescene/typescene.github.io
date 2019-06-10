@@ -351,7 +351,7 @@ Rendered view, if bound directly (not to be used together with [`managedList`](#
 Binding
 ```
 {:.declarationspec}
-List of renderable views (must be bound to either a [`ManagedList`](./ManagedList) or [`ComponentList`](./ComponentList)), one of which can be selected for rendering using the [`index`](#UIViewRenderer:index) property.
+List of renderable views (must be bound to either a [`ManagedList`](./ManagedList) or `ComponentList`), one of which can be selected for rendering using the [`index`](#UIViewRenderer:index) property.
 
 
 

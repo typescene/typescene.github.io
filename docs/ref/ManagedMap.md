@@ -49,11 +49,17 @@ This class is part of a group of _managed object_ classes. See [Understanding co
 #### See also {#see_also}
 [`ManagedList`](./ManagedList), [`ManagedObject`](./ManagedObject), [`ManagedReference`](./ManagedReference).
 
-
 ## ![](/assets/icons/spec-class.svg)class ManagedMap {#ManagedMap}
 {:.spec}
 
 Represents an _unordered_ list of managed objects that are indexed using unique key strings.
+
+#### Child references
+
+If a managed object property that is decorated with [`@managedChild`](./managedChild) gets assigned a `ManagedMap` instance, the parent-child relationship will extend to the items in this `ManagedMap`. In other words, the items in a `ManagedMap` that is itself a managed child object, will become managed children of the map itself.
+
+In this case, removing objects from the `ManagedMap` object will destroy these objects. Adding objects to the `ManagedMap` will 'move' them from their current parent, if any.
+
 
 ### Constructor
 ```typescript
