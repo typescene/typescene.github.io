@@ -27,3 +27,5 @@ This asserts a parent-child dependency between the referrer and the referenced o
 
 - The child object may refer to its parent using the [`ManagedObject.getManagedParent`](./ManagedObject#ManagedObject:getManagedParent) method, and observers can observe the managed parent reference using an `onManagedParentChange[Async]` method.
 
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+

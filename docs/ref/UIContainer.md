@@ -67,12 +67,21 @@ nav: |
   * [.revealTransition](#UIContainer:Presets:revealTransition)
   * [.exitTransition](#UIContainer:Presets:exitTransition)
 layout: ref_doc
+pageintro: |
+  UI Containers display child components in either a horizontal or vertical arrangement.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UIContainer <span class="spec_tag">abstract</span> {#UIContainer}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIComponent`](./UIComponent)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that contains other components (abstract).
+
+> __Note:__ This class should not be instantiated on its own. Instead, use one of the predefined container components such as [`UICell`](./UICell), [`UIRow`](./UIRow), or [`UIColumn`](./UIColumn).
+
 
 ### Constructor
 ```typescript
@@ -553,6 +562,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIContainer.Presets {#UIContainer:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIComponent.Presets`](./UIComponent#UIComponent:Presets)</code></pre>
+{:.declarationspec}
 
 UIContainer presets type, for use with [`Component.with`](./Component#Component:with).
 

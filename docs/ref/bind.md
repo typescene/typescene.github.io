@@ -40,3 +40,23 @@ A default value may also be specified. This value is used when the bound value i
 
 If the final parameter is set to true, the binding is ignored when the component is added to a composite parent that has not been preset with this binding (to avoid the 'Binding not found for X' error), which can happen if a component is not added through [`@compose`](./compose) but as a regular child object using [`@managedChild`](./managedChild).
 
+#### Example
+```typescript
+// view code
+export default UICell.with(
+  UIRow.with(
+    UILabel.with({
+      hidden: bind("!showLabel"),
+      text: bind("labelText")
+    }),
+    UIListController.with(
+      { items: bind("myListItems") },
+      // ...
+    )
+  )
+)
+```
+
+#### See Also
+[`bindf`](./bindf), [`Binding.addFilter`](./Binding#Binding:addFilter) (includes a list of available filters)
+

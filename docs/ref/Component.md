@@ -31,14 +31,22 @@ nav: |
   * [.onManagedStateInactiveAsync()](#Component:onManagedStateInactiveAsync)
   * [.onManagedStateDestroyingAsync()](#Component:onManagedStateDestroyingAsync)
 layout: ref_doc
+pageintro: |
+  Components are the building blocks of a Typescene application.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class Component {#Component}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
 Component base class. Represents a managed object (see [`ManagedObject`](./ManagedObject)) that can be initialized from a 'preset' structure passed to its static [`with`](#Component:with) method.
 
 Component property values may be bound (see [`bind`](./bind)) to properties of a 'composite' parent, i.e. the component that references sub components through a property decorated with the [`@compose`](./compose) decorator.
+
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
 
 ### Constructor
 ```typescript
@@ -84,7 +92,7 @@ Add bindings, components, and event handlers from given presets to the current c
 
 Component classes _may_ override this method and return the result of `super.preset(...)` if:
 
-- the `.with()` function for a component class should accept custom type(s) for its arguments. The parameter signature for the [`preset`](#Component:preset) method is used to determine the parameter signature for `.with()` on a component class.
+- the [`.with()`](#Component:with) function for a component class should accept custom type(s) for its arguments. The parameter signature for the [`preset`](#Component:preset) method is used to determine the parameter signature for [`.with()`](#Component:with) on a component class.
 
 - component instances should be prepared in any way other than setting property values, adding bindings, or event handlers immediately after being constructed (using the returned callback).
 
@@ -101,7 +109,7 @@ Component classes _may_ override this method and return the result of `super.pre
 {:.declarationspec}
 Add given binding to this component constructor, so that the property with given name *on all instances* will be updated with value(s) taken from the parent composite object. Optionally given function is used to set the property value using the updated (bound) value; otherwise, values are copied directly except for arrays, which are used to replace the values in a managed list (see [`ManagedList.replace`](./ManagedList#ManagedList:replace)).
 
-**Note:** This method is used by [`preset`](#Component:preset) when the argument to `.with()` includes a binding (see [`bind`](./bind)). This method should not be used directly unless passing a binding to `.with()` is not possible.
+**Note:** This method is used by [`preset`](#Component:preset) when the argument to [`.with()`](#Component:with) includes a binding (see [`bind`](./bind)). This method should not be used directly unless passing a binding to [`.with()`](#Component:with) is not possible.
 
 
 
@@ -112,7 +120,7 @@ Add given binding to this component constructor, so that the property with given
 (...constructors: ComponentConstructor<Component>[]): void
 ```
 {:.declarationspec}
-Inherit bindings from given component constructor(s) on this constructor. Inherited bindings will be bound to the same parent composite object as bindings passed to `.with()` directly, to update bound properties of (nested) child instances.
+Inherit bindings from given component constructor(s) on this constructor. Inherited bindings will be bound to the same parent composite object as bindings passed to [`.with()`](#Component:with) directly, to update bound properties of (nested) child instances.
 
 **Note:** This method must be used by a custom [`preset`](#Component:preset) function if the preset component (may) have managed child objects (see [`@managedChild`](./managedChild)) of the given type and the constructor is not passed to `super.preset(...)`.
 

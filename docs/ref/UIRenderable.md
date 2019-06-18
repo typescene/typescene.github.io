@@ -32,6 +32,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-interface.svg)interface UIRenderable {#UIRenderable}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component)</code></pre>
+{:.declarationspec}
+
 Type definition for a component that can be rendered on its own.
 
 

@@ -36,6 +36,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UISelectionController {#UISelectionController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
+{:.declarationspec}
+
 Renderable wrapper that controls selection state across components, by emitting `Deselect` events for previously selected components upon `Select` events on newly selected components.
 
 ### Constructor

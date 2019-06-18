@@ -72,12 +72,28 @@ nav: |
   * [.revealTransition](#UIColumn:Presets:revealTransition)
   * [.exitTransition](#UIColumn:Presets:exitTransition)
 layout: ref_doc
+pageintro: |
+  This component displays controls in a vertical arrangement.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UIColumn {#UIColumn}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer`](./UIContainer)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that contains other components, in a vertical arrangement.
+
+#### Example (preset)
+```typescript
+UIColumn.with(
+  { spacing: 8 },
+  UICloseRow.with(tl("Enter your name:")),
+  UICloseRow.with(UITextField.withName("fullName"))
+)
+```
+
 
 ### Constructor
 ```typescript
@@ -591,6 +607,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIColumn.Presets {#UIColumn:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer.Presets`](./UIContainer#UIContainer:Presets)</code></pre>
+{:.declarationspec}
 
 UIColumn presets type, for use with [`Component.with`](./Component#Component:with).
 

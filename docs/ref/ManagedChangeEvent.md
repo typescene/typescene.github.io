@@ -15,7 +15,15 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedChangeEvent {#ManagedChangeEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted when a change occurs to a managed object, list/map, or reference.
+
+#### See Also
+[`CHANGE`](./CHANGE), [`ManagedListChangeEvent`](./ManagedListChangeEvent)
+
 
 ### Constructor
 ```typescript
@@ -33,6 +41,9 @@ Readonly<ManagedChangeEvent>
 ```
 {:.declarationspec}
 Frozen base change event that can be re-used instead of creating a new `ManagedChangeEvent` instance for every change.
+
+**Note:** This event instance can be imported directly as [`CHANGE`](./CHANGE)<br>
+(e.g. `import { CHANGE } from "typescene"`).
 
 
 

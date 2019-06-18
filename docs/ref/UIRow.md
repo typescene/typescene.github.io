@@ -72,12 +72,28 @@ nav: |
   * [.revealTransition](#UIRow:Presets:revealTransition)
   * [.exitTransition](#UIRow:Presets:exitTransition)
 layout: ref_doc
+pageintro: |
+  This component displays controls in a horizontal arrangement.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UIRow {#UIRow}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer`](./UIContainer)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that contains other components, in a horizontal arrangement.
+
+#### Example (preset)
+```typescript
+UIRow.with(
+  { spacing: 8 },
+  tl("Enter your name: "),
+  UIBorderlessTextField.withName("fullName")
+)
+```
+
 
 ### Constructor
 ```typescript
@@ -591,6 +607,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIRow.Presets {#UIRow:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer.Presets`](./UIContainer#UIContainer:Presets)</code></pre>
+{:.declarationspec}
 
 UIRow presets type, for use with [`Component.with`](./Component#Component:with).
 

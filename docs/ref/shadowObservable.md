@@ -22,3 +22,32 @@ The decorated property itself (which _must_ have a property getter) will not be 
 
 - `forceAsync` — if true, forces observers to observe this property asynchronously _only_, to prevent the occurance of side effects when setting the value of the shadow property; any attempt to observe the decorated property using a synchronous observer method (without `...Async`) results in an error.
 
+#### Example
+```typescript
+class MyComponent extends Component {
+  @shadowObservable("_foo")
+  get foo() { return this._foo || 0 }
+
+  // running this method will trigger the observer's
+  // onFooChange method even if it changes _foo:
+  doSomething() {
+    this._foo++;
+  }
+
+  private _foo?: number;
+}
+MyComponent.observe(class {
+  constructor (public readonly c: MyComponent) { }
+  onFooChange(v: number) {
+    console.log("foo is now " + v);
+  }
+})
+
+let c = new MyComponent();
+c.foo  // 0
+c.doSomething();
+// => foo is now 1
+c.foo  // 1
+```
+
+

@@ -18,7 +18,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedCoreEvent {#ManagedCoreEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Core event that is _not propagated_ by default (see [`ManagedObject.propagateChildEvents`](./ManagedObject#ManagedObject:propagateChildEvents)).
+
+**Note:** These events are emitted by Typescene internally and should not be emitted by your application.
 
 ### Constructor
 ```typescript
@@ -37,6 +43,8 @@ Readonly<ManagedCoreEvent>
 {:.declarationspec}
 Event that is emitted for all managed objects after activation.
 
+**Note:** This event is emitted by Typescene internally and should not be emitted by your application.
+
 
 
 ## ![](/assets/icons/spec-property.svg).INACTIVE <span class="spec_tag">static</span> {#ManagedCoreEvent:INACTIVE}
@@ -47,6 +55,8 @@ Readonly<ManagedCoreEvent>
 ```
 {:.declarationspec}
 Event that is emitted for all managed objects after deactivation.
+
+**Note:** This event is emitted by Typescene internally and should not be emitted by your application.
 
 
 
@@ -60,6 +70,8 @@ Readonly<ManagedCoreEvent>
 Event that is emitted for all managed objects after they are destroyed.
 
 **Note:** Handlers on objects that referenced the destroyed object will be unable to access the destroyed object through its own managed property, since the reference is immediately set to undefined.
+
+**Note:** This event is emitted by Typescene internally and should not be emitted by your application.
 
 
 

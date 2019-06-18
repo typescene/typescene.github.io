@@ -73,6 +73,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIImage {#UIImage}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that displays a referenced image.
 
 ### Constructor
@@ -565,6 +569,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIImage.Presets {#UIImage:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UIImage presets type, for use with [`Component.with`](./Component#Component:with).
 

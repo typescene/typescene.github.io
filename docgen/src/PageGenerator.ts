@@ -42,6 +42,12 @@ export class PageGenerator {
             if (c.spec.spec && c.spec.type !== SpecNodeType.ClassDeclaration) {
                 result += "```typescript\n" + c.spec.spec + "\n```\n{:.declarationspec}\n";
             }
+            else if (c.spec.inherit) {
+                result += "\n<pre markdown=\"span\">" +
+                    "<code markdown=\"span\">" +
+                    this._addIdLinks(c.spec.inherit.map(s => "`" + s + "`").join(" ")) +
+                    "</code></pre>\n{:.declarationspec}\n\n";
+            }
             let doc = "";
             for (let d of c.docs) {
                 let txt = this._addIdLinks(d.doc).replace(/\n(?!\n)/g, "\n\n") + "\n\n";
@@ -154,17 +160,17 @@ export class PageGenerator {
 
     /** Turn IDs in given string into markdown links */
     private _addIdLinks(str: string) {
-        return str.replace(/\`([\@\w\.]+)\`/g, (s, token) => {
+        return str.replace(/\`(extends\s+|implements\s+)?([\@\w\.]+[\(\)]*)\`/g, (s, impl, token) => {
             let t = token.replace(/^[\@\.]/, "").replace(/\(\)$/, "");
             if (t !== this.data.id) {
                 token = token.replace(/_/g, "\\_");
                 if (this._parser.isDefined(t)) {
                     let url = this._baseUrl + t.replace(/\..*/, "");
                     if (t.indexOf(".") > 0) url += navId(t);
-                    return `[\`${token}\`](${url})`;
+                    return `${impl || ""}[\`${token}\`](${url})`;
                 }
                 else if (this._parser.isDefined(this.data.id + "." + t)) {
-                    return `[\`${token}\`](${navId(this.data.id + "." + t)})`;
+                    return `${impl || ""}[\`${token}\`](${navId(this.data.id + "." + t)})`;
                 }
                 else {
                     console.log(`WARNING: NOT DEFINED ${t} (${this.data.id})`);

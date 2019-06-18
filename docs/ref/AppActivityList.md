@@ -9,6 +9,7 @@ nav: |
   * [.count](#AppActivityList:count)
   * [.find()](#AppActivityList:find)
   * [.first()](#AppActivityList:first)
+  * [.get()](#AppActivityList:get)
   * [.includes()](#AppActivityList:includes)
   * [.last()](#AppActivityList:last)
   * [.remove()](#AppActivityList:remove)
@@ -41,7 +42,27 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class AppActivityList {#AppActivityList}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component)</code></pre>
+{:.declarationspec}
+
 Component that encapsulates a list of child activities; emits events when the list changes (propagated from [`ManagedList`](./ManagedList)), and a [`CHANGE`](./CHANGE) event when one of the activities becomes active or inactive.
+
+**Note:** This class is used internally to represent 'preset' activities of an [`Application`](./Application) constructor. An instance of this class is available as [`Application.activities`](./Application#Application:activities).
+#### Example
+The following example defines an activity class that instantiates three other activities when activated, as child components.
+```typescript
+class MyActivity extends AppActivity {
+  @compose(AppActivityList.with(
+    OneActivity,
+    TwoActivity,
+    ThreeActivity
+  ))
+  activities?: AppActivityList;
+
+  // ...
+}
+```
 
 ### Constructor
 ```typescript
@@ -103,6 +124,17 @@ Returns the activity with given ID (see [`ManagedObject.managedId`](./ManagedObj
 ```
 {:.declarationspec}
 Returns the first activity in the list (see [`ManagedList.first`](./ManagedList#ManagedList:first)).
+
+
+
+## ![](/assets/icons/spec-method.svg).get() {#AppActivityList:get}
+{:.spec}
+
+```typescript
+(index: number): AppActivity
+```
+{:.declarationspec}
+Returns the activity at given position in the list (0 based; see [`ManagedList.get`](./ManagedList#ManagedList:get)).
 
 
 

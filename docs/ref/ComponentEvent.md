@@ -16,7 +16,15 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ComponentEvent {#ComponentEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted on a particular [`Component`](./Component) instance, with reference to the source component as [`source`](#ComponentEvent:source).
+
+Primarily, this event is emitted by the [`Component.propagateComponentEvent`](./Component#Component:propagateComponentEvent) method, which is used when a [component preset](/docs/guides/components#presets) includes a propagated event definition (i.e. `"+OtherEvent"`).
+#### See Also
+[`UIComponentEvent`](./UIComponentEvent)
 
 ### Constructor
 ```typescript

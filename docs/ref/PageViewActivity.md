@@ -54,7 +54,30 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class PageViewActivity {#PageViewActivity}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ViewActivity`](./ViewActivity)</code></pre>
+{:.declarationspec}
+
 Represents an application activity with a view that is rendered as a full page (when active).
+
+#### Example
+```typescript
+// import a preset view constructor from ./view/index.ts:
+import view from "./view";
+
+class MyPageActivity
+  extends PageViewActivity.with(view) {
+  // activate this activity when browser URL is "...#/sample"
+  path = "/sample";
+
+  // called while activating the activity:
+  async onManagedStateActivatingAsync() {
+    await super.onManagedStateActivatingAsync();
+    // ...
+  }
+}
+```
+
 
 ### Constructor
 ```typescript

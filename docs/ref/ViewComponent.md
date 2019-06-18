@@ -36,16 +36,61 @@ nav: |
   #### Namespaced
   * [ViewComponent.PresetFor](#ViewComponent:PresetFor)
 layout: ref_doc
+pageintro: |
+  Use this base class to create your own view components without an activity.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class ViewComponent {#ViewComponent}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`AppComponent`](./AppComponent) implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
 
 Represents an application component that encapsulates a view made up of UI components (or other renderable components, such as nested `ViewComponent` instances).
 
 The encapsulated view is created the first time this component is rendered. After that, all UI events are propagated from the encapsulated view to the `ViewComponent` instance.
 
 **Note:** This class is similar in functionality to [`ViewActivity`](./ViewActivity), but `ViewComponent` views are created immediately, whereas view activities need to be activated first before their views are created.
+
+### Enabling preset types
+Use the [`PresetFor`](#ViewComponent:PresetFor) type to declare a static [`preset`](#ViewComponent:preset) method (which is used by the type definition of the `with` method), to add strong typing for arguments to preset constructors. Alternatively, you may define an actual [`preset`](#ViewComponent:preset) method implementation and provide a type for the first parameter.
+
+#### Example
+The following example shows how to create a view component that can be used from any other view.
+
+```typescript
+// ./view.ts
+export default UICell.with(
+  UIRow.with(
+    { onClick: "doSomething()" },
+    tl("You have ${nMessages} message#{/s}")
+  )
+)
+
+// ./MyViewComponent.ts
+import { ViewComponent } from "typescene";
+import view from "./view";
+export class MyViewComponent extends ViewComponent.with(view) {
+  // declare a preset function to make `with` accept
+  // values for all unique non-method properties
+  static preset: ViewComponent.PresetFor<MyViewComponent>;
+
+  // bound by the view, preset by `with`:
+  nMessages = 0;
+
+  doSomething() { /* event handler */ }
+}
+
+// some other view preset:
+UICell.with(
+  // ...
+  MyViewComponent.with({
+    nMessages: bind("userMessages")
+  })
+)
+```
+
 
 ### Constructor
 ```typescript
@@ -356,8 +401,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 {:.spec}
 
 ```typescript
-type PresetFor<TComponent, K extends keyof TComponent> = (presets: TComponent | Pick<TComponent, K>) => Function;
+type PresetFor<TComponent extends ViewComponent, K extends keyof TComponent = Exclude<{
+        [P in keyof TComponent]: TComponent[P] extends Function ? never : P;
+    }[keyof TComponent], keyof ViewComponent>> = (presets: Pick<TComponent, K>) => Function;
 ```
 {:.declarationspec}
-Shortcut type for declaring a static [`preset`](#ViewComponent:preset) method which accepts an object with presets with the same type as given properties of the view component itself.
+Shortcut type for declaring a static [`preset`](#ViewComponent:preset) method which accepts an object with presets with the same type as given properties of the view component itself (excluding methods).
 

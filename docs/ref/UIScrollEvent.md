@@ -27,6 +27,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIScrollEvent {#UIScrollEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIComponentEvent`](./UIComponentEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted when the user scrolls up or down in a `UIScrollContainer *.
 
 ### Constructor

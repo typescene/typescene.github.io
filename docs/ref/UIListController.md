@@ -52,7 +52,34 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIListController {#UIListController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
+{:.declarationspec}
+
 Renderable wrapper that populates an encapsulated container with a given list of managed objects and a view adapter (component constructor).
+
+#### Example (preset)
+```typescript
+UIListController.with(
+  { items: bind("fooItems") },
+
+  // cell adapter:
+  UIListCellAdapter.with(
+    {
+      // ... (preset UICell properties)
+    },
+
+    // ...UICell content, can bind to "object":
+    tl("Item: ${object.name}")
+  ),
+
+  // list container (optional):
+  UIColumn.with({
+    separator: { type: "line" }
+  })
+)
+```
+
 
 ### Constructor
 ```typescript

@@ -16,6 +16,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIRenderEvent {#UIRenderEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted on a particular UI component when it is rendered, to be handled by a platform specific renderer (observer). Should not be propagated.
 
 ### Constructor

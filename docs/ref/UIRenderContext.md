@@ -41,6 +41,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIRenderContext <span class="spec_tag">abstract</span> {#UIRenderContext}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
 Base application render context, to be extended with platform specific render implementation.
 
 ### Constructor

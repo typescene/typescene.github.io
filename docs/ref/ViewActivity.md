@@ -63,9 +63,15 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ViewActivity {#ViewActivity}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`AppActivity`](./AppActivity) implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 View activity base class. Represents an application activity with content that can be rendered when activated.
 
 **Note:** Nothing is rendered if the [`placement`](#ViewActivity:placement) property is undefined (default). Make sure this property is set to a [`UIRenderPlacement`](./UIRenderPlacement) value before rendering, or use a specific view activity class such as [`PageViewActivity`](./PageViewActivity).
+
+> __Note:__ Most activities either display a full page view (see [`PageViewActivity`](./PageViewActivity)) or a dialog (see [`DialogViewActivity`](./DialogViewActivity)), so it is usually not necessary to use this base class.
 
 ### Constructor
 ```typescript
@@ -568,6 +574,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)ViewActivity.Presets {#ViewActivity:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`AppActivity.Presets`](./AppActivity#AppActivity:Presets)</code></pre>
+{:.declarationspec}
 
 View activity presets type, for use with [`Component.with`](./Component#Component:with).
 

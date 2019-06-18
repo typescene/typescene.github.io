@@ -54,9 +54,26 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class DialogViewActivity {#DialogViewActivity}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ViewActivity`](./ViewActivity)</code></pre>
+{:.declarationspec}
+
 Represents an application activity with a view that is rendered as a modal dialog (when active).
 
 Use [`UIComponent.position`](./UIComponent#UIComponent:position) ([`UIStyle.Position`](./UIStyle#UIStyle:Position), specifically the `gravity` property) to determine the position of the dialog UI.
+
+#### Example
+```typescript
+class MyModalDialogActivity
+  extends DialogViewActivity.with(view) {
+  // Make sure to position the root ^ 'view' component
+
+  // Don't remove the view when clicked/tapped outside:
+  modalShadeClickToClose = false;
+
+  // ... other properties and event handlers
+}
+```
 
 ### Constructor
 ```typescript
@@ -74,6 +91,8 @@ UIRenderPlacement
 ```
 {:.declarationspec}
 View placement mode, determines if and how view is rendered when activated.
+
+**Note:** This property is set to `DIALOG` to display the view as a dialog.
 
 
 

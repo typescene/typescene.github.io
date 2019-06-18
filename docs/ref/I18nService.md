@@ -33,11 +33,56 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class I18nService <span class="spec_tag">abstract</span> {#I18nService}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedService`](./ManagedService)</code></pre>
+{:.declarationspec}
+
 Abstract base class definition for a [`ManagedService`](./ManagedService) that provides internationalization features.
 
 To implement i18n in an application, extend this class and register an instance for the current locale before rendering the UI. Alternatively, use [`UIRenderContext.emitRenderChange`](./UIRenderContext#UIRenderContext:emitRenderChange) after registering a new service to update the UI. In the application's implementation of the `I18nService` class, the methods [`tt`](./tt) and and [`getNonTranslatable`](#I18nService:getNonTranslatable) must be defined.
 
 **Note:** The service name _must_ remain `"Core.I18n"` (default, assigned by this base class) for global functions such as 'tt' to work.
+
+#### See Also
+[`tt`](./tt), [`tl`](./tl), [`Binding.addFilter`](./Binding#Binding:addFilter) (includes 'tt' filter)
+
+#### Example
+The following example is a minimal implementation of an I18n service:
+
+```typescript
+export class NL_I18nService extends I18nService {
+  locale = "nl-NL";
+
+  /** Translate and/or format given value */
+  tt(value: any, type: string) {
+    switch (type) {
+      case "translate":
+        // ... (translate string using lookup table)
+        // or add to non-translatable list
+        this._nonTranslatable[value] = "";
+        return value;
+      case "datetime"
+        // ... (format Date value somehow)
+        return "...";
+    }
+    return value;
+  }
+
+  /** Get list of non-translatable strings */
+  getNonTranslatable() {
+    return this._nonTranslatable;
+  }
+
+  private _nonTranslatable: any = {};
+}
+```
+
+To activate the locale for the service defined above, the application would need to register an instance of this service (as `"Core.I18n"`). In a real-world application the available services would probably be stored in a list, but you can also create them manually:
+
+```typescript
+let i18n = new NL_I18nService();
+i18n.register();
+```
 
 ### Constructor
 ```typescript

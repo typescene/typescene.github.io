@@ -60,12 +60,22 @@ nav: |
   * [.revealTransition](#UIControl:Presets:revealTransition)
   * [.exitTransition](#UIControl:Presets:exitTransition)
 layout: ref_doc
+pageintro: |
+  UI Controls display individual controls on the screen, such as labels and buttons.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UIControl <span class="spec_tag">abstract</span> {#UIControl}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIComponent`](./UIComponent)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that the user can interact with (abstract).
+
+> __Note:__ This class should not be instantiated on its own. Instead, use one of the predefined control components such as [`UIButton`](./UIButton) or [`UILabel`](./UILabel).
+
+
 
 ### Constructor
 ```typescript
@@ -513,6 +523,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIControl.Presets {#UIControl:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIComponent.Presets`](./UIComponent#UIComponent:Presets)</code></pre>
+{:.declarationspec}
 
 UIControl presets type, for use with [`Component.with`](./Component#Component:with).
 

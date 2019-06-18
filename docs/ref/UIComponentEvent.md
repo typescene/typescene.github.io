@@ -17,7 +17,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIComponentEvent {#UIComponentEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ComponentEvent`](./ComponentEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted on a particular UI component, propagated by all parent UI components.
+
+> __Note:__ To emit this event on a UI component, use the [`UIComponent.propagateComponentEvent`](./UIComponent#UIComponent:propagateComponentEvent) method.
 
 ### Constructor
 ```typescript

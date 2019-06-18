@@ -12,7 +12,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class AppComponent <span class="spec_tag">abstract</span> {#AppComponent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">`extends AppComponent_base`</code></pre>
+{:.declarationspec}
+
 Specialized [`Component`](./Component) that propagates application properties (abstract).
+
+**Note:** This is a common base class to add shared bindings to activities and views, and is not intended for use in your application code.
 
 ### Constructor
 ```typescript

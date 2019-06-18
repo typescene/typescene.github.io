@@ -16,3 +16,6 @@ typeof UILabel
 {:.declarationspec}
 Shortcut for [`UILabel`](./UILabel) constructor preset with the `heading3` style set, and [`UILabel.headingLevel`](./UILabel#UILabel:headingLevel) set to 3.
 
+#### See Also
+[`UILabel`](./UILabel), [`UICloseLabel`](./UICloseLabel), [`UIExpandedLabel`](./UIExpandedLabel), [`UIParagraph`](./UIParagraph), [`UIHeading1`](./UIHeading1), [`UIHeading2`](./UIHeading2), [`tl`](./tl).
+

@@ -29,6 +29,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UnhandledErrorEmitter {#UnhandledErrorEmitter}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
 Singleton managed object class that logs errors and emits an [`UnhandledErrorEvent`](./UnhandledErrorEvent) for otherwise unhandled exceptions.
 
 The (single) instance of this class can be observed to capture errors as [`UnhandledErrorEvent`](./UnhandledErrorEvent) events, to handle errors in different ways.

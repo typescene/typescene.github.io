@@ -32,7 +32,52 @@ The template string may also contain other tags:
 
 By default, strings are translated, while Date values are formatted for the current locale; however other types of formatting may be provided by the locale service such as 'currency', 'currency:USD', 'date:short', 'datetime:long', etc.
 
-**Returns:** a plain _object_ that can be converted to a string when required (using `String(...)` or the `.toString()` method). Locale changes are therefore not observed, and require a render context reset.
+**Returns:** a plain _object_ that can be converted to a string when required (using `String(...)` or the [`.toString()`](./toString) method). Locale changes are therefore not observed, and require a render context reset.
 
 **Note:** To use plurals or number forms based on values that should not be included in the output themselves, use comment tags, e.g. `"There ***{${n}}***#{are no/is one/are #_} item#{/s}"`.
+
+> __Note:__ You do **not** need to call the `tt` function if you are using the [`tl`](./tl) function to create a label in your view constructor. This function runs the `tt` function automatically. However if you are using a plain [`UILabel`](./UILabel) or [`UIButton`](./UIButton) preset, you'll need to pass the result of `tt` to the [`UILabel.Presets.text`](./UILabel#UILabel:Presets:text) property (or [`UIButton.Presets.label`](./UIButton#UIButton:Presets:label) property, respectively). To translate bound strings, you can use [`bindf`](./bindf) with a `|tt` filter: `bindf("Hello, ${name}|tt")`.
+
+#### See Also
+[`bindf`](./bindf), [`tl`](./tl), [`I18nService`](./I18nService).
+
+#### Examples
+```typescript
+// translate a single phrase
+tt("Hello, world")
+
+// format the current date
+tt(new Date())
+
+// format currency (custom, to implement in I18nService)
+tt(3.50, "currency")
+tt(3.50, "currency:EUR")
+
+// translate phrase with unique ID
+// (can be used with lookup table by I18nService)
+tt("***{T_LOGIN_2}***Login successful")
+
+// translate pluralized phrase
+let n = 2;
+tt`You have ${n} message#{/s}`
+
+// using a translated button label (view preset)
+export default UICell.with(
+  UIRow.with(
+    // tl labels are translated automatically:
+    tl("{b}Messages:"),
+
+    // bindf has its tt filter:
+    UILabel.with({
+      text: bindf("${nUnread} unread|tt")
+    }),
+
+    // need tt for static translations:
+    UIPrimaryButton.with({
+      label: tt("Read now")
+    })
+  )
+)
+```
+
 

@@ -50,6 +50,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class Application {#Application}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component)</code></pre>
+{:.declarationspec}
+
 Represents the application itself, encapsulates activities ([`AppActivity`](./AppActivity) components) and contexts for rendering and activation using URL-like paths.
 
 Use the static [`run`](#Application:run) method to create and activate an application using a set of activity constructors, or create an application class that includes activities as sub components (properties decorated using the [`@compose`](./compose) decorator). For a manually created class, an instance must be created and activated (see [`activate`](#Application:activate)) for the application to start.

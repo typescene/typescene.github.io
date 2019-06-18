@@ -17,6 +17,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedObjectAddedEvent {#ManagedObjectAddedEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedListChangeEvent`](./ManagedListChangeEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted when an item is added to a [`ManagedList`](./ManagedList) or [`ManagedMap`](./ManagedMap).
 
 ### Constructor

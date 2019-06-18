@@ -90,6 +90,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIScrollContainer {#UIScrollContainer}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer`](./UIContainer)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that contains other components and allows scrolling horizontally and/or vertically, and emits throttled scroll events (`Scroll` and `ScrollEnd`, see [`UIScrollEvent`](./UIScrollEvent)).
 
 ### Constructor
@@ -659,6 +663,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIScrollContainer.Presets {#UIScrollContainer:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIContainer.Presets`](./UIContainer#UIContainer:Presets)</code></pre>
+{:.declarationspec}
 
 UIScrollContainer presets type, for use with [`Component.with`](./Component#Component:with).
 

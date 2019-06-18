@@ -248,6 +248,7 @@ article pre {
 li pre {
     margin: .5rem -.25rem;
 }
+pre.declarationspec,
 .declarationspec pre {
     box-shadow: none;
     position: relative;

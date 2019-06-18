@@ -22,12 +22,16 @@ nav: |
   * [.onManagedStateInactiveAsync()](#ManagedObject:onManagedStateInactiveAsync)
   * [.onManagedStateDestroyingAsync()](#ManagedObject:onManagedStateDestroyingAsync)
 layout: ref_doc
+pageintro: |
+  ManagedObject is the base class of most other framework classes, including Component.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class ManagedObject {#ManagedObject}
 {:.spec}
 
 Base class for objects that have their own unique ID, life cycle including active/inactive and destroyed states, and managed references to other instances.
+
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
 
 ### Constructor
 ```typescript

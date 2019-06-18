@@ -33,13 +33,51 @@ nav: |
 
   #### Namespaced
   * [ManagedRecord.create](#ManagedRecord:create)
+  * [ManagedRecord.isValidationError](#ManagedRecord:isValidationError)
 layout: ref_doc
 ---
 
 ## ![](/assets/icons/spec-class.svg)class ManagedRecord {#ManagedRecord}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component)</code></pre>
+{:.declarationspec}
+
 Managed record base class. Represents data that is managed (as [`ManagedObject`](./ManagedObject)), with additional methods to managed inward references — especially useful for constructing the application model.
+
+#### Example 1
+The following example shows how to create and manage custom record classes.
+
+```typescript
+class MyFooItem extends ManagedRecord {
+  constructor (public readonly foo: string) {
+    super();
+  }
+}
+
+class MyModel extends ManagedRecord {
+  @managedChild
+  items = new ManagedList().restrict(MyFooItem);
+}
+
+let m = new MyModel();
+m.items.add(new MyFooItem("foo"));
+m.items.add(new MyFooItem("bar"));
+m.items.first()!.getParentRecord()  // => m
+m.items.first()!.getNextSibling()!.foo  // "bar"
+```
+
+#### Example 2
+The following example shows how to create records without a custom class.
+
+```typescript
+let r = ManagedRecord.create({
+  foo = "bar",
+  x = "yz"
+});
+r.foo = "baz";
+```
 
 ### Constructor
 ```typescript
@@ -99,7 +137,7 @@ Returns an array of unique records that contain managed references to this objec
 **[1]** Returns the current parent record. See [`@managedChild`](./managedChild) decorator.
 
 
-**[2]** Returns the current parent record. See [`@managedChild`](./managedChild) decorator.
+**[2]** Returns the parent record (or parent's parent, etc.) of given type. See [`@managedChild`](./managedChild) decorator.
 
 
 
@@ -338,4 +376,17 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 ```
 {:.declarationspec}
 Create a new instance of `ManagedRecord` that contains given properties. All values are copied directly onto the new instance.
+
+
+
+---
+
+## ![](/assets/icons/spec-function.svg)ManagedRecord.isValidationError {#ManagedRecord:isValidationError}
+{:.spec}
+
+```typescript
+(err: any): err is ManagedRecordValidationError
+```
+{:.declarationspec}
+Checks if given error is a [`ManagedRecordValidationError`](./ManagedRecordValidationError) object.
 

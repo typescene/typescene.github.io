@@ -16,3 +16,5 @@ Readonly<ManagedCoreEvent>
 {:.declarationspec}
 Alias of the [`ManagedCoreEvent.DESTROYED`](./ManagedCoreEvent#ManagedCoreEvent:DESTROYED) event.
 
+**Note:** This event is emitted by Typescene internally and should not be emitted by your application.
+

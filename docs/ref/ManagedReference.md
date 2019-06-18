@@ -46,6 +46,10 @@ This class is part of a group of _managed object_ classes. See [Understanding co
 ## ![](/assets/icons/spec-class.svg)class ManagedReference {#ManagedReference}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
 Independent reference to a managed object, list, map, or other managed reference.
 
 This class can be used to _encapsulate_ references to managed objects, not as a property of another managed object but as a stand-alone 'reference object'.
@@ -153,7 +157,7 @@ Stop newly referenced objects from becoming child objects even if this `ManagedR
 (): { "$ref": number; }
 ```
 {:.declarationspec}
-Returns the referenced object itself, or undefined (alias of `get()` method).
+Returns the referenced object itself, or undefined (alias of [`get()`](#ManagedReference:get) method).
 
 
 

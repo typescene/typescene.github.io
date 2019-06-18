@@ -43,6 +43,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIViewRenderer {#UIViewRenderer}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component) implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Renderable component that wraps around a referenced view (view component or activity), which is _not_ a child component of the component itself. The view may be selected from a bound list and/or map, using a (bound or assigned) index.
 
 **Note:** Because the rendered view is not a child component, events (including UI events such as 'Clicked') never propagate up to the containing component(s).
@@ -351,7 +355,7 @@ Rendered view, if bound directly (not to be used together with [`managedList`](#
 Binding
 ```
 {:.declarationspec}
-List of renderable views (must be bound to either a [`ManagedList`](./ManagedList) or `ComponentList`), one of which can be selected for rendering using the [`index`](#UIViewRenderer:index) property.
+List of renderable views (must be bound to either a [`ManagedList`](./ManagedList) or [`AppActivityList`](./AppActivityList)), one of which can be selected for rendering using the [`index`](#UIViewRenderer:index) property.
 
 
 

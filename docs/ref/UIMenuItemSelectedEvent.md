@@ -18,6 +18,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIMenuItemSelectedEvent {#UIMenuItemSelectedEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIComponentEvent`](./UIComponentEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted on a menu or menu item when it is selected.
 
 ### Constructor

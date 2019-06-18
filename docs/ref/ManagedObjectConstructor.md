@@ -16,3 +16,5 @@ type ManagedObjectConstructor<TObject> = (new (...args: any[]) => TObject) | (ne
 {:.declarationspec}
 Generic constructor type for ManagedObject, matching both parameterless constructors and those with one or more required parameters.
 
+**Note:** This type is used by Typescene internally and should not be used by your application code.
+

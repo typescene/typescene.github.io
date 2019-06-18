@@ -15,7 +15,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedListChangeEvent {#ManagedListChangeEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedChangeEvent`](./ManagedChangeEvent)</code></pre>
+{:.declarationspec}
+
 Base type for events that are emitted when changes occur to a [`ManagedList`](./ManagedList) or [`ManagedMap`](./ManagedMap).
+
+**Note:** This event should not be emitted by your application code.
 
 ### Constructor
 ```typescript

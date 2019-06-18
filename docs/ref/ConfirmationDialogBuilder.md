@@ -17,6 +17,9 @@ layout: ref_doc
 
 Confirmation/alert dialog builder, platform dependent, used by [`ViewActivity.showConfirmationDialogAsync`](./ViewActivity#ViewActivity:showConfirmationDialogAsync) (abstract).
 
+**Note:** Typescene provides a platform dependent implementation by default. You can implement your own dialog builder by extending this class and assigning a constructor reference to [`UITheme.ConfirmationDialogBuilder`](./UITheme#UITheme:ConfirmationDialogBuilder).
+
+
 ### Constructor
 ```typescript
 (): ConfirmationDialogBuilder

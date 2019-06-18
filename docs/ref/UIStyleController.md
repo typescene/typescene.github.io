@@ -43,6 +43,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIStyleController {#UIStyleController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
+{:.declarationspec}
+
 Renderable wrapper that controls the style of its single content component, by applying one of the given styles based on the current value of a property.
 
 ### Constructor

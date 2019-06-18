@@ -35,7 +35,13 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class AppActivationContext {#AppActivationContext}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
 Represents the application state using a single path in URL format. Used by [`Application`](./Application) and [`AppActivity`](./AppActivity) classes to implement routing behaviors.
+
+**Note:** An instance of this object is provided by the [`Application`](./Application) object (e.g. `BrowserApplication`), and is also available on all activities and views as [`activationContext`](/docs/ref/AppComponent#AppComponent:activationContext).
 
 ### Constructor
 ```typescript

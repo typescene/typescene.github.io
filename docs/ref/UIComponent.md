@@ -53,12 +53,20 @@ nav: |
   * [.render()](#UIComponent:DynamicRendererWrapper:render)
   * [.removeAsync()](#UIComponent:DynamicRendererWrapper:removeAsync)
 layout: ref_doc
+pageintro: |
+  This is the base class of all UI (view) components.
 ---
 
 ## ![](/assets/icons/spec-class.svg)class UIComponent <span class="spec_tag">abstract</span> {#UIComponent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component) implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Represents a visible part of the user interface.
+
+> __Note:__ This class should not be instantiated on its own. Instead, use one of the predefined UI components such as [`UIButton`](./UIButton) and [`UILabel`](./UILabel), a shortcut function such as [`tl`](./tl), or create your own view component using the [`ViewComponent`](./ViewComponent) class.
 
 ### Constructor
 ```typescript

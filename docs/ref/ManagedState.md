@@ -31,3 +31,6 @@ enum ManagedState {
 {:.declarationspec}
 Enumeration of possible states for a managed object.
 
+#### See Also
+[`ManagedObject.managedState`](./ManagedObject#ManagedObject:managedState)
+

@@ -35,6 +35,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIRenderableController {#UIRenderableController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">`extends UIRenderableController_base` implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Base class for a controller that wraps around a single renderable component.
 
 ### Constructor

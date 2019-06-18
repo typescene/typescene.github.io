@@ -15,7 +15,45 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class ManagedParentChangeEvent {#ManagedParentChangeEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedCoreEvent`](./ManagedCoreEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted when a managed object is assigned to a managed child reference property (see [`@managedChild`](./managedChild) decorator); the child object emits this event, with [`parent`](#ManagedParentChangeEvent:parent) set to the _new_ parent object.
+
+#### Example
+The following example shows how this event can be observed on a component (or other managed object).
+
+```typescript
+class MyChildComponent extends Component { }
+
+// observe the event on the above class:
+MyChildComponent.observe(class {
+  onManagedParentChange(e: ManagedParentChangeEvent) {
+    if (e.parent instanceof MyParentComponent) {
+      console.log("New parent: " + e.parent.foo);
+    }
+  }
+})
+
+class MyParentComponent extends Component {
+  constructor (public readonly foo: string) {
+    super();
+  }
+
+  // this is a managed child property so assigning
+  // a component here triggers the event
+  @managedChild
+  foo = new MyChildComponent();
+}
+
+let c = new MyChildComponent();
+let a = new MyParentComponent("a");
+a.foo = c;  // => New parent: a
+let b = new MyParentComponent("b");
+b.foo = c;  // => New parent: b
+```
+
 
 ### Constructor
 ```typescript

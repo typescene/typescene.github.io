@@ -18,3 +18,5 @@ Property decorator: turn the decorated property into an active sub component ref
 
 In addition, bindings on all other component classes passed as rest parameters are added on this composite component. This may be necessary if further nested components are added dynamically (e.g. as nested children) and the component constructor itself does not include all of the same bindings.
 
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
+

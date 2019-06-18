@@ -44,7 +44,14 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIMenu {#UIMenu}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Component`](./Component) implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Represents a menu that can be displayed on screen. The menu itself is built up dynamically using a platform dependent builder class.
+
+#### Example
+For an example of how UIMenu can be used, refer to [`UIModalController`](./UIModalController).
 
 ### Constructor
 ```typescript

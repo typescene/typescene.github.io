@@ -87,7 +87,19 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UILabel {#UILabel}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Represents a UI component that contains a piece of text.
+
+#### See Also
+[`UICloseLabel`](./UICloseLabel), [`UIExpandedLabel`](./UIExpandedLabel), [`UIParagraph`](./UIParagraph), [`UIHeading1`](./UIHeading1), [`UIHeading2`](./UIHeading2), [`UIHeading3`](./UIHeading3), [`tl`](./tl).
+
+#### Example (preset)
+```typescript
+UILabel.withText(tt("Hello, world!"))
+```
 
 ### Constructor
 ```typescript
@@ -667,6 +679,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UILabel.Presets {#UILabel:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UILabel presets type, for use with [`Component.with`](./Component#Component:with).
 

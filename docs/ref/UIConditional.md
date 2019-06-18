@@ -41,7 +41,26 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIConditional {#UIConditional}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
+{:.declarationspec}
+
 Encapsulates content that is added/removed asynchronously based on the value of a (bound) property.
+
+> __Note:__ Preset constructors for this class (see example) only accept __one__ child component. To wrap multiple components, use multiple `UIConditional` constructors, or wrap child components in a [`UICell`](./UICell).
+
+#### Example (preset)
+```typescript
+UIConditional.with(
+  { state: bind("showRegion") },
+  UICell.with(
+    UIRow.with(
+      tl("Only rendered when state is true")
+    )
+  )
+)
+```
+
 
 ### Constructor
 ```typescript

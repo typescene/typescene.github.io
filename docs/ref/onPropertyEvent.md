@@ -41,7 +41,8 @@ class PersonObserver {
         }
     }
 }
-Person.observe(PersonObserver);
+
+observe(Person, PersonObserver);
 
 class BirthdayEvent extends ManagedEvent {
     constructor(public readonly person: Person) {
@@ -56,5 +57,4 @@ p1.spouse = p2;
 p3.friends.add(p2);
 p2.emit(new BirthdayEvent(p2));
 ```
-
 

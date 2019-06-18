@@ -41,7 +41,27 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIListCellAdapter {#UIListCellAdapter}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">`extends UIListCellAdapter_base` implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Component that can be used as an adapter to render items in a [`UIListController`](./UIListController). Instances are constructed using a single argument (a managed object from [`UIListController.items`](./UIListController#UIListController:items)), and are activated when rendered to create the cell component. The static `with` method takes the same arguments as [`UICell`](./UICell) itself along with additional properties to manage display of selected and focused cells. Encapsulated content can include bindings to the [`object`](#UIListCellAdapter:object) and [`selected`](#UIListCellAdapter:selected) properties.
+
+#### Example (preset)
+```typescript
+UIListController.with(
+  { items: "fooList" },
+  UIListCellAdapter.with(
+    {
+      // ... (preset UICell properties)
+    },
+
+    // ...UICell content, can bind to "object":
+    tl("Item: ${object.name}")
+  )
+)
+```
+
 
 ### Constructor
 ```typescript

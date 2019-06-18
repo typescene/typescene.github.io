@@ -18,3 +18,6 @@ type Stringable = string | {
 {:.declarationspec}
 String type or object with toString method.
 
+This type is mostly used for properties of UI preset definitions that take a string or a 'stringable' object such as the result of [`tt`](./tt), e.g. [`UILabel.Presets.text`](./UILabel#UILabel:Presets:text).
+
+

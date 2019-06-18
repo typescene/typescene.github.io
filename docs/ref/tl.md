@@ -42,3 +42,14 @@ If the text _starts_ with a tag in curly braces (i.e. `{...}`), then the result 
 
 **Note:** The text string (excluding initial tag) is passed through the [`tt`](./tt) function for translation upon construction of the [`UILabel`](./UILabel) component whenever an [`I18nService`](./I18nService) instance has been registered.
 
+#### See Also
+[`UILabel`](./UILabel), [`UICloseLabel`](./UICloseLabel), [`UIExpandedLabel`](./UIExpandedLabel), [`UIParagraph`](./UIParagraph), [`UIHeading1`](./UIHeading1), [`UIHeading2`](./UIHeading2), [`UIHeading3`](./UIHeading3), [`tt`](./tt).
+
+#### Example (preset)
+```typescript
+UIRow.with(
+  tl("{b|@red}Warning: limit exceeded!")
+)
+```
+
+

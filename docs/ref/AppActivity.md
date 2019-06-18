@@ -29,7 +29,25 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class AppActivity {#AppActivity}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`AppComponent`](./AppComponent)</code></pre>
+{:.declarationspec}
+
 Activity base class. Represents a component of an application, which can be activated and deactivated independently. Can be used for activities that are activated independently of the UI; otherwise refer to any of the [`ViewActivity`](./ViewActivity) classes.
+
+#### Example
+```typescript
+export class MyActivity extends AppActivity {
+  path = "/";
+
+  async onManagedStateActiveAsync() {
+    await super.onManagedStateActiveAsync();
+    console.log("MyActivity is now active");
+    // not associated with a view
+  }
+}
+```
+
 
 ### Constructor
 ```typescript

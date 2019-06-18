@@ -25,3 +25,5 @@ This asserts a reverse dependency between the referrer and the referenced object
 
 - An object can contain multiple simultaneous dependencies, and there is no limit on the number of dependents of any referenced object.
 
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+

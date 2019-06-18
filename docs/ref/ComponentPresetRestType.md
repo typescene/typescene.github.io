@@ -18,3 +18,5 @@ type ComponentPresetRestType<TComponentCtor extends ComponentConstructor> = TCom
 {:.declarationspec}
 Inferred type of the rest arguments to [`Component.with`](./Component#Component:with) for a specific component constructor.
 
+**Note:** This type is used by Typescene internally and should not be used by your application code.
+

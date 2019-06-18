@@ -73,6 +73,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UISeparator {#UISeparator}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Control that shows a horizontal or vertical separator.
 
 ### Constructor
@@ -565,6 +569,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UISeparator.Presets {#UISeparator:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UIDivider presets type, for use with [`Component.with`](./Component#Component:with).
 

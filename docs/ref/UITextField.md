@@ -78,7 +78,22 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UITextField {#UITextField}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Represents a text field component.
+
+#### Example (preset)
+```typescript
+UITextField.with({
+  name: "foo",
+  placeholder: tt("First name"),
+  value: bind("firstName"),
+  onChange: "updateFirstName()"
+})
+```
+
 
 ### Constructor
 ```typescript
@@ -603,6 +618,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UITextField.Presets {#UITextField:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UITextField presets type, for use with [`Component.with`](./Component#Component:with).
 

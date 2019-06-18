@@ -19,6 +19,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class StringFormatBinding {#StringFormatBinding}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`Binding`](./Binding)</code></pre>
+{:.declarationspec}
+
 Represents a set of bindings (see [`Binding`](./Binding)) that are compiled into a single string value.
 
 String format bindings should be created using the [`bindf`](./bindf) function.

@@ -19,3 +19,5 @@ Managed object property decorator: amend decorated property to turn it into a ma
 
 The decorated property immediately becomes undefined when the referenced object is destroyed (see [`ManagedObject.managedState`](./ManagedObject#ManagedObject:managedState)).
 
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+

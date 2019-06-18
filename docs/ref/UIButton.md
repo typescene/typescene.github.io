@@ -82,7 +82,17 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIButton {#UIButton}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Represents a button component.
+
+> __Note:__ The `UIButton` component doesn't have any particular style applied to it; use any of the related classes for a styled button component instead.
+
+#### See Also
+[`UIBorderlessButton`](./UIBorderlessButton), [`UIIconButton`](./UIIconButton), [`UILargeButton`](./UILargeButton), [`UILinkButton`](./UILinkButton), [`UIOutlineButton`](./UIOutlineButton), [`UIPrimaryButton`](./UIPrimaryButton), [`UISmallButton`](./UISmallButton).
+
 
 ### Constructor
 ```typescript
@@ -629,6 +639,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIButton.Presets {#UIButton:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UILabel presets type, for use with [`Component.with`](./Component#Component:with).
 

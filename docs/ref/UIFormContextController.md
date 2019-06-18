@@ -41,7 +41,30 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIFormContextController {#UIFormContextController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">`extends UIFormContextController_base` implements [`UIRenderable`](./UIRenderable)</code></pre>
+{:.declarationspec}
+
 Renderable wrapper that injects a form context record, to be used by (nested) child input controls.
+
+> __Note:__ Preset constructors for this class (see example) only accept __one__ child component. To wrap multiple components, use multiple `UIFormContextController` constructors, or wrap child components in a [`UICell`](./UICell).
+
+#### Example (preset)
+```typescript
+UIFormContextController.with(
+  { formContext: bind("inputContext") },
+  UICell.with(
+    UIRow.with(
+      UITextField.withName("firstName", "First name"),
+      UITextField.withName("lastName", "Last name")
+    ),
+    UIRow.with(
+      UITextField.withName("country", "Country")
+    )
+  )
+)
+```
+
 
 ### Constructor
 ```typescript

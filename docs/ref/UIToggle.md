@@ -75,6 +75,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIToggle {#UIToggle}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Represents a toggle component with an optional text label.
 
 ### Constructor
@@ -589,6 +593,10 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 
 ## ![](/assets/icons/spec-interface.svg)UIToggle.Presets {#UIToggle:Presets}
 {:.spec}
+
+
+<pre markdown="span"><code markdown="span">extends [`UIControl.Presets`](./UIControl#UIControl:Presets)</code></pre>
+{:.declarationspec}
 
 UIToggle presets type, for use with [`Component.with`](./Component#Component:with).
 

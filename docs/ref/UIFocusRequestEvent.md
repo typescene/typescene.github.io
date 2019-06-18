@@ -16,7 +16,14 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIFocusRequestEvent {#UIFocusRequestEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted on a particular UI component when it requests focus for itself or a sibling component; handled by the component renderer if possible. Should not be propagated.
+
+> __Note:__ This event is emitted by the [`UIComponent.requestFocus`](./UIComponent#UIComponent:requestFocus) method, and is usually not emitted directly by the application.
+
 
 ### Constructor
 ```typescript

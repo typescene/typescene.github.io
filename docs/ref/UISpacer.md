@@ -53,6 +53,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UISpacer {#UISpacer}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIControl`](./UIControl)</code></pre>
+{:.declarationspec}
+
 Control that has no content, but expands in both directions when needed.
 
 ### Constructor

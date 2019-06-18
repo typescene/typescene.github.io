@@ -3,8 +3,10 @@ The `UICell` component groups other components together within its own boundarie
 
 ---
 # UICell
-### Using `with`
-A component _factory_ can be constructed using the static `with` method.
+#### See Also
+`UICoverCell`, `UIFlowCell`, `UIListCellAdapter`.
+
+#### Example (preset)
 ```typescript
 const MyCell = UICell.with(
     {
@@ -14,4 +16,3 @@ const MyCell = UICell.with(
     UIRow.with( /* ... */ )
 )
 ```
-The resulting factory can be used in a call to `with` on another class (e.g. `PageViewActivity`) or constructed directly using `new MyCell()`.

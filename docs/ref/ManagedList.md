@@ -64,13 +64,38 @@ This class is part of a group of _managed object_ classes. See [Understanding co
 ## ![](/assets/icons/spec-class.svg)class ManagedList {#ManagedList}
 {:.spec}
 
-Represents an list of managed objects. The objects in the list are _ordered_ and _unique_, ensuring that there are no gaps or repeated list items.
+
+<pre markdown="span"><code markdown="span">extends [`ManagedObject`](./ManagedObject)</code></pre>
+{:.declarationspec}
+
+Represents a list of managed objects. The objects in the list are _ordered_ and _unique_, ensuring that there are no gaps or repeated list items.
 
 #### Child references
 
 If a managed object property that is decorated with [`@managedChild`](./managedChild) gets assigned a `ManagedList` instance, the parent-child relationship will extend to the items in this `ManagedList`. In other words, the items in a `ManagedList` that is itself a managed child object, will become managed children of the list itself.
 
 In this case, removing objects from the `ManagedList` object will destroy these objects. Adding objects to the `ManagedList` will 'move' them from their current parent, if any.
+
+#### Example
+The following example shows how events that are emitted on list items can be observed from a parent component.
+
+```typescript
+class MyComponent extends Component {
+  @managedChild
+  myList = new ManagedList().propagateEvents();
+}
+MyComponent.observe(class {
+  constructor (public readonly c: MyComponent) { }
+  onMyListChange(e: ManagedEvent) {
+    console.log(`Event: ${e.name}`);
+    console.log(`Count: ${this.c.myList.count}`);
+  }
+})
+
+let c = new MyComponent();
+c.myList.add(new ManagedRecord());
+c.myList.first().emit(CHANGE);
+```
 
 
 ### Constructor
@@ -181,7 +206,7 @@ Remove given object from this list.
 (objects: Iterable<T>): this
 ```
 {:.declarationspec}
-Replace the objects in this list with the objects in given array or other list, using a series of calls to `remove()` and `insert()` and/or reordering objects that are already in the list.
+Replace the objects in this list with the objects in given array or other list, using a series of calls to [`remove()`](#ManagedList:remove) and [`insert()`](#ManagedList:insert) and/or reordering objects that are already in the list.
 
 
 

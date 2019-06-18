@@ -15,6 +15,10 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UnhandledErrorEvent {#UnhandledErrorEvent}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`ManagedEvent`](./ManagedEvent)</code></pre>
+{:.declarationspec}
+
 Event that is emitted by [`UnhandledErrorEmitter`](./UnhandledErrorEmitter) for each unhandled error (see [`UnhandledErrorEmitter`](./UnhandledErrorEmitter)).
 
 ### Constructor

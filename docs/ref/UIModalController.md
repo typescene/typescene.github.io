@@ -48,7 +48,34 @@ layout: ref_doc
 ## ![](/assets/icons/spec-class.svg)class UIModalController {#UIModalController}
 {:.spec}
 
+
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
+{:.declarationspec}
+
 Renderable wrapper for a single component that can be used to display another component as a modal view. The modal component is created immediately after the `ShowModal` event is emitted, and removed when the `CloseModal` event is emitted.
+
+#### Example (preset)
+```typescript
+UIModalController.with(
+  { placement: UIRenderPlacement.DROPDOWN },
+  UIIconButton.with({
+    onClick: "+ShowModal",
+    icon: "expandDown"
+  }),
+  UIMenu.with({
+    onSelectMenuItem: "selectMenuItem()",
+    onBuild() {
+      this.builder.clear();
+      this.builder.addOption("one", "First option");
+      this.builder.addOption("second", "Second option");
+      this.builder.addSeparator();
+      this.builder.addOption("settings", "Settings...");
+      this.builder.setRevealTransition("down-fast");
+    }
+  })
+)
+```
+
 
 ### Constructor
 ```typescript
