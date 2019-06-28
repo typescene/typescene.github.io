@@ -233,9 +233,123 @@ export class MainActivity
 
 Now that we have a service to store our data, and an activity to make it available, we can create a view to display it.
 
-> __TODO:__ Add descriptions here for some of the below code.
+We'll divide the view into three regions:
+1. A heading with the title of the app,
+2. a form to enter new task names,
+3. the current list of items,
+4. a footer that shows a status bar when the list is not empty.
 
-Here's the final version of our `src/activities/main/view/index.ts` file:
+Since we'll want the entire page to scroll up and down, we start with a [`UIScrollContainer`](/docs/ref/UIScrollContainer) component. Within, we'll want to restrict the width of the page and add some padding while keeping all content at the top of the page, which can be achieved using the [`UIFlowCell`](/docs/ref/UIFlowCell) component.
+
+Here's a start for the page header within the two wrapper components:
+
+```typescript
+UIScrollContainer.with(
+  UIFlowCell.with(
+    {
+      dimensions: { width: 640, maxWidth: "100vw" },
+      position: { gravity: "center" },
+      padding: { top: 32, x: 16 }
+    },
+
+    // page header:
+    UIRow.with(
+      UILabel.withIcon("check", 40, "@green"),
+      UIHeading1.withText("Todo"),
+    )
+  )
+)
+```
+
+For the task input form, well use a [`UIFormContextController`](/docs/ref/UIFormContextController) component. This introduces a 'form context' object to its child components, which can be used for two-way synchronization of input values (as opposed to bindings, which only perform one-way updates). We'll bind the form context to the `formInput` record we've created above.
+
+The form itself consists of a text field and a button.
+* The text field has a `name` property that's set to the form context _property name_, which we'll use to read and write the input value.
+* The text field and button share a common event handler `addTask()` that refers to the `addTask` method that's part of the Activity component.
+
+Add the following code to the `UIFlowCell` wrapper:
+
+```typescript
+// ... add this to the UIFlowCell above:
+UIFlowCell.with(
+  {
+    padding: { x: 16, y: 8 },
+    borderColor: "@separator",
+    borderThickness: 1
+  },
+  UIFormContextController.with(
+    { formContext: bind("formInput") },
+    UIRow.with(
+      UIBorderlessTextField.with({
+        name: "newTask",
+        placeholder: "Enter a task...",
+        onEnterKeyPress: "addTask()"
+      }),
+      UIBorderlessButton.withLabel(
+        "Add", "addTask()")
+    )
+  )
+)
+```
+
+For the list of current tasks, we'll use the [`UIListController`](/docs/ref/UIListController) component and bind its `items` property to a managed list. In this case we can bind directly to the `items` list of the `TodoService`. The service is referenced by the Activity using its `todo` property, so we'll pass `bind("todo.items")` to the list controller constructor.
+
+The list controller encapsulates a component constructor (second argument to `with` below) that works as a 'template' for all items in the list. When the list emits its change events, the list controller updates the list automatically by adding, removing, and reordering instances of this constructor.
+
+The template constructor should accept a single argument — the list item object itself — and render a [`UIContainer`](/docs/ref/UIContainer) component. This makes the component an 'adapter' for the item. We don't need to create an adapter from scratch, instead we can use the [`UIListCellAdapter`](/docs/ref/UIListCellAdapter) class, which exposes an `object` property that we can bind to from within the cell component.
+
+```typescript
+UIListController.with(
+  {
+    items: bind("todo.items"),
+    onToggleTask: "toggleTask()"
+  },
+
+  // list item template:
+  UIListCellAdapter.with(
+    { padding: { x: 16, y: 8 } },
+    UIRow.with(
+      UIToggle.with({
+        state: bind("object.complete"),
+        onChange: "+ToggleTask"
+      }),
+      UIExpandedLabel.with({
+        text: bind("object.text"),
+        onClick: "+ToggleTask"
+      })
+    )
+  ),
+
+  // list container:
+  UIFlowCell.with({
+    separator: { type: "line" }
+  })
+)
+```
+
+Note how we're emitting a custom `ToggleTask` event from within the `UIListCellAdapter`. The adapter propagates this event, while also adding an `object` property that refers to the list item (we use this as `e.object` in the Activity code above) — however we'll need to handle the event _outside_ the adapter itself because if we handle it before propagation, the event doesn't contain this special property yet.
+
+Finally, we'll add a footer. We can hide the footer cell when it's not needed by binding its `hidden` property to the `count` property of our managed list — except we need to _show_ the list when count is nonzero, so the binding to use for `hidden` is `bind("!todo.items.count")`.
+
+The footer mostly has a label with the number of uncompleted tasks remaining, which we'll create using the [`tl`](/docs/ref/tl) function. This returns a [`UILabel`](/docs/ref/UILabel) constructor, but accepts a special tag notation: we'll set the color to `{@text/50%}` (see [colors](/docs/guides/ui#colors)), and incorporate a nested binding using `${todo.nRemaining}` (see [`bindf`](/docs/ref/bindf)). We can even use I18n pluralization using `#{/s}`, all using a single string. See the reference documentation for [`tl`](/docs/ref/tl) for more information.
+
+```typescript
+UIFlowCell.with(
+  { hidden: bind("!todo.items.count") },
+  UISeparator,
+  UISpacer,
+  UICenterRow.with(
+    tl("{@text/50%}${todo.nRemaining} task#{/s} remaining"),
+    UILinkButton.with({
+      hidden: bind("!todo.nCompleted"),
+      label: "Remove completed",
+      onClick: "removeCompleted()"
+    })
+  )
+)
+```
+
+Here's the final version of our `src/activities/main/view/index.ts` file, with some transitions and other features added in:
 
 ```typescript
 import { HMR } from "@typescene/webapp";
@@ -348,6 +462,8 @@ export default HMR.enableViewReload(
     )
   )
 )
-
 ```
 
+That's all — we've created a service, an activity, and a view. Run the `npm run dev` command on the command line and point a browser to [http://localhost:8080/](http://localhost:8080/){:target="_blank"} to see your app in action. Thanks to the `HMR` code above (for 'Hot Module Reload', a feature of both Webpack and Parcel) you can make changes to the view's source code, save the file, and instantly see your changes in the browser. Note that this doesn't work for the activity or service, since those would affect the state of the running application.
+
+View or clone the above source code on GitHub at [typescene/first-project](https://github.com/typescene/first-project){:target="_blank"}, and see it online [here](/first-project){:target="_blank"}.
