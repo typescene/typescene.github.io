@@ -225,6 +225,7 @@ p.fullWidthImage > img {
     width: 0;
     flex: 1 1 19rem;
     padding: 0 0 1rem 1.5rem;
+    min-width: 0;
 }
 .wrapper_column--oppose {
     text-align: end;
