@@ -425,6 +425,13 @@ h2.spec img {
     right: 5rem;
 }
 
+img.ytlogo {
+    height: 1.5rem;
+    vertical-align: middle;
+    position: relative;
+    top: -.2em;
+}
+
 @media (max-width: 46rem) {
     .wrapper_column {
         flex: 1 1 100%;
