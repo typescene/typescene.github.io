@@ -15,6 +15,8 @@ __Source code:__ The code for this example project is available on GitHub: [type
 
 __View online:__ The final output can be seen in action [here](/first-project){:target="_blank"}.
 
+__See also:__ For a more complex example, check out the RealWorld front-end implementation in [this repo](https://github.com/typescene/typescene-realworld-example-app).
+
 ### Setup {#setup}
 
 Before getting started with Typescene, make sure you're familiar with JavaScript. Knowledge of TypeScript would also be very useful, especially to understand the reference documentation and autocomplete options, although you could definitely use Typescene with 'plain' modern JavaScript if you don't want to use TypeScript for your own code. To learn Typescript, start with the 5-minute tutorial on the documentation [website](https://www.typescriptlang.org/docs/home.html){:target="_blank"}.
@@ -331,7 +333,7 @@ Note how we're emitting a custom `ToggleTask` event from within the `UIListCellA
 
 Finally, we'll add a footer. We can hide the footer cell when it's not needed by binding its `hidden` property to the `count` property of our managed list — except we need to _show_ the list when count is nonzero, so the binding to use for `hidden` is `bind("!todo.items.count")`.
 
-The footer mostly has a label with the number of uncompleted tasks remaining, which we'll create using the [`tl`](/docs/ref/tl) function. This returns a [`UILabel`](/docs/ref/UILabel) constructor, but accepts a special tag notation: we'll set the color to `{@text/50%}` (see [colors](/docs/guides/ui#colors)), and incorporate a nested binding using `${todo.nRemaining}` (see [`bindf`](/docs/ref/bindf)). We can even use I18n pluralization using `#{/s}`, all using a single string. See the reference documentation for [`tl`](/docs/ref/tl) for more information.
+The footer mostly has a label with the number of uncompleted tasks remaining, which we'll create using `UILabel.with`, but we'll also set the text color to `{@text/50%}` (see [colors](/docs/guides/ui#colors)), and incorporate a nested binding using `${todo.nRemaining}` (see [`bindf`](/docs/ref/bindf)). We can even use I18n pluralization using `#{/s}`, all using a single string.
 
 ```typescript
 UIFlowCell.with(
@@ -339,7 +341,10 @@ UIFlowCell.with(
   UISeparator,
   UISpacer,
   UICenterRow.with(
-    tl("{@text/50%}${todo.nRemaining} task#{/s} remaining"),
+    UILabel.with({
+      text: bindf("${todo.nRemaining} task#{/s} remaining"),
+      textStyle: { color: "@text/50%" }
+    }),
     UILinkButton.with({
       hidden: bind("!todo.nCompleted"),
       label: "Remove completed",
@@ -451,7 +456,10 @@ export default HMR.enableViewReload(
         UISeparator,
         UISpacer,
         UICenterRow.with(
-          tl("{@text/50%}${todo.nRemaining} task#{/s} remaining"),
+          UILabel.with({
+            text: bindf("${todo.nRemaining} task#{/s} remaining"),
+            textStyle: { color: "@text/50%" }
+          }),
           UILinkButton.with({
             hidden: bind("!todo.nCompleted"),
             label: "Remove completed",

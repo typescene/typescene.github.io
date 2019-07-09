@@ -12,6 +12,8 @@ nav: |
   * [.parent](#Binding:parent)
   * [.ignoreUnbound](#Binding:ignoreUnbound)
   * [.addFilter()](#Binding:addFilter)
+  * [.match()](#Binding:match)
+  * [.nonMatch()](#Binding:nonMatch)
   * [.filters](#Binding:filters)
 layout: ref_doc
 ---
@@ -140,6 +142,28 @@ Available bindings include:
 - `uniq`: leave only unique values in an array, and discard undefined values
 
 - `blank` or `_`: output an empty string, but make the unfiltered value available for the #{...} pattern in [`bindf`](./bindf).
+
+
+
+## ![](/assets/icons/spec-method.svg).match() {#Binding:match}
+{:.spec}
+
+```typescript
+(...values: any[]): this
+```
+{:.declarationspec}
+Add a filter to this binding to compare the bound value to the given value(s), the result is always either `true` (at least one match) or `false` (none match).
+
+
+
+## ![](/assets/icons/spec-method.svg).nonMatch() {#Binding:nonMatch}
+{:.spec}
+
+```typescript
+(...values: any[]): this
+```
+{:.declarationspec}
+Add a filter to this binding to compare the bound value to the given value(s), the result is always either `true` (none match) or `false` (at least one match).
 
 
 

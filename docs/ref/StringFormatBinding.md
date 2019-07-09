@@ -13,6 +13,8 @@ nav: |
   * [.parent](#StringFormatBinding:parent)
   * [.ignoreUnbound](#StringFormatBinding:ignoreUnbound)
   * [.addFilter()](#StringFormatBinding:addFilter)
+  * [.match()](#StringFormatBinding:match)
+  * [.nonMatch()](#StringFormatBinding:nonMatch)
 layout: ref_doc
 ---
 
@@ -109,4 +111,26 @@ Inherited from [`Binding.ignoreUnbound`](./Binding#Binding:ignoreUnbound).
 ```
 {:.declarationspec}
 Inherited from [`Binding.addFilter`](./Binding#Binding:addFilter).
+
+
+
+## ![](/assets/icons/spec-method.svg).match() {#StringFormatBinding:match}
+{:.spec}
+
+```typescript
+(...values: any[]): this
+```
+{:.declarationspec}
+Inherited from [`Binding.match`](./Binding#Binding:match).
+
+
+
+## ![](/assets/icons/spec-method.svg).nonMatch() {#StringFormatBinding:nonMatch}
+{:.spec}
+
+```typescript
+(...values: any[]): this
+```
+{:.declarationspec}
+Inherited from [`Binding.nonMatch`](./Binding#Binding:nonMatch).
 
