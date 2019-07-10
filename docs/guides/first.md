@@ -11,11 +11,11 @@ nav: |
     * [View](#view)
 ---
 
-__Source code:__ The code for this example project is available on GitHub: [typescene/first-project](https://github.com/typescene/first-project){:target="_blank"}.
+__Source code:__ The code for this example project is available on GitHub: [typescene/first-project](https://github.com/typescene/first-project){:target="_blank"}. A JavaScript-only (no TypeScript) version is available as [first-project-js](https://github.com/typescene/first-project-js){:target="_blank"}.
 
 __View online:__ The final output can be seen in action [here](/first-project){:target="_blank"}.
 
-__See also:__ For a more complex example, check out the RealWorld front-end implementation in [this repo](https://github.com/typescene/typescene-realworld-example-app).
+__See also:__ For a more complex example, check out the RealWorld front-end implementation in [this repo](https://github.com/typescene/typescene-realworld-example-app){:target="_blank"}..
 
 ### Setup {#setup}
 
@@ -40,6 +40,8 @@ npm install @typescene/webapp
 
 The `@typescene/webapp` package includes source files that can be used for getting started with a new project, for both Webpack and Parcel bundlers. We'll need to copy those, as well as the content of the `package.json` file.
 
+> **Note:** These instructions are for a TypeScript project. If you don't want to use TypeScript at all, just copy all the files from the [`first-project-js`](https://github.com/typescene/first-project-js){:target="_blank"} repository.
+
 Run the following command to copy the starter files for use with Webpack, which is what we're going to use here. Don't forget to include the dot at the end.
 
 ```bash
@@ -62,8 +64,6 @@ Take a look at the `SETUP.md` file (copied along with the source files) in your 
   "ts-loader": "^6.0.0"
 }
 ```
-
-> __Note:__ if you're not intending to use TypeScript for your own code, you can leave out the `typescript` and `ts-loader` dependencies. These are only used by Webpack to compile TypeScript code on the fly.
 
 Then return to your terminal and instruct NPM to install all of the new dependencies added to `package.json`:
 
