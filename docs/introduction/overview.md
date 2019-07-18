@@ -16,11 +16,13 @@ nav: |
 At the highest level, a Typescene application is made up of a handful of main building blocks, or _components_.
 
 * __Application__, the component that kicks all the others off.
+* __Services__ represent the global state and include logic that can be referenced from other components.
 * __Activities__ represent the current application state and include logic to control the application flow.
 * __Views and UI components__ describe what the user sees as a tree structure of nested UI elements.
-* __Services__ represent the global state and include logic that can be referenced from other components.
 
-All of these components inherit functionality from the [`Component`](/docs/ref/Component) class, in true object-oriented fashion. Here's what you need to know about components:
+Views are rendered by a separate Renderer module, which works mostly in the background. For Web applications, only the Renderer interacts directly with the DOM.
+
+All of the Service, Activity, and View/UI components inherit functionality from the [`Component`](/docs/ref/Component) class, in true object-oriented fashion. Here's what you need to know about components:
 
 __Components are 'managed' objects__, i.e. instances of the `ManagedObject` class, which is Typescene's core data structure. Not all managed objects are components: there are other types of managed objects such as lists and key-object maps.
 
@@ -57,7 +59,7 @@ Typescene manages control flow of the application as a whole using _Activity_ co
 Activity components are controlled using _life cycle states_ (i.e. created, active, inactive, destroyed). Moving between activities involves asynchronously inactivating (or destroying) one activity, and activating another.
 
 ```typescript
-export class AboutPageActivity extends PageViewActivity {
+export default class AboutPageActivity extends PageViewActivity {
   path = "/about";
   // properties and methods here...
 
@@ -146,7 +148,7 @@ Views are usually defined in a separate file, and referenced from a preset activ
 // import the view from view/index.ts
 import view from "./view";
 
-export class TodoPageActivity
+export default class TodoPageActivity
   extends PageViewActivity.with(view) {
   path = "/";
 
@@ -159,7 +161,7 @@ export class TodoPageActivity
 }
 ```
 
-To learn more about creating a UI using preset components, refer to 
+To learn more about creating a UI using preset components, refer to
 
 #### Strongly Typed
 

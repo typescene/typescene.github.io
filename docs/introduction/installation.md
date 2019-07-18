@@ -55,8 +55,6 @@ Typescene doesn't have any dependencies of its own, so most bundlers will work o
 
 These bundlers also provide a development environment that can be used to watch your source files, and reload the page in your browser when a change is detected. The `@typescene/webapp` package supports HMR (hot module reload) functionality to update views without having to reload the entire page.
 
-Bundlers require some additional setup. Files for a minimal installation are included with the Web app package itself, in the [`setup`](https://github.com/typescene/typescene-webapp/tree/master/setup){:target="_blank"} folder.
-
 Refer to [Your first project](/docs/guides/first) for an example that uses the Webpack bundler.
 
 #### Application class

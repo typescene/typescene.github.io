@@ -8,12 +8,11 @@ Typescene lets you get started right away with minimal effort. It uses a simple,
 Like most JavaScript frameworks, Typescene is distributed using the NPM package manager.
 
 ```bash
-mkdir my-project && cd my-project
-npm init
-npm install @typescene/webapp
+npx create-typescene-webapp my-project
+cd my-project
 ```
 
-All source code for your application goes into a `src/` folder, including configuration files for TypeScript and your bundler of choice. A minimal setup can be copied from the [`setup/`](https://github.com/typescene/typescene-webapp/tree/master/setup){:target="_blank"} folder of the installed package.
+All source code for your application is in a `src/` folder, including configuration files for TypeScript and your bundler of choice (currently Webpack and Parcel are supported out of the box).
 
  1. `src/app.ts` — the application entry point.
 
@@ -27,7 +26,7 @@ All source code for your application goes into a `src/` folder, including config
  2. `src/activities/main/activity.ts` — a first Activity, similar to the Controller in an MVC approach.
 
     ```typescript
-    export class MainActivity extends
+    export default class MainActivity extends
       PageViewActivity.with(view) {
 
       path = "/";  // route
@@ -39,7 +38,7 @@ All source code for your application goes into a `src/` folder, including config
     }
     ```
 
- 3. `src/activities/main/view/index.ts` — the main view. This module exports a static hierarchy of component _factories_ (using `Component.with(...)`), initialized with property values, bindings, and event handler references that are applied every time the component is created.
+ 3. `src/activities/main/view.ts` — the main view. This module exports a static hierarchy of component _factories_ (using `Component.with(...)`), initialized with property values, bindings, and event handler references that are applied every time the component is created.
 
     ```typescript
     export default UICell.with(
@@ -65,7 +64,7 @@ That's all you need to get started. Now, just add views (UI), activities (state 
 
 **Q. Can I use plain JavaScript instead of TypeScript?** -- A. Yes, for your own code you can stick with JavaScript (ES6+), although all of the Typescene documentation is written with TypeScript in mind.
 
-**Q. Can I use HTML or JSX to create my views?** -- A. No, support for JSX would require lots more boilerplate code. There are genuine benefits to using a _single language_ throughout your project, and the component factory pattern used by Typescene doesn't sacrifice readability: `<foo x="y">...</foo>` simply turns into `Foo.with({ x: "y" }, ...)`.
+**Q. Can I use HTML or JSX to create my views?** -- A. No, JSX is not supported out of the box. There are genuine benefits to using a _single language_ throughout your project, and the component factory pattern used by Typescene doesn't sacrifice readability: `<foo x="y">...</foo>` simply turns into `Foo.with({ x: "y" }, ...)`.
 
 **Q. Does Typescene include a calendar / pagination / tag cloud / other UI widget?** -- A. Not the main package, no. The aim is to include only 'primitive' components, which can be combined into other components and published as separate NPM packages.
 

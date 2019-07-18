@@ -65,10 +65,10 @@ import { PageViewActivity } from "typescene";
 import view from "./view";
 // ^ separate file with view definition
 
-class SimpleViewActivity
+export default class SimpleViewActivity
   extends PageViewActivity.with(view) {
   path = "/";
-  
+
   // ... properties and event handlers go here
   // which can be used from the preset `view`
 }
@@ -98,19 +98,19 @@ On a single activity, we can observe the `watch` property to keep track of path 
 import { PageViewActivity, managedChild } from "typescene";
 import view from "./view";
 
-export class SomePageActivity
+export default class SomePageActivity
   extends PageViewActivity.with(view) {
   // capture :foo as this.match["foo"]:
   path = "/page/:foo";
 
   @managedChild
   foo?: MyData;  // ...assume this holds our data
-  
+
   // ... more properties and event handlers go here
 }
 SomePageActivity.observe(class {
   constructor(public readonly activity: SomePageActivity) { }
-  
+
   // called whenever path matches:
   onMatchChange() {
     if (this.activity.match) {
@@ -142,7 +142,7 @@ export class UniqueViewActivity
   // ... more properties and event handlers go here
 }
 
-export class WrapperActivity extends AppActivity {
+export default class WrapperActivity extends AppActivity {
   path = "/unique/:foo";
 
   /** List of all unique child activities */
@@ -159,14 +159,14 @@ export class WrapperActivity extends AppActivity {
     for (let a of this.activities.objects()) {
       if (a.isActive()) await a.deactivateAsync();
     }
-    
+
     // activate manually, since path is undefined:
     await activity.activateAsync();
   }
 }
 WrapperActivity.observe(class {
   constructor(public readonly activity: WrapperActivity) { }
-  
+
   // called whenever path matches:
   async onMatchChangeAsync() {
     if (this.activity.match) {
@@ -211,28 +211,29 @@ If there is a fixed set of pages (e.g. `/pages/about`, `pages/friends`, etc) tha
 
 ```typescript
 // AboutPageActivity.ts
-export class AboutPageActivity
+export default class AboutPageActivity
   extends PageViewActivity.with(view) {
   path = "./about";
   // ...
 }
 
 // FriendsPageActivity.ts
-export class FriendsPageActivity
+export default class FriendsPageActivity
   extends FriendsPageActivity.with(view) {
 	path = "./friends";
   // ...
 }
 
 // activity.ts
-class PagesWrapperActivity extends AppActivity {
+export default class PagesWrapperActivity
+  extends AppActivity {
   path = "/pages/";
 
   // child activities (only one can be active):
-  
+
   @managedChild
   aboutPage = new AboutPageActivity();
-  
+
   @managedChild
   friendsPage = new FriendsPageActivity();
 }
@@ -246,7 +247,7 @@ We can then embed the child activity views into the wrapper view using the [`UIV
 // '/pages' wrapper view:
 export default UICell.with(
   // ... other content here, e.g. sidebar, top nav
-  
+
   UICell.with(
     // only one gets rendered at a time:
     UIViewRenderer.with({ view: bind("aboutPage") }),
@@ -290,7 +291,7 @@ export class StubActivity extends AppActivity {
   }
   async onManagedStateInactiveAsync() {
     await super.onManagedStateInactiveAsync();
-    
+
     // destroy the activity again:
     this.activity = undefined;
   }
