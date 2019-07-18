@@ -14,45 +14,45 @@ cd my-project
 
 All source code for your application is in a `src/` folder, including configuration files for TypeScript and your bundler of choice (currently Webpack and Parcel are supported out of the box).
 
- 1. `src/app.ts` — the application entry point.
+**1.** `src/app.ts` — the application entry point.
 
-    ```typescript
-    BrowserApplication.run(
-      MainActivity,
-      // ... add activities here
-    );
-    ```
+```typescript
+BrowserApplication.run(
+  MainActivity,
+  // ... add activities here
+);
+```
 
- 2. `src/activities/main/activity.ts` — a first Activity, similar to the Controller in an MVC approach.
+**2.** `src/activities/main/activity.ts` — a first Activity, similar to the Controller in an MVC approach.
 
-    ```typescript
-    export default class MainActivity extends
-      PageViewActivity.with(view) {
+```typescript
+export default class MainActivity extends
+  PageViewActivity.with(view) {
 
-      path = "/";  // route
+  path = "/";  // route
 
-      // ... reference data here to populate views
-      // and define event handlers
-      foo = "Hello"
-      doSomething() { }
-    }
-    ```
+  // ... reference data here to populate views
+  // and define event handlers
+  foo = "Hello"
+  doSomething() { }
+}
+```
 
- 3. `src/activities/main/view.ts` — the main view. This module exports a static hierarchy of component _factories_ (using `Component.with(...)`), initialized with property values, bindings, and event handler references that are applied every time the component is created.
+**3.** `src/activities/main/view.ts` — the main view. This module exports a static hierarchy of component _factories_ (using `Component.with(...)`), initialized with property values, bindings, and event handler references that are applied every time the component is created.
 
-    ```typescript
-    export default UICell.with(
-      UICenterRow.with(
-        UILabel.withText(bindf("${foo}, world!")),
-        UIPrimaryButton.with({
-          label: "Do something",
-          onClick: "doSomething()"
-        })
-      )
-    )
-    ```
+```typescript
+export default UICell.with(
+  UICenterRow.with(
+    UILabel.withText(bindf("${foo}, world!")),
+    UIPrimaryButton.with({
+      label: "Do something",
+      onClick: "doSomething()"
+    })
+  )
+)
+```
 
-4. `src/services/...` — loosely coupled components that provide data and other services (e.g. login session, business rules, internationalization) to the rest of the application. These are referenced _by name_ from other parts of your application.
+**4.** `src/services/...` — loosely coupled components that provide data and other services (e.g. login session, business rules, internationalization) to the rest of the application. These are referenced _by name_ from other parts of your application.
 
 That's all you need to get started. Now, just add views (UI), activities (state and logic), and services to your app, and bundle using Webpack, Parcel, or another bundler. See the [architecture overview](/docs/introduction/overview) guide for details.
 

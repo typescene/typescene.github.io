@@ -196,6 +196,12 @@ p.fullWidthImage > img {
 .footer a, .footer a:visited {
     color: #fff;
 }
+.footer_logo {
+    height: 2rem;
+    position: relative;
+    top: .5rem;
+    margin-right: .125rem;
+}
 .wrapper {
     position: relative;
     text-align: start;
@@ -239,11 +245,11 @@ p.fullWidthImage > img {
 }
 article pre {
     margin: 1.5rem -.25rem;
-    padding: .75rem;
+    padding: 1rem;
     line-height: 1.2em;
-    border-radius: .25rem;
+    border-radius: .125rem;
     background: rgba(255,255,255,.65);
-    box-shadow: 0 .125rem 1.25rem -.5rem rgba(0,0,0,.25);
+    box-shadow: 0 0.1rem 1rem -0.5rem rgba(0,0,0,.25);
     overflow: auto;
 }
 li pre {
