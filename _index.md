@@ -1,60 +1,45 @@
-# ![](/assets/icons/build.svg) The get-it-done framework
-{:.displaytitle--section}
+<br>
 
-When you need to get something done, you need a tool that works reliably, right away. If you're spending time putting different bits and pieces together for every project, you're probably not using the right tool. What's more, without a one-stop solution, you may be spending time updating lots of dependencies and figuring out if they are all compatible with one another.
+<div class="side-icon--home side-icon_left">
+  <div class="icon-bg">
+    <!-- Icon by Ikonate -->
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="batteryChargingIconTitle">
+      <title id="batteryChargingIconTitle">BatteryCharging</title>
+      <path d="M21 14v-4"></path>
+      <path d="M20 6H4v12h16z"></path>
+      <polyline points="12 9 14 12 10 12 12 15"></polyline>
+    </svg>
+  </div>
+</div>
 
-Typescene lets you get started right away with minimal effort. It uses a simple, consistent pattern that's easy to understand — a modern version of the Object Oriented (OO) event-driven approach that succesful GUI libraries have been using for the longest time. From the start, you're encouraged to structure your application in a way that's highly maintainable, without limiting you to a particular setup.
+<section markdown="1">
 
-Like most JavaScript frameworks, Typescene is distributed using the NPM package manager.
+### All-inclusive, dependency-free
 
-```bash
-npx create-typescene-webapp my-project
-cd my-project
-```
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia non cumque molestias vero ratione quibusdam consequuntur dolores voluptatum, laborum iusto aliquid, sequi qui, quod provident natus nisi delectus sit excepturi.
 
-All source code for your application is in a `src/` folder, including configuration files for TypeScript and your bundler of choice (currently Webpack and Parcel are supported out of the box).
+</section>
+<br><br>
 
-**1.** `src/app.ts` — the application entry point.
+<div class="side-icon--home side-icon_right">
+  <div class="icon-bg">
+    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="batteryChargingIconTitle">
+      <title id="batteryChargingIconTitle">BatteryCharging</title>
+      <path d="M21 14v-4"></path>
+      <path d="M20 6H4v12h16z"></path>
+      <polyline points="12 9 14 12 10 12 12 15"></polyline>
+    </svg>
+  </div>
+</div>
 
-```typescript
-BrowserApplication.run(
-  MainActivity,
-  // ... add activities here
-);
-```
+<section markdown="1">
 
-**2.** `src/activities/main/activity.ts` — a first Activity, similar to the Controller in an MVC approach.
+### Easy start, smooth scaling
 
-```typescript
-export default class MainActivity extends
-  PageViewActivity.with(view) {
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi laudantium voluptatem fugiat, veniam quidem doloribus error asperiores. Non ratione tempora praesentium. Iusto, fugit labore a beatae praesentium corporis? Tenetur, aliquid.
 
-  path = "/";  // route
+</section>
 
-  // ... reference data here to populate views
-  // and define event handlers
-  foo = "Hello"
-  doSomething() { }
-}
-```
-
-**3.** `src/activities/main/view.ts` — the main view. This module exports a static hierarchy of component _factories_ (using `Component.with(...)`), initialized with property values, bindings, and event handler references that are applied every time the component is created.
-
-```typescript
-export default UICell.with(
-  UICenterRow.with(
-    UILabel.withText(bindf("${foo}, world!")),
-    UIPrimaryButton.with({
-      label: "Do something",
-      onClick: "doSomething()"
-    })
-  )
-)
-```
-
-**4.** `src/services/...` — loosely coupled components that provide data and other services (e.g. login session, business rules, internationalization) to the rest of the application. These are referenced _by name_ from other parts of your application.
-
-That's all you need to get started. Now, just add views (UI), activities (state and logic), and services to your app, and bundle using Webpack, Parcel, or another bundler. See the [architecture overview](/docs/introduction/overview) guide for details.
 
 ---
 
