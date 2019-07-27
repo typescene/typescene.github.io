@@ -239,6 +239,16 @@ p.fullWidthImage > img {
     padding: 2rem 0;
     max-width: 38rem;
 }
+.wrapper_inner {
+    margin: 0 10%;
+}
+.wrapper_inner--decorate {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: .5rem;
+    padding: .75rem .5rem 0;
+    margin-top: 1.125rem;
+}
 .wrapper_columns {
     display: flex;
     flex-flow: row wrap;
@@ -457,29 +467,45 @@ h2.spec img {
     right: 5rem;
 }
 
-img.ytlogo {
+img.logo_inline {
     height: 1.5rem;
     vertical-align: middle;
     position: relative;
     top: -.2em;
 }
 
+.side-icon {
+    width: 4.5rem;
+    text-align: center;
+}
 .side-icon--home {
     width: 15rem;
-    text-align: center;
     margin-bottom: 2rem;
 }
-.side-icon--home.side-icon_left {
+.side-icon.side-icon_left {
     float: left;
+    margin-right: .5rem;
 }
-.side-icon--home.side-icon_right {
+.side-icon.side-icon_right {
     float: right;
+    margin-left: .5rem;
 }
-.side-icon--home + section {
+.side-icon + section {
     display: block;
     overflow: hidden;
 }
-.icon-bg {
+.side-icon svg {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    stroke: #888;
+    stroke-width: .75px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    vertical-align: middle;
+}
+.side-icon--home .icon-bg {
     display: inline-block;
     text-align: center;
     width: 6rem;
@@ -488,8 +514,7 @@ img.ytlogo {
     background: #84b;
     background: linear-gradient(#048, #84b);
 }
-.icon-bg svg {
-    display: inline-block;
+.side-icon--home .icon-bg svg {
     position: relative;
     top: 1.25rem;
     width: 3.5rem;
@@ -527,6 +552,10 @@ img.ytlogo {
     }
     .wrapper_column--sidebar .sidebar_cell {
         border: 0;
+    }
+    .wrapper_inner {
+        margin-left: 0;
+        margin-right: 0;
     }
     .side-icon--home {
         width: 100%;
