@@ -98,23 +98,60 @@ Also change the `test` property for `ts-loader` to match `.ts` as well as `.tsx`
 
 ### Views {#views}
 
+The result of JSX elements can be used directly as view classes, e.g. from an activity class:
+
+```tsx
+// view.tsx
+import { bind } from "typescene";
+import JSX from "typescene/JSX";
+
+export default (
+  <row><label>{ bind("foo") }</label></row>
+)
+
+// activity.ts
+import { PageViewActivity } from "typescene";
+
+export class MyActivity
+  extends PageViewActivity.with(view) {
+
+  // ... properties and methods here
+}
+```
 
 ### Custom views {#custom}
 
 ```tsx
 // CustomBlock.ts
 export class CustomBlockView extends ViewComponent.template(
-    (p: { foo: number }, ...content) =>
-        <row>
-            <label>{ p.foo }</label>
-            <column>{ ...content }</column>
-        </row>
+  (p: { foo: number }, ...content) =>
+    <row>
+      <label>{ p.foo }</label>
+      <column>{ ...content }</column>
+    </row>
 ) {
-    /* foo goes here */
-    foo = 0;
+  /* foo goes here */
+  foo = 0;
+
+  // ...event handlers etc here
 }
 
-export default JSX.ify(TesterView);
+export default JSX.ify(CustomBlockView);
+```
+
+Alternatively
+
+```tsx
+// CustomBlock.ts
+export const CustomBlockView = ViewComponent.template(
+  (p: { foo: number }, ...content) =>
+    <row>
+      <label>{ p.foo }</label>
+      <column>{ ...content }</column>
+    </row>
+);
+
+export default JSX.ify(CustomBlockView);
 ```
 
 ### Intrinsic elements {#intrinsic}
@@ -123,31 +160,31 @@ You can use the following built-in intrinsic elements in JSX (e.g. `<cell>`) wit
 
 #### Containers
 
-* [UICell](/docs/ref/UICell), [UICoverCell](/docs/ref/UICoverCell), [UIFlowCell](/docs/ref/UIFlowCell) — cells contain other components, and can be decorated with a border, drop shadow, etc. Cover cells are positioned to *cover* their parent container; flow cells are *not* stretched in the primary dimension.
-* [UIRow](/docs/ref/UIRow), [UICloseRow](/docs/ref/UICloseRow), [UICenterRow](/docs/ref/UICenterRow), [UIOppositeRow](/docs/ref/UIOppositeRow) — rows contain other components in a horizontal configuration. Close rows do not apply padding between components; center/opposite rows align components accordingly.
-* [UIColumn](/docs/ref/UIColumn), [UICloseColumn](/docs/ref/UICloseColumn) — columns contain other components in a vertical configuration. Close columns do not apply padding between components.
-* [UIScrollContainer](/docs/ref/UIScrollContainer) — scroll containers allow their content to scroll in one or two directions, *if* the cell and its parents is restricted in those directions (e.g. within a cover cell).
+* [`<Cell>`](/docs/ref/UICell), [`<CoverCell>`](/docs/ref/UICoverCell), [`<FlowCell>`](/docs/ref/UIFlowCell) — cells contain other components, and can be decorated with a border, drop shadow, etc. Cover cells are positioned to *cover* their parent container; flow cells are *not* stretched in the primary dimension.
+* [`<Row>`](/docs/ref/UIRow), [`<CloseRow>`](/docs/ref/UICloseRow), [`<CenterRow>`](/docs/ref/UICenterRow), [`<OppositeRow>`](/docs/ref/UIOppositeRow) — rows contain other components in a horizontal configuration. Close rows do not apply padding between components; center/opposite rows align components accordingly.
+* [`<Column>`](/docs/ref/UIColumn), [`<CloseColumn>`](/docs/ref/UICloseColumn) — columns contain other components in a vertical configuration. Close columns do not apply padding between components.
+* [`<ScrollContainer>`](/docs/ref/UIScrollContainer) — scroll containers allow their content to scroll in one or two directions, *if* the cell and its parents is restricted in those directions (e.g. within a cover cell).
 
 #### Controls
 
-* [UIButton](/docs/ref/UIButton), [UIIconButton](/docs/ref/UIIconButton), [UILargeButton](/docs/ref/UILargeButton), [UISmallButton](/docs/ref/UISmallButton), [UILinkButton](/docs/ref/UILinkButton), [UIOutlineButton](/docs/ref/UIOutlineButton), [UIBorderlessButton](/docs/ref/UIBorderlessButton), [UIPrimaryButton](/docs/ref/UIPrimaryButton) — buttons with various default styles.
-* [UILabel](/docs/ref/UILabel), [UICloseLabel](/docs/ref/UICloseLabel), [UIExpandedLabel](/docs/ref/UIExpandedLabel), [UIParagraph](/docs/ref/UIParagraph), [UIHeading1](/docs/ref/UIHeading1), [UIHeading2](/docs/ref/UIHeading2), [UIHeading3](/docs/ref/UIHeading3) — labels with various default styles. Close labels do not apply minimum line height; expanded labels do *not* shrinkwrap text horizontally.
-* [UITextField](/docs/ref/UITextField), [UIBorderlessTextField](/docs/ref/UIBorderlessTextField) — text field input, single line or multi line.
-* [UIImage](/docs/ref/UIImage) — image control, with image loaded from a URL.
-* [UIToggle](/docs/ref/UIToggle) — check box or toggle control.
-* [UISeparator](/docs/ref/UISeparator) — horizontal (default) or vertical line.
-* [UISpacer](/docs/ref/UISpacer) — empty component with set dimensions.
+* [`<Button>`](/docs/ref/UIButton), [`<IconButton>`](/docs/ref/UIIconButton), [`<LargeButton>`](/docs/ref/UILargeButton), [`<SmallButton>`](/docs/ref/UISmallButton), [`<LinkButton>`](/docs/ref/UILinkButton), [`<OutlineButton>`](/docs/ref/UIOutlineButton), [`<BorderlessButton>`](/docs/ref/UIBorderlessButton), [`<PrimaryButton>`](/docs/ref/UIPrimaryButton) — buttons with various default styles.
+* [`<Label>`](/docs/ref/UILabel), [`<CloseLabel>`](/docs/ref/UICloseLabel), [`<ExpandedLabel>`](/docs/ref/UIExpandedLabel), [`<Paragraph>`](/docs/ref/UIParagraph), [`<Heading1>`](/docs/ref/UIHeading1), [`<Heading2>`](/docs/ref/UIHeading2), [`<Heading3>`](/docs/ref/UIHeading3) — labels with various default styles. Close labels do not apply minimum line height; expanded labels do *not* shrinkwrap text horizontally.
+* [`<TextField>`](/docs/ref/UITextField), [`<BorderlessTextField>`](/docs/ref/UIBorderlessTextField) — text field input, single line or multi line.
+* [`<Image>`](/docs/ref/UIImage) — image control, with image loaded from a URL.
+* [`<Toggle>`](/docs/ref/UIToggle) — check box or toggle control.
+* [`<Separator>`](/docs/ref/UISeparator) — horizontal (default) or vertical line.
+* [`<Spacer>`](/docs/ref/UISpacer) — empty component with set dimensions.
 
 #### Others
 
 * [ViewComponent](/docs/ref/ViewComponent) — base class for custom UI components. Acts as a composite parent for child view components.
-* [UIConditional](/docs/ref/UIConditional) — controller (wrapper for a single component) that renders a its contents only if one of its properties is set to true.
-* [UIFormContextController](/docs/ref/UIFormContextController) — controller (wrapper for a single component) that introduces a form context binding, which can be used by some controls.
-* [UIListController](/docs/ref/UIListController) — controller for a managed list, which renders a list item adapter for every list item.
-* [UIListCellAdapter](/docs/ref/UIListCellAdapter) — list item adapter (for use with list controller) that encapsulates a cell with arbitrary content.
-* [UIMenu](/docs/ref/UIMenu) — menu controller; often used with a modal controller to show a modal menu.
-* [UIModalController](/docs/ref/UIModalController) — modal controller for a single component that shows another component modally when an event occurs on the first one (e.g. Button showing a modal dropdown menu).
-* [UISelectionController](/docs/ref/UISelectionController) — controller for a hierarchy of components that deselects other components when one is selected (i.e. when a Select event occurs, often on a cell).
-* [UIStyleController](/docs/ref/UIStyleController) — controller (wrapper for a single component) that sets the style of a component based on the value of one of its properties, and a list of styles.
-* [UIViewRenderer](/docs/ref/UIViewRenderer) — component that renders another component in its place dynamically (e.g. a bound activity or view component).
+* [`<Conditional>`](/docs/ref/UIConditional) — controller (wrapper for a single component) that renders a its contents only if one of its properties is set to true.
+* [`<FormContextController>`](/docs/ref/UIFormContextController) — controller (wrapper for a single component) that introduces a form context binding, which can be used by some controls.
+* [`<ListController>`](/docs/ref/UIListController) — controller for a managed list, which renders a list item adapter for every list item.
+* [`<ListCellAdapter>`](/docs/ref/UIListCellAdapter) — list item adapter (for use with list controller) that encapsulates a cell with arbitrary content.
+* [`<Menu>`](/docs/ref/UIMenu) — menu controller; often used with a modal controller to show a modal menu.
+* [`<ModalController>`](/docs/ref/UIModalController) — modal controller for a single component that shows another component modally when an event occurs on the first one (e.g. Button showing a modal dropdown menu).
+* [`<SelectionController>`](/docs/ref/UISelectionController) — controller for a hierarchy of components that deselects other components when one is selected (i.e. when a Select event occurs, often on a cell).
+* [`<StyleController>`](/docs/ref/UIStyleController) — controller (wrapper for a single component) that sets the style of a component based on the value of one of its properties, and a list of styles.
+* [`<ViewRenderer>`](/docs/ref/UIViewRenderer) — component that renders another component in its place dynamically (e.g. a bound activity or view component).
 
