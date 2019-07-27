@@ -3,7 +3,7 @@ permalink: /docs/guides/ui/styles
 layout: doc_subpage
 title: UI styles
 description: A description of the different ways to style components and groups of components.
-pageintro: Container components offer various ways to affect the way they are rendered to the output.
+pageintro: Container components offer various ways to affect the way they are rendered on screen.
 nav: |
     * [Styling components](#styles)
     * [Cell styling](#cell)
