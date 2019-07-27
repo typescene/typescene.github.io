@@ -48,7 +48,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Views** are static representations of your application UI, written as a nested structure of UI components using either XML or JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully hide the DOM in most cases.
+**Views** are static representations of your UI, a tree structure of UI components either as XML (JSX) or nested JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully abstract away the DOM.
 
 </section>
 </section>
@@ -65,7 +65,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Activities** represent the underlying application state, providing data to views and handling input events. These reflect how the user 'sees' your app. Each view is bound to one activity, but multiple activities can be active at the same time since they are nested and routed independently. Add an activity when you add a screen or dialog to your app.
+**Activities** represent the underlying application state, reflecting how the user sees your app. These provide data to views and handle input events. Each view is bound to one activity, but multiple activities can be active at the same time since they can be nested and routed independently.
 
 </section>
 </section>
@@ -80,13 +80,12 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Services** contain data that isn't tied to a particular activity, and provide access to the global state. This is where database access, login sessions, and user preferences go. Services can be used from any other component by referencing their name.
+**Services** contain data that isn't tied to a particular activity, and provide access to the global state. Services are great for encapsulating database access, login sessions, and user preferences, so that they can be used from any other component using just their name.
 
 </section>
 </section>
 
 <br>
----
 
 **Q. Should I use Typescene for my next app?** -- A. Sure! Read the [documentation](/docs) and use the guides to familiarize yourself with the framework and get started.
 

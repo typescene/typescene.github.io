@@ -15,7 +15,7 @@ en:
       - url: /docs/introduction/goals
         name: Why Typescene?
       - url: /docs/introduction/overview
-        name: Architecture Overview
+        name: Basic Overview
       - url: /docs/introduction/installation
         name: Installation
 
@@ -25,6 +25,16 @@ en:
       - url: /docs/guides/components
         name: Understanding components
       - url: /docs/guides/activities
+        name: Activities
+      - url: /docs/guides/advanced-activities
         name: Advanced Activities
       - url: /docs/guides/ui
         name: Creating the UI
+      - url: /docs/guides/ui/using-jsx
+        name: Using JSX
+      - url: /docs/guides/ui/using-factories
+        name: Using factories
+      - url: /docs/guides/ui/containers
+        name: UI containers
+      - url: /docs/guides/ui/styles
+        name: UI styles and themes

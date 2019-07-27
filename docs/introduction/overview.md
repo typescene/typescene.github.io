@@ -1,13 +1,13 @@
 ---
 permalink: /docs/introduction/overview
 layout: doc_subpage
-title: Architecture Overview
+title: Basic Overview
 description: An overview of Typescene's architecture
-pageintro: Get an understanding of what an application made with Typescene looks like, with this high level overview of the architecture.
+pageintro: "Learn how Typescene works, with this high level overview of its components: views, activities, and services."
 nav: |
   * [Components](#components)
-  * [Activities](#activities)
   * [Views](#views)
+  * [Activities](#activities)
   * [Services](#services)
 ---
 
@@ -15,64 +15,166 @@ nav: |
 
 At the highest level, a Typescene application is made up of a handful of main building blocks, or _components_.
 
-* __Application__, the component that kicks all the others off.
 * __Services__ represent the global state and include logic that can be referenced from other components.
 * __Activities__ represent the current application state and include logic to control the application flow.
 * __Views and UI components__ describe what the user sees as a tree structure of nested UI elements.
 
-Views are rendered by a separate Renderer module, which works mostly in the background. For Web applications, only the Renderer interacts directly with the DOM.
+Views are rendered by a separate 'renderer', which is mostly invisible to the component itself. For Web applications, only the renderer interacts directly with the DOM.
 
-All of the Service, Activity, and View/UI components inherit functionality from the [`Component`](/docs/ref/Component) class, in true object-oriented fashion. Here's what you need to know about components:
+Because Typescene is object-oriented, all of these components (services, activities, views, and even the application itself) are defined as classes. These in turn inherit most of their functionality from the [`Component`](/docs/ref/Component) class.
 
-__Components are 'managed' objects__, i.e. instances of the `ManagedObject` class, which is Typescene's core data structure. Not all managed objects are components: there are other types of managed objects such as lists and key-object maps.
+Here's what you need to know about components:
 
-__Components are arranged into tree structures.__ Parent components reference any number of child components, while each component has at most one parent — enforcing consistency and making it possible to navigate the resulting structure in both directions.
+__Components can emit events.__ Events are read-only objects that are _emitted_ by a component. For example, UI components emit events with names such as `Click`, `FocusIn` and `FocusOut` to communicate user actions.
 
-An active composition model binds entire sub-trees of components to a _composite parent_ component. Updates to these composite parents automatically cascade down to _bindings_ at lower levels to update individual properties, e.g. to update a View component from values set on the current Activity.
+__Components have 'life cycle' states__, ranging from _created_ (initial state), to _active_, _inactive_, and _destroyed_. State transitions are always _asynchronous_, and can be handled using methods on the component class itself, or using events that are emitted automatically.
 
-__Components can emit events.__ Events are read-only objects that are _emitted_ by one component, and can be handled by other components that reference the first one. UI components emit events such as `Click`, `FocusIn` and `FocusOut` to communicate user actions, which can be handled by regular methods on the Activity component.
+__Components can be linked together.__ When components reference each other using special 'managed' properties, they can track each other's events and life cycle states. Certain references can be turned into parent-child references, ensuring consistency and making it possible to navigate the resulting tree structure in both directions.
 
-__Components have 'life cycle' states__, ranging from _created_ (initial state), to _active_, _inactive_, and _destroyed_. Child components are automatically 'destroyed' along with their parent, _or_ if the parent-child reference is reassigned. State transitions are always _asynchronous_, and can be handled using methods on the component class itself, or using events that are emitted automatically.
+### Views {#views}
 
-__Components can be 'preset'__, i.e. pre-populated with property values, bindings (to observe composite parent properties), and event handlers. This way a component class can be _described_ without having to write a constructor or add setters and observers.
+Views combine UI components so that they can be rendered to the screen. Typescene provides classes for many basic UI controls and containers, mostly abstracting away the underlying rendering platform (i.e. the DOM for Web applications).
 
-To create preset component constructors, the static `.with(...)` method is available on every Component class. It returns _another Component class_, extending the first one.
+The only requirement for a view to be 'renderable' is that it has a `render` method. So the simplest view class would look something like this:
 
 ```typescript
-// create a component programmatically:
-let button = new UIButton();
-button.label = "Click me";
-
-// OR use a preset:
-let PresetButton = UIButton.with({ label: "Click me" });
-let button2 = new PresetButton();
+// NOT a good way to create a view component:
+export class MyView extends Component {
+  render(callback: (/* ... */) => void) {
+    // create UI components and render those
+    let button = new UIButton("Click me");
+    let row = new UIRow(button);
+    row.render(callback);
+  }
+}
 ```
 
-These features make components a very powerful building block for all parts of your application. Typescene leverages components as activities, views, services, and even the application itself.
+However, code like this quickly becomes difficult to understand, since there isn't a good way to see the relationships between UI components if we're creating them one by one.
 
-For a detailed description of how components work, refer to the [Understanding components](/docs/guides/components) guide.
+Instead, Typescene offers two ways to create views that work much better.
+
+#### Using JSX
+
+JSX refers to 'XML-in-JavaScript', and is a relatively new feature that's supported by the TypeScript compiler (and Babel, for a JavaScript-only solution).
+
+Typescene provides JSX elements for all of the built-in UI components, such as `<row>` for the UIRow component, and `<button>` for the UIButton component. You can also use your own custom components.
+
+JSX makes views look like HTML, but that's somewhat misleading: each element in JSX is actually transformed to a **view class**, as illustrated below.
+
+```tsx
+let MyView = <row spacing={8}><button>OK</button></row>
+let row = new MyView();
+row.spacing  // => 8
+row instanceof UIRow  // => true
+```
+
+Our `MyView` variable isn't rendered directly, it's a 'template' that can be used by an Activity (see below) to create and render the actual view only when needed.
+
+To update the resulting view dynamically, we can use **bindings** in place of properties or text. Bindings automatically match up with Activity properties and observe their values for changes.
+
+Event handlers are set up to call methods on the Activity as well, which we can specify by name.
+
+```jsx
+let MyView = <form>
+  <row><h1>Greeting</h1></row>
+  <row>
+    <textfield
+      placeholder="Enter your name..."
+      onInput="updateName()"
+      />
+  </row>
+  <row><p>{bind("greeting")}</p></row>
+</form>
+```
+
+Whenever an instance of this view is created by an Activity, the values of all bindings are immediately set and kept in sync with properties of the Activity itself (with one caveat: array items cannot be observed, so we'll need to use a special list object instead--see [Understanding components](/docs/guides/components) later on).
+
+#### Using constructor factories
+
+If you don't want to use JSX, or you simply prefer JavaScript/TypeScript for writing your view code, you can create view classes using static _factory methods_.
+
+These methods are available on _any_ component class, not just view components, and can be used to create **constructors** that extend the original class and automatically set any number of properties on every instance.
+
+```typescript
+let MyView = UIRow.with(
+  { spacing: 8 },
+  UIButton.withLabel("Click me")
+);
+let row = new MyView();
+row.spacing  // => 8
+row instanceof UIRow  // => true
+```
+
+The constructor (class) `MyView` above creates a row `with` 8dp spacing, and a button `with` a given label. The result of these `with` methods is the same as our JSX elements: a template class.
+
+We can use bindings and event handlers with constructor factories as well. Here's the same example as above without JSX.
+
+```typescript
+UIForm.with(
+  { hidden: bind("hideForm") },
+  UIRow.with(UIHeading1.withText("Greeting")),
+  UIRow.with(
+    UITextField.with({
+      placeholder: "Enter your name...",
+      onInput: "updateName()"
+    })
+  ),
+  UIRow.with(
+    UIParagraph.withText(bind("greeting"))
+  )
+)
+```
+
+Constructor factories and JSX elements are interchangeable, and can even be used together as well:
+
+```tsx
+let myView = <row>
+    {UIButton.with({
+      label: "Hi!",
+      onClick() { alert("hi!") }
+    })}
+</row>
+```
+
+#### Strongly Typed
+
+Because Typescene is a _strongly typed_ framework, using a TypeScript-aware IDE such as VS Code can be extremely helpful. For example, when you start to type `UIBu`...  the editor will offer to import `UIButton` from the `typescene` package. Type `.with({`, and the editor is able to list all of the properties that can be preset on the `UIButton` component.
+
+This not only reduces the amount of typing, but also surfaces documentation on the fly and helps to avoid mistakes.
+
+![Intellisense screenshot](./images/intellisense.png)
+{:.fullWidthImage}
 
 ### Activities {#activities}
 
-Typescene manages control flow of the application as a whole using _Activity_ components. Each activity represents a separate 'state' of the application, like a screen, dialog, or URL in a traditional Web app.
+Beyond the view layer, Typescene applications are broken up into _Activity_ components. Each activity represents a separate 'state' of the application, like a screen, dialog, or URL in a traditional Web app.
 
 Activity components are controlled using _life cycle states_ (i.e. created, active, inactive, destroyed). Moving between activities involves asynchronously inactivating (or destroying) one activity, and activating another.
 
+The `ViewActivity` class can be extended using the `with` method, which is how a view class (usually imported from another file) can be associated with the activity class. When the view activity is activated, it automatically creates a view component instance; deactivating the activity destroys the view again.
+
 ```typescript
-export default class AboutPageActivity extends PageViewActivity {
+export default class AboutPageActivity
+  extends PageViewActivity.with(view) {
   path = "/about";
+
   // properties and methods here...
 
   async onManagedStateActivatingAsync() {
     await super.onManagedStateActivatingAsync();
-    // ... runs before the activity is active
+    // ... runs before the activity becomes active
+  }
+
+  async onManagedStateActiveAsync() {
+    await super.onManagedStateActiveAsync();
+    // ... runs after the activity becomes active
   }
 }
 ```
 
 Activity life cycle states can be transitioned manually, or automatically using a URL-like `path` property. The path is matched against the current URL, or some other navigation method as defined by the application component.
 
-Usually, every activity class in the application is referenced directly when starting the application:
+Every activity class in the application should be referenced directly or indirectly by the application class:
 
 ```typescript
 const app = BrowserApplication.run(
@@ -84,97 +186,15 @@ const app = BrowserApplication.run(
 );
 ```
 
-For more complex applications, activities can also be loaded _dynamically_, or they can be _nested_, and multiple activities can be active at the same time. The `path` property can also be used to route nested activities and *capture* path segments.
+For more complex applications activities can be _nested_, or they can be loaded _dynamically_. Multiple activities can be active at the same time. The `path` property can also be used to route nested activities and *capture* path segments.
 
-See [Advanced Activities](/docs/guides/activities) for more examples.
-
-### Views {#views}
-
-While Activities are used to model the application's state and behavior, Views describe the user interface (UI). Views are simply components with a `render` method. We _could_ make a view component like this:
-
-```typescript
-// one way to create the view, NOT a good one:
-export class TodoListView extends Component {
-  render(callback: (/* ... */) => void) {
-    // create UI components and render those
-    // call callback with combined result
-  }
-}
-```
-
-Preset components make for a much easier way to describe view components without actually having to define a new class. The static `.with(...)` method creates a component constructor with predefined properties, bindings, and event handlers, so we can use this method to describe the UI _statically_.
-
-```typescript
-let MyButton = UIButton.with({
-  dimensions: { minWidth: 250 },
-  label: "Click me",
-  onClick: "doSomething()"  // activity method
-})
-```
-
-Some UI components also provide other `.with...` methods, such as [`UILabel.withText`](/docs/ref/UILabel#UILabel:withText) and [`UIImage.withUrl`](/docs/ref/UIImage#UIImage:withUrl). These are simply wrappers around the regular `with` method.
-
-UI components that _contain_ or _control_ other components (such as rows, columns, and lists) can be described using a call to `.with(...)` that includes other constructors as arguments. When the resulting constructor is used to instantiate the view, all of the nested components are created as well.
-
-```typescript
-// better way to create a complete View class:
-export default UICell.with(
-  { dropShadow: .5, /*...*/ },  // properties
-  UIRow.with(
-    UILabel.withText("To Do")
-  ),
-
-  // a list with some to-do items:
-  UIListController.with(
-    { items: bind("todoItems") },  // binding
-    // view adapter for each object:
-    UIListCellAdapter.with(
-      UIRow.with(
-        MyCheckbox,  // custom component
-        UILabel.with({
-          text: bind("object.text"),
-          onClick: "checkTodoItem()"
-          // ^ method on the activity class
-        })
-      )
-    )
-  )
-)
-```
-
-Views are usually defined in a separate file, and referenced from a preset activity class which acts as the _composite parent_. The view is only instantiated when the activity is 'active', and the entire tree structure is destroyed again as soon as the activity becomes inactive.
-
-```typescript
-// import the view from view/index.ts
-import view from "./view";
-
-export default class TodoPageActivity
-  extends PageViewActivity.with(view) {
-  path = "/";
-
-  @managedChild
-  todoItems = new ManagedList();
-
-  checkTodoItem(e: UIComponentEvent) {
-    // ... handle the event
-  }
-}
-```
-
-To learn more about creating a UI using preset components, refer to
-
-#### Strongly Typed
-
-Because Typescene is a _strongly typed_ framework, using a TypeScript-aware IDE such as VS Code can be extremely helpful. For example, when you start to type `UIBu`...  the editor will offer to import `UIButton` from the `typescene` package. Type `.with({`, and the editor is able to list all of the properties that can be preset on the `UIButton` component. This not only reduces the amount of typing, but also surfaces documentation on the fly and helps to avoid mistakes.
-
-![Intellisense screenshot](./intellisense.png)
-{:.fullWidthImage}
+See [Activities](/docs/guides/activities) for more examples.
 
 ### Services {#services}
 
-In a real-life application, not all data can be managed inside a single tree structure of activities and views. In those cases, _service_ components can be used, for 'global' state and logic.
+In a real-life application, not all data can be managed within a single tree structure of activities and views. In those cases, _service_ components can be used, for 'global' state and logic.
 
-Services exist outside of the application/activity components tree, and are instead registered by name (ID). They are loosely coupled to other components using properties that are 'decorated' with the `@service` function, referencing the exact same name.
+Services exist outside of the application/activity components tree, and are instead registered by name (string). They are loosely coupled to other components using properties that are 'decorated' with the `@service` function, referencing the exact same name.
 
 #### Creating services
 
@@ -193,7 +213,7 @@ new LoginService().register();
 
 #### Using services
 
-Properties that are decorated with `@service` are automatically assigned to the last service component that has been registered with a particular service name. As soon as another service is registered with that name, the service property will change immediately to reference the new service instead.
+Properties that are decorated with the `@service` _decorator_ are automatically assigned to the last service component that has been registered with a particular service name. As soon as another service is registered with that name, the service property will change to reference the new service instead.
 
 ```typescript
 class MyComponent extends Component {

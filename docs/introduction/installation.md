@@ -5,44 +5,48 @@ title: Installation
 description: How to install Typescene using the NPM package manager
 pageintro: Typescene is distributed through NPM and can be installed using a single package.
 nav: |
-  * [NPM](#npm)
+  * [Creating an app](#create)
+  * [Typescene core](#core)
   * [Web app platform](#web)
   * [Other components](#components)
 ---
 
-### NPM {#npm}
+### Creating an app {#create}
 
-Typescene is distributed using NPM, the package manager that's bundled with NodeJS. You'll only need to install a single package to get started, but there are a few things to watch out for.
+Typescene provides a convenient way to get started with a new Web application: the `create-typescene-webapp` command line utility.
 
-#### Initial setup
+This utility creates a folder, copies files for a simple app, and installs all of the necessary dependencies for Typescene and a bundler of your choice.
 
-Make sure [NodeJS](https://nodejs.org){:target="_blank"} is installed before setting up your Typescene project. In most cases NPM will be installed along with NodeJS, although you may need to restart your computer to make the `npm` command available in the terminal.
+To get started, make sure that you have installed a recent version of [NodeJS](https://nodejs.org){:target="_blank"}, which comes with the NPM package manager. You may need to restart your computer to make the `npm` and `npx` commands available in the terminal.
 
-Your application itself needs to be created as an NPM package before you can import the Typescene package as a 'dependency'. Create a folder for your application, run the `npm init` command within this folder, and answer the questions.
+Then, run the following command, replacing `my-app` with the name of the folder you wish to create:
 
 ```bash
-mkdir my-project
-cd my-project
-npm init
+npx create-typescene-webapp my-app
 ```
 
-#### Platform independent core
+Several options are available. Add these to the command line to enable them.
 
-You _do not_ need to install the `typescene` package using NPM. Instead, install a 'platform specific' package (see below).
+| Option          | Effect                                      |
+| --------------- | ------------------------------------------- |
+| `--js`          | Use JS (ES6) only, instead of TypeScript |
+| `--jsx`         | Include JSX support |
+| `--git`         | Initialize a Git repository |
+| `--bundler=...` | Use a specific bundler (either `webpack` or `parcel`) |
 
-The `typescene` package itself exports most of the Typescene API, which is convenient for importing all classes, interfaces, and functions in your TypeScript files (or JavaScript files). This is the 'main' package, and the version of this package is considered the current version of Typescene. However, you do __not__ need to install this package directly using NPM.
+For more information, refer to the [`create-typescene-webapp`](https://github.com/typescene/create-typescene-webapp){:target="_blank"} repository page.
+
+### Typescene core {#core}
+
+The `create-typescene-webapp` utility does _not_ install the `typescene` package directly. Instead, all Typescene apps depend on a 'platform specific' package (see below).
+
+The `typescene` package itself exports most of the Typescene API, which is convenient for importing all classes, interfaces, and functions in your TypeScript files (or JavaScript files). This is the 'main' package, and the version of this package is considered the current version of Typescene. However, you never need to install this package directly using NPM.
 
 The code in the `typescene` package just the 'platform independent' part of the framework, and won't actually display any Views or activate any of your Activities. The same core package could be used (in the future) to build a mobile 'native' UI or build apps for other platform targets.
 
 ### Web app platform {#web}
 
-To install Typescene for use in a Web application, or any platform that uses a browser-based front end such as [Electron](https://electronjs.org){:target="_blank"}, install the `@typescene/webapp` package first.
-
-```bash
-npm install @typescene/webapp
-```
-
-A few other packages are required for a fully functional development environment, such as the TypeScript compiler if you're writing your own code using TypeScript, as well as a *bundler* for generating your project output — see below.
+To install Typescene for use in a Web application, or any platform that uses a browser-based front end such as [Electron](https://electronjs.org){:target="_blank"}, the `@typescene/webapp` package is required, along with a 'bundler'.
 
 #### Bundlers
 
@@ -53,7 +57,7 @@ Typescene doesn't have any dependencies of its own, so most bundlers will work o
 * Webpack ([https://webpack.js.org](https://webpack.js.org){:target="_blank"})
 * Parcel ([https://parceljs.org](https://parceljs.org){:target="_blank"})
 
-These bundlers also provide a development environment that can be used to watch your source files, and reload the page in your browser when a change is detected. The `@typescene/webapp` package supports HMR (hot module reload) functionality to update views without having to reload the entire page.
+These bundlers also provide a development environment that can be used to watch your source files, and reload the page in your browser when a change is detected. The `@typescene/webapp` package supports HMR (Hot Module Reload) functionality to update views without having to reload the entire page.
 
 Refer to [Your first project](/docs/guides/first) for an example that uses the Webpack bundler.
 
