@@ -48,7 +48,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Views** are simple representations of your application's UI, written as a nested structure of UI components using either XML or JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully hide the DOM.
+**Views** are static representations of your application UI, written as a nested structure of UI components using either XML or JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully hide the DOM in most cases.
 
 </section>
 </section>
@@ -65,7 +65,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Activities** represent the underlying application state, providing data to views and handling input events. Each view is bound to one activity, but multiple activities can be active at the same time since they are nested and routed independently.
+**Activities** represent the underlying application state, providing data to views and handling input events. These reflect how the user 'sees' your app. Each view is bound to one activity, but multiple activities can be active at the same time since they are nested and routed independently. Add an activity when you add a screen or dialog to your app.
 
 </section>
 </section>
@@ -80,7 +80,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Services** contain data that isn't tied to a particular activity, and provide access to the global state. This is where database access, login sessions, and user preferences go.
+**Services** contain data that isn't tied to a particular activity, and provide access to the global state. This is where database access, login sessions, and user preferences go. Services can be used from any other component by referencing their name.
 
 </section>
 </section>
