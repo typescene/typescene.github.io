@@ -15,7 +15,14 @@ nav: |
 
 ### Styling components {#styles}
 
-The appearance of UI components can be modified using the [`style`](/docs/ref/UIComponent#UIComponent:style) property. This refers to a [`UIStyle`](/docs/ref/UIStyle) object, which contains properties to control the following:
+The appearance of UI components can be modified using the [`style`](/docs/ref/UIComponent#UIComponent:style) property. This refers to a [`UIStyle`](/docs/ref/UIStyle) object.
+
+```typescript
+const button = new UIButton("OK");
+button.style  // => UIStyle object
+```
+
+`UIStyle` objects encapsulate the following aspects of a UI component's appearance:
 
 * Dimensions — size of the component, and/or minimum and maximum values, as well as grow/shrink behavior similar to the DOM *flexbox* model (see below).
 * Positioning — placement within the parent component area.
@@ -23,9 +30,14 @@ The appearance of UI components can be modified using the [`style`](/docs/ref/UI
 * Control style — common styling that determines the look and feel of 'controls' (e.g. buttons, text fields, labels).
 * Container layout — settings for the placement of child components.
 
-Each of these aspects is controlled by a single object, either taken from the current `UIStyle` object, or overridden on the component itself (using properties such as `dimensions`, `position`, etc.).
+Once the UI component is rendered, each of these aspects is controlled by a single object, either taken from the current `UIStyle` object, or overridden on the component itself (using properties such as `dimensions`, `position`, etc.).
 
-To change the style of a single component, you can't just change the `UIStyle` object itself. `UIStyle` instances are *read-only*, you'll need to use one of the following methods instead:
+```typescript
+const button = new UIButton("OK");
+button.dimensions.minWidth  // => 96
+```
+
+However, to change the style of a single component you can't just change the `UIStyle` object itself. `UIStyle` instances are *read-only*, you'll need to use one of the following methods instead:
 
 * Set the `style` property to a *new* instance of `UIStyle`. Note that this replaces *all* of the existing styles. The individual style properties on the component (`dimensions`, `position`, etc) are immediately updated to reflect the new styles.
 * Set the `style` property to an instance of `UIStyle` that *extends* the current style or mixes in individual style properties; see [`UIStyle.extend`](/docs/ref/UIStyle#UIStyle:extend) and [`UIStyle.mixin`](/docs/ref/UIStyle#UIStyle:mixin).

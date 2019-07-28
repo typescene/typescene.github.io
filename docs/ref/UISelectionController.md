@@ -8,7 +8,6 @@ nav: |
 
   #### Inherited
   * [.renderContext](#UISelectionController:renderContext)
-  * [.formContext](#UISelectionController:formContext)
   * [.content](#UISelectionController:content)
   * [.render()](#UISelectionController:render)
   * [.isPresetComponent()](#UISelectionController:isPresetComponent)
@@ -69,17 +68,6 @@ UIRenderContext
 ```
 {:.declarationspec}
 Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#UISelectionController:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Inherited from [`UIRenderableController.formContext`](./UIRenderableController#UIRenderableController:formContext).
 
 
 

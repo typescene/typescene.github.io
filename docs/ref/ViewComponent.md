@@ -4,7 +4,6 @@ nav: |
 
   #### Declarations
   * [**class ViewComponent**](#ViewComponent)
-  * [.formContext](#ViewComponent:formContext)
   * [.view](#ViewComponent:view)
   * [.onManagedStateActivatingAsync()](#ViewComponent:onManagedStateActivatingAsync)
   * [.render()](#ViewComponent:render)
@@ -35,6 +34,7 @@ nav: |
 
   #### Namespaced
   * [ViewComponent.PresetFor](#ViewComponent:PresetFor)
+  * [ViewComponent.template](#ViewComponent:template)
 layout: ref_doc
 pageintro: |
   Use this base class to create your own view components without an activity.
@@ -49,7 +49,7 @@ pageintro: |
 
 Represents an application component that encapsulates a view made up of UI components (or other renderable components, such as nested `ViewComponent` instances).
 
-The encapsulated view is created the first time this component is rendered. After that, all UI events are propagated from the encapsulated view to the `ViewComponent` instance.
+The encapsulated view (a single renderable component) is created the first time this component is rendered. After that, all UI events are propagated from the encapsulated view to the `ViewComponent` instance.
 
 **Note:** This class is similar in functionality to [`ViewActivity`](./ViewActivity), but `ViewComponent` views are created immediately, whereas view activities need to be activated first before their views are created.
 
@@ -97,17 +97,6 @@ UICell.with(
 (): ViewComponent
 ```
 {:.declarationspec}
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#ViewComponent:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Form state context, propagated from the parent composite object.
 
 
 
@@ -403,8 +392,25 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 ```typescript
 type PresetFor<TComponent extends ViewComponent, K extends keyof TComponent = Exclude<{
         [P in keyof TComponent]: TComponent[P] extends Function ? never : P;
-    }[keyof TComponent], keyof ViewComponent>> = (presets: Pick<TComponent, K>) => Function;
+    }[keyof TComponent], keyof ViewComponent>> = (presets: Pick<TComponent, K>, ...C: UIRenderableConstructor[]) => Function;
 ```
 {:.declarationspec}
 Shortcut type for declaring a static [`preset`](#ViewComponent:preset) method which accepts an object with presets with the same type as given properties of the view component itself (excluding methods).
+
+
+
+---
+
+## ![](/assets/icons/spec-function.svg)ViewComponent.template {#ViewComponent:template}
+{:.spec}
+
+```typescript
+<TPreset, TRest extends UIRenderableConstructor[]>(templateProvider: (presets: TPreset, ...C: TRest) => UIRenderableConstructor): typeof ViewComponent & { preset: (presets: TPreset, ...rest: TRest) => Function; }
+```
+{:.declarationspec}
+Returns a `ViewComponent` class that encapsulates the view returned by given function.
+
+The function receives `presets` (object) and rest parameters (i.e. content) and should return a component constructor.
+
+The resulting class contains a typed [`preset`](#ViewComponent:preset) function such that a subsequent call to `.with()` expects the corresponding presets and rest parameter types.
 

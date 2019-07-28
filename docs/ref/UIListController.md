@@ -16,7 +16,6 @@ nav: |
 
   #### Inherited
   * [.renderContext](#UIListController:renderContext)
-  * [.formContext](#UIListController:formContext)
   * [.content](#UIListController:content)
   * [.render()](#UIListController:render)
   * [.isPresetComponent()](#UIListController:isPresetComponent)
@@ -196,17 +195,6 @@ UIRenderContext
 ```
 {:.declarationspec}
 Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#UIListController:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Inherited from [`UIRenderableController.formContext`](./UIRenderableController#UIRenderableController:formContext).
 
 
 
@@ -473,7 +461,7 @@ List of items: initial values, or a list binding.
 boolean
 ```
 {:.declarationspec}
-Set to true to enable selection (focus movement) using up/down arrow keys, defaults to true.
+Set to true to enable selection (focus movement) using up/down arrow keys.
 
 
 

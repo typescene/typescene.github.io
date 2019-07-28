@@ -9,11 +9,12 @@ nav: |
   * [.shrinkwrap](#UIToggle:shrinkwrap)
   * [.isFocusable()](#UIToggle:isFocusable)
   * [.isKeyboardFocusable()](#UIToggle:isKeyboardFocusable)
-  * [.formContext](#UIToggle:formContext)
+  * [.render()](#UIToggle:render)
   * [.label](#UIToggle:label)
   * [.highlightColor](#UIToggle:highlightColor)
   * [.state](#UIToggle:state)
   * [.name](#UIToggle:name)
+  * [.form](#UIToggle:form)
 
   #### Inherited
   * [.applyStyle()](#UIToggle:applyStyle)
@@ -23,13 +24,14 @@ nav: |
   * [.controlStyle](#UIToggle:controlStyle)
   * [.disabled](#UIToggle:disabled)
   * [.propagateComponentEvent()](#UIToggle:propagateComponentEvent)
-  * [.render()](#UIToggle:render)
   * [.requestFocus()](#UIToggle:requestFocus)
   * [.requestFocusNext()](#UIToggle:requestFocusNext)
   * [.requestFocusPrevious()](#UIToggle:requestFocusPrevious)
   * [.hidden](#UIToggle:hidden)
   * [.dimensions](#UIToggle:dimensions)
   * [.position](#UIToggle:position)
+  * [.accessibleRole](#UIToggle:accessibleRole)
+  * [.accessibleLabel](#UIToggle:accessibleLabel)
   * [.revealTransition](#UIToggle:revealTransition)
   * [.exitTransition](#UIToggle:exitTransition)
   * [.lastRenderOutput](#UIToggle:lastRenderOutput)
@@ -66,6 +68,8 @@ nav: |
   * [.hidden](#UIToggle:Presets:hidden)
   * [.dimensions](#UIToggle:Presets:dimensions)
   * [.position](#UIToggle:Presets:position)
+  * [.accessibleRole](#UIToggle:Presets:accessibleRole)
+  * [.accessibleLabel](#UIToggle:Presets:accessibleLabel)
   * [.requestFocus](#UIToggle:Presets:requestFocus)
   * [.revealTransition](#UIToggle:Presets:revealTransition)
   * [.exitTransition](#UIToggle:Presets:exitTransition)
@@ -144,14 +148,14 @@ Returns true if this component can be focused using the keyboard *or* other meth
 
 
 
-## ![](/assets/icons/spec-property.svg).formContext {#UIToggle:formContext}
+## ![](/assets/icons/spec-method.svg).render() {#UIToggle:render}
 {:.spec}
 
 ```typescript
-ManagedRecord
+(callback: RenderCallback<Output<UIRenderable, any>>): void
 ```
 {:.declarationspec}
-Form state context, propagated from the parent composite object.
+Trigger asynchronous rendering for this component, and all contained components (if any). Rendered output is passed to given callback (from the application level [`UIRenderContext`](./UIRenderContext), or from a containing UI component).
 
 
 
@@ -196,6 +200,17 @@ string
 ```
 {:.declarationspec}
 Form context property name.
+
+
+
+## ![](/assets/icons/spec-property.svg).form {#UIToggle:form}
+{:.spec}
+
+```typescript
+{ formContext: any; }
+```
+{:.declarationspec}
+Form component (updated automatically before rendering).
 
 
 
@@ -276,17 +291,6 @@ Inherited from [`UIComponent.propagateComponentEvent`](./UIComponent#UIComponent
 
 
 
-## ![](/assets/icons/spec-method.svg).render() {#UIToggle:render}
-{:.spec}
-
-```typescript
-(callback: RenderCallback<Output<UIRenderable, any>>): void
-```
-{:.declarationspec}
-Inherited from [`UIComponent.render`](./UIComponent#UIComponent:render).
-
-
-
 ## ![](/assets/icons/spec-method.svg).requestFocus() {#UIToggle:requestFocus}
 {:.spec}
 
@@ -350,6 +354,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIToggle:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIToggle:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -731,6 +757,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIToggle:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIToggle:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

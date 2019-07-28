@@ -38,3 +38,7 @@ en:
         name: UI containers
       - url: /docs/guides/ui/styles
         name: UI styles and themes
+      - url: /docs/guides/ui/forms
+        name: User input and forms
+      - url: /docs/guides/ui/lists
+        name: Showing lists

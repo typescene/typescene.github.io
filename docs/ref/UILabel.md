@@ -36,6 +36,8 @@ nav: |
   * [.hidden](#UILabel:hidden)
   * [.dimensions](#UILabel:dimensions)
   * [.position](#UILabel:position)
+  * [.accessibleRole](#UILabel:accessibleRole)
+  * [.accessibleLabel](#UILabel:accessibleLabel)
   * [.revealTransition](#UILabel:revealTransition)
   * [.exitTransition](#UILabel:exitTransition)
   * [.lastRenderOutput](#UILabel:lastRenderOutput)
@@ -78,6 +80,8 @@ nav: |
   * [.hidden](#UILabel:Presets:hidden)
   * [.dimensions](#UILabel:Presets:dimensions)
   * [.position](#UILabel:Presets:position)
+  * [.accessibleRole](#UILabel:Presets:accessibleRole)
+  * [.accessibleLabel](#UILabel:Presets:accessibleLabel)
   * [.requestFocus](#UILabel:Presets:requestFocus)
   * [.revealTransition](#UILabel:Presets:revealTransition)
   * [.exitTransition](#UILabel:Presets:exitTransition)
@@ -436,6 +440,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UILabel:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UILabel:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -883,6 +909,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UILabel:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UILabel:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

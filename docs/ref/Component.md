@@ -30,6 +30,11 @@ nav: |
   * [.onManagedStateDeactivatingAsync()](#Component:onManagedStateDeactivatingAsync)
   * [.onManagedStateInactiveAsync()](#Component:onManagedStateInactiveAsync)
   * [.onManagedStateDestroyingAsync()](#Component:onManagedStateDestroyingAsync)
+
+  #### Namespaced
+  * [**Component.Composition**](#Component:Composition)
+  * [.getBindings()](#Component:Composition:getBindings)
+  * [.limitBindings()](#Component:Composition:limitBindings)
 layout: ref_doc
 pageintro: |
   Components are the building blocks of a Typescene application.
@@ -60,9 +65,9 @@ Component property values may be bound (see [`bind`](./bind)) to properties of a
 {:.spec}
 
 ```typescript
-[1]. <TComponentCtor extends ComponentConstructor<Component>, TPreset extends ComponentPresetType<TComponentCtor>, TRest extends ComponentPresetRestType<TComponentCtor>>(this: TComponentCtor & { ...; }, presets: { [P in keyof TPreset]?: TPreset[P] | { isComponentBinding(): true; }; } & { ...; }, ...rest: TRest): TComponentCtor
-[2]. <TComponentCtor extends ComponentConstructor<Component>, TRest extends ComponentPresetRestType<TComponentCtor>>(this: TComponentCtor & { preset: Function; }, ...rest: TRest): TComponentCtor
-[3]. <TComponentCtor extends ComponentConstructor<Component>, TPreset extends ComponentPresetType<TComponentCtor>, TRest extends ComponentPresetRestType<TComponentCtor>>(this: TComponentCtor & { ...; }, presets: Exclude<{ [P in keyof TPreset]?: TPreset[P] | { isComponentBinding(): true; }; }, { ...; }>, ...rest: TRest): TComponentCtor
+[1]. <TComponentCtor extends ComponentConstructor<Component>>(this: ComponentCtorWithPreset<TComponentCtor>, ...rest: ComponentPresetRestType<TComponentCtor>): TComponentCtor
+[2]. <TComponentCtor extends ComponentConstructor<Component>>(this: ComponentCtorWithPreset<TComponentCtor>, presets: new () => any, ...rest: ComponentPresetRestType<TComponentCtor>): "INVALID_PRESET_ARGUMENT"
+[3]. <TComponentCtor extends ComponentConstructor<Component>>(this: ComponentCtorWithPreset<TComponentCtor>, presets: ComponentPresetArgType<TComponentCtor>, ...rest: ComponentPresetRestType<TComponentCtor>): TComponentCtor
 ```
 {:.declarationspec}
 Create a new component _constructor_, for which instances are automatically updated with given properties, bindings, event handlers, and other values.
@@ -130,7 +135,7 @@ Inherit bindings from given component constructor(s) on this constructor. Inheri
 {:.spec}
 
 ```typescript
-(propertyName: string, constructor: ((new (...args: any[]) => Component) & (new () => Component)) | ((new (a: never, b: never, c: never, d: never, e: never, f: never) => Component) & (new () => Component)), ...include: ComponentConstructor<...>[]): void
+(propertyName: string, constructor: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): Composition
 ```
 {:.declarationspec}
 Add a sub component to this component that is automatically constructed when this component is activated, using given constructor. This component will serve as the composite parent object of all instances (i.e. the target object for all bindings on the component and child components). Sub components are destroyed immediately when the component is deactivated or destroyed.
@@ -357,4 +362,43 @@ Inherited from [`ManagedObject.onManagedStateInactiveAsync`](./ManagedObject#Man
 ```
 {:.declarationspec}
 Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#ManagedObject:onManagedStateDestroyingAsync).
+
+
+
+
+
+---
+
+## ![](/assets/icons/spec-class.svg)Component.Composition {#Component:Composition}
+{:.spec}
+
+Represents the relationship between a composite parent component class and the active component class.
+
+### Constructor
+```typescript
+(Composite: typeof Component, propertyName: string, ActiveComponent: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): Composition
+```
+{:.declarationspec}
+
+
+
+## ![](/assets/icons/spec-method.svg).getBindings() {#Component:Composition:getBindings}
+{:.spec}
+
+```typescript
+(): Binding[]
+```
+{:.declarationspec}
+Returns a list of all bindings that should be bound to the composite parent.
+
+
+
+## ![](/assets/icons/spec-method.svg).limitBindings() {#Component:Composition:limitBindings}
+{:.spec}
+
+```typescript
+(...propertyNames: string[]): void
+```
+{:.declarationspec}
+Remove all bindings that are to be bound to properties that are *not* included in the list of parameters; this causes any of those bindings on instances of the active component and its child component to be bound to the *parent composite* component instead.
 

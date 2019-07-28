@@ -9,7 +9,6 @@ nav: |
 
   #### Inherited
   * [.renderContext](#UIConditional:renderContext)
-  * [.formContext](#UIConditional:formContext)
   * [.content](#UIConditional:content)
   * [.render()](#UIConditional:render)
   * [.isPresetComponent()](#UIConditional:isPresetComponent)
@@ -100,17 +99,6 @@ UIRenderContext
 ```
 {:.declarationspec}
 Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#UIConditional:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Inherited from [`UIRenderableController.formContext`](./UIRenderableController#UIRenderableController:formContext).
 
 
 

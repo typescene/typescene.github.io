@@ -17,6 +17,7 @@ nav: |
   * [.iconMargin](#UIButton:iconMargin)
   * [.iconColor](#UIButton:iconColor)
   * [.iconAfter](#UIButton:iconAfter)
+  * [.navigateTo](#UIButton:navigateTo)
 
   #### Inherited
   * [.applyStyle()](#UIButton:applyStyle)
@@ -33,6 +34,8 @@ nav: |
   * [.hidden](#UIButton:hidden)
   * [.dimensions](#UIButton:dimensions)
   * [.position](#UIButton:position)
+  * [.accessibleRole](#UIButton:accessibleRole)
+  * [.accessibleLabel](#UIButton:accessibleLabel)
   * [.revealTransition](#UIButton:revealTransition)
   * [.exitTransition](#UIButton:exitTransition)
   * [.lastRenderOutput](#UIButton:lastRenderOutput)
@@ -73,6 +76,8 @@ nav: |
   * [.hidden](#UIButton:Presets:hidden)
   * [.dimensions](#UIButton:Presets:dimensions)
   * [.position](#UIButton:Presets:position)
+  * [.accessibleRole](#UIButton:Presets:accessibleRole)
+  * [.accessibleLabel](#UIButton:Presets:accessibleLabel)
   * [.requestFocus](#UIButton:Presets:requestFocus)
   * [.revealTransition](#UIButton:Presets:revealTransition)
   * [.exitTransition](#UIButton:Presets:exitTransition)
@@ -245,6 +250,17 @@ Set to true to make the icon appear after the text instead of before.
 
 
 
+## ![](/assets/icons/spec-property.svg).navigateTo {#UIButton:navigateTo}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Path to navigate to automatically when clicked, if not blank; use `:back` to go back in history.
+
+
+
 ## ![](/assets/icons/spec-method.svg).applyStyle() <span class="spec_tag">protected</span> {#UIButton:applyStyle}
 {:.spec}
 
@@ -396,6 +412,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIButton:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIButton:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -721,7 +759,7 @@ Set to true to make the icon appear after the text instead of before.
 string
 ```
 {:.declarationspec}
-Path to navigate to when clicked (overrides onClick handler), *or* `:back` to go back in history when clicked.
+Path to navigate to automatically when clicked, if not blank; use `:back` to go back in history.
 
 
 
@@ -821,6 +859,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIButton:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIButton:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

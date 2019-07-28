@@ -35,6 +35,8 @@ nav: |
   * [.hidden](#UIScrollContainer:hidden)
   * [.dimensions](#UIScrollContainer:dimensions)
   * [.position](#UIScrollContainer:position)
+  * [.accessibleRole](#UIScrollContainer:accessibleRole)
+  * [.accessibleLabel](#UIScrollContainer:accessibleLabel)
   * [.revealTransition](#UIScrollContainer:revealTransition)
   * [.exitTransition](#UIScrollContainer:exitTransition)
   * [.lastRenderOutput](#UIScrollContainer:lastRenderOutput)
@@ -81,6 +83,8 @@ nav: |
   * [.hidden](#UIScrollContainer:Presets:hidden)
   * [.dimensions](#UIScrollContainer:Presets:dimensions)
   * [.position](#UIScrollContainer:Presets:position)
+  * [.accessibleRole](#UIScrollContainer:Presets:accessibleRole)
+  * [.accessibleLabel](#UIScrollContainer:Presets:accessibleLabel)
   * [.requestFocus](#UIScrollContainer:Presets:requestFocus)
   * [.revealTransition](#UIScrollContainer:Presets:revealTransition)
   * [.exitTransition](#UIScrollContainer:Presets:exitTransition)
@@ -420,6 +424,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIScrollContainer:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIScrollContainer:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -911,6 +937,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIScrollContainer:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIScrollContainer:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

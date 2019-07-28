@@ -37,6 +37,8 @@ nav: |
   * [.hidden](#UICell:hidden)
   * [.dimensions](#UICell:dimensions)
   * [.position](#UICell:position)
+  * [.accessibleRole](#UICell:accessibleRole)
+  * [.accessibleLabel](#UICell:accessibleLabel)
   * [.revealTransition](#UICell:revealTransition)
   * [.exitTransition](#UICell:exitTransition)
   * [.lastRenderOutput](#UICell:lastRenderOutput)
@@ -85,6 +87,8 @@ nav: |
   * [.hidden](#UICell:Presets:hidden)
   * [.dimensions](#UICell:Presets:dimensions)
   * [.position](#UICell:Presets:position)
+  * [.accessibleRole](#UICell:Presets:accessibleRole)
+  * [.accessibleLabel](#UICell:Presets:accessibleLabel)
   * [.requestFocus](#UICell:Presets:requestFocus)
   * [.revealTransition](#UICell:Presets:revealTransition)
   * [.exitTransition](#UICell:Presets:exitTransition)
@@ -487,6 +491,28 @@ Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
 
 
 
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UICell:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UICell:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
+
+
+
 ## ![](/assets/icons/spec-property.svg).revealTransition {#UICell:revealTransition}
 {:.spec}
 
@@ -732,7 +758,7 @@ Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#M
 <pre markdown="span"><code markdown="span">extends [`UIContainer.Presets`](./UIContainer#UIContainer:Presets)</code></pre>
 {:.declarationspec}
 
-UIRow presets type, for use with [`Component.with`](./Component#Component:with).
+UICell presets type, for use with [`Component.with`](./Component#Component:with).
 
 
 
@@ -997,6 +1023,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UICell:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UICell:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

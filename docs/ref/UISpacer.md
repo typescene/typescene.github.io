@@ -26,6 +26,8 @@ nav: |
   * [.hidden](#UISpacer:hidden)
   * [.dimensions](#UISpacer:dimensions)
   * [.position](#UISpacer:position)
+  * [.accessibleRole](#UISpacer:accessibleRole)
+  * [.accessibleLabel](#UISpacer:accessibleLabel)
   * [.revealTransition](#UISpacer:revealTransition)
   * [.exitTransition](#UISpacer:exitTransition)
   * [.lastRenderOutput](#UISpacer:lastRenderOutput)
@@ -284,6 +286,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UISpacer:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UISpacer:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 

@@ -19,7 +19,7 @@ This utility creates a folder, copies files for a simple app, and installs all o
 
 To get started, make sure that you have installed a recent version of [NodeJS](https://nodejs.org){:target="_blank"}, which comes with the NPM package manager. You may need to restart your computer to make the `npm` and `npx` commands available in the terminal.
 
-Then, run the following command, replacing `my-app` with the name of the folder you wish to create:
+Then, run the following command in a terminal (Mac OS/Linux) or command prompt (Windows), replacing `my-app` with the name of the folder you wish to create:
 
 ```bash
 npx create-typescene-webapp my-app

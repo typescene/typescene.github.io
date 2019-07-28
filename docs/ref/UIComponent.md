@@ -16,6 +16,8 @@ nav: |
   * [.hidden](#UIComponent:hidden)
   * [.dimensions](#UIComponent:dimensions)
   * [.position](#UIComponent:position)
+  * [.accessibleRole](#UIComponent:accessibleRole)
+  * [.accessibleLabel](#UIComponent:accessibleLabel)
   * [.revealTransition](#UIComponent:revealTransition)
   * [.exitTransition](#UIComponent:exitTransition)
   * [.lastRenderOutput](#UIComponent:lastRenderOutput)
@@ -46,6 +48,8 @@ nav: |
   * [.hidden](#UIComponent:Presets:hidden)
   * [.dimensions](#UIComponent:Presets:dimensions)
   * [.position](#UIComponent:Presets:position)
+  * [.accessibleRole](#UIComponent:Presets:accessibleRole)
+  * [.accessibleLabel](#UIComponent:Presets:accessibleLabel)
   * [.requestFocus](#UIComponent:Presets:requestFocus)
   * [.revealTransition](#UIComponent:Presets:revealTransition)
   * [.exitTransition](#UIComponent:Presets:exitTransition)
@@ -207,6 +211,28 @@ Position
 ```
 {:.declarationspec}
 Options for the positioning of this component within parent component(s).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIComponent:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+WAI-ARIA role for this component, if applicable.
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIComponent:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+WAI-ARIA label text for this component (not tooltip), if applicable.
 
 
 
@@ -499,6 +525,28 @@ Options for the positioning of this component within parent component(s) (overri
 
 
 
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIComponent:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+WAI-ARIA role for this component, if applicable.
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIComponent:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+WAI-ARIA label text for this component (not tooltip), if applicable.
+
+
+
 ## ![](/assets/icons/spec-property.svg).requestFocus {#UIComponent:Presets:requestFocus}
 {:.spec}
 
@@ -562,7 +610,7 @@ Render given content using given callback, or previously stored callback.
 {:.spec}
 
 ```typescript
-(): Promise<{}>
+(): Promise<unknown>
 ```
 {:.declarationspec}
 Remove previously rendered output.

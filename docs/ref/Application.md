@@ -72,7 +72,7 @@ Use the static [`run`](#Application:run) method to create and activate an applic
 {:.spec}
 
 ```typescript
-(...activities: (((new (...args: any[]) => Component) & (new () => AppActivity)) | ((new (a: never, b: never, c: never, d: never, e: never, f: never) => Component) & (new () => AppActivity)))[]): Application
+<T extends Application>(this: typeof Application & (new () => T), ...activities: (ComponentConstructor<Component> & (new () => AppActivity))[]): T
 ```
 {:.declarationspec}
 Create an application that includes given activities, and start it immediately.

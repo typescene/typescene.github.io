@@ -5,6 +5,7 @@ nav: |
   #### Declarations
   * [**class UIRenderContext**](#UIRenderContext)
   * [.emitRenderChange()](#UIRenderContext:emitRenderChange)
+  * [.getAppComponents()](#UIRenderContext:getAppComponents)
   * [.clear()](#UIRenderContext:clear)
   * [.getRenderCallback()](#UIRenderContext:getRenderCallback)
 
@@ -63,6 +64,17 @@ Base application render context, to be extended with platform specific render im
 ```
 {:.declarationspec}
 Emit a change event for this context, e.g. when the viewport orientation or current locale changes. This will trigger all views to re-render if needed.
+
+
+
+## ![](/assets/icons/spec-method.svg).getAppComponents() {#UIRenderContext:getAppComponents}
+{:.spec}
+
+```typescript
+(): ManagedObject[]
+```
+{:.declarationspec}
+Returns a list of all application components (activities, view components) that are associated with this render context.
 
 
 

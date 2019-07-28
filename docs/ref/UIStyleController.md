@@ -10,7 +10,6 @@ nav: |
 
   #### Inherited
   * [.renderContext](#UIStyleController:renderContext)
-  * [.formContext](#UIStyleController:formContext)
   * [.content](#UIStyleController:content)
   * [.render()](#UIStyleController:render)
   * [.isPresetComponent()](#UIStyleController:isPresetComponent)
@@ -98,17 +97,6 @@ UIRenderContext
 ```
 {:.declarationspec}
 Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#UIStyleController:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Inherited from [`UIRenderableController.formContext`](./UIRenderableController#UIRenderableController:formContext).
 
 
 
