@@ -11,7 +11,7 @@ layout: ref_doc
 {:.spec}
 
 ```typescript
-type ComponentConstructor<TComponent extends Component = Component> = (new (...args: any[]) => TComponent) | (new (a: never, b: never, c: never, d: never, e: never, f: never) => TComponent);
+type ComponentConstructor<TComponent extends Component = Component> = new (...args: any[]) => TComponent;
 ```
 {:.declarationspec}
 Generic constructor type for Component, matching both parameterless constructors and those with one or more required parameters.

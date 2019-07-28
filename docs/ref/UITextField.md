@@ -9,12 +9,13 @@ nav: |
   * [.shrinkwrap](#UITextField:shrinkwrap)
   * [.isFocusable()](#UITextField:isFocusable)
   * [.isKeyboardFocusable()](#UITextField:isKeyboardFocusable)
-  * [.formContext](#UITextField:formContext)
+  * [.render()](#UITextField:render)
   * [.type](#UITextField:type)
   * [.multiline](#UITextField:multiline)
   * [.placeholder](#UITextField:placeholder)
   * [.value](#UITextField:value)
   * [.name](#UITextField:name)
+  * [.form](#UITextField:form)
 
   #### Inherited
   * [.applyStyle()](#UITextField:applyStyle)
@@ -24,13 +25,14 @@ nav: |
   * [.controlStyle](#UITextField:controlStyle)
   * [.disabled](#UITextField:disabled)
   * [.propagateComponentEvent()](#UITextField:propagateComponentEvent)
-  * [.render()](#UITextField:render)
   * [.requestFocus()](#UITextField:requestFocus)
   * [.requestFocusNext()](#UITextField:requestFocusNext)
   * [.requestFocusPrevious()](#UITextField:requestFocusPrevious)
   * [.hidden](#UITextField:hidden)
   * [.dimensions](#UITextField:dimensions)
   * [.position](#UITextField:position)
+  * [.accessibleRole](#UITextField:accessibleRole)
+  * [.accessibleLabel](#UITextField:accessibleLabel)
   * [.revealTransition](#UITextField:revealTransition)
   * [.exitTransition](#UITextField:exitTransition)
   * [.lastRenderOutput](#UITextField:lastRenderOutput)
@@ -68,6 +70,8 @@ nav: |
   * [.hidden](#UITextField:Presets:hidden)
   * [.dimensions](#UITextField:Presets:dimensions)
   * [.position](#UITextField:Presets:position)
+  * [.accessibleRole](#UITextField:Presets:accessibleRole)
+  * [.accessibleLabel](#UITextField:Presets:accessibleLabel)
   * [.requestFocus](#UITextField:Presets:requestFocus)
   * [.revealTransition](#UITextField:Presets:revealTransition)
   * [.exitTransition](#UITextField:Presets:exitTransition)
@@ -158,14 +162,14 @@ Returns true if this component can be focused using the keyboard *or* other meth
 
 
 
-## ![](/assets/icons/spec-property.svg).formContext {#UITextField:formContext}
+## ![](/assets/icons/spec-method.svg).render() {#UITextField:render}
 {:.spec}
 
 ```typescript
-ManagedRecord
+(callback: RenderCallback<Output<UIRenderable, any>>): void
 ```
 {:.declarationspec}
-Form state context, propagated from the parent composite object.
+Trigger asynchronous rendering for this component, and all contained components (if any). Rendered output is passed to given callback (from the application level [`UIRenderContext`](./UIRenderContext), or from a containing UI component).
 
 
 
@@ -221,6 +225,17 @@ string
 ```
 {:.declarationspec}
 Form context property name.
+
+
+
+## ![](/assets/icons/spec-property.svg).form {#UITextField:form}
+{:.spec}
+
+```typescript
+{ formContext: any; }
+```
+{:.declarationspec}
+Form component (updated automatically before rendering).
 
 
 
@@ -301,17 +316,6 @@ Inherited from [`UIComponent.propagateComponentEvent`](./UIComponent#UIComponent
 
 
 
-## ![](/assets/icons/spec-method.svg).render() {#UITextField:render}
-{:.spec}
-
-```typescript
-(callback: RenderCallback<Output<UIRenderable, any>>): void
-```
-{:.declarationspec}
-Inherited from [`UIComponent.render`](./UIComponent#UIComponent:render).
-
-
-
 ## ![](/assets/icons/spec-method.svg).requestFocus() {#UITextField:requestFocus}
 {:.spec}
 
@@ -375,6 +379,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UITextField:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UITextField:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -767,6 +793,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UITextField:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UITextField:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

@@ -30,6 +30,8 @@ nav: |
   * [.hidden](#UIColumn:hidden)
   * [.dimensions](#UIColumn:dimensions)
   * [.position](#UIColumn:position)
+  * [.accessibleRole](#UIColumn:accessibleRole)
+  * [.accessibleLabel](#UIColumn:accessibleLabel)
   * [.revealTransition](#UIColumn:revealTransition)
   * [.exitTransition](#UIColumn:exitTransition)
   * [.lastRenderOutput](#UIColumn:lastRenderOutput)
@@ -68,6 +70,8 @@ nav: |
   * [.hidden](#UIColumn:Presets:hidden)
   * [.dimensions](#UIColumn:Presets:dimensions)
   * [.position](#UIColumn:Presets:position)
+  * [.accessibleRole](#UIColumn:Presets:accessibleRole)
+  * [.accessibleLabel](#UIColumn:Presets:accessibleLabel)
   * [.requestFocus](#UIColumn:Presets:requestFocus)
   * [.revealTransition](#UIColumn:Presets:revealTransition)
   * [.exitTransition](#UIColumn:Presets:exitTransition)
@@ -364,6 +368,28 @@ Position
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.position`](./UIComponent#UIComponent:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIColumn:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleRole`](./UIComponent#UIComponent:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIColumn:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.accessibleLabel`](./UIComponent#UIComponent:accessibleLabel).
 
 
 
@@ -767,6 +793,28 @@ Partial<{}> | Partial<Position>
 ```
 {:.declarationspec}
 Inherited from [`UIComponent.Presets.position`](./UIComponent#UIComponent:Presets:position).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleRole {#UIColumn:Presets:accessibleRole}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleRole`](./UIComponent#UIComponent:Presets:accessibleRole).
+
+
+
+## ![](/assets/icons/spec-property.svg).accessibleLabel {#UIColumn:Presets:accessibleLabel}
+{:.spec}
+
+```typescript
+string
+```
+{:.declarationspec}
+Inherited from [`UIComponent.Presets.accessibleLabel`](./UIComponent#UIComponent:Presets:accessibleLabel).
 
 
 

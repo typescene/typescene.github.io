@@ -11,7 +11,6 @@ nav: |
 
   #### Inherited
   * [.renderContext](#UIModalController:renderContext)
-  * [.formContext](#UIModalController:formContext)
   * [.content](#UIModalController:content)
   * [.render()](#UIModalController:render)
   * [.isPresetComponent()](#UIModalController:isPresetComponent)
@@ -137,17 +136,6 @@ UIRenderContext
 ```
 {:.declarationspec}
 Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
-
-
-
-## ![](/assets/icons/spec-property.svg).formContext {#UIModalController:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Inherited from [`UIRenderableController.formContext`](./UIRenderableController#UIRenderableController:formContext).
 
 
 

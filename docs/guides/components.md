@@ -96,7 +96,7 @@ These handlers are invoked for events that are emitted from any instance of this
 
 _Life cycle management_ is another core feature of `ManagedObject`. Components and other managed objects are in one of the following states, as reflected by the read-only [`managedState`](/docs/ref/ManagedObject#ManagedObject:managedState) property.
 
-![Managed states diagram](./managed_state.png)
+![Managed states diagram](./images/managed_state.png)
 {:.fullWidthImage}
 
 * Newly created objects start out in a __Created__ state.
@@ -553,7 +553,7 @@ class MyActivity extends PageViewActivity.with(view) {
   async onManagedStateActiveAsync() {
     await super.onManagedStateActiveAsync();
     // (view now exists)
-    
+
     console.log(this.view instanceof view);  // => true
   }
 

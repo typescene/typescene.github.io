@@ -15,6 +15,9 @@ nav: |
   * [.match()](#Binding:match)
   * [.nonMatch()](#Binding:nonMatch)
   * [.filters](#Binding:filters)
+
+  #### Namespaced
+  * [**Binding.Type**](#Binding:Type)
 layout: ref_doc
 ---
 
@@ -177,4 +180,13 @@ Add a filter to this binding to compare the bound value to the given value(s), t
 List of applicable filters, new filters may be added here.
 
 
+
+
+
+---
+
+## ![](/assets/icons/spec-interface.svg)Binding.Type {#Binding:Type}
+{:.spec}
+
+Binding type (duck typed).
 

@@ -4,12 +4,12 @@ nav: |
 
   #### Declarations
   * [**class UIFormContextController**](#UIFormContextController)
-  * [.renderContext](#UIFormContextController:renderContext)
   * [.formContext](#UIFormContextController:formContext)
-  * [.content](#UIFormContextController:content)
-  * [.render()](#UIFormContextController:render)
 
   #### Inherited
+  * [.renderContext](#UIFormContextController:renderContext)
+  * [.content](#UIFormContextController:content)
+  * [.render()](#UIFormContextController:render)
   * [.isPresetComponent()](#UIFormContextController:isPresetComponent)
   * [.getParentComponent()](#UIFormContextController:getParentComponent)
   * [.getCompositeParent()](#UIFormContextController:getCompositeParent)
@@ -42,10 +42,12 @@ layout: ref_doc
 {:.spec}
 
 
-<pre markdown="span"><code markdown="span">`extends UIFormContextController_base` implements [`UIRenderable`](./UIRenderable)</code></pre>
+<pre markdown="span"><code markdown="span">extends [`UIRenderableController`](./UIRenderableController)</code></pre>
 {:.declarationspec}
 
 Renderable wrapper that injects a form context record, to be used by (nested) child input controls.
+
+**Note:** This wrapper does not group content in a cell; see also [`UIForm`](./UIForm).
 
 > __Note:__ Preset constructors for this class (see example) only accept __one__ child component. To wrap multiple components, use multiple `UIFormContextController` constructors, or wrap child components in a [`UICell`](./UICell).
 
@@ -77,20 +79,9 @@ UIFormContextController.with(
 
 ### Constructor
 ```typescript
-(): UIFormContextController
+(content?: UIRenderable): UIFormContextController
 ```
 {:.declarationspec}
-
-
-
-## ![](/assets/icons/spec-property.svg).renderContext {#UIFormContextController:renderContext}
-{:.spec}
-
-```typescript
-UIRenderContext
-```
-{:.declarationspec}
-Application render context, propagated from the parent composite object.
 
 
 
@@ -101,7 +92,18 @@ Application render context, propagated from the parent composite object.
 ManagedRecord
 ```
 {:.declarationspec}
-Form state context, propagated to all child components; defaults to an empty managed record.
+Form state context; defaults to an empty managed record.
+
+
+
+## ![](/assets/icons/spec-property.svg).renderContext {#UIFormContextController:renderContext}
+{:.spec}
+
+```typescript
+UIRenderContext
+```
+{:.declarationspec}
+Inherited from [`UIRenderableController.renderContext`](./UIRenderableController#UIRenderableController:renderContext).
 
 
 
@@ -112,7 +114,7 @@ Form state context, propagated to all child components; defaults to an empty man
 UIRenderable
 ```
 {:.declarationspec}
-Renderable content (wrapped), as a managed child component.
+Inherited from [`UIRenderableController.content`](./UIRenderableController#UIRenderableController:content).
 
 
 
@@ -123,7 +125,7 @@ Renderable content (wrapped), as a managed child component.
 (callback?: RenderCallback<Output<UIRenderable, any>>): void
 ```
 {:.declarationspec}
-Trigger asynchronous rendering for this component, and all contained components (if any).
+Inherited from [`UIRenderableController.render`](./UIRenderableController#UIRenderableController:render).
 
 
 

@@ -5,8 +5,8 @@ nav: |
   #### Declarations
   * [**class UIListCellAdapter**](#UIListCellAdapter)
   * [.renderContext](#UIListCellAdapter:renderContext)
-  * [.formContext](#UIListCellAdapter:formContext)
   * [.object](#UIListCellAdapter:object)
+  * [.value](#UIListCellAdapter:value)
   * [.cell](#UIListCellAdapter:cell)
   * [.onManagedStateActiveAsync()](#UIListCellAdapter:onManagedStateActiveAsync)
   * [.onManagedStateInactiveAsync()](#UIListCellAdapter:onManagedStateInactiveAsync)
@@ -82,17 +82,6 @@ Application render context, propagated from the parent composite object.
 
 
 
-## ![](/assets/icons/spec-property.svg).formContext {#UIListCellAdapter:formContext}
-{:.spec}
-
-```typescript
-ManagedRecord
-```
-{:.declarationspec}
-Form state context, propagated from the parent composite object.
-
-
-
 ## ![](/assets/icons/spec-property.svg).object {#UIListCellAdapter:object}
 {:.spec}
 
@@ -101,6 +90,17 @@ TObject
 ```
 {:.declarationspec}
 The encapsulated object.
+
+
+
+## ![](/assets/icons/spec-property.svg).value {#UIListCellAdapter:value}
+{:.spec}
+
+```typescript
+any
+```
+{:.declarationspec}
+The [`value`](#UIListCellAdapter:value) property of the encapsulated object (or the list value itself, if the list was bound to an array with non-managed object values).
 
 
 

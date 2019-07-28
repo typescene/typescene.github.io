@@ -9,15 +9,15 @@ nav: |
   * [Design Goals](#goals)
 ---
 
-With so many great platforms and tools that are available for Web development today, it's easier than ever to build a rich interactive Web application. You can hide every unfortunate implementation detail of the DOM API, shrinking your code to the bare minimum and leaving the rest to a framework of your choice. So why do we need yet _another_ framework to choose from?
+With so many great platforms and tools available today, it's easier than ever to build a rich interactive Web application. You can hide every implementation detail of the DOM API, shrinking your code to the bare minimum and leaving the rest to a framework of your choice. So why do we need yet _another_ framework to choose from?
 
 ### Maintainability {#maintainability}
 
-All of this progress in Web development comes at a cost. Have you ever opened a years-old project that used the favorite Web framework-du-jour, and tried to make sense of it now? Would you be able to _maintain_ such a piece of software, in the same way you could open up an old WinForms or Cocoa application on Windows or Mac and have it compile just fine?
+All of this progress in Web development has come at a cost. Have you ever opened a years-old project that used the favorite Web framework-du-jour, and tried to make sense of it now? Would you be able to _maintain_ such a piece of software, in the same way you could open up an old WinForms or Cocoa application on Windows or Mac and have it compile just fine?
 
 Sure enough, modern package managers solve some of the compatibility issues, but library APIs are constantly in flux. New ideas come in and 'legacy' ones disappear. Who will remember the (hypothetical) peculiarities of the ‘willUpdate’ method in version 14.2.132 of framework X? If constantly upgrading to the latest version is not an option, we're setting ourselves up for trouble down the road.
 
-This might not be an issue for one-offs and personal projects that you’re constantly working on, but _maintainability_ is a major concern for any software that needs to be supported by a business or other organization in the long term. Most code isn't updated constantly (like Facebook or Dropbox), or written once and then forgotten, but rather something in between.
+This might not be an issue for one-offs and personal projects that you’re constantly working on, but _maintainability_ is a major concern for any software that needs to be supported by a business or other organization in the long term. Most code isn't updated constantly (big apps like Facebook or Twitter), or written once and then forgotten, but rather something in between.
 
 Here's where the design goals of the Typescene framework come in.
 
@@ -33,4 +33,4 @@ Most importantly, Typescene hasn't been invented overnight, it's _not_ a Minimum
 
 ### Further reading
 
-Learn more about the [Typescene architecture](/docs/introduction/overview).
+Learn more about [how Typescene works](/docs/introduction/overview).

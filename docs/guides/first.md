@@ -29,7 +29,7 @@ You can also install the [Typescene Snippets](https://marketplace.visualstudio.c
 
 #### Creating a package
 
-While you could easily create an NPM package from scratch if you wanted to, it's much faster to use the [`create-typescene-webapp`](https://github.com/typescene/create-typescene-webapp){:target="_blank"} _generator_. This creates a folder, adds source files, and initializes NPM dependencies in one go.
+While you could easily create an NPM package from scratch if you wanted to, it's much faster to use the [`create-typescene-webapp`](https://github.com/typescene/create-typescene-webapp){:target="_blank"} utility. This creates a folder, adds source files, and initializes NPM dependencies in one go.
 
 Run the following command in a Terminal window (Mac OS/Linux) or Command Prompt (Windows):
 
@@ -211,6 +211,8 @@ We'll divide the view into three regions:
 4. a footer that shows a status bar when the list is not empty.
 
 Since we'll want the entire page to scroll up and down, we start with a [`UIScrollContainer`](/docs/ref/UIScrollContainer) component. Within, we'll want to restrict the width of the page and add some padding while keeping all content at the top of the page, which can be achieved using the [`UIFlowCell`](/docs/ref/UIFlowCell) component.
+
+> **Note:** We'll be using constructor factories in this example, instead of JSX. Refer to [Using JSX](/docs/guides/ui/using-jsx) for instructions on how to set up and use JSX.
 
 Here's a start for the page header within the two wrapper components:
 
