@@ -13,7 +13,7 @@ nav: |
 
 ### What is JSX? {#what}
 
-JSX refers to "XML-in-JavaScript", a relatively new technology that is supported by TypeScript (and Babel, for a JS-only solution).
+JSX refers to "XML-in-JavaScript", a new feature that is supported by TypeScript (and Babel, for a JS-only solution).
 
 Source files that include JSX code _must_ be handled by a compiler or transpiler, because most runtime environments such as browsers do not support JSX natively.
 
@@ -26,9 +26,9 @@ const h = "Hello, world!";
 const p = <p>{h}</p>;
 ```
 
-The compiler actually translates the `<p>` element to a function call under the hood, including XML properties as a plain object, and the content(s) or the element as one or more values or nested function calls.
+The compiler actually translates the `<p>` element to a function call behind the scenes, passing XML properties as a plain object, and the content(s) or the element as one or more values or nested function calls.
 
-Typescene leverages JSX to allow you to write views as embedded XML inside of TypeScript or JavaScript source code. Note that this is not the same as including raw HTML, since JSX is only translated to a tree structure of UI components, not rendered output.
+Typescene leverages JSX to allow you to write views as embedded XML inside of TypeScript or JavaScript source code. Note that this is not the same as including raw HTML, since JSX is only translated to a tree structure of UI components, not to rendered output.
 
 ### Requirements {#requirements}
 
@@ -98,7 +98,7 @@ Also change the `test` property for `ts-loader` to match `.ts` as well as `.tsx`
 
 ### Views {#views}
 
-The result of JSX elements can be used directly as view classes, e.g. from an activity class:
+The result of JSX elements can be used directly as a view class constructor and passed to an activity class:
 
 ```tsx
 // view.tsx
@@ -111,6 +111,7 @@ export default (
 
 // activity.ts
 import { PageViewActivity } from "typescene";
+import view from "./view";
 
 export class MyActivity
   extends PageViewActivity.with(view) {
@@ -119,7 +120,11 @@ export class MyActivity
 }
 ```
 
-### Custom views {#custom}
+### Custom view components {#custom}
+
+Sometimes it's useful to define a class thatencapsulates a partial view, to be used throughout the rest of your code.
+
+The `ViewComponent` class provides a way to create such custom view components, allowing other code to pass property values or bindings (using JSX or the `.with` method), while the view can bind to the custom class' own properties and refer to event handlers on the class itself.
 
 ```tsx
 // CustomBlock.ts

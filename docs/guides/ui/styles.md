@@ -15,7 +15,7 @@ nav: |
 
 ### Styling components {#styles}
 
-The styling of UI components is mostly determined by a single instance of [`UIStyle`](/docs/ref/UIStyle) that's assigned to the [`style`](/docs/ref/UIComponent#UIComponent:style) property. This object controls the following aspects:
+The appearance of UI components can be modified using the [`style`](/docs/ref/UIComponent#UIComponent:style) property. This refers to a [`UIStyle`](/docs/ref/UIStyle) object, which contains properties to control the following:
 
 * Dimensions — size of the component, and/or minimum and maximum values, as well as grow/shrink behavior similar to the DOM *flexbox* model (see below).
 * Positioning — placement within the parent component area.
