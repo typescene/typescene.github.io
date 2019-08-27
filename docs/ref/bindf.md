@@ -33,6 +33,7 @@ A format string should be passed as a first argument. The text is bound as-is, w
 **Note:** To use plurals or number forms based on values that should not be included in the output themselves, use the `_` (blank) filter, e.g. `"There ${n|_}#{are no/is one/are #_} item#{/s}"`.
 
 #### Example
+{%raw%}
 ```typescript
 // view code
 export default UICell.with(
@@ -43,6 +44,7 @@ export default UICell.with(
   )
 )
 ```
+{%endraw%}
 
 #### See Also
 [`bind`](./bind), [`Binding.addFilter`](./Binding#Binding:addFilter) (includes a list of available filters)
