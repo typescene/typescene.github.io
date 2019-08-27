@@ -67,7 +67,6 @@ export default UICell.with(
 ---
 # bindf
 #### Example
-{%raw%}
 ```typescript
 // view code
 export default UICell.with(
@@ -78,7 +77,6 @@ export default UICell.with(
   )
 )
 ```
-{%endraw%}
 
 #### See Also
 `bind`, `Binding.addFilter` (includes a list of available filters)

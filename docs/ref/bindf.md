@@ -22,7 +22,7 @@ A format string should be passed as a first argument. The text is bound as-is, w
 
 - `${binding.foo|filter}`: inserts a bound value, as if the tag content was used as a parameter to [`bind`](./bind). This may include one or more filters (see Binding.addFilter).
 
-- `${%1}`: inserts a bound value, using a [`Binding`](./Binding) instance that is taken from the 'rest' parameters, starting with 1 for the first argument after the format text.
+- `${%raw%}{%1}{%endraw%}`: inserts a bound value, using a [`Binding`](./Binding) instance that is taken from the 'rest' parameters, starting with 1 for the first argument after the format text.
 
 - `#{one/two}`: inserts one of the given options, based on the value of the previous (or first) binding as an absolute number _or_ length of an array or managed list. The order of given options is 1/other, 0/1/other, 0/1/2/other, etc., unless handled differently by the current language service. Within the options, `#_` is replaced with the value of the relevant binding (clipped to an integer value).
 
@@ -33,7 +33,6 @@ A format string should be passed as a first argument. The text is bound as-is, w
 **Note:** To use plurals or number forms based on values that should not be included in the output themselves, use the `_` (blank) filter, e.g. `"There ${n|_}#{are no/is one/are #_} item#{/s}"`.
 
 #### Example
-{%raw%}
 ```typescript
 // view code
 export default UICell.with(
@@ -44,7 +43,6 @@ export default UICell.with(
   )
 )
 ```
-{%endraw%}
 
 #### See Also
 [`bind`](./bind), [`Binding.addFilter`](./Binding#Binding:addFilter) (includes a list of available filters)
