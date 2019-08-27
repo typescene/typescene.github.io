@@ -1,15 +1,18 @@
 ---
-permalink: /docs/guides/ui/containers
+redirect_from: /docs/guides/ui/containers
+permalink: /docs/guides/howto/containers
+docsection: howto
 layout: doc_subpage
-title: Containers
+title: View container layout
 description: A description of the container model and various layout options.
 pageintro: Container components provide many options for layout and rendering.
 nav: |
-    * [Using UI components](#using)
-    * [Styling and layout](#styling)
     * [Container layouts](#containers)
-    * [UI Components by type](#ref)
 ---
+
+{:.TODO}
+> **Coming soon** <br>
+  This section is still in development. In the meantime, refer to the examples and reference documentation from the [documentation home page](/docs).
 
 ### Container layouts {#containers}
 

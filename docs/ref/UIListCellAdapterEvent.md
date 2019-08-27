@@ -6,10 +6,10 @@ nav: |
   * [**class UIListCellAdapterEvent**](#UIListCellAdapterEvent)
   * [.cell](#UIListCellAdapterEvent:cell)
   * [.object](#UIListCellAdapterEvent:object)
+  * [.value](#UIListCellAdapterEvent:value)
 
   #### Inherited
   * [.source](#UIListCellAdapterEvent:source)
-  * [.event](#UIListCellAdapterEvent:event)
   * [.inner](#UIListCellAdapterEvent:inner)
   * [.name](#UIListCellAdapterEvent:name)
   * [.freeze()](#UIListCellAdapterEvent:freeze)
@@ -20,14 +20,14 @@ layout: ref_doc
 {:.spec}
 
 
-<pre markdown="span"><code markdown="span">extends [`UIComponentEvent`](./UIComponentEvent)</code></pre>
+<pre markdown="span"><code markdown="span">extends [`ComponentEvent`](./ComponentEvent)</code></pre>
 {:.declarationspec}
 
 Event that is emitted on a particular [`UIListCellAdapter`](./UIListCellAdapter).
 
 ### Constructor
 ```typescript
-<TObject extends ManagedObject = ManagedObject>(name: string, source: UIComponent, cell: UICell, object?: TObject, event?: any): UIListCellAdapterEvent<TObject>
+<TObject extends ManagedObject = ManagedObject>(name: string, source: UIListCellAdapter<TObject>, inner?: ManagedEvent): UIListCellAdapterEvent<TObject>
 ```
 {:.declarationspec}
 
@@ -55,25 +55,25 @@ The object encapsulated by the [`UIListCellAdapter`](./UIListCellAdapter), if an
 
 
 
-## ![](/assets/icons/spec-property.svg).source {#UIListCellAdapterEvent:source}
-{:.spec}
-
-```typescript
-TSource
-```
-{:.declarationspec}
-Inherited from [`UIComponentEvent.source`](./UIComponentEvent#UIComponentEvent:source).
-
-
-
-## ![](/assets/icons/spec-property.svg).event {#UIListCellAdapterEvent:event}
+## ![](/assets/icons/spec-property.svg).value {#UIListCellAdapterEvent:value}
 {:.spec}
 
 ```typescript
 any
 ```
 {:.declarationspec}
-Inherited from [`UIComponentEvent.event`](./UIComponentEvent#UIComponentEvent:event).
+The value encapsulated by the [`UIListCellAdapter`](./UIListCellAdapter), if any.
+
+
+
+## ![](/assets/icons/spec-property.svg).source {#UIListCellAdapterEvent:source}
+{:.spec}
+
+```typescript
+Component
+```
+{:.declarationspec}
+Inherited from [`ComponentEvent.source`](./ComponentEvent#ComponentEvent:source).
 
 
 

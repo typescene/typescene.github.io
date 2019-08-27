@@ -158,7 +158,7 @@ WAI-ARIA role for this component, if applicable.
 {:.spec}
 
 ```typescript
-ManagedRecord
+ManagedObject
 ```
 {:.declarationspec}
 Form state context; defaults to an empty managed record.
@@ -213,7 +213,7 @@ Inherited from [`UICell.allowKeyboardFocus`](./UICell#UICell:allowKeyboardFocus)
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.padding`](./UICell#UICell:padding).
@@ -224,7 +224,7 @@ Inherited from [`UICell.padding`](./UICell#UICell:padding).
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.margin`](./UICell#UICell:margin).
@@ -235,7 +235,7 @@ Inherited from [`UICell.margin`](./UICell#UICell:margin).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.background`](./UICell#UICell:background).
@@ -246,7 +246,7 @@ Inherited from [`UICell.background`](./UICell#UICell:background).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.textColor`](./UICell#UICell:textColor).
@@ -257,7 +257,7 @@ Inherited from [`UICell.textColor`](./UICell#UICell:textColor).
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.borderThickness`](./UICell#UICell:borderThickness).
@@ -268,7 +268,7 @@ Inherited from [`UICell.borderThickness`](./UICell#UICell:borderThickness).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.borderColor`](./UICell#UICell:borderColor).
@@ -792,7 +792,7 @@ Event handler for form submissions.
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.padding`](./UICell#UICell:Presets:padding).
@@ -803,7 +803,7 @@ Inherited from [`UICell.Presets.padding`](./UICell#UICell:Presets:padding).
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.margin`](./UICell#UICell:Presets:margin).
@@ -814,7 +814,7 @@ Inherited from [`UICell.Presets.margin`](./UICell#UICell:Presets:margin).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.background`](./UICell#UICell:Presets:background).
@@ -825,7 +825,7 @@ Inherited from [`UICell.Presets.background`](./UICell#UICell:Presets:background)
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.textColor`](./UICell#UICell:Presets:textColor).
@@ -836,7 +836,7 @@ Inherited from [`UICell.Presets.textColor`](./UICell#UICell:Presets:textColor).
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.borderThickness`](./UICell#UICell:Presets:borderThickness).
@@ -847,7 +847,7 @@ Inherited from [`UICell.Presets.borderThickness`](./UICell#UICell:Presets:border
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Inherited from [`UICell.Presets.borderColor`](./UICell#UICell:Presets:borderColor).

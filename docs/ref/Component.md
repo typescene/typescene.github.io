@@ -51,7 +51,7 @@ Component base class. Represents a managed object (see [`ManagedObject`](./Manag
 
 Component property values may be bound (see [`bind`](./bind)) to properties of a 'composite' parent, i.e. the component that references sub components through a property decorated with the [`@compose`](./compose) decorator.
 
-> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/concepts/components).
 
 ### Constructor
 ```typescript
@@ -138,11 +138,9 @@ Inherit bindings from given component constructor(s) on this constructor. Inheri
 (propertyName: string, constructor: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): Composition
 ```
 {:.declarationspec}
-Add a sub component to this component that is automatically constructed when this component is activated, using given constructor. This component will serve as the composite parent object of all instances (i.e. the target object for all bindings on the component and child components). Sub components are destroyed immediately when the component is deactivated or destroyed.
+Add a sub component to this component; see [`compose`](./compose).
 
-In addition, bindings on all other component classes passed as rest parameters are added on this composite component. This may be necessary if further nested components are added dynamically (e.g. as nested children) and the component constructor itself does not include all of the same bindings.
-
-Given properties must *already* be decorated with the [`@managedChild`](./managedChild) decorator. This method is intended for use by [`Component.preset`](./Component#Component:preset).
+Given property must *already* be decorated with the [`@managedChild`](./managedChild) decorator. This method is intended for use by [`Component.preset`](./Component#Component:preset).
 
 
 

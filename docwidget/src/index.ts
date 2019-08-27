@@ -1,7 +1,7 @@
 import { BrowserApplication } from "@typescene/webapp";
 import { compose, service } from "typescene";
-import { WidgetActivity } from "./activity/WidgetActivity";
-import { SearchService } from "./service/SearchService";
+import WidgetActivity from "./activity/WidgetActivity";
+import SearchService from "./service/SearchService";
 
 /** The widget application, includes a single activity */
 class Widget extends BrowserApplication {
@@ -24,7 +24,10 @@ class Widget extends BrowserApplication {
         await super.onManagedStateActiveAsync();
         (window as any).showDocWidget = () => this.showDocWidget();
         window.addEventListener("keydown", (e: KeyboardEvent) => {
-            if (e.key === "/") this.showDocWidget()
+            if (e.key === "/") {
+                this.showDocWidget();
+                e.preventDefault();
+            }
         });
         this.search!.loadAsync().catch(err => console.log(err));
     }

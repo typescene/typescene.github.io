@@ -62,7 +62,7 @@ export default UIFlowCell.with(
                     },
                     onMouseEnter: "+Select",
                     onClick: "+NavigateResult",
-                    onEnterKeyPress: "+NavigateResult",
+                    onEnterKeyPress: "+NavigateResult"
                 },
                 UIRow.with(
                     UIImage.with({

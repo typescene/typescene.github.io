@@ -17,6 +17,7 @@ nav: |
   * [.clear()](#ManagedMap:clear)
   * [.objects()](#ManagedMap:objects)
   * [.keys()](#ManagedMap:keys)
+  * [.forEach()](#ManagedMap:forEach)
   * [.includes()](#ManagedMap:includes)
   * [.toObject()](#ManagedMap:toObject)
   * [.toJSON()](#ManagedMap:toJSON)
@@ -44,7 +45,7 @@ pageintro: |
 ---
 
 ### Managed objects
-This class is part of a group of _managed object_ classes. See [Understanding components](/docs/guides/components) for details.
+This class is part of a group of _managed object_ classes. Read more about [Components](/docs/guides/concepts/components) for details.
 
 #### See also {#see_also}
 [`ManagedList`](./ManagedList), [`ManagedObject`](./ManagedObject), [`ManagedReference`](./ManagedReference).
@@ -197,6 +198,21 @@ Returns a list of all (unique) objects in this map.
 ```
 {:.declarationspec}
 Returns a list of all keys in this map.
+
+
+
+## ![](/assets/icons/spec-method.svg).forEach() {#ManagedMap:forEach}
+{:.spec}
+
+```typescript
+(callback: (key: string, target: T) => void): void
+```
+{:.declarationspec}
+Iterates over the keys in this list and invokes given callback for each key and object.
+
+- `callback` — the function to be called, with a key and a single object as the only argument.
+
+**Note:** The behavior of this method is undefined if objects are inserted by the callback function.
 
 
 

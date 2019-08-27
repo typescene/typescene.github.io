@@ -113,7 +113,7 @@ Modal view placement, defaults to Dialog.
 number
 ```
 {:.declarationspec}
-Modal backdrop opacity (0-1), defaults to 0.
+Modal backdrop opacity (0-1).
 
 
 

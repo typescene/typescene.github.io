@@ -1,17 +1,19 @@
 ---
-permalink: /docs/guides/ui/using-factories
+redirect_from: /docs/guides/ui/using-factories
+permalink: /docs/guides/howto/view-factories
+docsection: howto
 layout: doc_subpage
-title: Using constructor factories
+title: Using view factories
 description: How to use constructor factories for programming Typescene views.
-pageintro: Constructor factories provide a way to create views using a series of nested function calls. Typescene provides a large number of built-in UI components, but custom view components are also supported.
+pageintro: Constructor factories provide a way to create views using a series of nested function calls. Typescene provides a large number of built-in UI components, and supports custom view components as well.
 nav: |
-    * [Constructor factories](#what)
+    * [Constructor factories](#what-is)
     * [Views](#views)
     * [Custom views](#custom)
     * [UI Components](#ref)
 ---
 
-### What are constructor factories? {#what}
+### What are constructor factories? {#what-is}
 
 A constructor factory is a static method that _creates a constructor_, by taking a base class and a set of properties, and producing a constructor function that not only creates the base class but also assigns the given properties right away.
 
@@ -29,7 +31,7 @@ We call the resulting constructors _preset constructors_ because they contain 'p
 
 ### Views {#views}
 
-Typescene views are made up of these preset constructors, so that associated [activities](/docs/guides/activities) can create view instances as and when required from the constructor alone. The following qualifies as a Typescene view:
+Typescene views are made up of these preset constructors, so that associated [activities](/docs/guides/concepts/activities) can create view instances as and when required from the constructor alone. The following qualifies as a Typescene view:
 
 ```typescript
 const MyView = UICell.with(
@@ -186,5 +188,5 @@ The following sections list all the UI components that are included in the `type
 The following methods are also helpful within preset UI component structures. Refer to the linked reference documentation for details.
 
 * [tl](/docs/ref/tl) — creates a 'translated text label', i.e. a label component with translated text, and properties taken from tags in its string parameter.
-* [bind](/docs/ref/bind), [bindf](/docs/ref/bindf) — bind properties on one component to values on its composite parent (not specific to UI, see [Understanding components](/docs/guides/components)).
+* [bind](/docs/ref/bind), [bindf](/docs/ref/bindf) — bind properties on one component to values on its composite parent (not specific to UI, see [Components](/docs/guides/concepts/components)).
 

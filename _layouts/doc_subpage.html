@@ -3,47 +3,51 @@ layout: default
 ---
 {% assign lang = page.lang | default: "en" %}
 
-<div class="subpagetitle_container">
-    <section class="wrapper">
-        <h1>{{ page.title }}</h1>
-        {% if page.pageintro %}
-            <p class="style--pageintro">{{ page.pageintro }}</p>
-        {% endif %}
-    </section>
-</div>
-
 <article class="wrapper wrapper--page">
     <div class="wrapper_columns">
-        <div class="wrapper_column wrapper_column--sidebar">
-            <div class="fixed_cell sidebar_cell">
-                <h4>{{ site.data.docs[lang].page_introduction_name }}</h4>
-                <ul>
-                    {% for g in site.data.docs[lang].pages.introduction %}
-                        {% if g.url == page.url %}
-                            <li class="active"><b>{{ g.name }}</b></li>
-                            {{ page.nav | markdownify }}
-                        {% else %}
-                            <li><a href="{{ g.url }}">{{ g.name }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-
-                <h4>{{ site.data.docs[lang].page_guides_name }}</h4>
-                <ul>
-                    {% for g in site.data.docs[lang].pages.guides %}
-                        {% if g.url == page.url %}
-                            <li class="active"><b>{{ g.name }}</b></li>
-                            {{ page.nav | markdownify }}
-                        {% else %}
-                            <li><a href="{{ g.url }}">{{ g.name }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-
-            </div>
-        </div>
         <div class="wrapper_column">
+            <a href="/docs" class="top_backlink">{{ site.data.docs[lang].doc_backlink_text }}</a>
+            <a href="#toc" class="top_toclink">{{ site.data.docs[lang].doc_toclink_text }}</a>
+            <div class="pagetitle_container">
+                <h1>{{ page.title }}</h1>
+                {% if page.pageintro %}
+                    <p class="style--pageintro">{{ page.pageintro | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+                {% endif %}
+            </div>
+
             {{ content }}
+        </div>
+
+        <div class="wrapper_column wrapper_column--sidebar">
+            <div class="fixed_cell">
+                <div class="fixed_cell_inner">
+                    <div class="sidebartitle_container">
+                        <a href="/docs"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
+                    </div>
+                    <nav id="toc" class="sidebar_nav">
+                        {% for docsection in site.data.docs[lang].doc_sections %}
+                            {% if docsection.id == page.docsection %}
+                                <h4>{{ docsection.name }}</h4>
+                            {% else %}
+                                <h4 class="closed">{{ docsection.name }}</h4>
+                            {% endif %}
+                            <ul>
+                                {% for p in docsection.pages %}
+                                    {% if p.url == page.url %}
+                                        <li aria-current="page"><b>{{ p.name }}</b></li>
+                                        {{ page.nav | markdownify }}
+                                    {% else %}
+                                        <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </nav>
+                </div>
+                <div class="fixed_cell_backtotop">
+                    <a href="#" onclick="backToTop()">{{ site.data.docs[lang].backtotop_text }}</a>
+                </div>
+            </div>
         </div>
     </div>
 </article>

@@ -5,30 +5,22 @@ title: Documentation
 lang: en
 ---
 
-<div class="pagetitle_container">
-    <section class="wrapper">
-        <h1>Documentation</h1>
-    </section>
-</div>
-
 <article class="wrapper wrapper--page">
+    <div class="pagetitle_container">
+        <h1>Documentation</h1>
+    </div>
+
     <div class="wrapper_columns">
         <div class="wrapper_column">
-            <h3>Start Here</h3>
-            <p>If you’re new to Typescene, read these short articles to get a basic understanding of the framework:</p>
-            <ul>
-                {% for g in site.data.docs.en.pages.introduction %}
-                    <li><a href="{{ g.url }}">{{ g.name }}</a></li>
-                {% endfor %}
-            </ul>
-
-            <h3>Guides</h3>
-            <p>Follow along with these guides to learn more about each topic:</p>
-            <ul>
-                {% for g in site.data.docs.en.pages.guides %}
-                    <li><a href="{{ g.url }}">{{ g.name }}</a></li>
-                {% endfor %}
-            </ul>
+            {% for docsection in site.data.docs.en.doc_sections %}
+                <h3>{{ docsection.name }}</h3>
+                <p>{{ docsection.description }}</p>
+                <ul>
+                    {% for p in docsection.pages %}
+                        <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
 
             <hr>
             <p>
@@ -36,7 +28,7 @@ lang: en
             </p>
         </div>
 
-        <div class="wrapper_column wrapper_column--sidebar">
+        <aside class="wrapper_column wrapper_column--aside">
             <h3>API Reference</h3>
             <p><b>Tip:</b> use the “Docs” link at the top or hit the <code>/</code> key on any page to search.</p>
 
@@ -49,6 +41,6 @@ lang: en
                 {% endfor %}
             </table>
 
-        </div>
+        </aside>
     </div>
 </article>

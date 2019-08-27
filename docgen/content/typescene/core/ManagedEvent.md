@@ -1,5 +1,5 @@
 # ManagedEvent
-> **Note:** To learn more about components, managed objects, and events, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components, managed objects, and events, refer to [this guide](/docs/guides/concepts/components).
 
 ---
 # CHANGE

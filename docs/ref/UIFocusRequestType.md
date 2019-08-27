@@ -11,10 +11,10 @@ layout: ref_doc
 {:.spec}
 
 ```typescript
-enum UIFocusRequestType {
+const enum UIFocusRequestType {
     SELF = 0,
     FORWARD = 1,
-    REVERSE = 2
+    REVERSE = -1
 }
 ```
 {:.declarationspec}

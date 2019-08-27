@@ -207,10 +207,10 @@ True if this cell *itself* may receive input focus using the keyboard and all ot
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Padding around contained elements (in dp or CSS string, or separate offset values, defaults to 0).
+Padding around contained elements (in dp or CSS string, or separate offset values).
 
 
 
@@ -218,10 +218,10 @@ Padding around contained elements (in dp or CSS string, or separate offset value
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Margin around the entire cell (in dp or CSS string, or separate offset values, defaults to 0).
+Margin around the entire cell (in dp or CSS string, or separate offset values).
 
 
 
@@ -229,10 +229,10 @@ Margin around the entire cell (in dp or CSS string, or separate offset values, d
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Cell background (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to transparent.
+Cell background ([`UIColor`](./UIColor) or string), defaults to transparent.
 
 
 
@@ -240,10 +240,10 @@ Cell background (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), 
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Text color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to `inherit` to inherit the text color from a containing cell or background window.
+Text color ([`UIColor`](./UIColor) or string), defaults to `inherit` to inherit the text color from a containing cell or background window.
 
 
 
@@ -251,10 +251,10 @@ Text color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defau
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Border thickness (in dp or string with unit, or separate offset values, defaults to 0).
+Border thickness (in dp or string with unit, or separate offset values).
 
 
 
@@ -262,10 +262,10 @@ Border thickness (in dp or string with unit, or separate offset values, defaults
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Border color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Border color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -287,7 +287,7 @@ Border style (CSS), defaults to "solid".
 string | number
 ```
 {:.declarationspec}
-Border radius (in dp or CSS string, defaults to 0).
+Border radius (in dp or CSS string).
 
 
 
@@ -298,7 +298,7 @@ Border radius (in dp or CSS string, defaults to 0).
 number
 ```
 {:.declarationspec}
-Intensity of drop shadow based on visual 'elevation' level (0-1, defaults to 0).
+Intensity of drop shadow based on visual 'elevation' level (0-1).
 
 
 
@@ -766,10 +766,10 @@ UICell presets type, for use with [`Component.with`](./Component#Component:with)
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Padding around contained elements (in dp or CSS string, defaults to 0).
+Padding around contained elements (in dp or CSS string, or separate offset values).
 
 
 
@@ -777,10 +777,10 @@ Padding around contained elements (in dp or CSS string, defaults to 0).
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Margin around the entire cell (in dp or CSS string, defaults to 0).
+Margin around the entire cell (in dp or CSS string, or separate offset values).
 
 
 
@@ -788,10 +788,10 @@ Margin around the entire cell (in dp or CSS string, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Cell background (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Cell background ([`UIColor`](./UIColor) or string).
 
 
 
@@ -799,10 +799,10 @@ Cell background (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Text color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to `inherit` to inherit the text color from a containing cell or background window.
+Text color ([`UIColor`](./UIColor) or string), defaults to `inherit` to inherit the text color from a containing cell or background window.
 
 
 
@@ -810,10 +810,10 @@ Text color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defau
 {:.spec}
 
 ```typescript
-UICellOffsets
+Offsets
 ```
 {:.declarationspec}
-Border thickness (in dp or string with unit, defaults to 0).
+Border thickness (in dp or string with unit).
 
 
 
@@ -821,10 +821,10 @@ Border thickness (in dp or string with unit, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Border color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Border color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -857,7 +857,7 @@ Corner radius (in dp or CSS string, defaults to 0).
 number
 ```
 {:.declarationspec}
-Size of drop shadow based on visual 'elevation' (0-1, defaults to 0).
+Size of drop shadow based on visual 'elevation' (0-1).
 
 
 
@@ -1094,7 +1094,7 @@ Inherited from [`UIComponent.Presets.exitTransition`](./UIComponent#UIComponent:
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Focused cell background.
@@ -1105,7 +1105,7 @@ Focused cell background.
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Focused cell text color.
@@ -1127,10 +1127,10 @@ Focused cell border thickness (in dp or string with unit, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Focused cell border color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Focused cell border color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -1160,7 +1160,7 @@ Focused cell drop shadow size based on visual 'elevation' (0-1, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Selected cell background.
@@ -1171,7 +1171,7 @@ Selected cell background.
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Selected cell text color.
@@ -1193,10 +1193,10 @@ Selected cell border thickness (in dp or string with unit, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Selected cell border color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Selected cell border color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -1226,7 +1226,7 @@ Selected cell drop shadow size based on visual 'elevation' (0-1, defaults to 0).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Focused and selected cell background.
@@ -1237,7 +1237,7 @@ Focused and selected cell background.
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Focused and selected cell text color.
@@ -1259,10 +1259,10 @@ Focused and selected cell border thickness (in dp or string with unit, defaults 
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Focused and selected cell border color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Focused and selected cell border color ([`UIColor`](./UIColor) or string).
 
 
 

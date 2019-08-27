@@ -3,11 +3,11 @@ Components are the building blocks of a Typescene application.
 
 ---
 # Component
-> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/concepts/components).
 
 ---
 # compose
-> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/concepts/components).
 
 ---
 # ComponentConstructor
@@ -27,7 +27,7 @@ export class Application extends Component {
 
 ---
 # ComponentEvent
-Primarily, this event is emitted by the `Component.propagateComponentEvent` method, which is used when a [component preset](/docs/guides/components#presets) includes a propagated event definition (i.e. `"+OtherEvent"`).
+Primarily, this event is emitted by the `Component.propagateComponentEvent` method, which is used when a [component preset](/docs/guides/concepts/components#presets) includes a propagated event definition (i.e. `"+OtherEvent"`).
 #### See Also
 `UIComponentEvent`
 

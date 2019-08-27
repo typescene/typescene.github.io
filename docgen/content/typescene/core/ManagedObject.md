@@ -3,7 +3,7 @@ ManagedObject is the base class of most other framework classes, including Compo
 
 ---
 # ManagedObject
-> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/concepts/components).
 
 ---
 # ManagedState
@@ -12,15 +12,15 @@ ManagedObject is the base class of most other framework classes, including Compo
 
 ---
 # managed
-> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/concepts/components).
 
 ---
 # managedChild
-> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/concepts/components).
 
 ---
 # managedDependency
-> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components and managed objects, refer to [this guide](/docs/guides/concepts/components).
 
 ---
 # ManagedParentChangeEvent

@@ -9,7 +9,7 @@ export interface SearchResult {
 }
 
 /** Service that is used to load and run searches */
-export class SearchService extends ManagedService {
+export default class SearchService extends ManagedService {
     name = "App.Search";
 
     loaded?: boolean;

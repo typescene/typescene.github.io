@@ -1,44 +1,81 @@
 en:
   copyright: 2019 Typescene contributors
+  backtotop_text: ↑ Back to top
+  doc_backlink_text: ← Index
+  doc_toclink_text: Contents
   docs_name: Docs
-  ref_doc_name: Documentation
-  page_introduction_name: Start here
-  page_guides_name: Guides
+  doc_main_title: Documentation
   footer_text: |
     Find Typescene on
     <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a>,
     <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>, and
     <a href="https://patreon.com/typescene" target="_blank" rel="noopener">Patreon</a>
 
-  pages:
-    introduction:
-      - url: /docs/introduction/goals
-        name: Why Typescene?
-      - url: /docs/introduction/overview
-        name: Basic Overview
-      - url: /docs/introduction/installation
-        name: Installation
+  doc_sections:
+    - name: Overview
+      id: overview
+      description: |
+        If you’re new to Typescene, read these short articles to get a basic understanding of the framework.
+      pages:
+        - url: /docs/goals
+          name: Why Typescene?
+        - url: /docs/introduction
+          name: Introduction
+        - url: /docs/installation
+          name: Installation
 
-    guides:
-      - url: /docs/guides/first
-        name: Your first project
-      - url: /docs/guides/components
-        name: Understanding components
-      - url: /docs/guides/activities
-        name: Activities
-      - url: /docs/guides/advanced-activities
-        name: Advanced Activities
-      - url: /docs/guides/ui
-        name: Creating the UI
-      - url: /docs/guides/ui/using-jsx
-        name: Using JSX
-      - url: /docs/guides/ui/using-factories
-        name: Using factories
-      - url: /docs/guides/ui/containers
-        name: UI containers
-      - url: /docs/guides/ui/styles
-        name: UI styles and themes
-      - url: /docs/guides/ui/forms
-        name: User input and forms
-      - url: /docs/guides/ui/lists
-        name: Showing lists
+    - name: Quick Start
+      id: quickstart
+      description: |
+        Jump right in to get started with these step-by-step descriptions.
+      pages:
+        - url: /docs/guides/quickstart/hello-world
+          name: Hello, world!
+        - url: /docs/guides/quickstart/counter
+          name: Counter
+        - url: /docs/guides/quickstart/project
+          name: First project
+
+    - name: Concepts
+      id: concepts
+      description: |
+        Take a deeper dive to explore these core concepts in detail.
+      pages:
+        - url: /docs/guides/concepts/components
+          name: Components
+        - url: /docs/guides/concepts/events
+          name: Events
+        - url: /docs/guides/concepts/activities
+          name: Activities
+        - url: /docs/guides/concepts/views
+          name: Views
+        - url: /docs/guides/concepts/routing
+          name: Routing
+        - url: /docs/guides/concepts/rendering
+          name: Rendering
+        - url: /docs/guides/concepts/services
+          name: Services
+        - url: /docs/guides/concepts/applications
+          name: Applications
+
+    - name: How-to Guides
+      id: howto
+      description: |
+        These pages describe solutions that fit common requirements.
+      pages:
+        - url: /docs/guides/howto/advanced-activities
+          name: Advanced Activities
+        - url: /docs/guides/howto/jsx
+          name: Using JSX
+        - url: /docs/guides/howto/view-factories
+          name: Using view factories
+        - url: /docs/guides/howto/bindings
+          name: Bindings and formatting
+        - url: /docs/guides/howto/containers
+          name: View container layout
+        - url: /docs/guides/howto/styles
+          name: Styling view components
+        - url: /docs/guides/howto/forms
+          name: Forms and user input
+        - url: /docs/guides/howto/lists
+          name: List views

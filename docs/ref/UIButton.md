@@ -122,7 +122,7 @@ Creates a preset button class with given label (localized using [`tt`](./tt) if 
 {:.spec}
 
 ```typescript
-(icon: string, onClick?: string, size?: string | number, color?: string): typeof UIButton
+(icon: string, onClick?: string, size?: string | number, color?: Stringable): typeof UIButton
 ```
 {:.declarationspec}
 Creates a preset button class with given icon *only*, and onClick handler, if any.
@@ -232,7 +232,7 @@ Margin between icon and label text (in dp or string with unit).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Icon color.
@@ -734,10 +734,10 @@ Margin between icon and label text (in dp or string with unit).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Icon color.
+Icon color ([`UIColor`](./UIColor) or string).
 
 
 

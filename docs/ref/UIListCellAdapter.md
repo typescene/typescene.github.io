@@ -10,6 +10,7 @@ nav: |
   * [.cell](#UIListCellAdapter:cell)
   * [.onManagedStateActiveAsync()](#UIListCellAdapter:onManagedStateActiveAsync)
   * [.onManagedStateInactiveAsync()](#UIListCellAdapter:onManagedStateInactiveAsync)
+  * [.propagateComponentEvent()](#UIListCellAdapter:propagateComponentEvent)
   * [.selected](#UIListCellAdapter:selected)
   * [.hovered](#UIListCellAdapter:hovered)
   * [.requestFocus()](#UIListCellAdapter:requestFocus)
@@ -21,7 +22,6 @@ nav: |
   * [.isPresetComponent()](#UIListCellAdapter:isPresetComponent)
   * [.getParentComponent()](#UIListCellAdapter:getParentComponent)
   * [.getCompositeParent()](#UIListCellAdapter:getCompositeParent)
-  * [.propagateComponentEvent()](#UIListCellAdapter:propagateComponentEvent)
   * [.managedId](#UIListCellAdapter:managedId)
   * [.managedState](#UIListCellAdapter:managedState)
   * [.getReferenceCount()](#UIListCellAdapter:getReferenceCount)
@@ -35,6 +35,9 @@ nav: |
   * [.onManagedStateActivatingAsync()](#UIListCellAdapter:onManagedStateActivatingAsync)
   * [.onManagedStateDeactivatingAsync()](#UIListCellAdapter:onManagedStateDeactivatingAsync)
   * [.onManagedStateDestroyingAsync()](#UIListCellAdapter:onManagedStateDestroyingAsync)
+
+  #### Namespaced
+  * [UIListCellAdapter.Presets](#UIListCellAdapter:Presets)
 layout: ref_doc
 ---
 
@@ -137,6 +140,17 @@ Callback invoked immediately after state has changed to 'inactive' and before an
 
 
 
+## ![](/assets/icons/spec-method.svg).propagateComponentEvent() {#UIListCellAdapter:propagateComponentEvent}
+{:.spec}
+
+```typescript
+(name: string, inner?: ManagedEvent): void
+```
+{:.declarationspec}
+Create and emit a [`UIListCellAdapterEvent`](./UIListCellAdapterEvent) with given name and a reference to this component and its cell and object; see [`Component.propagateComponentEvent`](./Component#Component:propagateComponentEvent).
+
+
+
 ## ![](/assets/icons/spec-property.svg).selected {#UIListCellAdapter:selected}
 {:.spec}
 
@@ -234,17 +248,6 @@ Inherited from [`Component.getParentComponent`](./Component#Component:getParentC
 ```
 {:.declarationspec}
 Inherited from [`Component.getCompositeParent`](./Component#Component:getCompositeParent).
-
-
-
-## ![](/assets/icons/spec-method.svg).propagateComponentEvent() {#UIListCellAdapter:propagateComponentEvent}
-{:.spec}
-
-```typescript
-(name: string, inner?: ManagedEvent): void
-```
-{:.declarationspec}
-Inherited from [`Component.propagateComponentEvent`](./Component#Component:propagateComponentEvent).
 
 
 
@@ -390,4 +393,19 @@ Inherited from [`ManagedObject.onManagedStateDeactivatingAsync`](./ManagedObject
 ```
 {:.declarationspec}
 Inherited from [`ManagedObject.onManagedStateDestroyingAsync`](./ManagedObject#ManagedObject:onManagedStateDestroyingAsync).
+
+
+
+
+
+---
+
+## ![](/assets/icons/spec-type.svg)UIListCellAdapter.Presets {#UIListCellAdapter:Presets}
+{:.spec}
+
+```typescript
+type Presets = Omit<UICell.Presets, keyof EventPresets> & EventPresets;
+```
+{:.declarationspec}
+UICell presets type, for use with [`Component.with`](./Component#Component:with).
 

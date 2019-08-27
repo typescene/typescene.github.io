@@ -16,7 +16,7 @@ Event that can be emitted on a managed object, list/map, or reference, to be han
 
 **Note:** Event instances may be frozen and reused for better performance. See [`ManagedEvent.freeze`](./ManagedEvent#ManagedEvent:freeze).
 
-> **Note:** To learn more about components, managed objects, and events, refer to [this guide](/docs/guides/components).
+> **Note:** To learn more about components, managed objects, and events, refer to [this guide](/docs/guides/concepts/components).
 
 ### Constructor
 ```typescript

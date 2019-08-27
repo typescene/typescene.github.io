@@ -52,7 +52,7 @@ The current theme. This value may be changed but it is not observed.
 {:.spec}
 
 ```typescript
-(bg: string): string
+(bg: Stringable): string
 ```
 {:.declarationspec}
 Returns a suitable text color for given background color (mostly black, or mostly white).
@@ -63,7 +63,7 @@ Returns a suitable text color for given background color (mostly black, or mostl
 {:.spec}
 
 ```typescript
-(color: string): boolean
+(color: Stringable): boolean
 ```
 {:.declarationspec}
 Returns true if the pseudo-luminance of given color (in hex format `#112233` or `#123` or rgb(a) format `rgb(255, 255, 255)` or hsl format `hsl(255, 0%, 0%)`) is greater than 55%; can be used e.g. to decide on a contrasting text color for a given background color.
@@ -74,7 +74,7 @@ Returns true if the pseudo-luminance of given color (in hex format `#112233` or 
 {:.spec}
 
 ```typescript
-(color1: string, color2: string, p: number): string
+(color1: Stringable, color2: Stringable, p: number): string
 ```
 {:.declarationspec}
 Returns a color in rgb(a) format (e.g. `rgb(40,60,255)` `rgba(40,60,255,.5)`) that lies between given colors (in hex format `#112233` or `#123` or rgb(a) format `rgb(255, 255, 255)`) at given point (0-1, with 0 being the same as the first color, 1 being the same as the second color, and 0.5 being an equal mix).
@@ -85,7 +85,7 @@ Returns a color in rgb(a) format (e.g. `rgb(40,60,255)` `rgba(40,60,255,.5)`) th
 {:.spec}
 
 ```typescript
-(color: string): string
+(color: Stringable): string
 ```
 {:.declarationspec}
 Replace color variables in given string with colors from [`UITheme.colors`](./UITheme#UITheme:colors).
@@ -176,7 +176,7 @@ Set of predefined colors.
 {:.spec}
 
 ```typescript
-(name: string, color: string): this
+(name: string, color: Stringable): this
 ```
 {:.declarationspec}
 Define a new color with given name; may reference another color, see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor).

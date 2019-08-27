@@ -3,20 +3,28 @@ title: compose
 nav: |
 
   #### Declarations
-  * [@compose](#compose)
+  * [compose()](#compose)
 layout: ref_doc
 ---
 
-## ![](/assets/icons/spec-decorator.svg)@compose {#compose}
+## ![](/assets/icons/spec-function.svg)compose() {#compose}
 {:.spec}
 
 ```typescript
-(constructor: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): <T extends ManagedObject>(target: T, propertyKey: any) => void
+[1]. <T extends ManagedObject>(target: T, propertyKey: any, constructor: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): Composition
+[2]. (constructor: ComponentConstructor<Component> & (new () => Component), ...include: ComponentConstructor<Component>[]): PropertyDecorator
 ```
 {:.declarationspec}
-Property decorator: turn the decorated property into an active sub component reference, with the containing object as its composite parent (i.e. the target object for all bindings on the component and child components). Given constructor is used to create a sub component instance *when the containing component is activated*, and sub components are destroyed immediately when the component is deactivated or destroyed.
+**[1]** Add a sub component to _all instances_ of this class and derived classes, which is automatically created using given constructor when the instance itself is activated. The sub component is destroyed again when the instance is deactivated or destroyed.
 
-In addition, bindings on all other component classes passed as rest parameters are added on this composite component. This may be necessary if further nested components are added dynamically (e.g. as nested children) and the component constructor itself does not include all of the same bindings.
+This component will serve as the composite parent object of all sub (sub) components, i.e. the target object for all bindings.
 
-> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/components).
+Refer to 'Active composition' in the Typescene documentation for more details.
+
+Bindings on all other component classes passed as rest parameters are added on this composite component as well. This may be necessary if further nested components will be added dynamically _after_ calling this method.
+
+
+**[2]** Property decorator: Add a sub component to _all instances_ of this class and derived classes, on the decorated property.
+
+> **Note:** For a better understanding of how components are used in Typescene applications, read [this guide](/docs/guides/concepts/components).
 

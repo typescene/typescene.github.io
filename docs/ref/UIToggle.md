@@ -174,7 +174,7 @@ Label text, if any.
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Highlight (background) color, if any.
@@ -643,7 +643,7 @@ Label text, if any.
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
 Highlight (background) color, if any.

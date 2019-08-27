@@ -3,26 +3,36 @@ layout: default
 ---
 {% assign lang = page.lang | default: "en" %}
 
-<div class="subpagetitle_container">
-    <section class="wrapper">
-        <p class="subtitle"><a href="/docs"><b>{{ site.data.docs[lang].ref_doc_name }}</b></a></p>
-        <h1>{{ page.title }}</h1>
-        {% if page.pageintro %}
-            <p class="style--pageintro">{{ page.pageintro }}</p>
-        {% endif %}
-    </section>
-</div>
-
 <article class="wrapper wrapper--page">
     <div class="wrapper_columns">
-        <div class="wrapper_column wrapper_column--nav">
-            <div class="nav_cell fixed_cell">
-                {{ page.nav | markdownify }}
+        <div class="wrapper_column">
+            <div class="pagetitle_container">
+                <h1>{{ page.title }}</h1>
+                {% if page.pageintro %}
+                    <p class="style--pageintro">{{ page.pageintro | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+                {% endif %}
             </div>
+
+            {{ content }}
         </div>
 
-        <div class="wrapper_column">
-            {{ content }}
+        <div class="wrapper_column wrapper_column--sidebar wrapper_column--nav">
+            <div class="fixed_cell">
+                <div class="fixed_cell_inner">
+                    <div class="sidebartitle_container">
+                        <a href="/docs"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
+                    </div>
+                    <nav class="sidebar_nav">
+                        {{ page.nav | markdownify }}
+                    </nav>
+                </div>
+                <div class="fixed_cell_backtotop">
+                    <a href="#" onclick="backToTop()">{{ site.data.docs[lang].backtotop_text }}</a>
+                </div>
+            </div>
         </div>
     </div>
 </article>
+<script>
+    (function(){document.querySelectorAll(".sidebar_nav ul+h4").forEach(function(it){it.className="closed"})})()
+</script>

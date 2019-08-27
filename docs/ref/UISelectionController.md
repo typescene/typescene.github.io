@@ -53,7 +53,7 @@ Renderable wrapper that controls selection state across components, by emitting 
 {:.spec}
 
 ```typescript
-UIComponent
+Component
 ```
 {:.declarationspec}
 Currently selected component, if any.

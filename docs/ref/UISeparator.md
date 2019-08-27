@@ -120,7 +120,7 @@ Separator line thickness (in dp, or string with unit).
 string | number
 ```
 {:.declarationspec}
-Margin in the direction perpendicular to the separator (in dp, or string with unit), defaults to 0.
+Margin in the direction perpendicular to the separator (in dp, or string with unit).
 
 
 
@@ -128,10 +128,10 @@ Margin in the direction perpendicular to the separator (in dp, or string with un
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Separator line color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to `@separator`.
+Separator line color ([`UIColor`](./UIColor) or string), defaults to `@separator`.
 
 
 
@@ -630,10 +630,10 @@ Margin in the direction perpendicular to the separator (in dp, or string with un
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Separator line color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to `@separator`.
+Separator line color ([`UIColor`](./UIColor) or string), defaults to `@separator`.
 
 
 

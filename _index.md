@@ -14,7 +14,7 @@
 
 ### All-inclusive, dependency-free
 
-Typescene offers a component model that goes beyond UI rendering, supporting routes and state management out of the box. Other than a bundler (Webpack, Parcel, or otherwise) there are no dependencies to worry about at all.
+Typescene offers a component model that goes beyond UI rendering, and supports comprehensive state management out of the box. Other than a build chain (Webpack, Parcel, or otherwise) there are no dependencies to worry about at all.
 
 </section>
 <br><br>
@@ -33,7 +33,7 @@ Typescene offers a component model that goes beyond UI rendering, supporting rou
 
 ### Scales effortlessly
 
-All it takes to get started with Typescene is a single command. From there, the robust object-oriented model makes it easy to scale up simply by adding the components you need.
+All it takes to get started with Typescene is a single command. From there, the intuitive object-oriented architecture makes it easy to scale up simply by adding the components you need.
 
 </section>
 <br>
@@ -48,7 +48,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </div>
 <section markdown="1">
 
-**Views** are static representations of your UI, a tree structure of UI components either as XML (JSX) or nested JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully abstract away the DOM.
+**Views** are static representations of your UI, a tree structure of UI components either as XML (JSX) or nested JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully 'abstract away' the DOM.
 
 </section>
 </section>
@@ -88,7 +88,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 <br>
 
 <section class="wrapper_inner" markdown="1" style="text-align: center">
-  [Learn more about Typescene's architecture here](/docs/guides/overview).
+  [Learn more about Typescene's architecture here](/docs/introduction).
 </section>
 
 <br>
@@ -97,9 +97,9 @@ All it takes to get started with Typescene is a single command. From there, the 
 
 ### Questions?
 
-**Q. Should I use Typescene for my next app?** -- A. Sure! Read the [documentation](/docs) and use the guides to familiarize yourself with the framework and get started.
+**Q. Should I use Typescene for my next app?** -- A. **Sure!** Read the [documentation](/docs) and use the guides to familiarize yourself with the framework and get started.
 
-**Q. Should I use Typescene for my website or blog?** -- A. **No**, probably not. Typescene was developed for applications that resemble desktop or mobile apps, not server-generated content.
+**Q. Should I use Typescene for my website or blog?** -- A. **No**, probably not. Typescene was developed for interactive applications that resemble desktop or mobile apps, not server-generated content.
 
 **Q. Can I use plain JavaScript instead of TypeScript?** -- A. Yes, for your own code you can stick with JavaScript (ES6+), although all of the Typescene documentation is written with TypeScript in mind.
 
@@ -107,6 +107,4 @@ All it takes to get started with Typescene is a single command. From there, the 
 
 **Q. Why _yet another_ JavaScript framework...?** -- Typescene is genuinely different from the other options currently available in ways that actually benefit developers, with a dependency-less design that focuses on simplicity and maintainability.
 
-Not convinced? Read more about [Typescene's design goals](/docs/introduction/goals).
-
-
+Not convinced? Read more about [Typescene's design goals](/docs/goals).

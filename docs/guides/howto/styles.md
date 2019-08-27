@@ -1,7 +1,9 @@
 ---
-permalink: /docs/guides/ui/styles
+redirect_from: /docs/guides/ui/styles
+permalink: /docs/guides/howto/styles
+docsection: howto
 layout: doc_subpage
-title: UI styles
+title: Styling view components
 description: A description of the different ways to style components and groups of components.
 pageintro: Container components offer various ways to affect the way they are rendered on screen.
 nav: |
@@ -11,6 +13,7 @@ nav: |
     * [Colors](#color)
     * [Visibility](#visibility)
     * [Icons](#icons)
+    * [CSS](#css)
 ---
 
 ### Styling components {#styles}
@@ -176,4 +179,18 @@ for (let name in feather.icons) {
   let svg = feather.icons[name].toSvg();
   BrowserTheme.current.addIcon(name, svg);
 }
+```
+
+### CSS styling (Web) {#css}
+
+The `BrowserApplication` class includes methods for applying arbitrary CSS to your page. The [`UITheme`](/docs/ref/UITheme) class provides a better way to add global styles, but if you already have existing CSS files for other purposes you can import those programmatically.
+
+```typescript
+BrowserApplication.importStylesheet(url);
+```
+
+The browser renderer is resolution-independent, and converts all ‘dp’ (pixel) units in your view to fractional `rem` units. You can change the overall *zoom level* of your app using this static method:
+
+```typescript
+BrowserApplication.setGlobalDpSize(1.5);  // scale up
 ```

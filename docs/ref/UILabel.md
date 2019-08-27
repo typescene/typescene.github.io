@@ -128,7 +128,7 @@ Creates a preset label class with given text (localized using [`tt`](./tt) if av
 {:.spec}
 
 ```typescript
-(icon: string | Binding, size?: string | number, color?: string): typeof UILabel
+(icon: string | Binding, size?: string | number, color?: Stringable): typeof UILabel
 ```
 {:.declarationspec}
 Creates a preset label class with given icon *only*.
@@ -271,10 +271,10 @@ Margin between icon and label text (in dp or string with unit).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Icon color.
+Icon color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -784,10 +784,10 @@ Margin between icon and label text (in dp or string with unit).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Icon color.
+Icon color ([`UIColor`](./UIColor) or string).
 
 
 

@@ -89,7 +89,7 @@ UIFormContextController.with(
 {:.spec}
 
 ```typescript
-ManagedRecord
+ManagedObject
 ```
 {:.declarationspec}
 Form state context; defaults to an empty managed record.

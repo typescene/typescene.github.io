@@ -18,6 +18,7 @@ nav: |
   * [.getOwnStyles()](#UIStyle:getOwnStyles)
 
   #### Namespaced
+  * [UIStyle.Offsets](#UIStyle:Offsets)
   * [**UIStyle.ConditionalStyles**](#UIStyle:ConditionalStyles)
   * [**UIStyle.StyleObjects**](#UIStyle:StyleObjects)
   * [**UIStyle.Dimensions**](#UIStyle:Dimensions)
@@ -52,8 +53,13 @@ nav: |
   * [.strikeThrough](#UIStyle:TextStyle:strikeThrough)
   * [**UIStyle.ControlStyle**](#UIStyle:ControlStyle)
   * [.background](#UIStyle:ControlStyle:background)
+  * [.textColor](#UIStyle:ControlStyle:textColor)
   * [.border](#UIStyle:ControlStyle:border)
+  * [.borderColor](#UIStyle:ControlStyle:borderColor)
+  * [.borderStyle](#UIStyle:ControlStyle:borderStyle)
+  * [.borderThickness](#UIStyle:ControlStyle:borderThickness)
   * [.borderRadius](#UIStyle:ControlStyle:borderRadius)
+  * [.padding](#UIStyle:ControlStyle:padding)
   * [.dropShadow](#UIStyle:ControlStyle:dropShadow)
   * [.css](#UIStyle:ControlStyle:css)
   * [.cssClassNames](#UIStyle:ControlStyle:cssClassNames)
@@ -65,9 +71,10 @@ nav: |
   * [.clip](#UIStyle:ContainerLayout:clip)
   * [**UIStyle.SeparatorOptions**](#UIStyle:SeparatorOptions)
   * [.type](#UIStyle:SeparatorOptions:type)
-  * [.color](#UIStyle:SeparatorOptions:color)
+  * [.vertical](#UIStyle:SeparatorOptions:vertical)
   * [.thickness](#UIStyle:SeparatorOptions:thickness)
   * [.margin](#UIStyle:SeparatorOptions:margin)
+  * [.color](#UIStyle:SeparatorOptions:color)
 layout: ref_doc
 ---
 
@@ -219,6 +226,26 @@ Returns all individual style objects as read-only objects.
 Returns all styles that are unique to this instance, as read-only objects.
 
 
+
+
+
+---
+
+## ![](/assets/icons/spec-type.svg)UIStyle.Offsets {#UIStyle:Offsets}
+{:.spec}
+
+```typescript
+type Offsets = string | number | {
+        x?: string | number;
+        y?: string | number;
+        top?: string | number;
+        bottom?: string | number;
+        left?: string | number;
+        right?: string | number;
+    };
+```
+{:.declarationspec}
+Type definition for padding, margin, or border measurements.
 
 
 
@@ -425,10 +452,10 @@ Text alignment (CSS).
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Text color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Text color ([`UIColor`](./UIColor) or string).
 
 
 
@@ -577,10 +604,21 @@ Miscellaneous style options for control components, including all CSS attributes
 {:.spec}
 
 ```typescript
-string
+Stringable
 ```
 {:.declarationspec}
-Background style or color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Background style or color ([`UIColor`](./UIColor) or string).
+
+
+
+## ![](/assets/icons/spec-property.svg).textColor {#UIStyle:ControlStyle:textColor}
+{:.spec}
+
+```typescript
+Stringable
+```
+{:.declarationspec}
+Text color ([`UIColor`](./UIColor) or string); this may be overridden by [`UIStyle.TextStyle.color`](./UIStyle#UIStyle:TextStyle:color) if specified on the same component or a child component.
 
 
 
@@ -588,10 +626,43 @@ Background style or color (see [`UITheme.replaceColor`](./UITheme#UITheme:replac
 {:.spec}
 
 ```typescript
+Stringable
+```
+{:.declarationspec}
+Border properties (CSS string) @deprecated.
+
+
+
+## ![](/assets/icons/spec-property.svg).borderColor {#UIStyle:ControlStyle:borderColor}
+{:.spec}
+
+```typescript
+Stringable
+```
+{:.declarationspec}
+Border color ([`UIColor`](./UIColor) or string).
+
+
+
+## ![](/assets/icons/spec-property.svg).borderStyle {#UIStyle:ControlStyle:borderStyle}
+{:.spec}
+
+```typescript
 string
 ```
 {:.declarationspec}
-Border style or color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)).
+Border style (CSS), defaults to "solid".
+
+
+
+## ![](/assets/icons/spec-property.svg).borderThickness {#UIStyle:ControlStyle:borderThickness}
+{:.spec}
+
+```typescript
+Offsets
+```
+{:.declarationspec}
+Border thickness (in dp or CSS string, or separate offset values).
 
 
 
@@ -602,7 +673,18 @@ Border style or color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceCol
 string | number
 ```
 {:.declarationspec}
-Border radius (in dp or CSS string, defaults to 0).
+Border radius (in dp or CSS string).
+
+
+
+## ![](/assets/icons/spec-property.svg).padding {#UIStyle:ControlStyle:padding}
+{:.spec}
+
+```typescript
+Offsets
+```
+{:.declarationspec}
+Padding within control element (in dp or CSS string, or separate offset values).
 
 
 
@@ -635,7 +717,7 @@ Miscellaneous CSS attributes.
 string[]
 ```
 {:.declarationspec}
-Miscellaneous CSS class names.
+Miscellaneous CSS class names (array).
 
 
 
@@ -723,14 +805,14 @@ Separator type, defaults to line.
 
 
 
-## ![](/assets/icons/spec-property.svg).color {#UIStyle:SeparatorOptions:color}
+## ![](/assets/icons/spec-property.svg).vertical {#UIStyle:SeparatorOptions:vertical}
 {:.spec}
 
 ```typescript
-string
+boolean
 ```
 {:.declarationspec}
-Separator line color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColor)), defaults to `@separator`.
+True for vertical line, or width-only spacer.
 
 
 
@@ -741,7 +823,7 @@ Separator line color (see [`UITheme.replaceColor`](./UITheme#UITheme:replaceColo
 string | number
 ```
 {:.declarationspec}
-Separator thickness (CSS length or dp).
+Separator line thickness or space width/height (CSS length or dp).
 
 
 
@@ -752,5 +834,16 @@ Separator thickness (CSS length or dp).
 string | number
 ```
 {:.declarationspec}
-Separator margin (CSS length or dp).
+Line separator margin (CSS length or dp).
+
+
+
+## ![](/assets/icons/spec-property.svg).color {#UIStyle:SeparatorOptions:color}
+{:.spec}
+
+```typescript
+Stringable
+```
+{:.declarationspec}
+Line separator color ([`UIColor`](./UIColor) or string), defaults to `@separator`.
 

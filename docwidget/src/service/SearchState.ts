@@ -1,4 +1,4 @@
-import { SearchResult, SearchService } from './SearchService';
+import SearchService, { SearchResult } from './SearchService';
 
 /** Captured state for a partial search, used by `SearchService` */
 export class SearchState {

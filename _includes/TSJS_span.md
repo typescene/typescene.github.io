@@ -1,0 +1,1 @@
+<span class="TSJSSwitch TSJSSwitch--standalone"><a href="#">TypeScript</a><a href="#">JavaScript (ES6)</a></span>

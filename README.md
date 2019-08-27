@@ -1,5 +1,4 @@
-Typescene Website
-=================
+# Typescene Website
 
 This is the website served at https://typescene.dev.
 

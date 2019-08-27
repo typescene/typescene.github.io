@@ -1,18 +1,20 @@
 ---
-permalink: /docs/guides/ui/using-jsx
+redirect_from: /docs/guides/ui/using-jsx
+permalink: /docs/guides/howto/jsx
+docsection: howto
 layout: doc_subpage
 title: Using JSX
 description: How to use JSX to create Typescene views.
-pageintro: JSX provides a convenient way to create views using XML. Typescene provides a large number of built-in elements and supports custom views as well.
+pageintro: JSX provides a convenient way to create views using XML. Typescene provides a large number of built-in elements and supports custom views using JSX as well.
 nav: |
-    * [What is JSX?](#what)
+    * [What is JSX?](#what-is)
     * [Prerequisites](#prerequisites)
     * [Views](#views)
     * [Custom views](#custom)
     * [Intrinsic elements](#intrinsic)
 ---
 
-### What is JSX? {#what}
+### What is JSX? {#what-is}
 
 JSX refers to "XML-in-JavaScript", a new feature that is supported by TypeScript (and Babel, for a JS-only solution).
 
@@ -33,7 +35,7 @@ Note that JSX code is not the same as the resulting HTML, since JSX is only tran
 
 ### Prerequisites {#prerequisites}
 
-The easiest way to get started with JSX is to provide the `--jsx` option to `create-typescene-webapp` (see [Installation](/docs/introduction/installation)).
+The easiest way to get started with JSX is to provide the `--jsx` option to `create-typescene-webapp` (see [Installation](/docs/installation)).
 
 However, if you want to incorporate JSX into an existing project, make sure you follow these steps:
 

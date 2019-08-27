@@ -56,7 +56,7 @@ pageintro: |
 ---
 
 ### Managed objects
-This class is part of a group of _managed object_ classes. See [Understanding components](/docs/guides/components) for details.
+This class is part of a group of _managed object_ classes. Read more about [Components](/docs/guides/concepts/components) for details.
 
 #### See also {#see_also}
 [`ManagedMap`](./ManagedMap), [`ManagedObject`](./ManagedObject), [`ManagedReference`](./ManagedReference).

@@ -31,7 +31,7 @@ String format bindings should be created using the [`bindf`](./bindf) function.
 
 ### Constructor
 ```typescript
-(text: any): StringFormatBinding
+(text: any, ...rest: Binding[]): StringFormatBinding
 ```
 {:.declarationspec}
 

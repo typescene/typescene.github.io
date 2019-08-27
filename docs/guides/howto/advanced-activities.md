@@ -1,5 +1,7 @@
 ---
-permalink: /docs/guides/advanced-activities
+redirect-from: /docs/guides/advanced-activities
+permalink: /docs/guides/howto/advanced-activities
+docsection: howto
 layout: doc_subpage
 title: Advanced Activities
 description: A description of some advanced concepts regarding activity components.
@@ -10,9 +12,13 @@ nav: |
     * [Dynamic imports](#imports)
 ---
 
+{:.TODO}
+> **Coming soon** <br>
+  This section is still in development. In the meantime, refer to the examples and reference documentation from the [documentation home page](/docs).
+
 ### Dynamic child activities {#dynamic}
 
-On a single activity, we can observe the `match` property to keep track of path captures as the user navigates through the application, as follows (this is the final example of the [Activities](/docs/guides/activities) guide).
+On a single activity, we can observe the `match` property to keep track of path captures as the user navigates through the application, as follows (this is the final example of the [Activities](/docs/guides/concepts/activities) guide).
 
 ```typescript
 import { PageViewActivity, managedChild } from "typescene";
@@ -222,5 +228,5 @@ Note that we don't need to activate the 'real' activity instance after assigning
 
 #### Next steps
 
-* Refer to [Creating the UI](/docs/guides/ui) for information on how to define your application's views using UI components.
-* Follow along with [Your first project](/docs/guides/first) to see a basic activity in action and start experimenting from there.
+* Refer to [Views](/docs/guides/concepts/views) for information on how to define your application's views using UI components.
+* Follow along with the [Counter](/docs/guides/quickstart/counter) example to see a basic activity in action and start experimenting from there.

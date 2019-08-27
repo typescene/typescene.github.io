@@ -16,7 +16,7 @@ layout: ref_doc
 {:.declarationspec}
 Observer method decorator: amend decorated method to turn it into a handler for changes to given property/ies.
 
-**Note:** This decorator is intended for use on methods that are part of an observer class, see [`ManagedObject.observe`](./ManagedObject#ManagedObject:observe).
+**Note:** This decorator is intended for use on methods that are part of an observer class, see [`observe()`](./observe).
 
 #### Example
 ```typescript

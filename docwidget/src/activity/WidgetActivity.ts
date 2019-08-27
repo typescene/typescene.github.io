@@ -1,8 +1,8 @@
 import { DialogViewActivity, managedChild, ManagedList, ManagedRecord, rateLimit, service, UIComponent, UIComponentEvent, UIListCellAdapterEvent, UIRenderPlacement, UITextField } from "typescene";
-import { SearchResult, SearchService } from "../service/SearchService";
+import SearchService, { SearchResult } from "../service/SearchService";
 import view from "./view";
 
-export class WidgetActivity extends DialogViewActivity.with(view) {
+export default class WidgetActivity extends DialogViewActivity.with(view) {
     placement = UIRenderPlacement.DIALOG;
     modalShadeClickToClose = true;
 

@@ -14,6 +14,7 @@ exclude:
 markdown: kramdown
 plugins:
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 kramdown:
   syntax_highlighter: rouge
