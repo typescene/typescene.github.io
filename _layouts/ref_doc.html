@@ -20,7 +20,7 @@ layout: default
             <div class="fixed_cell">
                 <div class="fixed_cell_inner">
                     <div class="sidebartitle_container">
-                        <a href="/docs"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
+                        <a href="/docs/"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
                     </div>
                     <nav class="sidebar_nav">
                         {{ page.nav | markdownify }}
@@ -33,6 +33,7 @@ layout: default
         </div>
     </div>
 </article>
+<link rel="prefetch" href="/docs/" as="fetch" />
 <script>
     (function(){document.querySelectorAll(".sidebar_nav ul+h4").forEach(function(it){it.className="closed"})})()
 </script>

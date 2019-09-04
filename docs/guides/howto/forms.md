@@ -12,7 +12,7 @@ nav: |
 
 {:.TODO}
 > **Coming soon** <br>
-  This section is still in development. In the meantime, refer to the examples and reference documentation from the [documentation home page](/docs).
+  This section is still in development. In the meantime, refer to the examples and reference documentation from the [documentation home page](/docs/).
 
 ### User input events {#events}
 

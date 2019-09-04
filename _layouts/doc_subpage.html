@@ -3,10 +3,11 @@ layout: default
 ---
 {% assign lang = page.lang | default: "en" %}
 
+<link rel="preload" href="/assets/icons/chevron.svg" as="image" />
 <article class="wrapper wrapper--page">
     <div class="wrapper_columns">
         <div class="wrapper_column">
-            <a href="/docs" class="top_backlink">{{ site.data.docs[lang].doc_backlink_text }}</a>
+            <a href="/docs/" class="top_backlink">{{ site.data.docs[lang].doc_backlink_text }}</a>
             <a href="#toc" class="top_toclink">{{ site.data.docs[lang].doc_toclink_text }}</a>
             <div class="pagetitle_container">
                 <h1>{{ page.title }}</h1>
@@ -22,7 +23,7 @@ layout: default
             <div class="fixed_cell">
                 <div class="fixed_cell_inner">
                     <div class="sidebartitle_container">
-                        <a href="/docs"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
+                        <a href="/docs/"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
                     </div>
                     <nav id="toc" class="sidebar_nav">
                         {% for docsection in site.data.docs[lang].doc_sections %}
@@ -38,6 +39,7 @@ layout: default
                                         {{ page.nav | markdownify }}
                                     {% else %}
                                         <li><a href="{{ p.url }}">{{ p.name }}</a></li>
+                                        <link rel="prefetch" href="{{ p.url }}" as="fetch" />
                                     {% endif %}
                                 {% endfor %}
                             </ul>
@@ -51,3 +53,4 @@ layout: default
         </div>
     </div>
 </article>
+<link rel="prefetch" href="/docs/" as="fetch" />

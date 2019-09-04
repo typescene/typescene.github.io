@@ -546,4 +546,4 @@ That's all — we've created a service, an activity, and a view. Run the `npm r
 
 For a more complex example, check out the RealWorld front-end implementation in [this repo](https://github.com/typescene/typescene-realworld-example-app){:target="_blank"}.
 
-Return to the [docs index](/docs) to find out which concept you would like to learn more about.
+Return to the [docs index](/docs/) to find out which concept you would like to learn more about.
