@@ -1,6 +1,9 @@
 import * as path from "path";
 import * as ts from "typescript";
 
+const DEBUG = process.argv.some(a => a === "--debug");
+if (DEBUG) console.log(ts.SyntaxKind);
+
 /** Enumeration of declaration index node types */
 export enum SpecNodeType {
     TypeOrEnum = "type",
@@ -371,7 +374,7 @@ export class DeclarationFileParser {
             id += "[...]";
             if (this._nodes[id]) return;
             result = this._nodes[id] = new SpecNode(id, "[...]", SpecNodeType.PropertyDeclaration);
-            result.spec = node.getText();
+            result.spec = (node as ts.IndexSignatureDeclaration).getText();
         }
         else {
             let name = symbol.getName();
@@ -410,6 +413,13 @@ export class DeclarationFileParser {
 
     /** Recursively analyze given syntax tree node and return one or more documentation nodes */
     private _recurse(id: string, node: ts.Node): SpecNode[] | SpecNode | undefined {
+        if (DEBUG) {
+            let symbol: ts.Symbol = (node as any).symbol ||
+                this.checker.getSymbolAtLocation((node as any).name || node);
+            if (symbol) {
+                console.log("SYM ", symbol && symbol.getName(), node.kind)
+            }
+        }
         switch (node.kind) {
             case ts.SyntaxKind.TypeAliasDeclaration:
             case ts.SyntaxKind.EnumDeclaration:
@@ -428,6 +438,8 @@ export class DeclarationFileParser {
                 return this._createMethodSpecNode(id, node as ts.MethodDeclaration);
             case ts.SyntaxKind.PropertyDeclaration:
             case ts.SyntaxKind.PropertySignature:
+            case ts.SyntaxKind.GetAccessor:
+            case ts.SyntaxKind.SetAccessor:
             case ts.SyntaxKind.IndexSignature:
                 return this._createPropertySpecNode(id, node as ts.PropertyDeclaration);
             case ts.SyntaxKind.VariableDeclaration:

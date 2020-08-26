@@ -46,7 +46,8 @@ function emptyDir(p: string) {
 
 /** Helper function to compress search content using a very simple string-based algorithm */
 function compressContent(content: string[]) {
-    let words: string[] = [], ref: any = {};
+    let words: string[] = [];
+    let ref = Object.create(null);
     let str = content.join("+").replace(/\w+/g, word => {
         if (word in ref) {
             // if seen: move word to the front of the stack, insert old position

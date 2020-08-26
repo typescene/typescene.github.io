@@ -97,6 +97,8 @@ All it takes to get started with Typescene is a single command. From there, the 
 
 ### Questions?
 
+**Q. Who makes Typescene?** -- A. Typescene is an **independent** open source project. It was originally started by a single developer around the same time as some of the big frameworks that are around today. After years of polishing and dog-fooding, code and tools have been made available for general use.
+
 **Q. Should I use Typescene for my next app?** -- A. **Sure!** Read the [documentation](/docs) and use the guides to familiarize yourself with the framework and get started.
 
 **Q. Should I use Typescene for my website or blog?** -- A. **No**, probably not. Typescene was developed for interactive applications that resemble desktop or mobile apps, not server-generated content.

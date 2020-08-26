@@ -1,81 +1,84 @@
 en:
-  copyright: 2019 Typescene contributors
+  copyright: 2020 Typescene contributors
   backtotop_text: ↑ Back to top
-  doc_backlink_text: ← Index
+  doc_backlink_text: Documentation
+  doc_guide_text: Guides
+  doc_ref_text: Reference
   doc_toclink_text: Contents
   docs_name: Docs
   doc_main_title: Documentation
   footer_text: |
     Find Typescene on
-    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a>,
-    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>, and
-    <a href="https://patreon.com/typescene" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a> and
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>
 
   doc_sections:
     - name: Overview
       id: overview
       description: |
-        If you’re new to Typescene, read these short articles to get a basic understanding of the framework.
+        If you’re new to Typescene, read these short articles to understand what Typescene is and what it can be used for.
       pages:
-        - url: /docs/goals
+        - url: /docs/goals/
           name: Why Typescene?
-        - url: /docs/introduction
+        - url: /docs/introduction/
           name: Introduction
-        - url: /docs/installation
+        - url: /docs/installation/
           name: Installation
-
-    - name: Quick Start
-      id: quickstart
-      description: |
-        Jump right in to get started with these step-by-step descriptions.
-      pages:
-        - url: /docs/guides/quickstart/hello-world
-          name: Hello, world!
-        - url: /docs/guides/quickstart/counter
-          name: Counter
-        - url: /docs/guides/quickstart/project
-          name: First project
+        - url: /docs/js-ts/
+          name: JavaScript vs TypeScript
 
     - name: Concepts
       id: concepts
       description: |
-        Take a deeper dive to explore these core concepts in detail.
+        These articles describe important concepts that you'll need to understand in order to build your own Typescene apps from scratch.
       pages:
-        - url: /docs/guides/concepts/components
+        - url: /docs/concepts/components/
           name: Components
-        - url: /docs/guides/concepts/events
-          name: Events
-        - url: /docs/guides/concepts/activities
-          name: Activities
-        - url: /docs/guides/concepts/views
+        - url: /docs/concepts/lists-maps/
+          name: Lists and maps
+        - url: /docs/concepts/views/
           name: Views
-        - url: /docs/guides/concepts/routing
-          name: Routing
-        - url: /docs/guides/concepts/rendering
-          name: Rendering
-        - url: /docs/guides/concepts/services
+        - url: /docs/concepts/activities/
+          name: Activities
+        - url: /docs/concepts/services/
           name: Services
-        - url: /docs/guides/concepts/applications
-          name: Applications
 
-    - name: How-to Guides
-      id: howto
+    - name: Guides
+      id: guides
       description: |
-        These pages describe solutions that fit common requirements.
+        Move on to these chapters for short and to-the-point guides, with code examples that demonstrate common app development tasks.
       pages:
-        - url: /docs/guides/howto/advanced-activities
-          name: Advanced Activities
-        - url: /docs/guides/howto/jsx
-          name: Using JSX
-        - url: /docs/guides/howto/view-factories
-          name: Using view factories
-        - url: /docs/guides/howto/bindings
-          name: Bindings and formatting
-        - url: /docs/guides/howto/containers
-          name: View container layout
-        - url: /docs/guides/howto/styles
-          name: Styling view components
-        - url: /docs/guides/howto/forms
-          name: Forms and user input
-        - url: /docs/guides/howto/lists
+        - url: /docs/guides/ui/
+          name: UI components
+        - url: /docs/guides/layout/
+          name: View layout
+        - url: /docs/guides/nesting/
+          name: Nesting views
+        - url: /docs/guides/themes-styles/
+          name: Themes and styles
+        - url: /docs/guides/custom-views/
+          name: Custom views
+        - url: /docs/guides/list-views/
           name: List views
+        - url: /docs/guides/modals/
+          name: Modal views
+        - url: /docs/guides/transitions/
+          name: Transitions
+        - url: /docs/guides/bindings/
+          name: Bindings
+        - url: /docs/guides/forms/
+          name: Forms
+        - url: /docs/guides/scrolling/
+          name: Scrolling
+        - url: /docs/guides/activities/
+          name: Activities
+        - url: /docs/guides/models/
+          name: Data models
+        - url: /docs/guides/services/
+          name: Services
+        - url: /docs/guides/i18n/
+          name: Internationalization
+        - url: /docs/guides/applications/
+          name: Applications
+        - url: /docs/guides/component-libs/
+          name: Component libraries

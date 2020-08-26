@@ -1,4 +1,4 @@
-import { bind, bindf, tl, UIBorderlessTextField, UICell, UIExpandedLabel, UIFlowCell, UIImage, UILinkButton, UIListCellAdapter, UIListController, UIRow, UISelectionController, UISeparator } from "typescene";
+import { bind, bindf, UIBorderlessTextField, UICell, UIExpandedLabel, UIFlowCell, UIImage, UILinkButton, UIListCellAdapter, UIListController, UIRow, UISelectionController, UISeparator, UILabel } from "typescene";
 
 export default UIFlowCell.with(
     {
@@ -38,7 +38,7 @@ export default UIFlowCell.with(
             hidden: bind("!search.error"),
             padding: { x: 16, y: 8 }
         },
-        UIRow.with(tl("{@text/50%}An error occurred, please reload"))
+        UIRow.with(UILabel.withText("An error occurred, please reload", { color: "@text/50%" }))
     ),
 
     // results list

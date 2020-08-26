@@ -6,11 +6,22 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://typescene.dev" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: typescene
 github_username: typescene
+collections:
+  docs:
+    permalink: /docs/:path/
+    output: true
+  guides:
+    permalink: /docs/guides/:title/
+    output: true
+  ref:
+    permalink: /docs/ref/:path
+    output: true
 
 # Build settings
 exclude:
   - docgen
   - docwidget
+  - docs-v2
 markdown: kramdown
 plugins:
   - jekyll-sitemap
@@ -18,3 +29,4 @@ plugins:
 
 kramdown:
   syntax_highlighter: rouge
+

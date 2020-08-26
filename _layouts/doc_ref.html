@@ -1,0 +1,48 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: "en" %}
+
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+        <a href="/docs/">{{ site.data.docs[lang].doc_backlink_text }}</a>
+        &nbsp;|&nbsp;
+        {{ site.data.docs[lang].doc_ref_text }}
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page">
+    <div class="wrapper_columns">
+        <div class="wrapper_column">
+            <div class="pagetitle_container">
+                <h1>{{ page.title }}</h1>
+                {% if page.pageintro %}
+                    <p class="style--pageintro">{{ page.pageintro | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+                {% endif %}
+            </div>
+
+            {{ content }}
+        </div>
+
+        <div class="wrapper_column wrapper_column--sidebar wrapper_column--nav">
+            <div class="fixed_cell">
+                <div class="fixed_cell_inner">
+                    <nav id="toc" class="sidebar_nav">
+                        {{ page.nav | markdownify }}
+                    </nav>
+                </div>
+                <div class="fixed_cell_backtotop">
+                    <a href="#" onclick="backToTop()">{{ site.data.docs[lang].backtotop_text }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />
+<script>
+    (function(){document.querySelectorAll(".sidebar_nav ul+h4").forEach(function(it){it.className="closed"})})()
+</script>

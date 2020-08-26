@@ -4,11 +4,25 @@ layout: default
 {% assign lang = page.lang | default: "en" %}
 
 <link rel="preload" href="/assets/icons/chevron.svg" as="image" />
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs/">{{ site.data.docs[lang].doc_backlink_text }}</a>
+          {% for docsection in site.data.docs[lang].doc_sections %}
+            {% if docsection.id == page.docsection %}
+              &nbsp;|&nbsp;
+              {{ docsection.name }}
+            {% endif %}
+          {% endfor %}
+      </span>
+  </section>
+</div>
 <article class="wrapper wrapper--page">
     <div class="wrapper_columns">
         <div class="wrapper_column">
-            <a href="/docs/" class="top_backlink">{{ site.data.docs[lang].doc_backlink_text }}</a>
-            <a href="#toc" class="top_toclink">{{ site.data.docs[lang].doc_toclink_text }}</a>
             <div class="pagetitle_container">
                 <h1>{{ page.title }}</h1>
                 {% if page.pageintro %}
@@ -22,9 +36,6 @@ layout: default
         <div class="wrapper_column wrapper_column--sidebar">
             <div class="fixed_cell">
                 <div class="fixed_cell_inner">
-                    <div class="sidebartitle_container">
-                        <a href="/docs/"><h4 class="sidetitle">{{ site.data.docs[lang].doc_main_title }}</h4></a>
-                    </div>
                     <nav id="toc" class="sidebar_nav">
                         {% for docsection in site.data.docs[lang].doc_sections %}
                             {% if docsection.id == page.docsection %}

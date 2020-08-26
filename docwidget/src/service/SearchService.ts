@@ -1,4 +1,4 @@
-import { CHANGE, ManagedService } from "typescene";
+import { ManagedService } from "typescene";
 import { SearchState } from "./SearchState";
 
 /** Search result entry */
@@ -36,13 +36,13 @@ export default class SearchService extends ManagedService {
                     });
             }
             this.loaded = true;
-            this.emit(CHANGE);
+            this.emitChange();
         }
         catch (err) {
             console.log(err);
             this.loaded = true;
             this.error = String(err);
-            this.emit(CHANGE);
+            this.emitChange();
         }
     }
 

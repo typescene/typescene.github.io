@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^12.7.0",
-    "typescene": "^2.20.1",
-    "typescript": "3.4.5"
+    "typescene": "3.0.0-beta4",
+    "typescript": "3.9.7"
   }
 }

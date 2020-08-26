@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: "en" %}
+
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs/">{{ site.data.docs[lang].doc_backlink_text }}</a>
+          {% for doc in site.guides %}
+          {% if doc.slug == page.guide %}
+              &nbsp;|&nbsp;
+              {{ site.data.docs[lang].doc_guide_text }}
+              &gt; <a href="{{doc.url}}">{{ doc.title }}</a>
+          {% endif %}
+          {% endfor %}
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page wrapper--guide">
+    <div class="pagetitle_container">
+        <h1>{{ page.title }}</h1>
+        {% if page.pageintro %}
+            <p class="style--pageintro">{{ page.pageintro | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+        {% endif %}
+    </div>
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper--guide_content">
+            {{ content }}
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />

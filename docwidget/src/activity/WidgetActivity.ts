@@ -17,8 +17,8 @@ export default class WidgetActivity extends DialogViewActivity.with(view) {
     constructor() {
         super();
         this.propagateChildEvents(e => {
-            if (e.name === "CloseModal") this.deactivateAsync();
-        });
+            if (e.name === "CloseModal") this.deactivateManagedAsync();
+        })
     }
 
     updateFiltered() {
@@ -46,20 +46,20 @@ export default class WidgetActivity extends DialogViewActivity.with(view) {
     navigateFirst() {
         let first = this.filtered.first();
         if (first) {
-            this.deactivateAsync();
+            this.deactivateManagedAsync();
             document.location.href = "/docs/ref/" + first.path;
         }
     }
 
     navigateResult(e: UIListCellAdapterEvent<SearchResult & ManagedRecord>) {
         if (e.object && e.object.path) {
-            this.deactivateAsync();
+            this.deactivateManagedAsync();
             document.location.href = "/docs/ref/" + e.object.path;
         }
     }
 
     goToIndex() {
-        this.deactivateAsync();
+        this.deactivateManagedAsync();
         document.location.href = "/docs";
     }
 
@@ -75,4 +75,4 @@ class Observer {
         this.activity.updateFiltered();
     }
 }
-WidgetActivity.observe(Observer);
+WidgetActivity.addObserver(Observer);
