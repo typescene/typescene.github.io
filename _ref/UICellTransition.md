@@ -25,5 +25,5 @@ enum UICellTransition {
 }
 ```
 {:.declarationspec}
-Basic animated transition types, used for `UIComponent.revealTransition` and `UIComponent.exitTransition`. More transitions may be available depending on platform and cell type.
+Basic animated transition types, used for [`UICell.revealTransition`](./UICell#UICell:revealTransition) and [`UICell.exitTransition`](./UICell#UICell:exitTransition). More transitions may be available depending on platform and cell type.
 

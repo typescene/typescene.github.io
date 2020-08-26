@@ -30,7 +30,7 @@ en:
     - name: Concepts
       id: concepts
       description: |
-        These articles describe important concepts that you'll need to understand in order to build your own Typescene apps from scratch.
+        These articles describe important concepts in detail. Read this to understand the primary concepts that make a Typescene application work (bottom-up learning path).
       pages:
         - url: /docs/concepts/components/
           name: Components
@@ -46,7 +46,7 @@ en:
     - name: Guides
       id: guides
       description: |
-        Move on to these chapters for short and to-the-point guides, with code examples that demonstrate common app development tasks.
+        Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks (top-down learning path).
       pages:
         - url: /docs/guides/ui/
           name: UI components
