@@ -20,12 +20,12 @@ If constantly upgrading to the latest version is not an option, we're setting ou
 
 This might not be an issue for one-offs, personal projects, and big corporate websites that are constantly being worked on, but _maintainability is a major concern for any software that needs to be supported by a business or other organization in the long term_.
 
-Such projects increasingly often leverage the flexibility of JavaScript, but they aren't 'websites'; often these are desktop or mobile app-like experiences. Most of their code isn't updated constantly, nor is it written once and then forgotten -- but rather something in between, hence this code needs to be maintainable in the long run. Here's where the design goals of the Typescene framework come in.
+Such projects increasingly often leverage the flexibility of JavaScript, but they aren't 'websites'; often these are desktop or mobile app-like experiences. Most of their code isn't updated constantly, nor is it written once and then forgotten -- but rather something in between. Such application code needs to be maintainable in the long run. This is where the design goals of the Typescene framework come in.
 
 ## Design Goals {#goals}
 
 * __No runtime dependencies on external libraries, *at all*.__ This makes it possible to re-build your app as long as you can compile TypeScript code (which is probably a very long time).
-* __Traditional object-oriented (OO), event-driven approach.__ As developers, we tend to view UI elements as dynamic 'widgets', and OO fits this model perfectly. Event-driven UI programming has been the standard for decades and is very easy to follow for new developers, so there's no need to reinvent the wheel here.
+* __Traditional object-oriented (OO), event-driven approach.__ As developers, we tend to view UI elements as dynamic 'widgets', and OO fits this model perfectly. Event-driven UI programming has been the standard for decades and is easy to understand for new developers, so there's no need to reinvent the wheel here.
 * __Strongly typed.__ Your future self (or colleague) will thank you if your text editor can help you figure out what your code means, highlight errors before compiling, and can even suggest ways to refactor your code. Auto-completion and automatic imports should work out of the box in editors such as Visual Studio Code.
 * __No revisions to the architecture, *ever*.__ Code shouldn't have to be completely rewritten to be compatible with the next major version of Typescene. We all have better things to do.
 * __Not too big, not too small.__ Typescene provides you with a complete runtime environment out of the box, for a consistent foundation that works for apps of any size — you'll only need external modules to import complex UI components or application behaviors that aren't included in the framework itself.

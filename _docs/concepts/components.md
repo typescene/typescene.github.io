@@ -46,6 +46,8 @@ References between components can be marked as ‘managed’:
 
 [**@managed**<br>Property decorator: turn a property into a managed reference to another component](/docs/ref/managed){:.block_link.decorator}
 
+> **Note:** Property decorators are available in TypesScript and in some variations of transpiled JavaScript. For more information and for ways to implement decorators in plain JavaScript, refer to the [differences between JavaScript and TypeScript](/docs/js-ts/).
+
 ```typescript
 class MyOtherComponent extends Component {
   // ...
@@ -292,14 +294,14 @@ class MyActivity extends PageViewActivity.with(view) {
 
 ### Recap
 
-So far, you've seen that components
+So far, we've seen that components
 
 - can reference each other through 'managed' properties, with Typescene automatically managing some relationships
 - can emit events, which may be handled and 'propagated' through parent-child references
 - can be observed (for properties changes and events)
 - have an ID and an asynchronously managed state.
 
-There is one more feature that changes the way components are used in a Typescene app, and make a large difference to the readability of your source code: declarative constructors.
+There is one more feature that changes the way components are used in a Typescene app, and makes a large difference to code readability: declarative constructors.
 
 ## Declarations {#preset}
 
@@ -415,7 +417,7 @@ However, in practice this not only makes (view) code more difficult to read, but
 Instead, the `onClick` property may be set to a string in one of the following formats:
 
 - `onClick: "+Foo"` instructs the (nested) component to listen for `Click` events, and emit a `Foo` event in response. The emitted event is an instance of [`ComponentEvent`](/docs/ref/ComponentEvent), which refers to both the emitting component, and the original event.
-- `onClick: "foo()"` instructs the component to listen for `Click` events, and call the `foo()` method on the bound parent component, i.e. the same component that bound property values are taken from, usually the activity.
+- `onClick: "foo()"` instructs the component to listen for `Click` events, and _delegate_ the event to the `foo()` method on the bound parent component, i.e. the same component that bound property values are taken from, usually the activity.
 
 Combining event handlers and bindings, the resulting ‘preset’ view component declaration describes an interactive user interface, without ever needing to create or update any of the view components directly.
 
