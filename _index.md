@@ -14,7 +14,7 @@
 
 ### All-inclusive, dependency-free
 
-Typescene offers a component model that goes beyond UI rendering, and supports comprehensive state management out of the box. Other than a build chain (Webpack, Parcel, or otherwise) there are no dependencies to worry about at all.
+Typescene offers a component model that goes *beyond* UI rendering, and supports comprehensive state management out of the box. Other than a build chain (Webpack, Parcel, or otherwise) there are no dependencies to worry about at all.
 
 </section>
 <br><br>

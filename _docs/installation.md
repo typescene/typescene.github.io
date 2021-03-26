@@ -13,7 +13,7 @@ nav: |
 
 ## HTML script tag {#html}
 
-The easiest method to use Typescene as part of your Website or Web application, is to include a *minified* version of the framework using a `<script>` tag:
+The quickest method to use Typescene as part of your Website or Web application, is to include a *minified* version of the framework using a `<script>` tag:
 
 ```html
 <script src="https://unpkg.com/@typescene/webapp@3/umd/typescene.min.js"></script>

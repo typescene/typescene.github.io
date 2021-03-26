@@ -250,7 +250,7 @@ article li {
 p.fullWidthImage > img {
   max-width: 100%;
 }
-img.logo_inline {
+img.icon_inline, img.logo_inline {
   height: 1.5rem;
   vertical-align: middle;
   position: relative;

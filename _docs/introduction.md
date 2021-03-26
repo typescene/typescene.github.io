@@ -4,25 +4,125 @@ docsection: overview
 layout: doc_subpage
 title: Introduction
 description: An introduction to Typescene's architecture
-pageintro: Typescene is an object oriented front-end framework for interactive applications that helps to manage both the application state and the user interface.
+pageintro: Typescene is a comprehensive object-oriented frontend framework for interactive applications.
 nav: |
   * [Application architecture](#architecture)
   * [Components](#components)
   * [Projects](#projects)
 ---
 
+## Getting Started
+Typescene is built as a standalone framework: it combines a lot of functionality in a single package that might otherwise be split across different JavaScript libraries. This means that the volume of documentation on this site might look a bit overwhelming — and surely, if you want to understand how *all* of Typescene works, there is a lot to learn.
+
+However, you can actually get up and running in a few minutes if you start with the basics, and skip over some of the details that only become relevant when you build more complex apps later on. Therefore, each concept covered by the Typescene documentation is described in two ways:
+
+![](/assets/icons/p-practical.svg){:.icon_inline} **Practical perspective** — how can this concept be used to build a working app?
+
+![](/assets/icons/p-fundamental.svg){:.icon_inline} **Fundamental perspective** — how does this concept work exactly, and what functionality does it provide?
+
+It’s best to combine these perspectives as part of your learning journey. If you’re just getting started, try to apply the practical knowledge by yourself first, and then go back to the fundamentals to understand *how* everything works, and what the limitations are.
+
 ## Application architecture {#architecture}
-As an application framework, Typescene provides a collection of building blocks, or ‘components’ for creating interactive applications. You can import these components into your app in the form of JavaScript classes, and _extend_ them with your own application-specific code.
+As a comprehensive application framework, Typescene provides all of the tools to build an application in a browser (or in a native wrapper such as Electron). This doesn't just include visual elements — Typescene also provides building blocks for the rest of your application.
 
-For a small website widget you may only need to define one or two components, whereas a complex enterprise tool may require hundreds. Either way, the resulting components are always based on the same Typescene classes and follow the same consistent structure, generally consisting of *views*, *activities*, and *services*:
+At a high level, Typescene provides the following types of components:
 
-* **Views** describe the user interface, as a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.
-* **Activities** represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are _activated_ independently to display their corresponding views automatically.
+* **Views** describe the user interface, using a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.
+* **Activities** represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are _activated_ independently, and display their corresponding views automatically.
 * **Services** provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user's language.
 
-> **Note:** This architecture is designed for _interactive applications or widgets_ such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is _not_ a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.  
+Since Typescene is an *object-oriented* framework, these building blocks are represented by classes and sub-classes. You'll need to import these classes into your app, and _extend_ them with your own application-specific code.
+
+**The** `Component` **class** — all of these components derive from a common Typescene class, called `Component`. You can use this to create your own classes as well, for example to define a data model that can be referenced by the application's services and activities.
+
+> **Note:** Typescene's architecture is designed for _interactive applications or widgets_ such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron app, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is _not_ a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.
+
+
+## ![](/assets/icons/p-practical.svg){:.icon_inline} Hello, world!
+
+For a basic application that displays a message, we need just a single view and an activity.
+
+View components are *declared*, which means that their code only serve as a ‘description’, like a template. View code doesn't normally include any application logic in the form of statements, like loops or functions. Even though each view is technically a **class**, they are either created using JSX syntax (which looks like HTML code within JavaScript, but using Typescene-specific tags) or using a static method called `with`.
+
+```jsx
+// view component declared using JSX syntax:
+const view = (
+  <centerrow>
+    <label>Hello, world!</label>
+  </centerrow>
+);
+
+// view component declared using a method:
+const view = UICenterRow.with(
+  UILabel.with({
+    text: "Hello, world!"
+  })
+)
+```
+
+Next, we'll need an Activity class that references this view, so that it displays the view when the activity is _activated_. Normally, the activity also includes event handlers and references to the data model, but that's not necessary here.
+
+Finally, the Application class provides a starting point, grouping all activities together.
+
+```typescript
+// activity class, linked to the view above:
+class MyActivity extends PageViewActivity.with(view) {
+  path = "/";
+  // ... code goes here, e.g. event handlers
+}
+
+// create an application to get everything started
+class MyApplication extends BrowserApplication.with(MyActivity) {
+  // ... more code here if needed
+}
+
+const app = new MyApplication(someHtmlElement);  // element is optional
+app.activate();
+```
+
+That's all! Now, this won't run in a browser on its own just yet — for that, we'll need to use a bundler or import the Typescene library using a script tag. Refer to [Installation](/docs/installation) for more details.
 
 ## Components {#components}
+The concept of _components_ is by far the most important concept of the Typescene framework — even though the `Component` class actually does most of its work in the background.
+
+The slightly unusual approach to defining component sub-classes using the static `with` method, as demonstrated above, is a result of how components work.
+
+
+## ![](/assets/icons/p-practical.svg){:.icon_inline} Bindings & event handlers
+Before going into detail on declarations and _how_ the `Component` class works, let's skip ahead and create a basic _interactive_ application. For that, we need to be able to at least handle some input events, and modify what the user sees on the screen. However, we know that the view doesn't hold any data by itself, nor should it contain event handlers or other code.
+
+This is where we're going to use two important features of the `Component` class: *bindings* and *event propagation*.
+
+- Bindings on (the declaration of) one component allow this component to take values from and **observe changes** to the property of one of its parent components.
+- Components can **delegate** event handling to parent components’ methods, by name.
+
+Notice the `onClick` 
+
+```jsx
+// using JSX syntax:
+const view = (
+  <centerrow>
+    <label onClick="addCount()">
+      Count: {bind("count")}
+    </label>
+  </centerrow>
+);
+
+// OR, without JSX syntax:
+const view = UICenterRow.with(
+  UILabel.with({
+    onClick: "addCount()",
+    text: bindf("Count: ${count}")
+  })
+);
+```
+
+Notice the use of `onClick="..."` above, which refers to an `addCount` method. :w
+ Also, the `bind` and `bindf` functions instruct the resulting view component to **observe** a property called `count` property.
+
+
+
+
 Views, activities, services, and other components all play a specific role within an application, and Typescene includes a number of classes to provide this functionality. For example, a text label in the app's user interface is represented by the `UILabel` class, and an activity that displays a full-screen view is an instance of the `PageViewActivity` class. The entire app is an instance of `Application`.
 
 These components work together using features that are defined by their common base class, the `Component` class itself. In particular, this class manages references _between_ components, allowing them to respond to _events_ emitted by other components, and _observe_ property changes. These features are available for all components, but not at the level of individual objects — components are connected at the **class** level.
