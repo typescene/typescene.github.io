@@ -4,7 +4,7 @@ docsection: overview
 layout: doc_subpage
 title: Introduction
 description: An introduction to Typescene's architecture
-pageintro: Typescene is a comprehensive object-oriented frontend framework for interactive applications.
+pageintro: Typescene is a comprehensive front-end framework for interactive applications.
 nav: |
   * [Application architecture](#architecture)
   * [Components](#components)
@@ -12,24 +12,27 @@ nav: |
 ---
 
 ## Getting Started
-Typescene is built as a standalone framework: it combines a lot of functionality in a single package that might otherwise be split across different JavaScript libraries. This means that the volume of documentation on this site might look a bit overwhelming — and surely, if you want to understand how *all* of Typescene works, there is a lot to learn.
+As a front-end application framework, Typescene provides a comprehensive set of tools, all in a single package. The documentation on this site contains detailed descriptions of all this functionality, but it’s easy to find your way if you’re just getting started.
 
-However, you can actually get up and running in a few minutes if you start with the basics, and skip over some of the details that only become relevant when you build more complex apps later on. Therefore, each concept covered by the Typescene documentation is described in two ways:
+Use the following symbols throughout these docs to look out for sections that may be of interest to you, depending on your learning path:
 
-![](/assets/icons/p-practical.svg){:.icon_inline} **Practical perspective** — how can this concept be used to build a working app?
+![](/assets/icons/p-practical.svg){:.icon_inline} **Practical perspective** — Take note of these sections if you’re in a hurry to get started with your first Typescene app.
 
-![](/assets/icons/p-fundamental.svg){:.icon_inline} **Fundamental perspective** — how does this concept work exactly, and what functionality does it provide?
+![](/assets/icons/p-fundamental.svg){:.icon_inline} **Fundamental perspective** — Take note of these sections if you want to know how each concept works in detail.
 
-It’s best to combine these perspectives as part of your learning journey. If you’re just getting started, try to apply the practical knowledge by yourself first, and then go back to the fundamentals to understand *how* everything works, and what the limitations are.
+It’s recommended to take a practical perspective first, write some code, and then come back to learn more about each concept.
+
+Let’s start with a short description of the high-level application architecture, and a simple example to put it all together.
 
 ## Application architecture {#architecture}
-As a comprehensive application framework, Typescene provides all of the tools to build an application in a browser (or in a native wrapper such as Electron). This doesn't just include visual elements — Typescene also provides building blocks for the rest of your application.
+Typescene is a comprehensive front-end framework, which means that it doesn’t just provide UI widgets, or a renderer function, but it contains many of the building blocks for a complete application. Together, these building blocks are called _components_.
 
 At a high level, Typescene provides the following types of components:
 
 * **Views** describe the user interface, using a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.
 * **Activities** represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are _activated_ independently, and display their corresponding views automatically.
 * **Services** provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user's language.
+* **Models** or records are custom components that are specific to your application
 
 Since Typescene is an *object-oriented* framework, these building blocks are represented by classes and sub-classes. You'll need to import these classes into your app, and _extend_ them with your own application-specific code.
 
