@@ -1,3 +1,7 @@
+---
+template: index
+---
+
 <br>
 
 <div class="side-icon side-icon--home side-icon_left">
