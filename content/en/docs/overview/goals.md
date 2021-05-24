@@ -1,13 +1,9 @@
 ---
-redirect_from: /docs/introduction/goals/
-docsection: overview
-layout: doc_subpage
+output: docs/goals.html
+template: doc_article
 title: Why Typescene?
 description: An introduction to the Typescene framework and an explanation of its design principles.
 pageintro: With so many great platforms and tools available today, it's easier than ever to build an interactive Web application. So why do we need yet _another_ framework to choose from?
-nav: |
-  * [Maintainability](#maintainability)
-  * [Design Goals](#goals)
 ---
 
 ## Maintainability {#maintainability}

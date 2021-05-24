@@ -1,12 +1,9 @@
 ---
-docsection: concepts
-layout: doc_subpage
+template: doc_article
 title: Activities
 description: Detailed description of applications and activities
 pageintro: |
   This section is in development.
-nav: |
-  * [TBD](#)
 ---
 
 ## In development {#tbd}

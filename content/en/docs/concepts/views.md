@@ -1,17 +1,9 @@
 ---
-docsection: concepts
-layout: doc_subpage
+template: doc_article
 title: Views
 description: Detailed description of views and UI components
 pageintro: |
   Views represent the user interface of a Typescene application.
-nav: |
-  * [Creating views](#create)
-  * [JSX syntax](#jsx)
-  * [UI components](#ui-components)
-  * [Layout and control](#layout-control)
-  * [Styles and themes](#styles)
-  * [Custom views](#custom)
 ---
 
 ## Creating views {#create}
@@ -248,7 +240,7 @@ const view = (
   <row>
     <button
       style={myStyle}
-      decoration={% raw %}{{ background: "@yellow" }}{% endraw %}
+      decoration={{ background: "@yellow" }}
       onBeforeRender="setButtonStyle()"
     >
       Click me
@@ -476,7 +468,7 @@ const dialogView = (
     background="@background"
     textColor="@text"
     padding={16}
-    position={%raw%}{{ gravity: "center" }}{%endraw%}
+    position={{ gravity: "center" }}
   >
     <centerrow>
       <label>Hello, {bind("name")}!</label>

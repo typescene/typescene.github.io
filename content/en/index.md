@@ -1,5 +1,9 @@
 ---
-template: index
+template: index-en
+homepage: true
+title: Typescene
+description: |
+    Typescene is an independent Web application framework made with TypeScript.
 ---
 
 <br>
@@ -14,7 +18,7 @@ template: index
   </svg></div>
 </div>
 
-<section markdown="1">
+<section>
 
 ### All-inclusive, dependency-free
 
@@ -33,7 +37,7 @@ Typescene offers a component model that goes beyond UI rendering, and supports c
   </svg></div>
 </div>
 
-<section markdown="1">
+<section>
 
 ### Scales effortlessly
 
@@ -42,7 +46,7 @@ All it takes to get started with Typescene is a single command. From there, the 
 </section>
 <br>
 
-<section class="wrapper_inner wrapper_inner--decorate" markdown="1">
+<section class="wrapper_inner wrapper_inner--decorate">
 <div class="side-icon side-icon_left">
   <!-- Icon by Ikonate -->
   <div class="icon-bg"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="layoutLeftIconTitle">
@@ -50,14 +54,14 @@ All it takes to get started with Typescene is a single command. From there, the 
     <path d="M3 8L21 8M9 8L9 21"></path>
   </svg></div>
 </div>
-<section markdown="1">
+<section>
 
 **Views** are static representations of your UI, a tree structure of UI components either as XML (JSX) or nested JavaScript calls. Typescene provides a flexbox-inspired set of UI components and a CSS-based themeable styling system to fully 'abstract away' the DOM.
 
 </section>
 </section>
 
-<section class="wrapper_inner wrapper_inner--decorate" markdown="1">
+<section class="wrapper_inner wrapper_inner--decorate">
 <div class="side-icon side-icon_left">
   <!-- Icon by Ikonate -->
   <div class="icon-bg"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="coffeeIconTitle">
@@ -67,14 +71,14 @@ All it takes to get started with Typescene is a single command. From there, the 
     <path d="M12 3C12 3 13 3.5 13 5C13 6.5 12 7 12 7"></path>
   </svg></div>
 </div>
-<section markdown="1">
+<section>
 
 **Activities** represent the underlying application state, reflecting how the user sees your app. These provide data to views and handle input events. Each view is bound to one activity, but multiple activities can be active at the same time since they can be nested and routed independently.
 
 </section>
 </section>
 
-<section class="wrapper_inner wrapper_inner--decorate" markdown="1">
+<section class="wrapper_inner wrapper_inner--decorate">
 <div class="side-icon side-icon_left">
   <!-- Icon by Ikonate -->
   <div class="icon-bg"><svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="settingsIconTitle">
@@ -82,7 +86,7 @@ All it takes to get started with Typescene is a single command. From there, the 
     <circle cx="12" cy="12" r="1"></circle>
   </svg></div>
 </div>
-<section markdown="1">
+<section>
 
 **Services** contain data that isn't tied to a particular activity, and provide access to the global state. Services are great for encapsulating database access, login sessions, and user preferences, so that they can be used from any other component using just their name.
 
@@ -91,8 +95,10 @@ All it takes to get started with Typescene is a single command. From there, the 
 
 <br>
 
-<section class="wrapper_inner" markdown="1" style="text-align: center">
-  [Learn more about Typescene's architecture here](/docs/introduction).
+<section class="wrapper_inner" style="text-align: center">
+
+[Learn more about Typescene's architecture here](/docs/introduction).
+
 </section>
 
 <br>

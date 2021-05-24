@@ -1,12 +1,6 @@
----
-title: Typescene
-description: |
-    Typescene is an independent Web application framework made with TypeScript.
-layout: default
-lang: en
----
-
-
+module.exports = async (content, item, pipeline) =>
+  require("./base")(
+    `
 <div class="titlebackdrop_container">
     <div class="titlebackdrop"></div>
     <div class="wrapper wrapper--tight">
@@ -62,8 +56,7 @@ lang: en
 </section>
 
 <article class="wrapper wrapper--home">
-    {% capture content %}{% include_relative _index.md %}{% endcapture %}
-    {{ content | markdownify }}
+    ${content}
 </article>
 
 <div class="prefooter">
@@ -100,4 +93,7 @@ lang: en
 </div>
 <link rel="prefetch" href="/docs/goals" as="fetch" />
 <link rel="prefetch" href="/docs/introduction" as="fetch" />
-<link rel="prefetch" href="/docs/" as="fetch" />
+<link rel="prefetch" href="/docs/" as="fetch" />`,
+    item,
+    pipeline
+  );

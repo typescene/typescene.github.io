@@ -1,14 +1,9 @@
 ---
-docsection: concepts
-layout: doc_subpage
+template: doc_article
 title: Lists and maps
 description: Detailed description of lists and maps
 pageintro: |
   Components are frequently stored in list and map structures, especially when referenced by other components.
-nav: |
-  * [Overview](#overview)
-  * [Lists](#lists)
-  * [Maps](#maps)
 ---
 
 ## Overview {#overview}

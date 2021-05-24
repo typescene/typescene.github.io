@@ -1,17 +1,13 @@
 ---
-redirect_from: /docs/introduction/overview
-docsection: overview
-layout: doc_subpage
+output: docs/introduction.html
+template: doc_article
 title: Introduction
 description: An introduction to Typescene's architecture
 pageintro: Typescene is an object oriented front-end framework for interactive applications that helps to manage both the application state and the user interface.
-nav: |
-  * [Application architecture](#architecture)
-  * [Components](#components)
-  * [Projects](#projects)
 ---
 
 ## Application architecture {#architecture}
+
 As an application framework, Typescene provides a collection of building blocks, or ‘components’ for creating interactive applications. You can import these components into your app in the form of JavaScript classes, and _extend_ them with your own application-specific code.
 
 For a small website widget you may only need to define one or two components, whereas a complex enterprise tool may require hundreds. Either way, the resulting components are always based on the same Typescene classes and follow the same consistent structure, generally consisting of *views*, *activities*, and *services*:

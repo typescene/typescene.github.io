@@ -1,14 +1,9 @@
 ---
-redirect_from: /docs/introduction/installation
-docsection: overview
-layout: doc_subpage
+output: docs/installation.html
+template: doc_article
 title: Installation
 description: How to add Typescene to your project or create a new Typescene project
 pageintro: Typescene is distributed through NPM and can be installed using a single command, or added to an existing Web application.
-nav: |
-  * [HTML script tag](#html)
-  * [Stand-alone app](#create)
-  * [Installing from NPM](#npm)
 ---
 
 ## HTML script tag {#html}

@@ -1,7 +1,5 @@
 ---
-docsection: guides
-layout: doc_subpage
-slug: layout
+template: doc_article
 title: Layout
 description: How to change UI layout in a Typescene application
 pageintro: |

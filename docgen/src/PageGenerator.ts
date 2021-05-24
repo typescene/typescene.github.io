@@ -51,7 +51,6 @@ export class PageGenerator {
             let doc = "";
             for (let d of c.docs) {
                 let txt = this._addIdLinks(d.doc).replace(/\n(?!\n)/g, "\n\n") + "\n\n";
-                txt = txt.replace(/(\{\%\S+\})/g, "{%raw%}$1{%endraw%}")
                 switch (d.tag) {
                     case "param":
                         result += `- \`${d.name}\` — ${txt}`; break;
@@ -67,7 +66,6 @@ export class PageGenerator {
             // add miscellaneous content
             let misc = this._misc.getContentFor(c.id);
             if (misc) {
-                misc = misc.replace(/(\{\%\S+\})/g, "{%raw%}$1{%endraw%}")
                 doc += this._addIdLinks(misc) + "\n\n";
             }
             if (c.spec.spec && c.spec.type === SpecNodeType.ClassDeclaration) {

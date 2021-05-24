@@ -1,17 +1,9 @@
 ---
-docsection: concepts
-layout: doc_subpage
+template: doc_article
 title: Components
 description: Detailed description of the Component class
 pageintro: |
   The Component class provides much of the infrastructure that is used by other Typescene classes. This page explains all of its features in detail.
-nav: |
-  * [Component references](#references)
-  * [Events](#events)
-  * [Observers](#observers)
-  * [IDs and state](#ids-state)
-  * [Declarations](#preset)
-  * [Custom presets](#custom)
 ---
 
 ## The `Component` class
@@ -206,7 +198,6 @@ ObservedComponent.addObserver(class {
 
 // ... (continue below)
 ```
-{:.pre_last_note}
 
 An observer _instance_ is created for each new instance of the observed component, providing a reference to the observer’s constructor.
 
@@ -234,7 +225,6 @@ Methods of the observer class are then invoked whenever a property changes or an
     }
 });
 ```
-{:.pre_first_note}
 
 In addition, observer methods can be decorated using the following decorators to specify when an observer method should be called.
 

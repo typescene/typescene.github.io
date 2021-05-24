@@ -1,12 +1,9 @@
 ---
-docsection: concepts
-layout: doc_subpage
+template: doc_article
 title: Services
 description: Detailed description of services and data models in a Typescene application
 pageintro: |
   This section is in development.
-nav: |
-  * [TBD](#)
 ---
 
 ## In development {#tbd}

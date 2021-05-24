@@ -1,7 +1,7 @@
 ---
-layout: doc_guide
-guide: ui
-slug: ui-text-labels
+template: doc_guide
+output: docs/guides/ui-text-labels.html
+parent: content/en/docs/guides/ui/index
 title: Displaying text using label components
 description: |
   Static text can be displayed using label components
@@ -9,9 +9,11 @@ pageintro: |
   The UILabel component can be used to display text.
 ---
 
-<section markdown="block">
+<section>
+
 **Step 1**<br>
 Make sure your activity references the correct view component.
+
 </section>
 
 ```typescript
@@ -24,9 +26,11 @@ class MainActivity extends PageViewComponent.with(view) {
 
 ---
 
-<section markdown="block">
+<section>
+
 **Step 2 (JSX)**<br>
 Add a label somewhere in your view, and add the text between the `<label>` and `</label>` tags.
+
 </section>
 
 ```jsx
@@ -37,37 +41,36 @@ export default (
       <label>Text goes here</label>
     </centerrow>
   </cell>
-)
+);
 ```
-{:.pre_first_note}
 
 ---
 
-<section markdown="block">
+<section>
+
 **Alternative (without JSX)**<br>
 Use the static `UILabel.withText()` method to create a component factory for a label that contains given text.
+
 </section>
 
 ```typescript
 // view.ts
 export default UICell.with(
-  UICenterRow.with(
-    UILabel.withText("Text goes here")
-  )
-)
+  UICenterRow.with(UILabel.withText("Text goes here"))
+);
 ```
-{:.pre_first_note}
 
 ---
 
-<footer markdown="block">
+<footer>
+
 ### Next
 
-{% include guidelink.md match="ui-text-bindings" %}
+{{guides:content/en/docs/guides/ui/text-labels/text-bindings}}
 
 ## See also
 
-* [`UILabel`](/docs/ref/UILabel) class reference documentation.
-* Other types of label components.
-</footer>
+- [`UILabel`](/docs/ref/UILabel) class reference documentation.
+- Other types of label components.
 
+</footer>

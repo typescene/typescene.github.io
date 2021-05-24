@@ -1,13 +1,8 @@
 ---
-docsection: overview
-layout: doc_subpage
+output: docs/js-ts.html
+template: doc_article
 title: JavaScript vs TypeScript
-description: Comparison of using JavaScript and TypeScript for Typescene applications
-nav: |
-  * [Types](#types)
-  * [Class properties](#properties)
-  * [Property decorators](#decorators)
-  * [Classes](#classes)
+description: Comparison of JavaScript and TypeScript language support for Typescene applications
 ---
 
 The TypeScript language adds a number of enhancements to the JavaScript (or technically, ECMAScript) language. Some of these enhancements have made their way into most modern JavaScript platforms, however some of the features used by Typescene will not be available. There are workarounds for all of these issues.
