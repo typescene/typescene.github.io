@@ -1,5 +1,5 @@
 # ViewActivity
 
 #### See Also
-`PageViewActivity`, `DialogViewActivity`.
 
+`PageViewActivity`, `DialogViewActivity`.

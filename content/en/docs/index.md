@@ -9,19 +9,19 @@ title: Documentation
 
 If you’re new to Typescene, read these short articles to understand what Typescene is and what it can be used for.
 
-* {{nav:content/en/docs/overview/}}
+- {{nav:content/en/docs/overview/}}
 
 ### Concepts
 
 These articles describe important concepts in detail. Read this to understand the primary concepts that make a Typescene application work (bottom-up learning path).
 
-* {{nav:content/en/docs/concepts/}}
+- {{nav:content/en/docs/concepts/}}
 
 ### Guides
 
 Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks (top-down learning path).
 
-* {{nav:content/en/docs/guides/}}
+- {{nav:content/en/docs/guides/}}
 
 ---
 
@@ -33,3 +33,6 @@ _Documentation generated for Typescene version {{version}}_
 
 **Tip:** use the “Docs” link at the top or hit the <code>/</code> key on any page to search.
 
+<table class="table--ref">
+  <tr><td>{{refdoc:docs/ref/}}</td></tr>
+</table>

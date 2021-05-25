@@ -4,7 +4,9 @@
   "private": true,
   "description": "This is the website served at https://typescene.dev",
   "main": "pipeline.js",
+  "prettier": {},
   "scripts": {
+    "build": "tsc -p docgen/src && npm run make",
     "watch": "nodemon -e md,js,css --watch content --watch assets --watch templates --exec 'npm run make'",
     "make": "npm run clean && npm run pipeline",
     "clean": "rm -rf gh-pages",
@@ -14,10 +16,13 @@
   "author": "Jelmer Cormont",
   "license": "MIT",
   "dependencies": {
-    "markdown-pipeline": "^1.0.3",
-    "typescene": "3"
+    "markdown-pipeline": "^1.0.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@types/node": "^12.7.0",
+    "@types/marked": "^2.0.3",
+    "nodemon": "^2.0.7",
+    "typescene": "3",
+    "typescript": "*"
   }
 }

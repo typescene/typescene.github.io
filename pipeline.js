@@ -10,6 +10,11 @@ const { Pipeline } = require("markdown-pipeline");
 // - Add a `toc` data property that contains Markdown text for a Table of Contents
 // - Add aliases (redirects) for a file if it an `alias` data property was set
 // - Wrap output in a template if a `template` data property was set
+// - Replace tags in the HTML output with generated content
+
+const TYPESCENE_VERSION = JSON.parse(
+  fs.readFileSync("./node_modules/typescene/package.json").toString()
+).version;
 
 /**
  * Add linked files from item `add` property
@@ -106,6 +111,117 @@ async function addAliases(item, next, pipeline) {
   }
 }
 
+/**
+ * Replace version tag
+ * @param {import("markdown-pipeline").Pipeline.Item} item
+ */
+async function tag_version(item, next) {
+  await next();
+  if (!item.output.length) return;
+  item.output[0].data = item.output[0].data.replace(
+    /{{version}}/g,
+    () => TYPESCENE_VERSION
+  );
+}
+
+/**
+ * Replace nav tag: insert list of matching links, and add TOC if possible
+ * @param {import("markdown-pipeline").Pipeline.Item} item
+ * @param {import("markdown-pipeline").Pipeline} pipeline
+ */
+async function tag_nav(item, next, pipeline) {
+  await next();
+  if (!item.output.length) return;
+  let toc = await pipeline.parseAsync(item.data.toc);
+  item.output[0].data = item.output[0].data.replace(
+    /\<li\>{{nav:([^}]+)}}\<\/li\>/g,
+    (_s, prefix) => {
+      let items = pipeline
+        .getAllItems()
+        .filter(
+          (it) =>
+            !it.data.aliasFor && !it.data.parent && it.path.startsWith(prefix)
+        )
+        .map((it) => [
+          it === item,
+          it.output[0].path.replace(/(index)?\.html$/, ""),
+          pipeline.escapeHTML(it.data.title),
+        ]);
+      return items
+        .map((it) =>
+          !it[0]
+            ? `<li><a href="/${it[1]}">${it[2]}</a></li>` +
+              `<link rel="prefetch" href="/${it[1]}" as="fetch" />`
+            : `<li aria-current="page"><b>${it[2]}</b></li>` + toc
+        )
+        .join("\n");
+    }
+  );
+}
+
+/**
+ * Replace refdoc tag: insert table rows of matching links
+ * @param {import("markdown-pipeline").Pipeline.Item} item
+ * @param {import("markdown-pipeline").Pipeline} pipeline
+ */
+async function tag_refdoc(item, next, pipeline) {
+  await next();
+  if (!item.output.length) return;
+  item.output[0].data = item.output[0].data.replace(
+    /\<tr\>\<td\>{{refdoc:([^}]+)}}\<\/td\>\<\/tr\>/g,
+    (_s, prefix) => {
+      let items = pipeline
+        .getAllItems()
+        .filter(
+          (it) =>
+            !it.data.aliasFor && !it.data.parent && it.path.startsWith(prefix)
+        )
+        .map((it) => [
+          it.data.reftype,
+          it.output[0].path.replace(/(index)?\.html$/, ""),
+          pipeline.escapeHTML(it.data.title),
+        ]);
+      return items
+        .map(
+          (it) =>
+            `<tr><td>${it[0]}</td><td><a href="/${it[1]}">${it[2]}</a></td></tr>`
+        )
+        .join("\n");
+    }
+  );
+}
+
+/**
+ * Replace guides tag: insert list of matching block-level links as paragraphs
+ * @param {import("markdown-pipeline").Pipeline.Item} item
+ * @param {import("markdown-pipeline").Pipeline} pipeline
+ */
+async function tag_guides(item, next, pipeline) {
+  await next();
+  if (!item.output.length) return;
+  item.output[0].data = item.output[0].data.replace(
+    /\<p\>{{guides:([^}]+)}}\<\/p\>/g,
+    (_s, prefix) => {
+      let items = pipeline
+        .getAllItems()
+        .filter(
+          (it) =>
+            !it.data.aliasFor && it.data.parent && it.path.startsWith(prefix)
+        )
+        .map((it) => [
+          it.output[0].path.replace(/(index)?\.html$/, ""),
+          pipeline.escapeHTML(it.data.title),
+        ]);
+      return items
+        .map(
+          (it) =>
+            `<p><a class="block_link guide" href="/${it[0]}"><b>${item.data.texts.DOC_GUIDELINK}</b> ${it[1]}</a></p>`
+        )
+        .join("\n");
+    }
+  );
+}
+
 /** @param {import("markdown-pipeline").Pipeline} pipeline */
 module.exports.start = function (pipeline) {
   pipeline.parserOptions.smartypants = true;
@@ -113,6 +229,10 @@ module.exports.start = function (pipeline) {
   pipeline.addTransform(makeToc);
   pipeline.addTransform(addAliases);
   pipeline.addTransform(template);
+  pipeline.addTransform(tag_version);
+  pipeline.addTransform(tag_nav);
+  pipeline.addTransform(tag_refdoc);
+  pipeline.addTransform(tag_guides);
 
   pipeline.addAssets(
     "./favicon.ico",
