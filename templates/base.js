@@ -66,7 +66,7 @@ module.exports = async (content, item, pipeline) =>
     </footer>
 
     <script src="/assets/default.js"></script>
-    <script src="/assets/docwidget/index.js"></script>
+    <script src="/assets/docwidget.js"></script>
 </body>
 </html>
 `;

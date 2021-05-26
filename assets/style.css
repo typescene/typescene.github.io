@@ -775,14 +775,6 @@ code + a > code {
 }
 /* #endregion */
 
-/* #region -- Widget style */
-#docwidget_layer .docwidget_cell {
-  position: absolute;
-  top: 0;
-  right: 5rem;
-}
-/* #endregion */
-
 /* #region -- Responsive: large */
 @media (min-width: 70rem) {
   .wrapper {

@@ -238,6 +238,7 @@ module.exports.start = function (pipeline) {
     "./favicon.ico",
     "./CNAME",
     "./.nojekyll",
+    { input: "./docwidget/dist/docwidget.js", output: "./assets/docwidget.js" },
     ...fs
       .readdirSync("./assets")
       .map((name) => "./assets/" + name)
