@@ -12,7 +12,7 @@
     "watch": "nodemon -e md,js,css --watch content --watch assets --watch templates --exec 'npm run make'",
     "make": "npm run clean && npm run pipeline",
     "clean": "rm -rf gh-pages",
-    "pipeline": "markdown-pipeline gh-pages pipeline.js content/en/pipeline.js"
+    "pipeline": "markdown-pipeline docs pipeline.js content/en/pipeline.js"
   },
   "keywords": [],
   "author": "Jelmer Cormont",
