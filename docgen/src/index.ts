@@ -79,6 +79,7 @@ export function generateDocs(pipeline: Pipeline, config: ConfigSource) {
   let content: string[] = [];
   for (let node of index) {
     for (let c of node.content) {
+      if (c.spec.deprecated) continue;
       if (c.id.endsWith(".") || c.spec.inherited) continue;
       let path =
         node.id +

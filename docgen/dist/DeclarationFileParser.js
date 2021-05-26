@@ -174,6 +174,10 @@ class DeclarationFileParser {
                     result.tag = "param";
                     result.name = doc.name ? doc.name.text : "(?)";
                     break;
+                case "deprecated":
+                    result.tag = "deprecated";
+                    spec.deprecated = true;
+                    break;
                 case "decorator":
                     spec.type = SpecNodeType.DecoratorFunction;
                 default:

@@ -69,6 +69,9 @@ export class SpecNode {
   /** True if this is a static class member */
   staticModifier?: boolean;
 
+  /** True if this node is marked as deprecated */
+  deprecated?: boolean;
+
   /** True if this symbol is contained within a namespace */
   namespaced?: boolean;
 
@@ -233,6 +236,10 @@ export class DeclarationFileParser {
         case "param":
           result.tag = "param";
           result.name = (doc as any).name ? (doc as any).name.text : "(?)";
+          break;
+        case "deprecated":
+          result.tag = "deprecated";
+          spec.deprecated = true;
           break;
         case "decorator":
           spec.type = SpecNodeType.DecoratorFunction;

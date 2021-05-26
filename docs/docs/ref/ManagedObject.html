@@ -143,12 +143,13 @@
 
 <p><code>(name?: string): void</code></p>
 <p>Emit a change event (see <a href="/docs/ref/ManagedChangeEvent"><code>ManagedChangeEvent</code></a>), to signal that the internal state of the emitting object has changed. The <code>name</code> parameter is optional; if left out, the <a href="/docs/ref/CHANGE"><code>CHANGE</code></a> event (instance) is emitted directly.</p>
-<h2 id="ManagedObject:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span></h2>
+<h2 id="ManagedObject:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Propagate events from managed child objects that are <em>referenced</em> as properties of this object (see <a href="/docs/ref/managedChild"><code>@managedChild</code></a> decorator) by emitting the same events on this object itself.</p>
+<p><strong>Deprecated:</strong> in favor of <a href="/docs/ref/delegateEvents"><code>@delegateEvents</code></a> since version 3.1.</p>
 <h2 id="ManagedObject:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 

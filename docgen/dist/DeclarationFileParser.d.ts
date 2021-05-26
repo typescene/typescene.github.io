@@ -32,6 +32,8 @@ export declare class SpecNode {
     protectedModifier?: boolean;
     /** True if this is a static class member */
     staticModifier?: boolean;
+    /** True if this node is marked as deprecated */
+    deprecated?: boolean;
     /** True if this symbol is contained within a namespace */
     namespaced?: boolean;
     /** True if this node is inherited */

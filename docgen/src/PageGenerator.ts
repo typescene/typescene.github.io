@@ -58,6 +58,8 @@ export class PageGenerator {
         tags += ` <span class="spec_tag">static</span>`;
       if (c.spec.protectedModifier)
         tags += ` <span class="spec_tag">protected</span>`;
+      if (c.spec.deprecated)
+        tags += ` <span class="spec_tag spec_tag--deprecated">deprecated</span>`;
       let name = this._getTypedName(c.spec).replace(/_/g, "\\_");
       content.push(`## ![](${icon})${name}${tags} {.spec ${navId(c.id)}}`, "");
 
@@ -96,6 +98,9 @@ export class PageGenerator {
             break;
           case "note":
             notes.push(`**Note:** ${txt}`, "");
+            break;
+          case "deprecated":
+            notes.push(`**Deprecated:** ${txt}`, "");
             break;
           default:
             notes.push(txt, "");

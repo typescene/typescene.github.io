@@ -304,6 +304,9 @@ h2.spec img {
   border-radius: 0.25rem;
   padding: 0.125rem 0.25rem;
 }
+.spec_tag--deprecated {
+  background: #a33;
+}
 /* #endregion */
 
 /* #region -- Code styles */

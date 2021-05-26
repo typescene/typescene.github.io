@@ -137,11 +137,14 @@
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Emit an action event (see <a href="/docs/ref/ActionEvent"><code>ActionEvent</code></a>), to signal the result of a user action that should be handled by a parent component.</p>
 <p><strong>Note:</strong> The event is frozen using <a href="/docs/ref/ManagedEvent#ManagedEvent:freeze"><code>ManagedEvent.freeze()</code></a> so that its properties cannot be modified even if the event is reused by parent component(s).</p>
-<h2 id="Component:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent()</h2>
+<h2 id="Component:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
+<p><strong>Deprecated:</strong> in v3.1</p>
+<p>NOTE: This method will be deprecated in favor of calling <code>emit</code> directly. Its name is confusing and after streamlining other parts it will serve no further purpose.</p>
+<p>Create and emit an event with given name, a reference to this component, and an optional inner (propagated) event. The base implementation emits a plain <a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a>, but this method may be overridden to emit other events.</p>
 <p><strong>Note:</strong> If the component is already in the &#39;destroyed&#39; state (see <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>), then no event is emitted and this method returns immediately.</p>
 <p><strong>Note:</strong> This method is used by classes created using <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> if an event handler is specified using the <code>{ ... onEventName: &quot;OtherEvent&quot; }</code> pattern.</p>
 <h2 id="Component:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
@@ -186,7 +189,7 @@
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
-<h2 id="Component:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span></h2>
+<h2 id="Component:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
