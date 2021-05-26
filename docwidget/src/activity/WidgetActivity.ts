@@ -1,11 +1,12 @@
 import {
+  ActionEvent,
   DialogViewActivity,
   managedChild,
   ManagedList,
   ManagedRecord,
   rateLimit,
   service,
-  UIComponent,
+  UICell,
   UIComponentEvent,
   UIListCellAdapterEvent,
   UIRenderPlacement,
@@ -25,11 +26,14 @@ export default class WidgetActivity extends DialogViewActivity.with(view) {
   @service("App.Search")
   search?: SearchService;
 
-  constructor() {
-    super();
-    this.propagateChildEvents((e) => {
-      if (e.name === "CloseModal") this.deactivateManagedAsync();
-    });
+  close() {
+    this.getApplication()!.deactivateAsync();
+  }
+
+  onCloseModal() {
+    // deactivate the app instead of destroying this activity
+    this.close();
+    return true;
   }
 
   updateFiltered() {
@@ -46,41 +50,43 @@ export default class WidgetActivity extends DialogViewActivity.with(view) {
     );
   }
 
-  setSearchFilter(e: UIComponentEvent<UITextField>) {
+  onSetSearchFilter(e: ActionEvent<UITextField>) {
     this.filter = e.source.value || "";
   }
 
-  focusFirst(e: UIComponentEvent) {
-    let row = e.source.getParentComponent();
-    let cell = row && row.getParentComponent();
-    if (cell instanceof UIComponent) cell.requestFocusNext();
+  onFocusFirst(e: ActionEvent) {
+    let cell = e.source.getParentComponent(UICell);
+    if (cell) cell.requestFocusNext();
   }
 
-  navigateFirst() {
+  onNavigateFirst() {
     let first = this.filtered.first();
     if (first) {
-      this.deactivateManagedAsync();
+      this.close();
       document.location.href = "/docs/ref/" + first.path;
     }
   }
 
-  navigateResult(e: UIListCellAdapterEvent<SearchResult & ManagedRecord>) {
+  onNavigateResult(e: UIListCellAdapterEvent<SearchResult & ManagedRecord>) {
     if (e.object && e.object.path) {
-      this.deactivateManagedAsync();
+      this.close();
       document.location.href = "/docs/ref/" + e.object.path;
     }
   }
 
-  goToIndex() {
-    this.deactivateManagedAsync();
+  onGoIndex() {
+    this.close();
     document.location.href = "/docs";
   }
 
-  ignoreArrowPress(e: UIComponentEvent) {
-    if (e.event) (e.event as KeyboardEvent).preventDefault();
+  onIgnoreArrowPress(e: ActionEvent) {
+    if (e.inner instanceof UIComponentEvent) {
+      (e.inner.event as KeyboardEvent).preventDefault();
+    }
   }
 }
 
+// use an observer to update on change (async, rate limited)
 class Observer {
   constructor(public readonly activity: WidgetActivity) {}
   @rateLimit(80)

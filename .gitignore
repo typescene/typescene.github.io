@@ -1,7 +1,2 @@
-_site
-.sass-cache
-.jekyll-metadata
 node_modules/
-.cache
-docgen/**/*.js
-package-lock.json
+*.log

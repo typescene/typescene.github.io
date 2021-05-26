@@ -4,9 +4,9 @@ import SearchService from "./service/SearchService";
 
 // create a layer on top of the document
 let layer = document.createElement("div");
-layer.id = "docwidget_layer";
 layer.style.position = "fixed";
 layer.style.zIndex = "1000000";
+document.body.appendChild(layer);
 
 // register the search service and load its data
 let search = new SearchService();
@@ -15,24 +15,17 @@ search.loadAsync().catch((err) => {
   console.error(err);
 });
 
-// create the widget application and activate it
-class Widget extends BrowserApplication.with(WidgetActivity) {
-  async onManagedStateActiveAsync() {
-    await super.onManagedStateActiveAsync();
-    document.body.appendChild(layer);
-    let activity = this.activities!.get(0);
-    (window as any).showDocWidget = () => {
-      activity.activateAsync();
-    };
-
-    // add an event handler for the ? key
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "/") {
-        activity.activateAsync();
-        e.preventDefault();
-      }
-    });
-  }
-}
+// create the widget application
+class Widget extends BrowserApplication.with(WidgetActivity) {}
 let widget = new Widget(layer);
-widget.activateAsync();
+
+// add a function and event handler to activate the activity
+(window as any).showDocWidget = () => {
+  widget.activate();
+};
+window.addEventListener("keydown", (e) => {
+  if (e.key === "/") {
+    widget.activate();
+    e.preventDefault();
+  }
+});
