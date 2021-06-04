@@ -13,13 +13,13 @@ If you’re new to Typescene, read these short articles to understand what Types
 
 ### Concepts
 
-These articles describe important concepts in detail. Read this to understand the primary concepts that make a Typescene application work (bottom-up learning path).
+These articles describe important concepts in detail. Read this to understand the primary concepts that make a Typescene application work.
 
 - {{nav:content/en/docs/concepts/}}
 
 ### Guides
 
-Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks (top-down learning path).
+Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks (in development).
 
 - {{nav:content/en/docs/guides/}}
 
