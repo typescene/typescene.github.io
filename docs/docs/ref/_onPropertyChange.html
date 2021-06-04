@@ -55,8 +55,14 @@
                 
             </div>
 
-            <p><a href="/docs/ref/_onPropertyChange" id="redir">Redirecting…</a></p>
-<script>document.location=document.getElementById('redir').href</script>
+            <h2 id="onPropertyChange" class="spec"><img src="/assets/icons/spec-decorator.svg" alt="">@onPropertyChange</h2>
+
+
+
+<p><code>(...observedProperties: string[]): MethodDecorator</code></p>
+<p>Observer method decorator: amend decorated method to turn it into a handler for changes to given property/ies.</p>
+<p><strong>Note:</strong> This decorator is intended for use on methods that are part of an observer class, see <a href="/docs/ref/ManagedObject#ManagedObject:addObserver"><code>ManagedObject.addObserver</code></a>.</p>
+
         </div>
 
         <div class="wrapper_column wrapper_column--sidebar wrapper_column--nav">

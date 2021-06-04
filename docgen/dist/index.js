@@ -68,7 +68,7 @@ function generateDocs(pipeline, config) {
                 continue;
             if (c.id.endsWith(".") || c.spec.inherited)
                 continue;
-            let path = node.id +
+            let path = node.id.replace(/\W/g, "_") +
                 (c.id.indexOf(".") < 0 ? "" : "#" + c.id.replace(/[\.\@\[\]]/g, ":"));
             content.push(c.id + "|" + c.spec.type + "|" + path);
         }
@@ -89,8 +89,12 @@ function generateDocs(pipeline, config) {
     for (let page of index) {
         let pg = new PageGenerator_1.PageGenerator(page, parser, misc, config.template, config.base_url);
         let content = pg.generate();
+        let id = page.id.replace(/\W/g, "_");
         if (content.length) {
-            pipeline.add(new markdown_pipeline_1.Pipeline.Item(path.join(config.out, page.id), content, pg.data));
+            if (pg.data.alias) {
+                pg.data.alias = path.join(config.out, pg.data.alias + ".html");
+            }
+            pipeline.add(new markdown_pipeline_1.Pipeline.Item(path.join(config.out, id), content, pg.data));
         }
     }
 }

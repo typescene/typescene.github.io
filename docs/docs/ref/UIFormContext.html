@@ -60,7 +60,7 @@
 
 
 <p><code>extends </code><a href="/docs/ref/Component"><code>Component</code></a></p>
-<p>Represents form field data that can be used by input field components. By default, a <code>formContext</code> property on <a href="/docs/ref/AppActivity"><code>AppActivity</code></a> or <a href="/docs/ref/ViewComponent"><code>ViewComponent</code></a> instances is used, but an alternative form context instance may be bound using a <a href="/docs/ref/UIForm"><code>UIForm</code></a> or <a href="/docs/ref/UIFormContextController"><code>UIFormContextController</code></a> component.</p>
+<p>Represents form field data that can be used by input field components. By default, a <code>formContext</code> property on <a href="/docs/ref/AppActivity"><code>AppActivity</code></a> or <a href="/docs/ref/ViewComponent"><code>ViewComponent</code></a> instances is used, but an alternative form context instance may be bound using a <a href="/docs/ref/UIForm"><code>UIForm</code></a> or <a href="/docs/ref/UIFormContextController"><code>UIFormContextController</code></a> component. Whenever the form data changes, an event of type <a href="/docs/ref/UIFormContextChangeEvent"><code>UIFormContextChangeEvent</code></a> (with name <code>&quot;FormChange&quot;</code>) is emitted.</p>
 <p>To create a typed form context instance, use the static <a href="#UIFormContext:create"><code>create</code></a> method instead of the constructor.</p>
 <h3>Constructor</h3>
 
@@ -125,7 +125,7 @@
 
 
 <p><code>(name: keyof TData, description?: string): this</code></p>
-<p>Add a validation test for a field with given name, which results in an error if the current value is undefined, null, false, or an empty string (but not the number &#39;0&#39;). The description is used for generating error messages.</p>
+<p>Add a validation test for a field with given name, which results in an error if the current value is undefined, null, false, or an empty string (but not the number ‘0’). The description is used for generating error messages.</p>
 <h2 id="UIFormContext:test" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.test()</h2>
 
 
@@ -323,7 +323,7 @@
 
 
 <p><code>(description?: string): this</code></p>
-<p>Throws an error when the current value is undefined, null, false, or an empty string (but not the number &#39;0&#39;); the resulting error refers to the field name, or given description.</p>
+<p>Throws an error when the current value is undefined, null, false, or an empty string (but not the number ‘0’); the resulting error refers to the field name, or given description.</p>
 <h2 id="UIFormContext:ValidationTest:typeOf" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.typeOf()</h2>
 
 

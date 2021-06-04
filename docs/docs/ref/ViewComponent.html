@@ -61,7 +61,7 @@
 
 <p><code>extends </code><a href="/docs/ref/AppComponent"><code>AppComponent</code></a><code> </code><code>implements </code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
 <p>Represents an application component that encapsulates a view as a bound component. Bindings in nested view components are bound to the ViewComponent instance itself.</p>
-<p><strong>Note:</strong> This class is similar in functionality to <a href="/docs/ref/ViewActivity"><code>ViewActivity</code></a>, but <code>ViewComponent</code> views are created immediately, whereas view activities need to be activated first before their views are created. View components also propagate (re-emit) events of type <a href="/docs/ref/UIComponentEvent"><code>UIComponentEvent</code></a> for user interactions such as &#39;Click&#39;, &#39;FocusIn&#39;, etc.</p>
+<p><strong>Note:</strong> This class is similar in functionality to <a href="/docs/ref/ViewActivity"><code>ViewActivity</code></a>, but <code>ViewComponent</code> views are created immediately, whereas view activities need to be activated first before their views are created. View components also propagate (re-emit) events of type <a href="/docs/ref/UIComponentEvent"><code>UIComponentEvent</code></a> for user interactions such as ‘Click’, ‘FocusIn’, etc.</p>
 <h4 id="example">Example</h4>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ViewComponent</span>.<span class="hljs-title">with</span>(</span>{
   <span class="hljs-comment">// view declaration goes here, JSX is allowed too:</span>
@@ -112,7 +112,7 @@
 <p><strong>[3]</strong> Declare a view component class with given preset properties and content</p>
 <p><strong>[4]</strong> Declare a view component class with given view or content.</p>
 <blockquote>
-<p><strong>Note:</strong> The <code>ViewComponent</code> class overrides the standard <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> method to be able to return a type that is compatible with JSX syntax, while remaining compatible with the original type. Common usage is more straightforward than the type definition suggests -- refer to the example above.</p>
+<p><strong>Note:</strong> The <code>ViewComponent</code> class overrides the standard <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> method to be able to return a type that is compatible with JSX syntax, while remaining compatible with the original type. Common usage is more straightforward than the type definition suggests – refer to the example above.</p>
 </blockquote>
 <h2 id="ViewComponent:presetChildView" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.presetChildView() <span class="spec_tag">static</span></h2>
 
@@ -120,7 +120,7 @@
 
 <p><code>&lt;TViewComponent&gt;(this: (new (...args: never[]) =&gt; TViewComponent) &amp; typeof ViewComponent, propertyName: keyof TViewComponent, View: </code><a href="/docs/ref/UIRenderableConstructor"><code>UIRenderableConstructor</code></a><code>, boundProperties?: true | (keyof TViewComponent)[]): void</code></p>
 <ul>
-<li><code>propertyName</code> —  The property that will be set. This property must <em>already</em> be a managed child property, decorated using <a href="/docs/ref/managedChild"><code>@managedChild</code></a> and optionally <a href="/docs/ref/delegateEvents"><code>@delegateEvents</code></a> for event handling.</li>
+<li><code>propertyName</code> —  The property that will be set. This property must <em>already</em> be a managed child property, decorated using <a href="/docs/ref/_component"><code>@component</code></a> and optionally <a href="/docs/ref/_delegateEvents"><code>@delegateEvents</code></a> for event handling.</li>
 </ul>
 <ul>
 <li><code>View</code> —  The (preset) constructor for the child view. This constructor will be used to create a child component for each <code>ViewComponent</code> instance.</li>
@@ -315,7 +315,7 @@
 
 
 
-<p>The result of ViewComponent.with(...), used like any other preset component constructor.</p>
+<p>The result of ViewComponent.with(…), used like any other preset component constructor.</p>
 <h2 id="ViewComponent:PresetViewComponentConstructor:with" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.with()</h2>
 
 
@@ -328,7 +328,7 @@
 
 
 <p><code>type PresetType&lt;PresetT, ContentPropertiesT extends string&gt; = {</code><br><code>        [P in keyof typeof ViewComponent]: typeof ViewComponent[P];</code><br><code>    } &amp; PresetViewComponentConstructor&lt;PresetT, ContentPropertiesT&gt;;</code></p>
-<p>The result of ViewComponent.with(...), used like any other preset component constructor.</p>
+<p>The result of ViewComponent.with(…), used like any other preset component constructor.</p>
 
         </div>
 

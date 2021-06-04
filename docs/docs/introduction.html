@@ -63,14 +63,14 @@
 <ul>
 <li><strong>Views</strong> describe the user interface, as a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.</li>
 <li><strong>Activities</strong> represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are <em>activated</em> independently to display their corresponding views automatically.</li>
-<li><strong>Services</strong> provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user&#39;s language.</li>
+<li><strong>Services</strong> provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user’s language.</li>
 </ul>
 <blockquote>
 <p><strong>Note:</strong> This architecture is designed for <em>interactive applications or widgets</em> such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is <em>not</em> a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.  </p>
 </blockquote>
 <h2 id="components">Components</h2>
 
-<p>Views, activities, services, and other components all play a specific role within an application, and Typescene includes a number of classes to provide this functionality. For example, a text label in the app&#39;s user interface is represented by the <code>UILabel</code> class, and an activity that displays a full-screen view is an instance of the <code>PageViewActivity</code> class. The entire app is an instance of <code>Application</code>.</p>
+<p>Views, activities, services, and other components all play a specific role within an application, and Typescene includes a number of classes to provide this functionality. For example, a text label in the app’s user interface is represented by the <code>UILabel</code> class, and an activity that displays a full-screen view is an instance of the <code>PageViewActivity</code> class. The entire app is an instance of <code>Application</code>.</p>
 <p>These components work together using features that are defined by their common base class, the <code>Component</code> class itself. In particular, this class manages references <em>between</em> components, allowing them to respond to <em>events</em> emitted by other components, and <em>observe</em> property changes. These features are available for all components, but not at the level of individual objects — components are connected at the <strong>class</strong> level.</p>
 <p>In order for this to work, relationships between components (such as view elements, view containers, activities, services, and the application itself) are <em>declared</em> at the time their classes are created. While this may seem a bit confusing at first, in practice it allows Typescene to efficiently map out the dependencies between components <em>upfront</em> and reduce the amount of code required. Let’s go through an example to see how this works.</p>
 <h4>Example</h4>
@@ -180,18 +180,18 @@ app.activate();
 <li>For simply toggling visibility of a view component on and off, the <code>hidden</code> view property can be bound to one of the state properties. True means hidden, false or undefined means visible (not hidden).</li>
 <li>For larger view areas with multiple components, the <code>UIConditional</code> component can be used as a wrapper, to enable or disable rendering of all contained view components based on the value of a bound property.</li>
 <li>For style-only changes such as colors or font weights, the <code>UIStyleController</code> component updates a single view component’s styles on the fly, based on one or more possible states reflected by a single property.</li>
-<li>For lists, the <code>UIListController</code> renders its view content (a list &#39;cell&#39;) for <em>each</em> element of a list, taken from a bound property.</li>
+<li>For lists, the <code>UIListController</code> renders its view content (a list ‘cell’) for <em>each</em> element of a list, taken from a bound property.</li>
 </ul>
 <p>View content declarations within a list cell may contain bindings to <em>both</em> the (properties of the) list element as well as the original activity, and events delegated from the list cell itself are encapsulated in a <em>list cell event</em> type that also includes a reference to the associated list element.</p>
 <p>Each of these view components are described in detail in the API reference pages, as well as the documentation on <a href="/docs/concepts/views">views</a>.</p>
 <blockquote>
-<p><strong>Note:</strong> When building lists, components are usually stored in special &#39;managed&#39; lists rather than plain Arrays, to avoid issues with duplicates, gaps, and undefined values. Events can be handled for all components in a managed list at once. Refer to the detailed documentation on <a href="/docs/concepts/components">components</a> for more information.</p>
+<p><strong>Note:</strong> When building lists, components are usually stored in special ‘managed’ lists rather than plain Arrays, to avoid issues with duplicates, gaps, and undefined values. Events can be handled for all components in a managed list at once. Refer to the detailed documentation on <a href="/docs/concepts/components">components</a> for more information.</p>
 </blockquote>
 <h2 id="projects">Projects</h2>
 
 
 <p>While small apps might contain only a single activity and view like the example above, large applications often consist of many activities, backed by complex interlinked data models.</p>
-<p>With scalability in mind, it&#39;s a good idea to organize Typescene projects by activity (encapsulating the view) and service (encapsulating the data model), to be able to grow the application simply by adding folders for more activities (with views) or services (with models).</p>
+<p>With scalability in mind, it’s a good idea to organize Typescene projects by activity (encapsulating the view) and service (encapsulating the data model), to be able to grow the application simply by adding folders for more activities (with views) or services (with models).</p>
 <p>On disk, Typescene apps are often organized as follows — although this <em>isn’t required</em> in any way:</p>
 <ul>
 <li>An <strong>Activities</strong> folder, with each activity in a separate sub folder<ul>
@@ -205,9 +205,9 @@ app.activate();
 <h3>Widgets</h3>
 
 
-<p>For existing (Web app or website) projects, the use of Typescene might be limited to a separate &#39;widget&#39; that’s pulled in by one or more pages — as opposed to a Single-Page Application (SPA). Typescene facilitates this as well:</p>
+<p>For existing (Web app or website) projects, the use of Typescene might be limited to a separate ‘widget’ that’s pulled in by one or more pages — as opposed to a Single-Page Application (SPA). Typescene facilitates this as well:</p>
 <ul>
-<li>The main view output of the application can be &#39;mounted&#39; to a single DOM element on the page if needed, instead of filling the entire screen.</li>
+<li>The main view output of the application can be ‘mounted’ to a single DOM element on the page if needed, instead of filling the entire screen.</li>
 <li>Modal dialogs (popups) can be displayed e.g. after the user presses a button, which block input to the rest of the page while the app is active.</li>
 <li>Multiple applications may be created at the same time, each with their own set of activities. Each widget could therefore maintain their own state, while still sharing data through services.</li>
 </ul>
@@ -221,7 +221,7 @@ app.activate();
 <h3>Next steps</h3>
 
 
-<p>Now that you&#39;re familiar with the basics, you can take the following steps:</p>
+<p>Now that you’re familiar with the basics, you can take the following steps:</p>
 <ul>
 <li>Follow a practical approach and <a href="/docs/installation">create an app</a> to experiment with.</li>
 <li>Alternatively, learn more about <a href="/docs/concepts/components">components</a> for a detailed understanding of how they work, before moving on to <a href="/docs/concepts/activities">activities</a> and <a href="/docs/concepts/views">views</a>.</li>

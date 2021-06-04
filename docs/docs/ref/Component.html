@@ -60,7 +60,7 @@
 
 
 <p><code>extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a></p>
-<p>Component base class. Represents a managed object (see <a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a>) that can be instantiated using a &#39;preset&#39; constructor, i.e. the result of a call to the static <a href="#Component:with"><code>with</code></a> method.</p>
+<p>Component base class. Represents a managed object (see <a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a>) that can be instantiated using a ‘preset’ constructor, i.e. the result of a call to the static <a href="#Component:with"><code>with</code></a> method.</p>
 <p>When components are constructed, they are initialized with preset values for given properties, as well as preset bindings for properties which should automatically observe properties on the nearest parent component that (indirectly) references this component using the <code>@managedBound</code> decorator.</p>
 <p><a href="/docs/concepts/components" class="block_link doc"><strong>See also:</strong> Concepts &gt; Components</a></p>
 <h3>Constructor</h3>
@@ -94,7 +94,7 @@
 
 <p><code>(...constructors: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): void</code></p>
 <p>Inherit bindings from given component constructor(s) on this constructor. Inherited bindings will be bound to the same bound parent object as bindings passed to <a href="#Component:with"><code>.with()</code></a> directly, to update bound properties of (nested) child instances.</p>
-<p><strong>Note:</strong> This method must be used by a custom <a href="#Component:preset"><code>preset</code></a> function if the preset component (may) have managed child objects (see <a href="/docs/ref/managedChild"><code>@managedChild</code></a>) of the given type and the constructor is not passed to <code>super.preset(...)</code> or <a href="#Component:presetBoundComponent"><code>presetBoundComponent</code></a><code>(...)</code>.</p>
+<p><strong>Note:</strong> This method must be used by a custom <a href="#Component:preset"><code>preset</code></a> function if the preset component (may) have managed child objects (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a>) of the given type and the constructor is not passed to <code>super.preset(...)</code> or <a href="#Component:presetBoundComponent"><code>presetBoundComponent</code></a><code>(...)</code>. Alternatively, use the <a href="/docs/ref/_component"><code>@component</code></a> decorator on properties that refer to child components, which also presets bindings from a given component type.</p>
 <h2 id="Component:presetBoundComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.presetBoundComponent() <span class="spec_tag">static</span></h2>
 
 
@@ -102,7 +102,7 @@
 <p><code>(propertyName: string, ...constructors: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): </code><a href="#Component:BoundComposition"><code>BoundComposition</code></a></p>
 <p>Make this component the <em>bound</em> parent component for given child component type(s). When a component is assigned to given property, making it a child component, its bindings are bound to the current instance (i.e. the bound parent).</p>
 <p><strong>Returns:</strong> An object that represents the bound parent-child composition, and contains methods that can be used to fine-tune binding behavior.</p>
-<p><strong>Note:</strong> Given property <em>must</em> already be designated as a managed child property (see <a href="/docs/ref/managedChild"><code>@managedChild</code></a> decorator).</p>
+<p><strong>Note:</strong> Given property <em>must</em> already be designated as a managed child property (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> decorator). Do <strong>not</strong> use this method on properties that are already decorated using the <a href="/docs/ref/_component"><code>@component</code></a> decorator.</p>
 <h2 id="Component:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
@@ -114,22 +114,22 @@
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): boolean | void</code></p>
-<p>Delegate given event by invoking a matching handler method, prefixing the event name with &#39;on&#39;. For example, events with name &#39;Submit&#39; can be handled by a method named <code>onSubmit()</code>. The handler method is called with the same arguments as this method, and should return <code>true</code> if the event has been handled.</p>
-<p>Additionally, if the event is of type <a href="/docs/ref/ActionEvent"><code>ActionEvent</code></a>, and if a handler method was not found, or if it did not return <code>true</code>, then the event is re-emitted on the component itself (also known as &#39;propagated&#39;) -- allowing it to be handled by other components, usually by a parent component.</p>
-<p>This method is used as a default handler for <a href="/docs/ref/delegateEvents"><code>@delegateEvents</code></a>. It can be overridden if events should be handled differently in specific cases. A return value other than <code>true</code> indicates that the event is neither handled by a method that returned <code>true</code> itself, nor propagated.</p>
-<p><strong>Note:</strong> In case the event name starts with a lowercase letter (a-z), the handler method should still include a capital letter (e.g. <code>onDoSomething()</code> for an event named &#39;doSomething&#39;). However, it is <em>not</em> recommended to use event names that start with lowercase letters.</p>
+<p>Delegate given event by invoking a matching handler method, prefixing the event name with ‘on’. For example, events with name ‘Submit’ can be handled by a method named <code>onSubmit()</code>. The handler method is called with the same arguments as this method, and should return <code>true</code> if the event has been handled.</p>
+<p>Additionally, if the event is of type <a href="/docs/ref/ActionEvent"><code>ActionEvent</code></a>, and if a handler method was not found, or if it did not return <code>true</code>, then the event is re-emitted on the component itself (also known as ‘propagated’) – allowing it to be handled by other components, usually by a parent component.</p>
+<p>This method is used as a default handler for <a href="/docs/ref/_delegateEvents"><code>@delegateEvents</code></a>. It can be overridden if events should be handled differently in specific cases. A return value other than <code>true</code> indicates that the event is neither handled by a method that returned <code>true</code> itself, nor propagated.</p>
+<p><strong>Note:</strong> In case the event name starts with a lowercase letter (a-z), the handler method should still include a capital letter (e.g. <code>onDoSomething()</code> for an event named ‘doSomething’). However, it is <em>not</em> recommended to use event names that start with lowercase letters.</p>
 <h2 id="Component:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
 <p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
-<p>Returns the current parent component. If a class reference is specified, finds the nearest parent of given type. See <a href="/docs/ref/managedChild"><code>@managedChild</code></a> decorator.</p>
+<p>Returns the current parent component. If a class reference is specified, finds the nearest parent of given type. See <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> decorator.</p>
 <h2 id="Component:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
 <p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
-<p>Returns the parent component that is the source of all bound values on this component (and possibly child components).</p>
+<p>Returns the parent component that is the source of all bound values on this component. See <a href="/docs/ref/_component"><code>@component</code></a> decorator, and <a href="#Component:presetBoundComponent"><code>presetBoundComponent()</code></a>.</p>
 <h2 id="Component:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
@@ -145,7 +145,7 @@
 <p><strong>Deprecated:</strong> in v3.1</p>
 <p>NOTE: This method will be deprecated in favor of calling <code>emit</code> directly. Its name is confusing and after streamlining other parts it will serve no further purpose.</p>
 <p>Create and emit an event with given name, a reference to this component, and an optional inner (propagated) event. The base implementation emits a plain <a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a>, but this method may be overridden to emit other events.</p>
-<p><strong>Note:</strong> If the component is already in the &#39;destroyed&#39; state (see <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>), then no event is emitted and this method returns immediately.</p>
+<p><strong>Note:</strong> If the component is already in the ‘destroyed’ state (see <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>), then no event is emitted and this method returns immediately.</p>
 <p><strong>Note:</strong> This method is used by classes created using <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> if an event handler is specified using the <code>{ ... onEventName: &quot;OtherEvent&quot; }</code> pattern.</p>
 <h2 id="Component:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 

@@ -61,18 +61,18 @@
 <p>The easiest method to use Typescene as part of your Website or Web application, is to include a <em>minified</em> version of the framework using a <code>&lt;script&gt;</code> tag:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/@typescene/webapp@3/umd/typescene.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<p>This allows you to access all of the exported objects from the <code>typescene</code> global variable, or &#39;require&#39; the framework from an AMD module in the browser.</p>
+<p>This allows you to access all of the exported objects from the <code>typescene</code> global variable, or ‘require’ the framework from an AMD module in the browser.</p>
 <p><a href="https://glitch.com/edit/#!/typescene-umd-jsx-simple" target="_blank">This example on Glitch.com</a> illustrates this approach.</p>
 <p>Use this method when:</p>
 <ul>
 <li>You already have an existing Website that uses plain HTML, and only want to add small interactive elements;</li>
 <li>You intend to write only JavaScript code (possibly transpiled using Babel);</li>
-<li>You don&#39;t mind the <em>lack of support</em> for auto-completion and type checking in your editor in some cases.</li>
+<li>You don’t mind the <em>lack of support</em> for auto-completion and type checking in your editor in some cases.</li>
 </ul>
 <h2 id="create">Stand-alone app</h2>
 
 
-<p>If you want to create a more complex UI component or an entire client-side application — either as a single-page Web application (SPA), or as part of a &#39;native-wrapped&#39; project using <a href="https://electronjs.org/" target="_blank">Electron</a> or <a href="https://cordova.apache.org/" target="_blank">Apache Cordova</a>) then you can choose to create a stand-alone package instead.</p>
+<p>If you want to create a more complex UI component or an entire client-side application — either as a single-page Web application (SPA), or as part of a ‘native-wrapped’ project using <a href="https://electronjs.org/" target="_blank">Electron</a> or <a href="https://cordova.apache.org/" target="_blank">Apache Cordova</a>) then you can choose to create a stand-alone package instead.</p>
 <p>Typescene provides a convenient command-line (CLI) utility that can be used to setup and install a complete <a href="https://www.npmjs.com/" target="_blank">NPM</a> package with a single command.</p>
 <p>Use this method when:</p>
 <ul>
@@ -126,7 +126,7 @@
 <h2 id="npm">Installing from NPM</h2>
 
 
-<p>If you&#39;re already working on a Web app using an NPM package, you might want to add Typescene as an NPM <em>dependency</em> instead of creating a new project folder. Since Typescene does not have any further dependencies of its own, it’s possible to add Typescene without changing your existing project setup.</p>
+<p>If you’re already working on a Web app using an NPM package, you might want to add Typescene as an NPM <em>dependency</em> instead of creating a new project folder. Since Typescene does not have any further dependencies of its own, it’s possible to add Typescene without changing your existing project setup.</p>
 <p>Use this method when:</p>
 <ul>
 <li>You already have an existing Web app in an NPM package;</li>
@@ -136,7 +136,7 @@
 
 
 <p>For a working Typescene installation, you’ll need to import both the <code>typescene</code> main package as well as a ‘platform’ package — for now, that’s just <code>@typescene/webapp</code>.</p>
-<p>The main package contains a &#39;platform independent&#39; core which includes all Typescene classes, but doesn’t show anything on its own. The <code>@typescene/webapp</code> package contains a browser-based renderer and router.</p>
+<p>The main package contains a ‘platform independent’ core which includes all Typescene classes, but doesn’t show anything on its own. The <code>@typescene/webapp</code> package contains a browser-based renderer and router.</p>
 <blockquote>
 <p><strong>Note:</strong> Be careful with version numbers: the platform package requires a <em>specific</em> version of the main package, so the version of the <code>typescene</code> package required by your app must be the same or <em>less specific</em>, to make sure that the package manager does not install two different versions.</p>
 </blockquote>
@@ -148,7 +148,7 @@
 <h3>Next steps</h3>
 
 
-<p>Now that you&#39;re able to set up a working application, take the following steps:</p>
+<p>Now that you’re able to set up a working application, take the following steps:</p>
 <ul>
 <li>Learn more about important Typescene concepts, such as <a href="/docs/concepts/components">components</a>, <a href="/docs/concepts/activities">activities</a> and <a href="/docs/concepts/views">views</a>.</li>
 <li>Alternatively, follow a practical approach with <a href="/docs/guides/ui">these guides</a> to experiment with your new app.</li>

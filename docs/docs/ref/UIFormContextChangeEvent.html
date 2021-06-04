@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Typescene - @onPropertyChange</title>
+    <title>Typescene - UIFormContextChangeEvent</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
     <script>
@@ -18,7 +18,7 @@
     <!-- end GA -->
     <link rel="stylesheet" href="/assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
-    <link rel="canonical" href="https://typescene.dev/docs/ref/_onPropertyChange">
+    <link rel="canonical" href="https://typescene.dev/docs/ref/UIFormContextChangeEvent">
 </head>
 <body>
     <nav class="topnav">
@@ -51,12 +51,39 @@
     <div class="wrapper_columns">
         <div class="wrapper_column">
             <div class="pagetitle_container">
-                <h1>@onPropertyChange</h1>
+                <h1>UIFormContextChangeEvent</h1>
                 
             </div>
 
-            <p><a href="/docs/ref/_onPropertyChange" id="redir">Redirecting…</a></p>
-<script>document.location=document.getElementById('redir').href</script>
+            <h2 id="UIFormContextChangeEvent" class="spec"><img src="/assets/icons/spec-class.svg" alt="">class UIFormContextChangeEvent</h2>
+
+
+
+<p><code>extends </code><a href="/docs/ref/ManagedChangeEvent"><code>ManagedChangeEvent</code></a></p>
+<p>Event that is emitted when changes occur to data stored in a <a href="/docs/ref/UIFormContext"><code>UIFormContext</code></a>; the name of this event is always set to <code>&quot;FormChange&quot;</code> to make it easier to delegate these types of events.</p>
+<h3>Constructor</h3>
+
+
+<p><code>(source: </code><a href="/docs/ref/UIFormContext"><code>UIFormContext</code></a><code>&lt;unknown&gt;): UIFormContextChangeEvent</code></p>
+<h2 id="UIFormContextChangeEvent:source" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.source</h2>
+
+
+
+<p><a href="/docs/ref/UIFormContext"><code>UIFormContext</code></a><code>&lt;any&gt;</code></p>
+<p>The form data that was changed.</p>
+<h2 id="UIFormContextChangeEvent:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
+
+
+
+<p><code>string</code></p>
+<p>Inherited from <a href="/docs/ref/ManagedEvent#ManagedEvent:name"><code>ManagedEvent.name</code></a>.</p>
+<h2 id="UIFormContextChangeEvent:freeze" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.freeze()</h2>
+
+
+
+<p><code>(): Readonly&lt;this&gt;</code></p>
+<p>Inherited from <a href="/docs/ref/ManagedEvent#ManagedEvent:freeze"><code>ManagedEvent.freeze</code></a>.</p>
+
         </div>
 
         <div class="wrapper_column wrapper_column--sidebar wrapper_column--nav">
@@ -65,7 +92,13 @@
                     <nav id="toc" class="sidebar_nav">
                         <h4 id="declarations">Declarations</h4>
 <ul>
-<li><a href="#onPropertyChange">@onPropertyChange</a></li>
+<li><a href="#UIFormContextChangeEvent"><strong>class UIFormContextChangeEvent</strong></a></li>
+<li><a href="#UIFormContextChangeEvent:source">.source</a></li>
+</ul>
+<h4 id="inherited">Inherited</h4>
+<ul>
+<li><a href="#UIFormContextChangeEvent:name">.name</a></li>
+<li><a href="#UIFormContextChangeEvent:freeze">.freeze()</a></li>
 </ul>
 
                     </nav>

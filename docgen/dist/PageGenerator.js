@@ -21,6 +21,10 @@ class PageGenerator {
         this.data.template = template;
         this.data.title = this.doc.id;
         this.data.reftype = this.doc.type;
+        if (doc.id.startsWith("@") &&
+            !parser.isDefined(doc.id.replace(/^\@\w/, (c) => c[1].toUpperCase()))) {
+            this.data.alias = doc.id.slice(1);
+        }
     }
     /** Generate the page's markdown file as an array of strings; also populates the data object */
     generate() {
@@ -196,7 +200,9 @@ class PageGenerator {
             if (t !== this.doc.id) {
                 token = token.replace(/_/g, "\\_");
                 if (this._parser.isDefined(t)) {
-                    let url = this._baseUrl + t.replace(/\..*/, "");
+                    let url = this._baseUrl +
+                        (token.startsWith("@") ? "_" : "") +
+                        t.replace(/\..*/, "");
                     if (t.indexOf(".") > 0)
                         url += navId(t);
                     return `${impl || ""}\`[\`${token}\`](${url})${spaces}\``;

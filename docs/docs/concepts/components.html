@@ -99,7 +99,7 @@
 <p>The <a href="/docs/ref/managed"><code>@managed</code></a> decorator can be used on a property that’s intended to reference another component. This enables the following behavior:</p>
 <ul>
 <li>Type validation: managed properties <em>must</em> reference a Component instance, nothing else (but they can be <code>undefined</code>).</li>
-<li>Life cycle state validation: managed properties cannot refer to a component that&#39;s in a &#39;destroyed&#39; state (see <a href="#ids-state">IDs and state</a> below -- components in this state are basically invalid, and most of the Component features described here are disabled after the component is destroyed, even if your code can still &#39;see&#39; the object).</li>
+<li>Life cycle state validation: managed properties cannot refer to a component that’s in a ‘destroyed’ state (see <a href="#ids-state">IDs and state</a> below – components in this state are basically invalid, and most of the Component features described here are disabled after the component is destroyed, even if your code can still ‘see’ the object).</li>
 <li>Dereferencing: when a component is destroyed, managed properties that referenced this component are automatically set to <code>undefined</code>.</li>
 </ul>
 <pre><code class="language-typescript"><span class="hljs-comment">// property values are checked</span>
@@ -166,7 +166,7 @@ listComponent.list.clear(); <span class="hljs-comment">// items are destroyed</s
 
 
 <p>Components can <em>emit events</em>, for a variety of reasons — for example when the user interacts with a UI component, or when the state of a data model or service changes. These events can then be handled by components that <em>include a reference</em> to the emitting component (using managed references, as described above).</p>
-<p>You can emit your own events: any instance of the <code>ManagedEvent</code> class can be emitted using the <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>emit()</code></a> method of a component. For components that hold some type of data, the <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>emitChange()</code></a> method provides an efficient way to emit a &#39;Change&#39; event — signaling that the data has changed — without having to construct the event object itself.</p>
+<p>You can emit your own events: any instance of the <code>ManagedEvent</code> class can be emitted using the <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>emit()</code></a> method of a component. For components that hold some type of data, the <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>emitChange()</code></a> method provides an efficient way to emit a ‘Change’ event — signaling that the data has changed — without having to construct the event object itself.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:emit" class="block_link method"><strong>ManagedObject.emit()</strong><br>Emit an event</a>
 <a href="/docs/ref/ManagedObject#ManagedObject:emitChange" class="block_link method"><strong>ManagedObject.emitChange()</strong><br>Emit a change event (instance of <code>ManagedChangeEvent</code>)</a></p>
 <pre><code class="language-typescript"><span class="hljs-keyword">let</span> c = <span class="hljs-keyword">new</span> MyComponent()
@@ -179,7 +179,7 @@ c.emitChange();
 
 <p>Events can be handled in one of the following ways:</p>
 <ul>
-<li>By &#39;propagating&#39; events from child components, or</li>
+<li>By ‘propagating’ events from child components, or</li>
 <li>Using a component observer (see <a href="#observers">Observers</a> below).</li>
 </ul>
 <p>Event propagation is particularly useful for components that are part of a tree structure. When a child component emits an event (e.g. a <code>Click</code> event on a UI button component, or a <code>Change</code> event on an address data record), it’s often desirable to emit an event on the containing component as well (e.g. the row container that contains the button, or the contact record that refers to the address).</p>
@@ -196,7 +196,7 @@ c.child.emitChange()  <span class="hljs-comment">// not propagated on c</span>
 </code></pre>
 <p>You can use the <code>propagateChildEvents</code> callback to take any action before the event is propagated, if at all. This makes it the simplest way to handle events, as long as the event source is referenced through a managed child reference property.</p>
 <blockquote>
-<p><strong>Note:</strong> The built-in events <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:ACTIVE">&#39;Active&#39;</a>, <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:INACTIVE">&#39;Inactive&#39;</a>, and <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:DESTROYED">&#39;Destroyed&#39;</a> are emitted automatically when the state of a component changes to active, inactive, and destroyed states, respectively (see &#39;IDs and state&#39; below). However, these events <em>cannot</em> be propagated.</p>
+<p><strong>Note:</strong> The built-in events <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:ACTIVE">‘Active’</a>, <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:INACTIVE">‘Inactive’</a>, and <a href="/docs/ref/ManagedCoreEvent#ManagedCoreEvent:DESTROYED">‘Destroyed’</a> are emitted automatically when the state of a component changes to active, inactive, and destroyed states, respectively (see ‘IDs and state’ below). However, these events <em>cannot</em> be propagated.</p>
 </blockquote>
 <h2 id="observers">Observers</h2>
 
@@ -249,32 +249,32 @@ ObservedComponent.addObserver(<span class="hljs-class"><span class="hljs-keyword
 <h2 id="ids-state">IDs and state</h2>
 
 
-<p>To keep track of component references internally, Typescene uses a unique ID that&#39;s assigned to every component instance as soon as it is created. This number is available through the read-only <code>managedId</code> field.</p>
+<p>To keep track of component references internally, Typescene uses a unique ID that’s assigned to every component instance as soon as it is created. This number is available through the read-only <code>managedId</code> field.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:managedId" class="block_link property"><strong>ManagedObject.managedId</strong><br>Unique object identifier</a></p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ }
 <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> MyComponent().managedId)  <span class="hljs-comment">// e.g. 16</span>
 </code></pre>
-<p>The <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>managedState</code></a> field is another read-only component field. This represents the current &#39;state&#39; of the component, i.e. one of the values defined on the <a href="/docs/ref/ManagedState"><code>ManagedState</code></a> enumeration object.</p>
+<p>The <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>managedState</code></a> field is another read-only component field. This represents the current ‘state’ of the component, i.e. one of the values defined on the <a href="/docs/ref/ManagedState"><code>ManagedState</code></a> enumeration object.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:managedState" class="block_link property"><strong>ManagedObject.managedState</strong><br>The current lifecycle state</a></p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:managedId" class="block_link type"><strong>ManagedState</strong><br>Enumeration of possible states for a managed object</a></p>
 <ul>
-<li><code>ManagedState.CREATED</code> -- the initial state</li>
-<li><code>ManagedState.DESTROYED</code> -- a state in which the component should not be used anymore, can no longer be referenced from other components, and cannot emit events; this state is permanent</li>
-<li><code>ManagedState.ACTIVE</code> -- mostly used for activities and applications, to signify that corresponding view(s) should be rendered to the screen</li>
-<li><code>ManagedState.INACTIVE</code> -- the component is no longer active</li>
-<li><code>*.ACTIVATING</code>, <code>*.INACTIVATING</code>, <code>*.DESTROYING</code> -- the component is transitioning from one state to another.</li>
+<li><code>ManagedState.CREATED</code> – the initial state</li>
+<li><code>ManagedState.DESTROYED</code> – a state in which the component should not be used anymore, can no longer be referenced from other components, and cannot emit events; this state is permanent</li>
+<li><code>ManagedState.ACTIVE</code> – mostly used for activities and applications, to signify that corresponding view(s) should be rendered to the screen</li>
+<li><code>ManagedState.INACTIVE</code> – the component is no longer active</li>
+<li><code>*.ACTIVATING</code>, <code>*.INACTIVATING</code>, <code>*.DESTROYING</code> – the component is transitioning from one state to another.</li>
 </ul>
-<p>You don&#39;t usually need to change a component&#39;s state yourself, but you may want to handle state changes when they occur — e.g. to trigger loading some data for an Activity as it becomes &#39;active&#39;.</p>
+<p>You don’t usually need to change a component’s state yourself, but you may want to handle state changes when they occur — e.g. to trigger loading some data for an Activity as it becomes ‘active’.</p>
 <p>State transitions are <em>asynchronous</em>, and can only be initiated using the following (protected) methods:</p>
 <ul>
 <li><code>activateManagedAsync()</code> — to transition to the active state;<ul>
 <li>While activating, the component calls its own <code>onManagedStateActivatingAsync()</code> method, which can be overridden to intercept the state transition. Throwing an error cancels the transition.</li>
-<li>After the component becomes &#39;active&#39;, the <code>onManagedStateActiveAsync()</code> method is called.</li>
+<li>After the component becomes ‘active’, the <code>onManagedStateActiveAsync()</code> method is called.</li>
 </ul>
 </li>
 <li><code>deactivateManagedAsync()</code> — to transition (back) to the inactive state;<ul>
 <li>While deactivating, the component calls its own <code>onManagedStateDeactivatingAsync()</code> method, which can be overridden. Throwing an error cancels the transition.</li>
-<li>After the component becomes &#39;inactive&#39;, the <code>onManagedStateInactiveAsync()</code> method is called.</li>
+<li>After the component becomes ‘inactive’, the <code>onManagedStateInactiveAsync()</code> method is called.</li>
 </ul>
 </li>
 <li><code>destroyManagedAsync()</code> — to transition to the destroyed state;<ul>
@@ -295,10 +295,10 @@ ObservedComponent.addObserver(<span class="hljs-class"><span class="hljs-keyword
 <h3>Recap</h3>
 
 
-<p>So far, we&#39;ve seen that components</p>
+<p>So far, we’ve seen that components</p>
 <ul>
-<li>can reference each other through &#39;managed&#39; properties, with Typescene automatically managing some relationships</li>
-<li>can emit events, which may be handled and &#39;propagated&#39; through parent-child references</li>
+<li>can reference each other through ‘managed’ properties, with Typescene automatically managing some relationships</li>
+<li>can emit events, which may be handled and ‘propagated’ through parent-child references</li>
 <li>can be observed (for properties changes and events)</li>
 <li>have an ID and an asynchronously managed state.</li>
 </ul>
@@ -341,11 +341,11 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
 <span class="hljs-keyword">let</span> btn2 = <span class="hljs-keyword">new</span> MyButton();
 <span class="hljs-built_in">console</span>.log(btn2.label);  <span class="hljs-comment">// =&gt; &quot;Cancel&quot;</span>
 </code></pre>
-<p>However, some properties aren&#39;t just copied. Components can define their own preset logic, but there are two exceptions that are shared by all components: <em>bindings</em> and <em>event handlers</em>.</p>
+<p>However, some properties aren’t just copied. Components can define their own preset logic, but there are two exceptions that are shared by all components: <em>bindings</em> and <em>event handlers</em>.</p>
 <h3>Bindings</h3>
 
 
-<p>If you add a ‘binding’ to a preset object — i.e. the result of a call to <a href="/docs/ref/bind"><code>bind</code></a> or <a href="/docs/ref/bindf"><code>bindf</code></a>, then the corresponding property on the preset component becomes &#39;bound&#39; to a property of one of its parent components, allowing it to be updated dynamically.</p>
+<p>If you add a ‘binding’ to a preset object — i.e. the result of a call to <a href="/docs/ref/bind"><code>bind</code></a> or <a href="/docs/ref/bindf"><code>bindf</code></a>, then the corresponding property on the preset component becomes ‘bound’ to a property of one of its parent components, allowing it to be updated dynamically.</p>
 <p><a href="/docs/ref/bind" class="block_link function"><strong>bind()</strong><br>Create a new binding for a given property name</a>
 <a href="/docs/ref/bindf" class="block_link function"><strong>bindf()</strong><br>Create a new binding using a format string</a>
 <a href="/docs/ref/Binding" class="block_link class"><strong>Binding</strong><br>Represents a binding, created using <code>bind</code> or <code>bindf</code></a></p>

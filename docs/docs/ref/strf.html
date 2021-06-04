@@ -81,13 +81,13 @@
 </li>
 <li><p><code>%{then:a:b}</code> to select strings a or b based on boolean value</p>
 </li>
-<li><p><code>%{or:b}</code> to select string b if the value is not boolean true</p>
+<li><p><code>%{else:b}</code> to select string b if the value is not boolean true</p>
 </li>
 <li><p><code>%{local:...}</code> for I18n-formatted values; the type part(s) are variable, and will need to be implemented by the <a href="/docs/ref/I18nService#I18nService:format"><code>I18nService.format</code></a> method of the currently registered I18n service, e.g. <code>strf(&quot;%{local:date}&quot;, new Date())</code>.</p>
 </li>
 </ul>
 <p><strong>Note:</strong> Asterisks (<code>*</code>) anywhere in a placeholder are replaced by the next value in the parameter list (<em>before</em> the value being represented itself), e.g. in <code>strf(&quot;%.*f&quot;, precision, number)</code> and <code>strf(&quot;%{local:currency:*}&quot;, currency, number)</code>.</p>
-<p><strong>Note:</strong> Floating point numbers are formatted using the decimal separator specified by the <a href="/docs/ref/I18nService#I18nService:decimalSeparator"><code>I18nService.decimalSeparator</code></a> property of the currently registered I18n service, if any. Number grouping separators are not supported, and if necessary numbers will need to be formatted using %{local:...}.</p>
+<p><strong>Note:</strong> Floating point numbers are formatted using the decimal separator specified by the <a href="/docs/ref/I18nService#I18nService:decimalSeparator"><code>I18nService.decimalSeparator</code></a> property of the currently registered I18n service, if any. Number grouping separators are not supported, and if necessary numbers will need to be formatted using %{local:…}.</p>
 <p><strong>Note:</strong> Use position specifiers (i.e. <code>n$</code>) to change the order of parameters used, e.g. <code>strf(&quot;A is %i and B is %i, so %1$i + %2$i equals %i&quot;, i1, i2, i1 + i2)</code>. This is also helpful for translations where the position of words or numbers must be reversed.</p>
 
         </div>

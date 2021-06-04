@@ -60,7 +60,7 @@
 
 
 <p><code>extends </code><a href="/docs/ref/ManagedCoreEvent"><code>ManagedCoreEvent</code></a></p>
-<p>Event that is emitted when a reference to a managed object is assigned to a managed child reference property (i.e. a property decorated with the <a href="/docs/ref/managedChild"><code>@managedChild</code></a> decorator); the child object emits this event, with <a href="#ManagedParentChangeEvent:parent"><code>parent</code></a> set to the <em>new</em> parent object, and <a href="#ManagedParentChangeEvent:propertyName"><code>propertyName</code></a> set to the property name (only if the child object is <em>directly</em> assigned to a property of the parent object).</p>
+<p>Event that is emitted when a reference to a managed object is assigned to a managed child reference property (i.e. a property decorated with the <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> or <a href="/docs/ref/_component"><code>@component</code></a> decorators); the child object emits this event, with <a href="#ManagedParentChangeEvent:parent"><code>parent</code></a> set to the <em>new</em> parent object, and <a href="#ManagedParentChangeEvent:propertyName"><code>propertyName</code></a> set to the property name (only if the child object is <em>directly</em> assigned to a property of the parent object).</p>
 <h3>Constructor</h3>
 
 

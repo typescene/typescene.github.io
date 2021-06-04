@@ -122,7 +122,9 @@ export class DeclarationFileParser {
     let pages: { [id: string]: DocPage } = {};
     let result: DocPage[] = [];
     let addPage = (topId: string, spec: SpecNode) => {
-      if (spec.id === topId && this._nodes[topId] !== spec) return;
+      let id = spec.id;
+      if (id.startsWith("@")) id = id.slice(1);
+      if (id === topId && this._nodes[topId] !== spec) return;
       if (!pages[topId]) {
         let newPage: DocPage = {
           id: topId,
@@ -134,7 +136,6 @@ export class DeclarationFileParser {
       }
 
       // follow inheritance, add base node references
-      let id = spec.id;
       spec.inherit &&
         spec.inherit.forEach((c) => {
           this._inheritDocRefs(id, c);
@@ -158,8 +159,8 @@ export class DeclarationFileParser {
 
     // sort pages alphabetically and return the result
     result.sort((a, b) => {
-      let aId = a.id.toLowerCase();
-      let bId = b.id.toLowerCase();
+      let aId = a.id.replace(/\W/g, "").toLowerCase();
+      let bId = b.id.replace(/\W/g, "").toLowerCase();
       return aId > bId ? 1 : -1;
     });
     return result;
@@ -223,7 +224,8 @@ export class DeclarationFileParser {
       }
     } else if (doc && doc.tagName) {
       // add return/note/param tags only
-      let comment = (doc.comment || "").replace(/([^\.])[;\s]*$/, "$1.");
+      let comment = typeof doc.comment === "string" ? doc.comment : "";
+      comment = comment.replace(/([^\.])[;\s]*$/, "$1.");
       let result: DocSection = { doc: comment };
       switch (doc.tagName.text) {
         case "return":
@@ -288,6 +290,7 @@ export class DeclarationFileParser {
     let symbol = node.name && this.checker.getSymbolAtLocation(node.name);
     let typeSymbol =
       symbol &&
+      symbol.valueDeclaration &&
       this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     if (!symbol || !typeSymbol) return;
     let docnode = symbol.getDocumentationComment(this.checker);
@@ -297,11 +300,7 @@ export class DeclarationFileParser {
     // check if node already exists
     let name = symbol.getName();
     id += (id ? "." : "") + name;
-    if (
-      this._nodes[id] &&
-      this._nodes[id].type === SpecNodeType.FunctionDeclaration
-    )
-      return;
+    if (this._nodes[id] || this._nodes["@" + id]) return;
 
     // create a spec node and add JSDoc text/tags
     let result = (this._nodes[id] = new SpecNode(
@@ -315,6 +314,9 @@ export class DeclarationFileParser {
       typeSymbol.getCallSignatures(),
       this.checker
     );
+    if (result.type === SpecNodeType.DecoratorFunction) {
+      result.id = "@" + result.id;
+    }
     return result;
   }
 
@@ -367,6 +369,7 @@ export class DeclarationFileParser {
     let symbol = node.name && this.checker.getSymbolAtLocation(node.name);
     let typeSymbol =
       symbol &&
+      symbol.valueDeclaration &&
       this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     if (!symbol || !typeSymbol) return;
 
@@ -443,6 +446,7 @@ export class DeclarationFileParser {
     let symbol = node.name && this.checker.getSymbolAtLocation(node.name);
     let typeSymbol =
       symbol &&
+      symbol.valueDeclaration &&
       this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     if (!symbol || !typeSymbol) return;
 
@@ -481,6 +485,7 @@ export class DeclarationFileParser {
       this.checker.getSymbolAtLocation(node.name || node);
     let typeSymbol =
       symbol &&
+      symbol.valueDeclaration &&
       this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     if (!symbol || !typeSymbol) return;
     if (this._hasModifier(node, "private")) return;
@@ -526,6 +531,7 @@ export class DeclarationFileParser {
       this.checker.getSymbolAtLocation(node.name || node);
     let typeSymbol =
       symbol &&
+      symbol.valueDeclaration &&
       this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     if (!symbol || !typeSymbol) return;
     let text = displayPartsToString(

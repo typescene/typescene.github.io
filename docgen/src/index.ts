@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import * as path from "path";
 import { Pipeline } from "markdown-pipeline";
-import { DeclarationFileParser } from "./DeclarationFileParser";
+import { DeclarationFileParser, SpecNodeType } from "./DeclarationFileParser";
 import { MiscContent } from "./MiscContent";
 import { PageGenerator } from "./PageGenerator";
 
@@ -82,7 +82,7 @@ export function generateDocs(pipeline: Pipeline, config: ConfigSource) {
       if (c.spec.deprecated) continue;
       if (c.id.endsWith(".") || c.spec.inherited) continue;
       let path =
-        node.id +
+        node.id.replace(/\W/g, "_") +
         (c.id.indexOf(".") < 0 ? "" : "#" + c.id.replace(/[\.\@\[\]]/g, ":"));
       content.push(c.id + "|" + c.spec.type + "|" + path);
     }
@@ -111,9 +111,13 @@ export function generateDocs(pipeline: Pipeline, config: ConfigSource) {
       config.base_url
     );
     let content = pg.generate();
+    let id = page.id.replace(/\W/g, "_");
     if (content.length) {
+      if (pg.data.alias) {
+        pg.data.alias = path.join(config.out, pg.data.alias + ".html");
+      }
       pipeline.add(
-        new Pipeline.Item(path.join(config.out, page.id), content, pg.data)
+        new Pipeline.Item(path.join(config.out, id), content, pg.data)
       );
     }
   }

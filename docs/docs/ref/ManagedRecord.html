@@ -82,7 +82,7 @@
 
 
 <p><code>&lt;TParent extends ManagedRecord = ManagedRecord&gt;(ParentClass?: </code><a href="/docs/ref/ManagedRecordConstructor"><code>ManagedRecordConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
-<p>Returns the parent record (or parent&#39;s parent, etc.). If a class reference is specified, finds the nearest parent of given type. See <a href="/docs/ref/managedChild"><code>@managedChild</code></a> decorator.</p>
+<p>Returns the parent record (or parent’s parent, etc.). If a class reference is specified, finds the nearest parent of given type. See <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> and <a href="/docs/ref/_component"><code>@component</code></a> decorators.</p>
 <h2 id="ManagedRecord:getNextSibling" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getNextSibling()</h2>
 
 
@@ -103,7 +103,7 @@
 <ul>
 <li><code>FilterByClass</code> —  If specified, results will only include instances of given class. Other referrers are <em>not</em> inspected recursively.</li>
 </ul>
-<p>Returns an array of unique records that contain managed references to this object (see <a href="/docs/ref/managed"><code>@managed</code></a> and <a href="/docs/ref/managedChild"><code>@managedChild</code></a>). This includes records that refer directly to this object, as well as those that refer to managed list(s) or map(s) that contain this record.</p>
+<p>Returns an array of unique records that contain managed references to this object (see <a href="/docs/ref/_managed"><code>@managed</code></a>, <a href="/docs/ref/_managedChild"><code>@managedChild</code></a>, and <a href="/docs/ref/_component"><code>@component</code></a>). This includes records that refer directly to this object, as well as those that refer to managed list(s) or map(s) that contain this record.</p>
 <h2 id="ManagedRecord:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 

@@ -5,7 +5,7 @@
     
     <meta name="viewport" content="width=device-width, maximum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Typescene - @onPropertyChange</title>
+    <title>Typescene - @managedChild</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
     <script>
@@ -18,7 +18,7 @@
     <!-- end GA -->
     <link rel="stylesheet" href="/assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
-    <link rel="canonical" href="https://typescene.dev/docs/ref/_onPropertyChange">
+    <link rel="canonical" href="https://typescene.dev/docs/ref/_managedChild">
 </head>
 <body>
     <nav class="topnav">
@@ -51,12 +51,29 @@
     <div class="wrapper_columns">
         <div class="wrapper_column">
             <div class="pagetitle_container">
-                <h1>@onPropertyChange</h1>
+                <h1>@managedChild</h1>
                 
             </div>
 
-            <p><a href="/docs/ref/_onPropertyChange" id="redir">Redirecting…</a></p>
-<script>document.location=document.getElementById('redir').href</script>
+            <h2 id="managedChild" class="spec"><img src="/assets/icons/spec-decorator.svg" alt="">@managedChild</h2>
+
+
+
+<p><code>&lt;T extends ManagedObject&gt;(target: T, propertyKey: any): void</code></p>
+<p>Managed object property decorator: amend decorated property to turn it into a managed child reference.</p>
+<p>This asserts a parent-child dependency between the referrer and the referenced object(s), recursively extending to objects in referenced managed lists, maps, and reference instances:</p>
+<ul>
+<li><p>When the parent is destroyed, all children are also destroyed.</p>
+</li>
+<li><p>When the decorated property is set to another object, the previously referenced object is destroyed.</p>
+</li>
+<li><p>When the referenced object is assigned to another managed child reference (or list, map, or reference instance that is a child object), the decorated property is set to undefined.</p>
+</li>
+<li><p>The child object may refer to its parent using the <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a> method, and observers can observe the managed parent reference using an <code>onManagedParentChange[Async]</code> method.</p>
+</li>
+</ul>
+<p><a href="/docs/concepts/components" class="block_link doc"><strong>See also:</strong> Concepts &gt; Components</a></p>
+
         </div>
 
         <div class="wrapper_column wrapper_column--sidebar wrapper_column--nav">
@@ -65,7 +82,7 @@
                     <nav id="toc" class="sidebar_nav">
                         <h4 id="declarations">Declarations</h4>
 <ul>
-<li><a href="#onPropertyChange">@onPropertyChange</a></li>
+<li><a href="#managedChild">@managedChild</a></li>
 </ul>
 
                     </nav>

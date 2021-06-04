@@ -11,7 +11,7 @@
     "build:docwidget": "cd docwidget && rollup -c",
     "watch": "nodemon -e md,js,css --watch content --watch assets --watch templates --exec 'npm run make'",
     "make": "npm run clean && npm run pipeline",
-    "clean": "rm -rf gh-pages",
+    "clean": "rm -rf docs",
     "pipeline": "markdown-pipeline docs pipeline.js content/en/pipeline.js"
   },
   "keywords": [],

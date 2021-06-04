@@ -57,12 +57,12 @@
 
             <p>The TypeScript language adds a number of enhancements to the JavaScript (or technically, ECMAScript) language. Some of these enhancements have made their way into most modern JavaScript platforms, however some of the features used by Typescene will not be available. There are workarounds for all of these issues.</p>
 <blockquote>
-<p><strong>Note:</strong> While it is possible to use Typescene with &#39;plain&#39; JavaScript code, it is <em>strongly recommended</em> to use TypeScript. All of the examples on this documentation website are written in TypeScript, although they can easily be rewritten to JavaScript using the rules below.</p>
+<p><strong>Note:</strong> While it is possible to use Typescene with ‘plain’ JavaScript code, it is <em>strongly recommended</em> to use TypeScript. All of the examples on this documentation website are written in TypeScript, although they can easily be rewritten to JavaScript using the rules below.</p>
 </blockquote>
 <h2 id="types">Types</h2>
 
 
-<p>TypeScript includes &#39;type annotations&#39;, which informs the compiler of expected runtime types. When copying examples from TypeScript to JavaScript, these can simply be left out.</p>
+<p>TypeScript includes ‘type annotations’, which informs the compiler of expected runtime types. When copying examples from TypeScript to JavaScript, these can simply be left out.</p>
 <pre><code class="language-typescript"><span class="hljs-comment">// typescript function</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">usingTypeScript</span>(<span class="hljs-params">p: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">string</span> </span>{ <span class="hljs-comment">/* ... */</span> }
 
@@ -92,14 +92,14 @@
 <h2 id="decorators">Property decorators</h2>
 
 
-<p>Typescene defines a number of &#39;decorators&#39;, which are used to modify the attributes of a property on all instances of a class. This includes the <code>managed</code>, <code>managedChild</code>, <code>managedDependency</code>, and <code>service</code> decorators.</p>
+<p>Typescene defines a number of ‘decorators’, which are used to modify the attributes of a property on all instances of a class. This includes the <code>managed</code>, <code>managedChild</code>, <code>managedDependency</code>, and <code>service</code> decorators.</p>
 <pre><code class="language-typescript"><span class="hljs-comment">// TypeScript decorators:</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
   <span class="hljs-meta">@managed</span>
   ref = <span class="hljs-keyword">new</span> MyOtherComponent();
 }
 </code></pre>
-<p>To achieve the same effect, the decorator functions can be called on their own, passing in the class prototype and property name (option 1 below). However, for cleaner code, these functions can <em>also</em> be called on component instances -- albeit at a slight performance loss (option 2 below).</p>
+<p>To achieve the same effect, the decorator functions can be called on their own, passing in the class prototype and property name (option 1 below). However, for cleaner code, these functions can <em>also</em> be called on component instances – albeit at a slight performance loss (option 2 below).</p>
 <pre><code class="language-js"><span class="hljs-comment">// option 1:</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {

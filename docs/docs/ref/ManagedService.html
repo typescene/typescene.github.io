@@ -60,7 +60,7 @@
 
 
 <p><code>extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a></p>
-<p>Managed service base class. Represents a service that can be referenced by other classes using the <a href="/docs/ref/service"><code>@service</code></a> decorator (or <a href="/docs/ref/ManagedService#ManagedService:link"><code>ManagedService.link</code></a> method) after registering the object with a known name.</p>
+<p>Managed service base class. Represents a service that can be referenced by other classes using the <a href="/docs/ref/_service"><code>@service</code></a> decorator (or <a href="/docs/ref/ManagedService#ManagedService:link"><code>ManagedService.link</code></a> method) after registering the object with a known name.</p>
 <p><a href="/docs/concepts/services" class="block_link doc"><strong>See also:</strong> Concepts &gt; Services</a></p>
 <h3>Constructor</h3>
 
@@ -72,7 +72,7 @@
 
 <p><code>(name: string): ManagedService</code></p>
 <p>Retrieve the currently active service with given name (case insensitive).</p>
-<p><strong>Note:</strong> Services may be registered and destroyed. To obtain a reference that is always up to date, use the <a href="/docs/ref/service"><code>@service</code></a> decorator on a class property or the static <a href="#ManagedService:link"><code>link</code></a> method.</p>
+<p><strong>Note:</strong> Services may be registered and destroyed. To obtain a reference that is always up to date, use the <a href="/docs/ref/_service"><code>@service</code></a> decorator on a class property or the static <a href="#ManagedService:link"><code>link</code></a> method.</p>
 <h2 id="ManagedService:link" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.link() <span class="spec_tag">static</span></h2>
 
 
@@ -92,7 +92,7 @@
 
 
 <p><code>(): this</code></p>
-<p>Register this service, making it available through properties decorated with the <a href="/docs/ref/service"><code>@service</code></a> decorator until the service object is destroyed (either directly using <code>.destroyManagedAsync()</code>, or when another service is registered with the same name).</p>
+<p>Register this service, making it available through properties decorated with the <a href="/docs/ref/_service"><code>@service</code></a> decorator until the service object is destroyed (either directly using <code>.destroyManagedAsync()</code>, or when another service is registered with the same name).</p>
 <h2 id="ManagedService:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 

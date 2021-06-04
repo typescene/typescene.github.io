@@ -228,7 +228,7 @@
 <ul>
 <li><code>callback</code> —  the function to be called, with a single object as the only argument.</li>
 </ul>
-<p>Iterates over the objects in this list and invokes given callback for each object (alternative to for...of statement).</p>
+<p>Iterates over the objects in this list and invokes given callback for each object (alternative to for…of statement).</p>
 <p><strong>Note:</strong> The behavior of this method is undefined if objects are inserted immediately after the current object, or if objects beyond the current object are removed by the callback function. Removing the <em>current</em> object or any previous objects during the iteration is safe and will not disrupt the control flow.</p>
 <h2 id="ManagedList:map" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.map()</h2>
 
@@ -246,12 +246,12 @@
 
 <p><code>&lt;K extends keyof T&gt;(propertyName: K): T[K][]</code></p>
 <p>Returns an array with the values of given property for all objects in the list.</p>
-<h2 id="ManagedList:__:iterator" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.__@iterator()</h2>
+<h2 id="ManagedList:__:iterator:201" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.__@iterator@201()</h2>
 
 
 
 <p><code>(): Iterator&lt;T, any, undefined&gt;</code></p>
-<p>Iterator symbol property to use managed list with &#39;for...of&#39; statement.</p>
+<p>Iterator symbol property to use managed list with ‘for…of’ statement.</p>
 <p><strong>Note:</strong> The behavior of the iterator is undefined if objects are inserted immediately after the current object, or if objects beyond the current object are removed. Removing the <em>current</em> object or any previous objects during the iteration is safe and will not disrupt the control flow.</p>
 <h2 id="ManagedList:weakRef" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.weakRef()</h2>
 
@@ -389,7 +389,7 @@
 <li><a href="#ManagedList:forEach">.forEach()</a></li>
 <li><a href="#ManagedList:map">.map()</a></li>
 <li><a href="#ManagedList:pluck">.pluck()</a></li>
-<li><a href="#ManagedList:__:iterator">.__@iterator()</a></li>
+<li><a href="#ManagedList:__:iterator:201">.__@iterator@201()</a></li>
 <li><a href="#ManagedList:weakRef">.weakRef()</a></li>
 </ul>
 <h4 id="inherited">Inherited</h4>
