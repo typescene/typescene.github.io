@@ -55,7 +55,7 @@ function compressContent(content) {
 /** Process given source and add documentation pages to the pipeline */
 function generateDocs(pipeline, config) {
     let packagePath = path.join(__dirname, "../../node_modules", config.module);
-    let packageJSON = fs_1.readFileSync(path.join(packagePath, "package.json")).toString();
+    let packageJSON = (0, fs_1.readFileSync)(path.join(packagePath, "package.json")).toString();
     let packageInfo = JSON.parse(packageJSON);
     // read declaration files and parse their types/JSDoc
     let parser = new DeclarationFileParser_1.DeclarationFileParser(path.join(packagePath, packageInfo.typings));

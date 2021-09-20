@@ -71,17 +71,17 @@
 
 <p><a href="/docs/ref/Component"><code>Component</code></a></p>
 <p>Currently selected component, if any.</p>
-<h2 id="UISelectionController:onSelect" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onSelect()</h2>
+<h2 id="UISelectionController:onSelect" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onSelect() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): void</code></p>
+<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean | void</code></p>
 <p>Handle Select events, remember the (original) source component and deselect the previously selected component, if any.</p>
-<h2 id="UISelectionController:onDeselect" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onDeselect()</h2>
+<h2 id="UISelectionController:onDeselect" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onDeselect() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): void</code></p>
+<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean | void</code></p>
 <p>Handle Deselect events (only if their source is the currently selected component).</p>
 <h2 id="UISelectionController:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 

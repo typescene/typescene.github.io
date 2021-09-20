@@ -70,7 +70,7 @@
 
 
 
-<p><code>(): boolean</code></p>
+<p><code>(): boolean | void</code></p>
 <p>Handle CloseModal event by destroying this activity; stops propagation of the event.</p>
 <h2 id="DialogViewActivity:view" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.view</h2>
 
@@ -112,7 +112,7 @@
 
 
 
-<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): void</code></p>
+<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/ViewActivity#ViewActivity:onFocusIn"><code>ViewActivity.onFocusIn</code></a>.</p>
 <h2 id="DialogViewActivity:firstFocused" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.firstFocused</h2>
 
@@ -150,6 +150,12 @@
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a>.</p>
+<h2 id="DialogViewActivity:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
+
+
+
+<p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
+<p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:navigationTarget"><code>AppActivity.navigationTarget</code></a>.</p>
 <h2 id="DialogViewActivity:match" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.match</h2>
 
 
@@ -198,6 +204,12 @@
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:deactivated"><code>AppActivity.deactivated</code></a>.</p>
+<h2 id="DialogViewActivity:onNavigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onNavigate() <span class="spec_tag">protected</span></h2>
+
+
+
+<p><code>(e: </code><a href="/docs/ref/NavigationEvent"><code>NavigationEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>&amp; { getNavigationTarget?: () =&gt; string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a><code>; }&gt;): boolean | void</code></p>
+<p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:onNavigate"><code>AppActivity.onNavigate</code></a>.</p>
 <h2 id="DialogViewActivity:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
@@ -375,6 +387,7 @@
 <li><a href="#DialogViewActivity:showConfirmationDialogAsync">.showConfirmationDialogAsync()</a></li>
 <li><a href="#DialogViewActivity:name">.name</a></li>
 <li><a href="#DialogViewActivity:path">.path</a></li>
+<li><a href="#DialogViewActivity:navigationTarget">.navigationTarget</a></li>
 <li><a href="#DialogViewActivity:match">.match</a></li>
 <li><a href="#DialogViewActivity:getParentActivity">.getParentActivity()</a></li>
 <li><a href="#DialogViewActivity:getApplication">.getApplication()</a></li>
@@ -383,6 +396,7 @@
 <li><a href="#DialogViewActivity:isActive">.isActive()</a></li>
 <li><a href="#DialogViewActivity:activated">.activated</a></li>
 <li><a href="#DialogViewActivity:deactivated">.deactivated</a></li>
+<li><a href="#DialogViewActivity:onNavigate">.onNavigate()</a></li>
 <li><a href="#DialogViewActivity:renderContext">.renderContext</a></li>
 <li><a href="#DialogViewActivity:viewportContext">.viewportContext</a></li>
 <li><a href="#DialogViewActivity:activationContext">.activationContext</a></li>

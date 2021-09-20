@@ -142,6 +142,18 @@
 
 <p><code>string</code></p>
 <p>Path to navigate to automatically when clicked, if not blank; use <code>:back</code> to go back in history.</p>
+<h2 id="UIButton:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
+
+
+
+<p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
+<p>Navigation target, can be bound to an <a href="/docs/ref/AppActivity#AppActivity:navigationTarget"><code>AppActivity.navigationTarget</code></a> property, if set.</p>
+<h2 id="UIButton:getNavigationTarget" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getNavigationTarget()</h2>
+
+
+
+<p><code>(): string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
+<p>Returns the navigation target for this button (as a string or <a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a> instance), if either <a href="#UIButton:navigateTo"><code>navigateTo</code></a> or <a href="#UIButton:navigationTarget"><code>navigationTarget</code></a> properties have been set.</p>
 <h2 id="UIButton:applyStyle" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.applyStyle() <span class="spec_tag">protected</span></h2>
 
 
@@ -170,7 +182,7 @@
 
 
 
-<p><code>boolean</code></p>
+<p><code>boolean | &quot;auto&quot;</code></p>
 <p>Inherited from <a href="/docs/ref/UIControl#UIControl:shrinkwrap"><code>UIControl.shrinkwrap</code></a>.</p>
 <h2 id="UIButton:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
@@ -419,6 +431,12 @@
 
 <p><code>string</code></p>
 <p>Path to navigate to automatically when clicked, if not blank; use <code>:back</code> to go back in history.</p>
+<h2 id="UIButton:Presets:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
+
+
+
+<p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
+<p>Navigation target, can be bound to an <a href="/docs/ref/AppActivity#AppActivity:navigationTarget"><code>AppActivity.navigationTarget</code></a> property, if set.</p>
 <h2 id="UIButton:Presets:disableKeyboardFocus" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.disableKeyboardFocus</h2>
 
 
@@ -447,7 +465,7 @@
 
 
 
-<p><code>boolean</code></p>
+<p><code>boolean | &quot;auto&quot;</code></p>
 <p>Inherited from <a href="/docs/ref/UIControl#UIControl:Presets:shrinkwrap"><code>UIControl.Presets.shrinkwrap</code></a>.</p>
 <h2 id="UIButton:Presets:style" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.style</h2>
 
@@ -513,6 +531,8 @@
 <li><a href="#UIButton:iconColor">.iconColor</a></li>
 <li><a href="#UIButton:iconAfter">.iconAfter</a></li>
 <li><a href="#UIButton:navigateTo">.navigateTo</a></li>
+<li><a href="#UIButton:navigationTarget">.navigationTarget</a></li>
+<li><a href="#UIButton:getNavigationTarget">.getNavigationTarget()</a></li>
 </ul>
 <h4 id="inherited">Inherited</h4>
 <ul>
@@ -565,6 +585,7 @@
 <li><a href="#UIButton:Presets:iconColor">.iconColor</a></li>
 <li><a href="#UIButton:Presets:iconAfter">.iconAfter</a></li>
 <li><a href="#UIButton:Presets:navigateTo">.navigateTo</a></li>
+<li><a href="#UIButton:Presets:navigationTarget">.navigationTarget</a></li>
 <li><a href="#UIButton:Presets:disableKeyboardFocus">.disableKeyboardFocus</a></li>
 <li><a href="#UIButton:Presets:textStyle">.textStyle</a></li>
 <li><a href="#UIButton:Presets:decoration">.decoration</a></li>

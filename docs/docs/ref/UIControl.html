@@ -96,8 +96,8 @@
 
 
 
-<p><code>boolean</code></p>
-<p>Set to true to shrink this element to use as little space as possible within its container, set to false to expand; defaults to true but may be overridden by individual components, e.g. <a href="/docs/ref/UILabel"><code>UILabel</code></a> (also overrides <code>grow</code> property of <a href="/docs/ref/UIComponent#UIComponent:dimensions"><code>UIComponent.dimensions</code></a>).</p>
+<p><code>boolean | &quot;auto&quot;</code></p>
+<p>Set to true to shrink this element to use as little space as possible within its container, set to false to expand; defaults to true but may be overridden by individual components, e.g. <a href="/docs/ref/UIExpandedLabel"><code>UIExpandedLabel</code></a>. Overrides <code>grow</code> property of <a href="/docs/ref/UIComponent#UIComponent:dimensions"><code>UIComponent.dimensions</code></a>, unless set to <code>&quot;auto&quot;</code>.</p>
 <h2 id="UIControl:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
@@ -337,7 +337,7 @@
 
 
 
-<p><code>boolean</code></p>
+<p><code>boolean | &quot;auto&quot;</code></p>
 <p>Shrink or grow this control.</p>
 <h2 id="UIControl:Presets:style" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.style</h2>
 

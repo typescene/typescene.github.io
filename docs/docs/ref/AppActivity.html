@@ -77,6 +77,12 @@
 
 <p><code>string</code></p>
 <p>Optional activation path; if set to a string, this activity is automatically activated and deactivated asynchronously, depending on the current target path (e.g. URL path, handled by a platform dependent <a href="/docs/ref/AppActivationContext"><code>AppActivationContext</code></a> instance). This string may contain segments such as ‘:id’ or ‘*name’ to capture variable parts of the path; when matched, these parts are stored in the object referenced by the <a href="#AppActivity:match"><code>match</code></a> property.</p>
+<h2 id="AppActivity:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
+
+
+
+<p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
+<p>Optional navigation target for this activity; only useful if this activity has a direct path (no segments such as ‘:id’ or ‘*name’). Allows the activity title to be translatable if set to an <a href="/docs/ref/I18nString"><code>I18nString</code></a> using e.g. <a href="/docs/ref/strf"><code>strf()</code></a>.</p>
 <h2 id="AppActivity:match" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.match</h2>
 
 
@@ -125,6 +131,12 @@
 
 <p><code>number</code></p>
 <p>The timestamp (result of <code>Date.now()</code>) corresponding to the moment this activity was last deactivated; or undefined if this activity has never been deactivated.</p>
+<h2 id="AppActivity:onNavigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onNavigate() <span class="spec_tag">protected</span></h2>
+
+
+
+<p><code>(e: </code><a href="/docs/ref/NavigationEvent"><code>NavigationEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>&amp; { getNavigationTarget?: () =&gt; string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a><code>; }&gt;): boolean | void</code></p>
+<p>Handle navigation events (emitted by e.g. <a href="/docs/ref/UIButton"><code>UIButton</code></a>) by navigating to a corresponding path using <a href="/docs/ref/Application#Application:navigate"><code>Application.navigate()</code></a>; should be overridden if non-standard navigation behavior is required, for e.g. master-detail navigation; requires events to be delegated for components that may emit ‘Navigate’ events such as nested views and activities.</p>
 <h2 id="AppActivity:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
@@ -173,6 +185,7 @@
 <li><a href="#AppActivity"><strong>class AppActivity</strong></a></li>
 <li><a href="#AppActivity:name">.name</a></li>
 <li><a href="#AppActivity:path">.path</a></li>
+<li><a href="#AppActivity:navigationTarget">.navigationTarget</a></li>
 <li><a href="#AppActivity:match">.match</a></li>
 <li><a href="#AppActivity:getParentActivity">.getParentActivity()</a></li>
 <li><a href="#AppActivity:getApplication">.getApplication()</a></li>
@@ -181,6 +194,7 @@
 <li><a href="#AppActivity:isActive">.isActive()</a></li>
 <li><a href="#AppActivity:activated">.activated</a></li>
 <li><a href="#AppActivity:deactivated">.deactivated</a></li>
+<li><a href="#AppActivity:onNavigate">.onNavigate()</a></li>
 </ul>
 <h4 id="inherited">Inherited</h4>
 <ul>
