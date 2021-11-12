@@ -64,91 +64,107 @@
 <h3>Constructor</h3>
 
 
-<p><code>(name?: string, </code><a href="#AppActivity:path"><code>path</code></a><code>?: string): AppActivity</code></p>
+<p><code>(name?: string, path?: string): AppActivity</code></p>
+<p>Create a new activity with given name and activation path, both optional.</p>
+<hr>
 <h2 id="AppActivity:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Optional human readable name for this activity.</p>
+<hr>
 <h2 id="AppActivity:path" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.path</h2>
 
 
 
 <p><code>string</code></p>
 <p>Optional activation path; if set to a string, this activity is automatically activated and deactivated asynchronously, depending on the current target path (e.g. URL path, handled by a platform dependent <a href="/docs/ref/AppActivationContext"><code>AppActivationContext</code></a> instance). This string may contain segments such as ‘:id’ or ‘*name’ to capture variable parts of the path; when matched, these parts are stored in the object referenced by the <a href="#AppActivity:match"><code>match</code></a> property.</p>
+<hr>
 <h2 id="AppActivity:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
 
 
 
 <p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
 <p>Optional navigation target for this activity; only useful if this activity has a direct path (no segments such as ‘:id’ or ‘*name’). Allows the activity title to be translatable if set to an <a href="/docs/ref/I18nString"><code>I18nString</code></a> using e.g. <a href="/docs/ref/strf"><code>strf()</code></a>.</p>
+<hr>
 <h2 id="AppActivity:match" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.match</h2>
 
 
 
 <p><code>Readonly&lt;MatchedPath&gt;</code></p>
 <p>The path segments that were captured <em>last</em> based on the target path, as matched by the <a href="/docs/ref/AppActivationContext"><code>AppActivationContext</code></a>, for a path such as <code>foo/bar/:id</code>, <code>foo/*name</code>, or <a href="#AppActivity:"><code>.</code></a><code>/:id</code>. This property is set when the activity is activated through the <a href="#AppActivity:activateAsync"><code>activateAsync</code></a> method.</p>
+<hr>
 <h2 id="AppActivity:getParentActivity" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentActivity()</h2>
 
 
 
 <p><code>(): AppActivity</code></p>
 <p>Returns the activity instance that contains a managed child reference that (indirectly) points to this activity instance.</p>
+<hr>
 <h2 id="AppActivity:getApplication" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getApplication()</h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/Application"><code>Application</code></a></p>
 <p>Returns the parent application that contains this activity, if any.</p>
+<hr>
 <h2 id="AppActivity:activateAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateAsync()</h2>
 
 
 
 <p><code>(match?: MatchedPath): Promise&lt;void&gt;</code></p>
 <p>Activate this activity, optionally based on given captured path segments (returned by <a href="/docs/ref/AppActivationContext#AppActivationContext:match"><code>AppActivationContext.match</code></a>, for a path such as <code>foo/bar/:id</code>, <code>foo/*name</code>, or <a href="#AppActivity:"><code>.</code></a><code>/:id</code>). This method is called automatically when the activity path matches the current target path, but may also be called directly. This method can be overridden to validate the captured path segments before activation.</p>
+<hr>
 <h2 id="AppActivity:destroyAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyAsync()</h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Destroy this activity.</p>
+<hr>
 <h2 id="AppActivity:isActive" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isActive()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Returns true if this activity is currently active.</p>
+<hr>
 <h2 id="AppActivity:activated" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activated</h2>
 
 
 
 <p><code>number</code></p>
 <p>The timestamp (result of <code>Date.now()</code>) corresponding to the moment this activity was last activated; or undefined if this activity has never been activated.</p>
+<hr>
 <h2 id="AppActivity:deactivated" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.deactivated</h2>
 
 
 
 <p><code>number</code></p>
 <p>The timestamp (result of <code>Date.now()</code>) corresponding to the moment this activity was last deactivated; or undefined if this activity has never been deactivated.</p>
+<hr>
 <h2 id="AppActivity:onNavigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onNavigate() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/NavigationEvent"><code>NavigationEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>&amp; { getNavigationTarget?: () =&gt; string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a><code>; }&gt;): boolean | void</code></p>
 <p>Handle navigation events (emitted by e.g. <a href="/docs/ref/UIButton"><code>UIButton</code></a>) by navigating to a corresponding path using <a href="/docs/ref/Application#Application:navigate"><code>Application.navigate()</code></a>; should be overridden if non-standard navigation behavior is required, for e.g. master-detail navigation; requires events to be delegated for components that may emit ‘Navigate’ events such as nested views and activities.</p>
+<hr>
 <h2 id="AppActivity:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderContext"><code>UIRenderContext</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppComponent#AppComponent:renderContext"><code>AppComponent.renderContext</code></a>.</p>
+<hr>
 <h2 id="AppActivity:viewportContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.viewportContext</h2>
 
 
 
 <p><code>any</code></p>
 <p>Inherited from <a href="/docs/ref/AppComponent#AppComponent:viewportContext"><code>AppComponent.viewportContext</code></a>.</p>
+<hr>
 <h2 id="AppActivity:activationContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activationContext</h2>
 
 
@@ -161,12 +177,14 @@
 
 
 <p>Activity presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="AppActivity:Presets:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Human readable name for this activity.</p>
+<hr>
 <h2 id="AppActivity:Presets:path" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.path</h2>
 
 

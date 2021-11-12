@@ -1,4 +1,5 @@
 ---
+showInNav: true
 template: doc_article
 title: Views
 description: Detailed description of views and UI components
@@ -33,7 +34,7 @@ const simplestView = UIButton;
 const boundView = UIButton.with({
   label: bind("buttonLabel"),
   icon: "warning",
-  onClick: "sayHi()"
+  onClick: "sayHi()",
 });
 
 // Nested views can also be preset
@@ -44,7 +45,7 @@ const cellView = UICell.with(
     UILabel.withText("Hello, world!"),
     UIButton.with({
       label: bind("buttonLabel"),
-      onClick: "sayHi()"
+      onClick: "sayHi()",
     })
   )
 );
@@ -53,7 +54,9 @@ const cellView = UICell.with(
 class MyActivity extends ViewActivity.with(cellView) {
   path = "/";
   buttonLabel = "Say hi";
-  sayHi() { alert("Hello, world!") }
+  sayHi() {
+    alert("Hello, world!");
+  }
 }
 ```
 
@@ -67,8 +70,8 @@ You can interact with the instantiated view objects after they are created, for 
 class MyActivity extends ViewActivity.with(cellView) {
   // ...
   sayHi(e: UIComponentEvent<UIButton>) {
-    let button = e.source;  // <= button instance
-    console.log(button.label);  // => "Say hi"
+    let button = e.source; // <= button instance
+    console.log(button.label); // => "Say hi"
   }
 }
 ```
@@ -106,14 +109,11 @@ const view = (
 // JavaScript syntax without JSX:
 const view = UICell.with(
   { onBeforeRender: "doSomething()" },
-  UICenterRow.with(
-    { height: 40 },
-    UILabel.withText(bindf("Hello, ${name}"))
-  )
+  UICenterRow.with({ height: 40 }, UILabel.withText(bindf("Hello, ${name}")))
 );
 ```
 
-> **Note:** Unlike with other frameworks (including React itself), Typescene JSX tags do *not* result in an object. The ‘value’ of a JSX tag such as `<label>...</label>` is still a _constructor_. You cannot refer to variable values within JSX blocks, since preset values would never change afterwards. However, JSX views may include bindings — just wrap the call to `bind` in a pair of curly braces as in the example above.
+> **Note:** Unlike with other frameworks (including React itself), Typescene JSX tags do _not_ result in an object. The ‘value’ of a JSX tag such as `<label>...</label>` is still a _constructor_. You cannot refer to variable values within JSX blocks, since preset values would never change afterwards. However, JSX views may include bindings — just wrap the call to `bind` in a pair of curly braces as in the example above.
 
 Certain components, such as labels and buttons, can be declared with text within their opening and closing brackets. If there are any bindings within this text (such as in the above example), the surrounding text gets wrapped in a call to `bindf`.
 
@@ -179,23 +179,23 @@ Cells are containers that allow for decoration of the space they occupy, using e
 
 By default, cells occupy as much space as possible (except for `UIFlowCell`), with content arranged top-to-bottom.
 
-[**UICell**<br>Cell base class](/docs/ref/UICell){:.block_link.class}
+[**UICell**<br>Cell base class](/docs/ref/UICell){:.block*link.class}
 [**UICoverCell**<br>Cell that is positioned to cover the exact dimensions of its parent container](/docs/ref/UICoverCell){:.block_link.class}
-[**UIFlowCell**<br>Cell that does _not_ expand within its parent container; allows content to ‘flow’ vertically](/docs/ref/UIFlowCell){:.block_link.class}
+[**UIFlowCell**<br>Cell that does \_not* expand within its parent container; allows content to ‘flow’ vertically](/docs/ref/UIFlowCell){:.block_link.class}
 [**UIScrollContainer**<br>Container that occupies a scrolling area, and emits scroll-related events](/docs/ref/UIScrollContainer){:.block_link.class}
 
 ### Rows and columns
 
 Rows and columns are containers that arrange their content along a horizontal and vertical axis, respectively.
 
-Content may be separated using fixed-width/height spacers (an 8-pixel gap is used by default, which is customizable as part of the [theme](#styles)), or separated using vertical/horizontal lines. 
+Content may be separated using fixed-width/height spacers (an 8-pixel gap is used by default, which is customizable as part of the [theme](#styles)), or separated using vertical/horizontal lines.
 
 By default, rows and columns occupy as little space in the cross-axis direction as possible (i.e. row height, and column width), although a specific height or width can be set.
 
 [**UIRow**<br>Represents a horizontal line of UI elements](/docs/ref/UIRow){:.block_link.class}
 [**UICenterRow**<br>A row that positions components in the center, horizontally](/docs/ref/UICenterRow){:.block_link.class}
 [**UICloseRow**<br>A row without spacing between components](/docs/ref/UICloseRow){:.block_link.class}
-[**UIOppositeRow**<br>A row that positions components at the end  (the right hand side, for left-to-right languages)](/docs/ref/UIOppositeRow){:.block_link.class}
+[**UIOppositeRow**<br>A row that positions components at the end (the right hand side, for left-to-right languages)](/docs/ref/UIOppositeRow){:.block_link.class}
 
 [**UIColumn**<br>Represents a vertical line of UI elements](/docs/ref/UIColumn){:.block_link.class}
 [**UICloseColumn**<br>A column without spacing between components](/docs/ref/UICloseColumn){:.block_link.class}
@@ -204,7 +204,7 @@ By default, rows and columns occupy as little space in the cross-axis direction 
 
 These elements don’t output their own elements on screen directly, but contain other elements that are _controlled_ by these components in different ways.
 
-[**UIConditional**<br>Controls the display of a child component depending on the state of a boolean property](/docs/ref/UIConditional){:.block_link.class}
+[**UIConditional**<br>Controls the display of a child component depending on the state of a boolean property](/docs/ref/UIConditional){:.block*link.class}
 [**UIForm**<br>Encapsulates a `UICell` with child components, bound to a specific `UIFormContext` instance](/docs/ref/UIForm){:.block_link.class}
 [**UIFormContextController**<br>Controls child components, bound to a specific `UIFormContext` instance](/docs/ref/UIFormContextController){:.block_link.class}
 [**UIListCellAdapter**<br>Encapsulates a `UICell` with child components, bound to a specific list item](/docs/ref/UIListCellAdapter){:.block_link.class}
@@ -212,18 +212,18 @@ These elements don’t output their own elements on screen directly, but contain
 [**UIMenu**<br>Generates a dropdown menu based on a list of options](/docs/ref/UIMenu){:.block_link.class}
 [**UISelectionController**<br>Controls selection state among child components](/docs/ref/UISelectionController){:.block_link.class}
 [**UIStyleController**<br>Applies a style to its child component depending on the state/value of a property](/docs/ref/UIStyleController){:.block_link.class}
-[**UIViewRenderer**<br>Renders a referenced view component that is _not_ a direct child component](/docs/ref/UIViewRenderer){:.block_link.class}
+[**UIViewRenderer**<br>Renders a referenced view component that is \_not* a direct child component](/docs/ref/UIViewRenderer){:.block_link.class}
 
 ## Styles and themes {#styles}
 
 View components have a number of properties that can be used to change the appearance of the rendered output element; these can be either preset (using `with`) or changed dynamically on an existing component instance.
 
 1. `style` property — an instance of [`UIStyle`](/docs/ref/UIStyle)
-    * When preset, the styles from a given `UIStyle` object are _mixed into_ the current style of the preset component.
-    * When preset as a _string_, styles from a named style in the current _theme_ (see below) are mixed in.
-    * When set on an existing view component, the current `UIStyle` instance is replaced entirely, removing its existing styles.
+   - When preset, the styles from a given `UIStyle` object are _mixed into_ the current style of the preset component.
+   - When preset as a _string_, styles from a named style in the current _theme_ (see below) are mixed in.
+   - When set on an existing view component, the current `UIStyle` instance is replaced entirely, removing its existing styles.
 2. Style overrides — objects with individual properties that _override_ the styles defined in the current `UIStyle` instance.
-    * When preset _or_ set on an existing view component, the given properties are applied on top of the styles from the current `UIStyle` instance.
+   - When preset _or_ set on an existing view component, the given properties are applied on top of the styles from the current `UIStyle` instance.
 
 Note that the `style` property always refers to a `UIStyle` instance, whereas style overrides are (read-only) plain objects that expose individual settings — whether taken from the current `UIStyle` instance, or overridden by assigning a _new_ object to these properties.
 
@@ -250,9 +250,9 @@ const view = (
 
 class MyActivity extends ViewActivity.with(view) {
   // ...
-  
+
   setButtonStyle(e: UIComponentEvent<UIButton>) {
-    let btn = e.source;  // <= the button
+    let btn = e.source; // <= the button
     console.log(btn.textStyle.bold); // => true
     btn.dimensions = { minWidth: 200 };
   }
@@ -285,15 +285,15 @@ All measurements may either be specified using ‘CSS units’ (i.e. strings tha
 
 ```typescript
 const view = UICell.with(
-  { dimensions: { maxHeight: "50%" } },  // CSS units
+  { dimensions: { maxHeight: "50%" } }, // CSS units
   UIRow.with(
-    { height: 48 },  // value in dp
+    { height: 48 }, // value in dp
     UIButton.with({
       label: "Click me",
-      dimensions: { minWidth: 200 }  // value in dp
+      dimensions: { minWidth: 200 }, // value in dp
     })
   )
-)
+);
 ```
 
 > **Note:** In Web applications, 1dp is defined as the equivalent of 1/16th of a `rem` unit. This value can be changed at runtime using the `BrowserApplication.setGlobalDpSize()` method, which scales all measurements up or down according to a given factor (defaults to 1), or by redefining the `font-size` CSS property of the `html` element.
@@ -312,19 +312,19 @@ Color values may be specified in one of the following formats:
 const greenBgStyle = UIStyle.create({
   decoration: {
     background: "@green",
-    textColor: "@green.text"
+    textColor: "@green.text",
     // ^ same as textStyle.color
-  }
+  },
 });
 const view = UICell.with(
   { background: "@background" },
   UIRow.with(
     UIButton.with({
       label: "Click me",
-      style: greenBgStyle
+      style: greenBgStyle,
     })
   )
-)
+);
 ```
 
 > **Note:** All default colors for UI elements are defined using combinations of `"@background"` and `"@text"` (which is itself defined as `"@background.text"`). This makes it possible to implement ‘dark mode’ by simply changing the `background` color value to a dark color, and a primary color that is relatively bright. Afterwards, call [`app.renderContext.emitRenderChange()`](/docs/ref/UIRenderContext#UIRenderContext:emitRenderChange) to re-render all visible view components using the new color values.
@@ -340,7 +340,7 @@ const myStyle = UIStyle.create({
   textStyle: { bold: true },
 }).addState("hover", {
   decoration: { background: "@primary" },
-  textStyle: { italic: true, color: "@primary.text" }
+  textStyle: { italic: true, color: "@primary.text" },
 });
 ```
 
@@ -364,33 +364,30 @@ This method accepts an object with style names as properties, and `UIStyle` inst
 // create a style group
 const bannerStyles = UIStyle.group({
   banner: {
-    decoration: { background: "@primary" }
+    decoration: { background: "@primary" },
   },
   bannerButton: UIStyle.create({
-    decoration: { background: "@primary^-20%" }
+    decoration: { background: "@primary^-20%" },
   }).addState("hover", {
-    decoration: { background: "@primary^-30%" }
-  })
+    decoration: { background: "@primary^-30%" },
+  }),
 });
 
 // extend this style group
-const fancyBannerStyles = UIStyle.group(
-  bannerStyles,
-  {
-    bannerButton: {
-      textStyle: { fontFamily: "serif" }
-    }
-  }
-);
+const fancyBannerStyles = UIStyle.group(bannerStyles, {
+  bannerButton: {
+    textStyle: { fontFamily: "serif" },
+  },
+});
 
 // use styles from this group
 const view = UIRow.with(
   { style: fancyBannerStyles.banner },
   UIButton.with({
     label: "Foo",
-    style: fancyBannerStyles.bannerButton
+    style: fancyBannerStyles.bannerButton,
   })
-)
+);
 ```
 
 ### Themes
@@ -412,7 +409,7 @@ function switchTheme() {
   if (dark) UITheme.current = defaultTheme;
   else UITheme.current = darkTheme;
   dark = !dark;
-  
+
   // trigger re-rendering of all components:
   Application.active.first()?.renderContext?.emitRenderChange();
 }
@@ -430,14 +427,12 @@ The simplest approach to creating reusable views is to define a preset construct
 // create a special button constructor that can be reused
 const MyButton = UIButton.with({
   style: UIStyle.create("FancyButton", {
-    textStyle: { fontFamily: "serif" }
-  })
+    textStyle: { fontFamily: "serif" },
+  }),
 });
 
 // ...elsewhere:
-const view = UIRow.with(
-  MyButton.withLabel("Click me")
-); 
+const view = UIRow.with(MyButton.withLabel("Click me"));
 ```
 
 You can also extend the preset constructor into a class, if needed.
@@ -445,17 +440,21 @@ You can also extend the preset constructor into a class, if needed.
 ```typescript
 class MyButton extends UIButton.with({ style: myStyle }) {
   label = "Click to show the time";
-  updateLabel() { this.label = String(new Date()) }
+  updateLabel() {
+    this.label = String(new Date());
+  }
 }
-MyButton.addObserver(class {
-  constructor (public button: MyButton) { }
-  onClick() { this.button.updateLabel() }
-});
+MyButton.addObserver(
+  class {
+    constructor(public button: MyButton) {}
+    onClick() {
+      this.button.updateLabel();
+    }
+  }
+);
 
 // ...elsewhere:
-const view = UIRow.with(
-  MyButton
-);
+const view = UIRow.with(MyButton);
 ```
 
 ### Using a view activity
@@ -507,8 +506,8 @@ class MyView extends ViewComponent.with({
     </flowcell>
   ),
   defaults: {
-    name: ""  // this becomes a property
-  }
+    name: "", // this becomes a property
+  },
 }) {
   cellClicked() {
     this.name = "Clicked";
@@ -528,10 +527,10 @@ const view = (
 ```
 
 ---
+
 ### Next steps
 
 Learn more about the other parts of a Typescene application:
 
-* [`Activities`](/docs/concepts/activities) encapsulate views and display them when activated.
-* [`Services`](/docs/concepts/services) encapsulate global state (data), made available to all other components.
-
+- [`Activities`](/docs/concepts/activities) encapsulate views and display them when activated.
+- [`Services`](/docs/concepts/services) encapsulate global state (data), made available to all other components.

@@ -59,7 +59,7 @@
 
 
 
-<p><code>type ComponentConstructor&lt;TComponent extends Component = Component&gt; = new (...args: never[]) =&gt; TComponent;</code></p>
+<p><code>type ComponentConstructor&lt;TComponent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt; = new (...args: never[]) =&gt; TComponent;</code></p>
 <p>Generic constructor type for Component classes.</p>
 <p>This type is used to define parameters of <a href="/docs/ref/Component#Component:preset"><code>Component.preset</code></a>.</p>
 <h4 id="example">Example</h4>
@@ -85,14 +85,14 @@
 
 
 
-<p><code>type PresetArgType&lt;TComponentCtor extends ComponentConstructor&gt; = {</code><br><code>       [P in keyof PresetType&lt;TComponentCtor&gt;]?:</code><a href="#ComponentConstructor:PresetType"><code>PresetType</code></a><code>&lt;TComponentCtor&gt;[P] | </code><a href="/docs/ref/Binding#Binding:Type"><code>Binding.Type</code></a><code>;</code><br><code>    } &amp; {</code><br><code>        [P: string]: any;</code><br><code>    };</code></p>
+<p><code>type PresetArgType&lt;TComponentCtor extends ComponentConstructor&gt; = {</code><br><code>       [P in keyof PresetType&lt;TComponentCtor&gt;]?: PresetType&lt;TComponentCtor&gt;[P] |</code><a href="/docs/ref/Binding#Binding:Type"><code>Binding.Type</code></a><code>;</code><br><code>    } &amp; {</code><br><code>        [P: string]: any;</code><br><code>    };</code></p>
 <p>Inferred type of the argument to <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> for a specific component constructor.</p>
 <hr>
 <h2 id="ComponentConstructor:PresetRestType" class="spec"><img src="/assets/icons/spec-type.svg" alt="">ComponentConstructor.PresetRestType</h2>
 
 
 
-<p><code>type PresetRestType&lt;TComponentCtor extends ComponentConstructor&gt; = TComponentCtor extends {</code><br><code>       preset: (presets:</code><a href="#ComponentConstructor:PresetType"><code>PresetType</code></a><code>&lt;TComponentCtor&gt;, ...rest: infer TRest) =&gt; void;</code><br><code>    } ? TRest : never;</code></p>
+<p><code>type PresetRestType&lt;TComponentCtor extends ComponentConstructor&gt; = TComponentCtor extends {</code><br><code>        preset: (presets: PresetType&lt;TComponentCtor&gt;, ...components: infer TRest) =&gt; void;</code><br><code>    } ? TRest : never;</code></p>
 <p>Inferred type of the rest arguments to <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> for a specific component constructor.</p>
 
         </div>

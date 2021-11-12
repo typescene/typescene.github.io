@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Learn how events can be used in views and other components.
+">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typescene - Understanding events</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96048899-3');
+    </script>
+    <!-- end GA -->
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
+    <link rel="canonical" href="https://typescene.dev/docs/guides/basics/anatomy-events">
+</head>
+<body>
+    <nav class="topnav">
+        <section class="wrapper">
+            <a href="/" class="logo_link">
+                <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+                <span class="topnav_title">Typescene</span>
+            </a>
+            <ul class="topnav_links">
+                <li><a href="#" onclick="return showDocWidget()"><img src="/assets/icons/search-reverse.svg" alt="" width=16 style="position: relative; top: .125rem">&nbsp; Docs</a></li>
+                <li class="hide_small"><a href="https://github.com/typescene/typescene" target="_blank" rel="noopener">Github</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs">Documentation</a>
+          &nbsp;|&nbsp;
+          Guides
+          &gt;
+          <a href="/docs/guides/basics/index.html">
+              Basics
+          </a>
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page wrapper--guide">
+    <div class="pagetitle_container">
+        <h1>Understanding events</h1>
+        <p class="style--pageintro">Learn how events can be used in views and other components.
+</p>
+    </div>
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper--guide_content">
+            <section>
+
+<p>**What are events?**<br>Events are <em>signals</em> that are sent from a component to other components, i.e. those that hold a reference to it.</p>
+<p>Events are represented as objects: instances of the <code>ManagedEvent</code> class, or one of the specialized classes that extend it. Each class may have different properties, but all events have a <code>name</code> property.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  <span class="hljs-function"><span class="hljs-title">doSomething</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-comment">// Send a custom event:</span>
+    <span class="hljs-keyword">let</span> myEvent = <span class="hljs-keyword">new</span> ManagedEvent(<span class="hljs-string">&quot;Foo&quot;</span>);
+    <span class="hljs-built_in">console</span>.log(myEvent.name); <span class="hljs-comment">// =&gt; Foo</span>
+    <span class="hljs-built_in">this</span>.emit(myEvent);
+
+    <span class="hljs-comment">// To signal that some data has changed,</span>
+    <span class="hljs-comment">// send a &#x27;Change&#x27; event:</span>
+    <span class="hljs-built_in">this</span>.emitChange();
+    <span class="hljs-built_in">this</span>.emitChange(<span class="hljs-string">&quot;CustomEventName&quot;</span>);
+
+    <span class="hljs-comment">// To signal that a user event happened,</span>
+    <span class="hljs-comment">// send an &#x27;Action&#x27; event:</span>
+    <span class="hljs-built_in">this</span>.emitAction(<span class="hljs-string">&quot;Confirmed&quot;</span>);
+  }
+}
+</code></pre>
+<hr>
+<section>
+
+<p><strong>Handling view events with presets</strong><br>The most common use case for events is handling user input. The easiest way to set this up, is by including event <em>presets</em> in the view declaration (call to <code>with</code>).</p>
+<p>Event presets specify that when an event is emitted by one component, it should immediately <em>also</em> emit another event, with a new name. The event can then easily be handled by the activity using that name.</p>
+<p><strong>Note:</strong> There are of course other ways to handle events, and the default behavior can be overridden, too. This example just shows the most basic event handling code between views and activities.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// A view with event presets:</span>
+<span class="hljs-keyword">const</span> view = UICell.with(
+  UIRow.with(UILabel.withText(<span class="hljs-string">&quot;Do you want to continue?&quot;</span>)),
+  UIRow.with(
+    UIOutlineButton.with({
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;No&quot;</span>,
+      <span class="hljs-attr">onClick</span>: <span class="hljs-string">&quot;+Abort&quot;</span>, <span class="hljs-comment">// Click =&gt; Abort</span>
+    }),
+    UIOutlineButton.with({
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Yes&quot;</span>,
+      <span class="hljs-attr">onClick</span>: <span class="hljs-string">&quot;+Confirm&quot;</span>, <span class="hljs-comment">// Click =&gt; Confirm</span>
+    })
+  )
+);
+
+<span class="hljs-comment">// Handle events in the activity:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DialogViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
+  <span class="hljs-comment">// This would handle every single click, anywhere:</span>
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params">e: ActionEvent</span>)</span> {
+    <span class="hljs-comment">// ... not very useful for large views.</span>
+  }
+
+  <span class="hljs-comment">// This handles only clicks on &#x27;No&#x27;:</span>
+  <span class="hljs-function"><span class="hljs-title">onAbort</span>(<span class="hljs-params">e: ActionEvent</span>)</span> {
+    <span class="hljs-comment">// ... abort!</span>
+  }
+
+  <span class="hljs-comment">// This handles only clicks on &#x27;Yes&#x27;:</span>
+  <span class="hljs-function"><span class="hljs-title">onConfirm</span>(<span class="hljs-params">e: ActionEvent</span>)</span> {
+    <span class="hljs-comment">// ... confirm.</span>
+  }
+}
+</code></pre>
+<hr>
+<footer>
+
+<h3>Related</h3>
+
+
+<p>To read more about events, and event handling outside of views and activities, refer to this in-depth article about the <code>Component</code> class:</p>
+<p><a href="/docs/concepts/components" class="block_link doc"><strong>Component</strong><br>Components are the main building blocks of a Typescene application</a></p>
+<h3>Next</h3>
+
+
+<p><a class="block_link guide" href="/docs/guides/basics/anatomy-data"><strong>Understanding data models</strong><br>Learn how to model data using records and lists.
+</a></p>
+</footer>
+
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />
+
+    <footer class="footer">
+        <section class="wrapper">
+            <div class="wrapper_columns">
+                <div class="wrapper_column">
+                    © Copyright 2021 Typescene contributors
+                </div>
+                <div class="wrapper_column wrapper_column--oppose style--light">
+                    Find Typescene on
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a> and
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/assets/default.js"></script>
+    <script src="/assets/docwidget.js"></script>
+</body>
+</html>

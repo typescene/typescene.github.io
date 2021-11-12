@@ -66,108 +66,127 @@
 
 
 <p><code>(): UnhandledErrorEmitter</code></p>
+<p>Singleton constructor, do not use directly.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:emitError" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitError() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(error: any): void</code></p>
 <p>Log and emit given error.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:instance" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.instance <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>UnhandledErrorEmitter</code></p>
 <p>Singleton instance of this class (read-only).</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UnhandledErrorEmitter:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 

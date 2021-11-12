@@ -66,23 +66,27 @@
 
 
 <p><code>(): AppActivationContext</code></p>
+<p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:constructor"><code>ManagedObject.constructor</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:target" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.target</h2>
 
 
 
 <p><code>string</code></p>
 <p>The current full target path, in URL format without leading or trailing slashes (e.g. <code>foo/bar/123</code>), defaults to the empty string. Changes to this property automatically result in a change event being emitted on the activation context instance itself.</p>
+<hr>
 <h2 id="AppActivationContext:navigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.navigate()</h2>
 
 
 
 <p><code>(_path: string, _mode?: </code><a href="/docs/ref/ApplicationNavigationMode"><code>ApplicationNavigationMode</code></a><code>): void</code></p>
 <p>Navigate to given (relative) path, in URL format or <code>:back</code> to go back in history; to be overridden, the base implementation does nothing.</p>
+<hr>
 <h2 id="AppActivationContext:match" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.match()</h2>
 
 
 
-<p><code>(path: string, activity?: </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>): </code><a href="#AppActivationContext:MatchedPath"><code>MatchedPath</code></a></p>
+<p><code>(path: string, activity?: </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>): MatchedPath</code></p>
 <ul>
 <li><code>path</code> —  The activity path to match, without leading slashes (e.g. <code>foo/bar</code>). Paths with a trailing slash (e.g. <code>foo/bar/</code>) match the exact path as well as sub paths. Paths may contain partial captures as either <code>:foo</code> or <code>*foo</code>, matching a single segment without slashes and the full remainder of the target path, respectively - but <em>not</em> an empty segment. The prefix <a href="#AppActivationContext:"><code>.</code></a><code>/</code> is replaced with the path (string) of the closest parent activity that has a <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a> string property.</li>
 </ul>
@@ -91,96 +95,112 @@
 </ul>
 <p>Check if given activity path matches the current target path.</p>
 <p><strong>Returns:</strong> An object with properties for all partial captures <em>if</em> given path matches the current target, or undefined otherwise.</p>
+<hr>
 <h2 id="AppActivationContext:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -193,6 +213,7 @@
 
 
 <p>Captured path segments, matched by <a href="/docs/ref/AppActivationContext#AppActivationContext:match"><code>AppActivationContext.match</code></a>.</p>
+<hr>
 <h2 id="AppActivationContext:MatchedPath:path" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.path</h2>
 
 

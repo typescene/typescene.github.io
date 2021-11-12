@@ -8,6 +8,7 @@ export declare class PageGenerator {
     data: any;
     /** Generate the page's markdown file as an array of strings; also populates the data object */
     generate(): string[];
+    private _getDocSectionContent;
     /** Returns an enhanced version of the name from given spec node that represents its type */
     private _getTypedName;
     /** Set the `nav` data property to markdown content for the navigation list for this page */

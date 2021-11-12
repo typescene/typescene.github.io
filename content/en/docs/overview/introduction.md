@@ -1,4 +1,5 @@
 ---
+showInNav: true
 output: docs/introduction.html
 template: doc_article
 title: Introduction
@@ -10,15 +11,16 @@ pageintro: Typescene is an object oriented front-end framework for interactive a
 
 As an application framework, Typescene provides a collection of building blocks, or ‘components’ for creating interactive applications. You can import these components into your app in the form of JavaScript classes, and _extend_ them with your own application-specific code.
 
-For a small website widget you may only need to define one or two components, whereas a complex enterprise tool may require hundreds. Either way, the resulting components are always based on the same Typescene classes and follow the same consistent structure, generally consisting of *views*, *activities*, and *services*:
+For a small website widget you may only need to define one or two components, whereas a complex enterprise tool may require hundreds. Either way, the resulting components are always based on the same Typescene classes and follow the same consistent structure, generally consisting of _views_, _activities_, and _services_:
 
-* **Views** describe the user interface, as a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.
-* **Activities** represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are _activated_ independently to display their corresponding views automatically.
-* **Services** provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user's language.
+- **Views** describe the user interface, as a tree structure of UI elements: buttons, checkboxes, text labels, rows and columns for layout, etc.
+- **Activities** represent the underlying state, and define event handlers. A single application may contain one or more activities, reflecting the different ‘places’ within your app, such as different screens or popup dialogs. Activities are _activated_ independently to display their corresponding views automatically.
+- **Services** provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user's language.
 
-> **Note:** This architecture is designed for _interactive applications or widgets_ such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is _not_ a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.  
+> **Note:** This architecture is designed for _interactive applications or widgets_ such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is _not_ a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.
 
 ## Components {#components}
+
 Views, activities, services, and other components all play a specific role within an application, and Typescene includes a number of classes to provide this functionality. For example, a text label in the app's user interface is represented by the `UILabel` class, and an activity that displays a full-screen view is an instance of the `PageViewActivity` class. The entire app is an instance of `Application`.
 
 These components work together using features that are defined by their common base class, the `Component` class itself. In particular, this class manages references _between_ components, allowing them to respond to _events_ emitted by other components, and _observe_ property changes. These features are available for all components, but not at the level of individual objects — components are connected at the **class** level.
@@ -42,7 +44,7 @@ const view = (
 // OR, without JSX syntax:
 const view = UICenterRow.with(
   UILabel.with({
-    text: "Hello, world!"
+    text: "Hello, world!",
   })
 );
 ```
@@ -73,7 +75,7 @@ class MyActivity extends PageViewActivity.with(view) {
 }
 ```
 
-> **Referencing services:** The activity class is a good place to refer to service components too, if needed. The activity defines the ‘behavior’ of the application, which often depends on the global _state_ (data) or communication with other systems. This can be done by declaring properties as [‘managed’ service references](/docs/concepts/services).  
+> **Referencing services:** The activity class is a good place to refer to service components too, if needed. The activity defines the ‘behavior’ of the application, which often depends on the global _state_ (data) or communication with other systems. This can be done by declaring properties as [‘managed’ service references](/docs/concepts/services).
 
 In more complex applications, preset activity constructors can be linked to other preset activity constructors, creating a hierarchy of activities that represent the possible ‘places’ a user might find themselves in within the app.
 
@@ -106,9 +108,7 @@ We can take advantage of this mechanism by adding properties to the component de
 // using JSX syntax:
 const view = (
   <centerrow>
-    <label onClick="addCount()">
-      Count: {bind("count")}
-    </label>
+    <label onClick="addCount()">Count: {bind("count")}</label>
   </centerrow>
 );
 
@@ -116,7 +116,7 @@ const view = (
 const view = UICenterRow.with(
   UILabel.with({
     onClick: "addCount()",
-    text: bindf("Count: ${count}")
+    text: bindf("Count: ${count}"),
   })
 );
 ```
@@ -125,7 +125,7 @@ In this example, the label text has been replaced with a **binding**. This means
 
 Because Typescene ‘knows’ the relationship between the activity and its view components, and the preset view constructor now contains a binding, it automatically adds an _observer_ to the activity class — this exact one, for the exact properties that need to be observed once an instance is created. This reduces overhead, without requiring any further code in either the view or the activity component.
 
-> **Note:** Bindings are not just used by views to refer to data on the activity instance. For example, the ‘activation context’ (which determines when activities should activate and display their views) is created by the Application instance, but since it’s _bound_ by all activities, each activity is able to observe navigation events and properties independently.  
+> **Note:** Bindings are not just used by views to refer to data on the activity instance. For example, the ‘activation context’ (which determines when activities should activate and display their views) is created by the Application instance, but since it’s _bound_ by all activities, each activity is able to observe navigation events and properties independently.
 
 The second change in the example above is the addition of a delegated **event handler**, specifically for the `Click` event on the text label. The `Click` event is emitted whenever the user clicks or taps on a view element.
 
@@ -138,7 +138,9 @@ Since we’ve added a `count` property and an `addCount` method, the activity mi
 class MyActivity extends PageViewActivity.with(view) {
   path = "/";
   count = 0;
-  addCount() { this.count++ }
+  addCount() {
+    this.count++;
+  }
 }
 ```
 
@@ -146,7 +148,7 @@ The `addCount` method increments a counter whenever the label is clicked, which 
 
 What’s important to note here, is that the activity never updates the view directly — it only modifies its own properties. Similarly, the view doesn’t contain any program code. This separation of concerns helps to make Typescene apps easier to maintain: the application’s looks and its behavior are mostly independent from one another, making it easier to correct issues on either side.
 
-> **Note:** Sometimes it is necessary to add some ‘behavior’ outside of an activity, for example when creating reusable view components (like custom controls) that need to respond to user input visually, but don’t change any program state other than their own. For this purpose, Typescene provides the `ViewComponent` class, which works like an activity but can be used from within a view.  
+> **Note:** Sometimes it is necessary to add some ‘behavior’ outside of an activity, for example when creating reusable view components (like custom controls) that need to respond to user input visually, but don’t change any program state other than their own. For this purpose, Typescene provides the `ViewComponent` class, which works like an activity but can be used from within a view.
 
 ### Conditions and lists
 
@@ -173,19 +175,19 @@ With scalability in mind, it's a good idea to organize Typescene projects by act
 
 On disk, Typescene apps are often organized as follows — although this _isn’t required_ in any way:
 
-* An **Activities** folder, with each activity in a separate sub folder
-    * Each activity usually requires only a single class file,
-    * Related views should be kept together with the activity, possibly referencing more (partial) view code in a separate subfolder.
-* A **Services** folder, with services and model classes;
-* A **Shared** folder, with shared classes and functions that are reused throughout the app; notably this includes custom view components as well, if they are used from different activities.
+- An **Activities** folder, with each activity in a separate sub folder
+  - Each activity usually requires only a single class file,
+  - Related views should be kept together with the activity, possibly referencing more (partial) view code in a separate subfolder.
+- A **Services** folder, with services and model classes;
+- A **Shared** folder, with shared classes and functions that are reused throughout the app; notably this includes custom view components as well, if they are used from different activities.
 
 ### Widgets
 
 For existing (Web app or website) projects, the use of Typescene might be limited to a separate 'widget' that’s pulled in by one or more pages — as opposed to a Single-Page Application (SPA). Typescene facilitates this as well:
 
-* The main view output of the application can be 'mounted' to a single DOM element on the page if needed, instead of filling the entire screen.
-* Modal dialogs (popups) can be displayed e.g. after the user presses a button, which block input to the rest of the page while the app is active.
-* Multiple applications may be created at the same time, each with their own set of activities. Each widget could therefore maintain their own state, while still sharing data through services.
+- The main view output of the application can be 'mounted' to a single DOM element on the page if needed, instead of filling the entire screen.
+- Modal dialogs (popups) can be displayed e.g. after the user presses a button, which block input to the rest of the page while the app is active.
+- Multiple applications may be created at the same time, each with their own set of activities. Each widget could therefore maintain their own state, while still sharing data through services.
 
 ### Deployment
 
@@ -201,6 +203,5 @@ Alternatively, a pre-compiled [UMD module](/docs/installation#html) (a plain .js
 
 Now that you're familiar with the basics, you can take the following steps:
 
-* Follow a practical approach and [create an app](/docs/installation) to experiment with.
-* Alternatively, learn more about [components](/docs/concepts/components) for a detailed understanding of how they work, before moving on to [activities](/docs/concepts/activities) and [views](/docs/concepts/views).
-
+- Follow a practical approach and [create an app](/docs/installation) to experiment with.
+- Alternatively, learn more about [components](/docs/concepts/components) for a detailed understanding of how they work, before moving on to [activities](/docs/concepts/activities) and [views](/docs/concepts/views).

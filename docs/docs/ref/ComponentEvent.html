@@ -64,25 +64,30 @@
 <h3>Constructor</h3>
 
 
-<p><code>&lt;TComponent extends Component = Component&gt;(name: string, </code><a href="#ComponentEvent:source"><code>source</code></a><code>: TComponent, </code><a href="#ComponentEvent:inner"><code>inner</code></a><code>?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): ComponentEvent&lt;TComponent&gt;</code></p>
+<p><code>&lt;TComponent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(name: string, source: TComponent, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): ComponentEvent&lt;TComponent&gt;</code></p>
+<p>Create a new event with given name, source, and optionally encapsulated event.</p>
+<hr>
 <h2 id="ComponentEvent:source" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.source</h2>
 
 
 
 <p><code>TComponent</code></p>
 <p>Source component.</p>
+<hr>
 <h2 id="ComponentEvent:inner" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.inner</h2>
 
 
 
 <p><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a></p>
 <p>Encapsulated event, if the event was originally of a different type.</p>
+<hr>
 <h2 id="ComponentEvent:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedEvent#ManagedEvent:name"><code>ManagedEvent.name</code></a>.</p>
+<hr>
 <h2 id="ComponentEvent:freeze" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.freeze()</h2>
 
 

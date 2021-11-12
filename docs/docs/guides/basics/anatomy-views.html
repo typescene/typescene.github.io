@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Learn how user interfaces are described using view components.
+">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typescene - Understanding views</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96048899-3');
+    </script>
+    <!-- end GA -->
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
+    <link rel="canonical" href="https://typescene.dev/docs/guides/basics/anatomy-views">
+</head>
+<body>
+    <nav class="topnav">
+        <section class="wrapper">
+            <a href="/" class="logo_link">
+                <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+                <span class="topnav_title">Typescene</span>
+            </a>
+            <ul class="topnav_links">
+                <li><a href="#" onclick="return showDocWidget()"><img src="/assets/icons/search-reverse.svg" alt="" width=16 style="position: relative; top: .125rem">&nbsp; Docs</a></li>
+                <li class="hide_small"><a href="https://github.com/typescene/typescene" target="_blank" rel="noopener">Github</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs">Documentation</a>
+          &nbsp;|&nbsp;
+          Guides
+          &gt;
+          <a href="/docs/guides/basics/index.html">
+              Basics
+          </a>
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page wrapper--guide">
+    <div class="pagetitle_container">
+        <h1>Understanding views</h1>
+        <p class="style--pageintro">Learn how user interfaces are described using view components.
+</p>
+    </div>
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper--guide_content">
+            <section>
+
+<p><strong>Note:</strong><br>
+For a more in-depth explanation, refer to this article about views.</p>
+</section>
+
+<p><a href="/docs/concepts/views" class="block_link doc"><strong>Concepts &gt; Views</strong><br>Views represent the user interface of a Typescene application</a></p>
+<hr>
+<section>
+
+<p><strong>View structure</strong><br>
+A Typescene app is displayed (or ‘rendered’) using a <strong>hierarchy</strong> of UI components such as buttons, text labels, dividers, and various containers.</p>
+<p>In the application source code, this parent-child structure is <em>described</em> using method calls. Note that this doesn’t include any code that deals with user input or program state.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-keyword">const</span> myView = UICell.with(
+  UIRow.with(
+    { <span class="hljs-attr">height</span>: <span class="hljs-number">80</span> },
+    UILabel.with({ <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Do you want to continue?&quot;</span> })
+  ),
+  UIRow.with(
+    UIOutlineButton.with({ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;No&quot;</span> }),
+    UIPrimaryButton.with({ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Yes&quot;</span> })
+  )
+);
+</code></pre>
+<hr>
+<section>
+
+<p><strong>Optional: JSX syntax</strong><br>
+Typescene also supports JSX / TSX syntax. JSX looks like HTML, but each tag is simply transformed into a method call under the hood.</p>
+</section>
+
+<pre><code class="language-jsx"><span class="hljs-comment">// Same as above:</span>
+<span class="hljs-keyword">const</span> myView = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">row</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{80}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Do you want to continue?<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">row</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">row</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">outlinebutton</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;No&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">primarybutton</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Yes&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">row</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">cell</span>&gt;</span></span>
+);
+</code></pre>
+<hr>
+<section>
+
+<p>While we describe (or <em>declare</em>) views using the <code>with</code> method, this method doesn’t actually <em>create</em> view component objects. Each call returns a <strong>class</strong>.</p>
+<p>These classes encapsulate the information that was passed to <code>with</code>. When an instance is created (using <code>new</code>), the constructor immediately adds properties and nested components.</p>
+<p><em>(These are called ‘preset’ classes, and they’re also used with other types of components – not just with views.)</em></p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// Create a regular label:</span>
+<span class="hljs-keyword">let</span> myLabel = <span class="hljs-keyword">new</span> UILabel();
+<span class="hljs-built_in">console</span>.log(myLabel.text); <span class="hljs-comment">// =&gt; &quot;&quot;</span>
+
+<span class="hljs-comment">// A preset label class:</span>
+<span class="hljs-keyword">let</span> RedHelloLabel = UILabel.with({
+  <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Hello&quot;</span>,
+  <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> },
+});
+
+<span class="hljs-comment">// Create a label from this preset:</span>
+<span class="hljs-keyword">let</span> myRedLabel = <span class="hljs-keyword">new</span> RedHelloLabel();
+myRedLabel.text; <span class="hljs-comment">// =&gt; &quot;Hello&quot;</span>
+
+<span class="hljs-comment">// `myView` (above) is a preset class, too:</span>
+<span class="hljs-keyword">let</span> v = <span class="hljs-keyword">new</span> myView();
+<span class="hljs-built_in">console</span>.log(v.content.first().height); <span class="hljs-comment">// =&gt; 80</span>
+</code></pre>
+<hr>
+<section>
+
+<p><strong>Referencing views</strong><br>
+You’ll rarely need to instantiate a view class with <code>new</code> yourself. Instead, you’ll get to pass the view <em>class</em> to an activity or custom view component. Those will use the preset class to create a view instance automatically when needed, and listen for events (read more about events later on).</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// Create a preset activity using this view class:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">myView</span>) </span>{
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-comment">// ... and use the current view instance:</span>
+    <span class="hljs-keyword">let</span> row = <span class="hljs-built_in">this</span>.view.content.first();
+    <span class="hljs-built_in">console</span>.log(row.height); <span class="hljs-comment">// =&gt; 80</span>
+  }
+}
+</code></pre>
+<hr>
+<section>
+
+<p><strong>Bindings</strong><br>
+To update view components (instances) after they’ve been rendered on screen, you can’t just update the original preset <em>class</em> anymore.</p>
+<p>Instead, Typescene apps use ‘bindings’ on presets. It automatically <strong>links</strong> each view instance property that was assigned a binding in its preset class, to one of the activity’s properties. After that, updating the property of the activity will also update the corresponding view property.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-keyword">const</span> myView = UICell.with(
+  UILabel.with({
+    <span class="hljs-comment">// Bind `text` to the `message` property below:</span>
+    <span class="hljs-attr">text</span>: bind(<span class="hljs-string">&quot;message&quot;</span>),
+    <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">bold</span>: <span class="hljs-literal">true</span> }
+  })
+);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
+  <span class="hljs-comment">// Update this to update the label text:</span>
+  message = <span class="hljs-string">&quot;Hello, world!&quot;</span>;
+
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.message = <span class="hljs-string">&quot;You clicked.&quot;</span>;
+  }
+}
+</code></pre>
+<hr>
+<footer>
+
+<h3>Next</h3>
+
+
+<p><a class="block_link guide" href="/docs/guides/basics/anatomy-events"><strong>Understanding events</strong><br>Learn how events can be used in views and other components.
+</a></p>
+</footer>
+
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />
+
+    <footer class="footer">
+        <section class="wrapper">
+            <div class="wrapper_columns">
+                <div class="wrapper_column">
+                    © Copyright 2021 Typescene contributors
+                </div>
+                <div class="wrapper_column wrapper_column--oppose style--light">
+                    Find Typescene on
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a> and
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/assets/default.js"></script>
+    <script src="/assets/docwidget.js"></script>
+</body>
+</html>

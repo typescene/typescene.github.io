@@ -66,29 +66,34 @@
 
 
 <p><code>&lt;TData = any&gt;(): UIFormContext&lt;TData&gt;</code></p>
+<p>Inherited from <a href="/docs/ref/Component#Component:constructor"><code>Component.constructor</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:create" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.create() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>&lt;TData extends object&gt;(values: TData): UIFormContext&lt;TData&gt;</code></p>
 <p>Create a typed instance with given values.</p>
+<hr>
 <h2 id="UIFormContext:get" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.get()</h2>
 
 
 
 <p><code>&lt;K extends keyof TData&gt;(name: K): TData[K]</code></p>
 <p>Retrieve the value for a field with given name.</p>
+<hr>
 <h2 id="UIFormContext:has" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.has()</h2>
 
 
 
 <p><code>(name: string): boolean</code></p>
 <p>Returns true if the field with given name is set (but might be <code>undefined</code>).</p>
+<hr>
 <h2 id="UIFormContext:set" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.set()</h2>
 
 
 
-<p><code>(name?: keyof TData, value?: any, </code><a href="#UIFormContext:validate"><code>validate</code></a><code>?: boolean, silent?: boolean): void</code></p>
+<p><code>(name?: keyof TData, value?: any, validate?: boolean, silent?: boolean): void</code></p>
 <ul>
 <li><code>name</code> —  Name of the field to set.</li>
 </ul>
@@ -102,48 +107,56 @@
 <li><code>silent</code> —  Set to true to avoid emitting a change event after setting the value; this means that bound components will not be updated immediately, since the field value itself cannot be observed directly.</li>
 </ul>
 <p>Set the value for a field with given name.</p>
+<hr>
 <h2 id="UIFormContext:unset" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.unset()</h2>
 
 
 
 <p><code>(name: keyof TData): void</code></p>
-<p>Remove the value for a field with given name, including any associated error, and emit a change event. The field will also no longer be validated.</p>
+<p>Remove the value for a field with given name, including any associated error, and emit a change event.</p>
+<hr>
 <h2 id="UIFormContext:clear" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.clear()</h2>
 
 
 
 <p><code>(): void</code></p>
-<p>Remove all field values from this instance, including any associated errors, and emit a change event. None of the existing fields will be validated anymore, until they are set again (using <a href="#UIFormContext:set"><code>set()</code></a>).</p>
+<p>Remove all field values from this instance, including any associated errors, and emit a change event.</p>
+<hr>
 <h2 id="UIFormContext:serialize" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.serialize()</h2>
 
 
 
 <p><code>(): any</code></p>
 <p>Returns a plain object that contains properties for all fields and their values.</p>
+<hr>
 <h2 id="UIFormContext:required" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.required()</h2>
 
 
 
 <p><code>(name: keyof TData, description?: string): this</code></p>
 <p>Add a validation test for a field with given name, which results in an error if the current value is undefined, null, false, or an empty string (but not the number ‘0’). The description is used for generating error messages.</p>
+<hr>
 <h2 id="UIFormContext:test" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.test()</h2>
 
 
 
-<p><code>&lt;K extends keyof TData&gt;(name: K, f: (test: </code><a href="#UIFormContext:ValidationTest"><code>ValidationTest</code></a><code>&lt;TData[K]&gt;) =&gt; void): this</code></p>
+<p><code>&lt;K extends keyof TData&gt;(name: K, f: (test: ValidationTest&lt;TData[K]&gt;) =&gt; void): this</code></p>
 <p>Add a validation test for a field with given name, replacing the current test for the same name, if any. The function is called whenever the field value changes (unless prevented using the respective parameter for the <a href="#UIFormContext:set"><code>set()</code></a> method) and upon invocation of <a href="#UIFormContext:validate"><code>validate()</code></a> and <a href="#UIFormContext:validateAll"><code>validateAll()</code></a> methods. If the function throws an error, either directly or using the methods of the <a href="/docs/ref/UIFormContext#UIFormContext:ValidationTest"><code>UIFormContext.ValidationTest</code></a> instance (single parameter), the resulting error is added to the <a href="#UIFormContext:errors"><code>errors</code></a> object.</p>
+<hr>
 <h2 id="UIFormContext:validate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.validate()</h2>
 
 
 
 <p><code>(name: keyof TData): boolean</code></p>
 <p>Validate the current value of a field with given name; updates the <code>error</code> object, but does <em>not</em> emit a change event. To add validation tests, use the <a href="#UIFormContext:test"><code>test()</code></a> method.</p>
+<hr>
 <h2 id="UIFormContext:validateAll" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.validateAll()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Validate the current values of all fields that have been set; updates the <code>error</code> object, but does <em>not</em> emit a change event.</p>
+<hr>
 <h2 id="UIFormContext:errorCount" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.errorCount</h2>
 
 
@@ -151,6 +164,7 @@
 <p><code>number</code></p>
 <p>The number of errors that have been recorded after validation of one or more fields.</p>
 <p><strong>Note:</strong> This starts out at 0, and is only updated when values are set and/or validated. To retrieve the total number of errors for this instance, call <a href="#UIFormContext:validateAll"><code>validateAll()</code></a> before reading this property.</p>
+<hr>
 <h2 id="UIFormContext:valid" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.valid</h2>
 
 
@@ -158,138 +172,161 @@
 <p><code>boolean</code></p>
 <p>True if there are currently no recorded errors.</p>
 <p><strong>Note:</strong> This <strong>only</strong> reflects validated fields; call <a href="#UIFormContext:validateAll"><code>validateAll()</code></a> before reading this property to ensure all fields are tested first.</p>
+<hr>
 <h2 id="UIFormContext:errors" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.errors</h2>
 
 
 
 <p><code>{ [name in keyof TData]: Error; }</code></p>
 <p>All errors that have been recorded after validating one or more fields; see also <a href="#UIFormContext:errorCount"><code>errorCount</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:delegateEvent"><code>Component.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -305,31 +342,37 @@
 <h3>Constructor</h3>
 
 
-<p><code>&lt;TValue&gt;(name: string, value?: TValue): </code><a href="#UIFormContext:ValidationTest"><code>ValidationTest</code></a><code>&lt;TValue&gt;</code></p>
+<p><code>&lt;TValue&gt;(name: string, value?: TValue): ValidationTest&lt;TValue&gt;</code></p>
+<p>Inherited from <a href="/docs/ref/Component#Component:constructor"><code>Component.constructor</code></a>.</p>
+<hr>
 <h2 id="UIFormContext:ValidationTest:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>The name of the form field being validated.</p>
+<hr>
 <h2 id="UIFormContext:ValidationTest:value" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.value</h2>
 
 
 
 <p><code>TValue</code></p>
 <p>The current form field value.</p>
+<hr>
 <h2 id="UIFormContext:ValidationTest:required" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.required()</h2>
 
 
 
 <p><code>(description?: string): this</code></p>
 <p>Throws an error when the current value is undefined, null, false, or an empty string (but not the number ‘0’); the resulting error refers to the field name, or given description.</p>
+<hr>
 <h2 id="UIFormContext:ValidationTest:typeOf" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.typeOf()</h2>
 
 
 
 <p><code>(typeName: string): this</code></p>
 <p>Throws an error when the type of the current field value (result of the <code>typeof</code> operator) does <em>not</em> match given type.</p>
+<hr>
 <h2 id="UIFormContext:ValidationTest:assert" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.assert()</h2>
 
 

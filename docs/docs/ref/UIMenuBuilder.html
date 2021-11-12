@@ -65,48 +65,56 @@
 
 
 <p><code>(): UIMenuBuilder</code></p>
+<hr>
 <h2 id="UIMenuBuilder:clear" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.clear() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Remove all current menu items.</p>
+<hr>
 <h2 id="UIMenuBuilder:addOption" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addOption() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(key: string, text: </code><a href="/docs/ref/Stringable"><code>Stringable</code></a><code>, icon?: string, hint?: </code><a href="/docs/ref/Stringable"><code>Stringable</code></a><code>, hintIcon?: string, textStyle?: Partial&lt;TextStyle&gt;, hintStyle?: Partial&lt;TextStyle&gt;): this</code></p>
 <p>Add a menu option with given key, text, icon, and hint.</p>
+<hr>
 <h2 id="UIMenuBuilder:addSelectionGroup" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addSelectionGroup() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(options: { key: string; text: </code><a href="/docs/ref/Stringable"><code>Stringable</code></a><code>; }[], selectedKey?: string, textStyle?: Partial&lt;TextStyle&gt;): this</code></p>
 <p>Add a list of selectable menu options.</p>
+<hr>
 <h2 id="UIMenuBuilder:addSeparator" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addSeparator() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Add a menu separator.</p>
+<hr>
 <h2 id="UIMenuBuilder:setGravity" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.setGravity() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(gravity: &quot;start&quot; | &quot;stretch&quot; | &quot;end&quot;): this</code></p>
 <p>Set the alignment of the menu to its related component (<code>start</code>, <code>stretch</code>, or <code>end</code>), if applicable.</p>
+<hr>
 <h2 id="UIMenuBuilder:setRevealTransition" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.setRevealTransition() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(transition: string): this</code></p>
 <p>Set the animation that plays when the menu is displayed, if applicable.</p>
+<hr>
 <h2 id="UIMenuBuilder:setExitTransition" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.setExitTransition() <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>(transition: string): this</code></p>
 <p>Set the animation that plays when the menu is removed, if applicable.</p>
+<hr>
 <h2 id="UIMenuBuilder:build" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.build() <span class="spec_tag">abstract</span></h2>
 
 

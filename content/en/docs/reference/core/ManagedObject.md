@@ -12,7 +12,7 @@ ManagedObject is the base class of most other framework classes, including Compo
 
 # ManagedState
 
-#### See Also
+#### Related
 
 `ManagedObject.managedState`
 

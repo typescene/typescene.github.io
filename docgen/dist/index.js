@@ -64,7 +64,7 @@ function generateDocs(pipeline, config) {
     let content = [];
     for (let node of index) {
         for (let c of node.content) {
-            if (c.spec.deprecated)
+            if (c.spec.deprecated || c.spec.name === "constructor")
                 continue;
             if (c.id.endsWith(".") || c.spec.inherited)
                 continue;
@@ -74,7 +74,20 @@ function generateDocs(pipeline, config) {
         }
     }
     content.sort((a, b) => (a === b ? 0 : a > b ? 1 : -1));
-    let jsonItem = new markdown_pipeline_1.Pipeline.Item("@symbols");
+    // add symbols file to pipeline for analysis
+    if (config.debug_out) {
+        let symbolsItem = new markdown_pipeline_1.Pipeline.Item("@symbols");
+        symbolsItem.output.push({
+            path: config.debug_out,
+            data: JSON.stringify({
+                version: packageInfo.version,
+                content: content,
+            }, undefined, "  "),
+        });
+        pipeline.add(symbolsItem);
+    }
+    // add compressed symbols file to pipeine
+    let jsonItem = new markdown_pipeline_1.Pipeline.Item("@symbols.compressed");
     jsonItem.output.push({
         path: config.json_out,
         data: JSON.stringify({

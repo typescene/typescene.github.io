@@ -65,90 +65,120 @@
 
 
 <p><code>(name: string, source: </code><a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a><code>, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, event?: any): UIScrollEvent</code></p>
+<p>Inherited from <a href="/docs/ref/UIComponentEvent#UIComponentEvent:constructor"><code>UIComponentEvent.constructor</code></a>.</p>
+<hr>
+<h2 id="UIScrollEvent:yOffset" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.yOffset</h2>
+
+
+
+<p><code>number</code></p>
+<p>Vertical scroll offset; platform-dependent value, should not be used for positioning but can be used with <a href="/docs/ref/UIScrollContainer#UIScrollContainer:scrollTo"><code>UIScrollContainer.scrollTo()</code></a>.</p>
+<hr>
+<h2 id="UIScrollEvent:xOffset" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.xOffset</h2>
+
+
+
+<p><code>number</code></p>
+<p>Horizontal scroll offset; platform-dependent value, may change with text direction, should not be used for positioning but can be used with <a href="/docs/ref/UIScrollContainer#UIScrollContainer:scrollTo"><code>UIScrollContainer.scrollTo()</code></a>.</p>
+<hr>
 <h2 id="UIScrollEvent:horizontalVelocity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.horizontalVelocity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Horizontal scrolling velocity (screen widths per second).</p>
+<hr>
 <h2 id="UIScrollEvent:verticalVelocity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.verticalVelocity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Horizontal scrolling velocity (screen heights per second).</p>
+<hr>
 <h2 id="UIScrollEvent:scrolledDown" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledDown</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if (last) scrolled down.</p>
+<hr>
 <h2 id="UIScrollEvent:scrolledUp" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledUp</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if (last) scrolled up.</p>
-<h2 id="UIScrollEvent:scrolledLeft" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledLeft</h2>
+<hr>
+<h2 id="UIScrollEvent:scrolledHorizontalStart" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledHorizontalStart</h2>
 
 
 
 <p><code>boolean</code></p>
-<p>True if (last) scrolled left.</p>
-<h2 id="UIScrollEvent:scrolledRight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledRight</h2>
+<p>True if (last) scrolled left for LTR text direction, right for RTL.</p>
+<hr>
+<h2 id="UIScrollEvent:scrolledHorizontalEnd" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.scrolledHorizontalEnd</h2>
 
 
 
 <p><code>boolean</code></p>
-<p>True if (last) scrolled right.</p>
+<p>True if (last) scrolled right for LTR text direction, left for RTL.</p>
+<hr>
 <h2 id="UIScrollEvent:atTop" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atTop</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the top.</p>
+<hr>
 <h2 id="UIScrollEvent:atBottom" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atBottom</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the bottom.</p>
-<h2 id="UIScrollEvent:atLeft" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atLeft</h2>
+<hr>
+<h2 id="UIScrollEvent:atHorizontalStart" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atHorizontalStart</h2>
 
 
 
 <p><code>boolean</code></p>
-<p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the left.</p>
-<h2 id="UIScrollEvent:atRight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atRight</h2>
+<p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the left for LTR text direction, right for RTL.</p>
+<hr>
+<h2 id="UIScrollEvent:atHorizontalEnd" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.atHorizontalEnd</h2>
 
 
 
 <p><code>boolean</code></p>
-<p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the right.</p>
+<p>True if the <a href="/docs/ref/UIScrollContainer"><code>UIScrollContainer</code></a> is scrolled to the right for LTR text direction, left for RTL.</p>
+<hr>
 <h2 id="UIScrollEvent:event" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.event</h2>
 
 
 
 <p><code>any</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponentEvent#UIComponentEvent:event"><code>UIComponentEvent.event</code></a>.</p>
+<hr>
 <h2 id="UIScrollEvent:source" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.source</h2>
 
 
 
 <p><code>TComponent</code></p>
 <p>Inherited from <a href="/docs/ref/ComponentEvent#ComponentEvent:source"><code>ComponentEvent.source</code></a>.</p>
+<hr>
 <h2 id="UIScrollEvent:inner" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.inner</h2>
 
 
 
 <p><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a></p>
 <p>Inherited from <a href="/docs/ref/ComponentEvent#ComponentEvent:inner"><code>ComponentEvent.inner</code></a>.</p>
+<hr>
 <h2 id="UIScrollEvent:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedEvent#ManagedEvent:name"><code>ManagedEvent.name</code></a>.</p>
+<hr>
 <h2 id="UIScrollEvent:freeze" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.freeze()</h2>
 
 
@@ -165,16 +195,18 @@
                         <h4 id="declarations">Declarations</h4>
 <ul>
 <li><a href="#UIScrollEvent"><strong>class UIScrollEvent</strong></a></li>
+<li><a href="#UIScrollEvent:yOffset">.yOffset</a></li>
+<li><a href="#UIScrollEvent:xOffset">.xOffset</a></li>
 <li><a href="#UIScrollEvent:horizontalVelocity">.horizontalVelocity</a></li>
 <li><a href="#UIScrollEvent:verticalVelocity">.verticalVelocity</a></li>
 <li><a href="#UIScrollEvent:scrolledDown">.scrolledDown</a></li>
 <li><a href="#UIScrollEvent:scrolledUp">.scrolledUp</a></li>
-<li><a href="#UIScrollEvent:scrolledLeft">.scrolledLeft</a></li>
-<li><a href="#UIScrollEvent:scrolledRight">.scrolledRight</a></li>
+<li><a href="#UIScrollEvent:scrolledHorizontalStart">.scrolledHorizontalStart</a></li>
+<li><a href="#UIScrollEvent:scrolledHorizontalEnd">.scrolledHorizontalEnd</a></li>
 <li><a href="#UIScrollEvent:atTop">.atTop</a></li>
 <li><a href="#UIScrollEvent:atBottom">.atBottom</a></li>
-<li><a href="#UIScrollEvent:atLeft">.atLeft</a></li>
-<li><a href="#UIScrollEvent:atRight">.atRight</a></li>
+<li><a href="#UIScrollEvent:atHorizontalStart">.atHorizontalStart</a></li>
+<li><a href="#UIScrollEvent:atHorizontalEnd">.atHorizontalEnd</a></li>
 </ul>
 <h4 id="inherited">Inherited</h4>
 <ul>

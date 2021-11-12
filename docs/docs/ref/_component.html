@@ -59,7 +59,7 @@
 
 
 
-<p><code>[1]. &lt;T extends Component&gt;(componentType?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): PropertyDecorator</code><br><code>[2]. &lt;T extends Component&gt;(target: T, propertyKey: any): void</code></p>
+<p><code>[1]. &lt;T extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(componentType?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): PropertyDecorator</code><br><code>[2]. &lt;T extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(target: T, propertyKey: any): void</code></p>
 <p>Property decorator: amend decorated property to turn it into a managed child <em>component</em> reference of given type. Also presets bindings from given component type on the parent component (see <a href="/docs/ref/Component#Component:presetBoundComponent"><code>Component.presetBoundComponent()</code></a>, which allows for greater control of the resulting bindings).</p>
 <p>This asserts a parent-child ‘composition’ dependency between the referrer and the referenced object(s):</p>
 <ul>

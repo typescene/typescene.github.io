@@ -11,8 +11,14 @@ module.exports = async (content, item, pipeline) =>
           &nbsp;|&nbsp;
           ${item.data.texts.DOC_GUIDES}
           &gt;
-          <a href="/${pipeline.find(item.data.parent).output[0].path}">
-              ${pipeline.escapeHTML(pipeline.find(item.data.parent).data.title)}
+          <a href="/${
+            pipeline.find(item.path.replace(/[.-\w]+$/, "index"))?.output[0]
+              ?.path
+          }">
+              ${pipeline.escapeHTML(
+                pipeline.find(item.path.replace(/[.-\w]+$/, "index"))?.data
+                  .title || ""
+              )}
           </a>
       </span>
   </section>
@@ -21,9 +27,9 @@ module.exports = async (content, item, pipeline) =>
     <div class="pagetitle_container">
         <h1>${item.data.title}</h1>
         ${
-          item.data.pageintro
+          item.data.description
             ? `<p class="style--pageintro">${await pipeline.parseAsync(
-                item.data.pageintro
+                item.data.description
               )}</p>`
             : ""
         }

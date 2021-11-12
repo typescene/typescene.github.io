@@ -401,7 +401,7 @@ export class DeclarationFileParser {
       this.checker
     );
 
-    // add all members as nested documenation nodes
+    // add all members as nested documentation nodes
     result.nodes = flatten(node.members.map((node) => this._recurse(id, node)));
     return result;
   }
@@ -441,17 +441,44 @@ export class DeclarationFileParser {
     return result;
   }
 
+  /** Produce a `SpecNode` for a class constructor */
+  private _createConstructorSpecNode(
+    id: string,
+    node: ts.ConstructorDeclaration
+  ) {
+    // check if node already exists
+    id += ".constructor";
+    if (this._nodes[id]) return;
+
+    // create a spec node and add JSDoc text/tags
+    let result = (this._nodes[id] = new SpecNode(
+      id,
+      "constructor",
+      SpecNodeType.MethodDeclaration
+    ));
+    let docnode = (node as any).symbol.getDocumentationComment(this.checker);
+    this._addDocumentation(result, displayPartsToString(docnode));
+    ts.getJSDocTags(node).forEach((tag) => this._addDocumentation(result, tag));
+    result.protectedModifier = this._hasModifier(node, "protected");
+    result.staticModifier = this._hasModifier(node, "static");
+    result.abstractModifier = this._hasModifier(node, "abstract");
+
+    return result;
+  }
+
   /** Produce a `SpecNode` for given method declaration */
-  private _createMethodSpecNode(id: string, node: ts.MethodDeclaration) {
+  private _createMethodSpecNode(
+    id: string,
+    node: ts.MethodDeclaration | ts.ConstructorDeclaration
+  ) {
     let symbol = node.name && this.checker.getSymbolAtLocation(node.name);
     let typeSymbol =
-      symbol &&
-      symbol.valueDeclaration &&
-      this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
+      symbol && this.checker.getTypeOfSymbolAtLocation(symbol, node);
     if (!symbol || !typeSymbol) return;
 
     // check if node already exists
     let name = symbol.getName();
+    if (name.startsWith("__@iterator")) name = "[Iterator]";
     id += (id ? "." : "") + name;
     if (
       this._nodes[id] &&
@@ -475,6 +502,7 @@ export class DeclarationFileParser {
     result.protectedModifier = this._hasModifier(node, "protected");
     result.staticModifier = this._hasModifier(node, "static");
     result.abstractModifier = this._hasModifier(node, "abstract");
+
     return result;
   }
 
@@ -585,6 +613,11 @@ export class DeclarationFileParser {
         return this._createNamespaceSpecNode(
           id,
           node as ts.NamespaceExportDeclaration
+        );
+      case ts.SyntaxKind.Constructor:
+        return this._createConstructorSpecNode(
+          id,
+          node as ts.ConstructorDeclaration
         );
       case ts.SyntaxKind.MethodDeclaration:
       case ts.SyntaxKind.MethodSignature:

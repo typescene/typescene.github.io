@@ -62,12 +62,14 @@
 <p><code>extends </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code> </code><code>implements </code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
 <p>View activity base class. Represents an application activity with content that can be rendered when activated.</p>
 <p><strong>Note:</strong> Nothing is rendered if the <a href="#ViewActivity:placement"><code>placement</code></a> property is undefined (default). Make sure this property is set to a <a href="/docs/ref/UIRenderPlacement"><code>UIRenderPlacement</code></a> value before rendering, or use a specific view activity class such as <a href="/docs/ref/PageViewActivity"><code>PageViewActivity</code></a>.</p>
-<h4 id="see-also">See Also</h4>
+<h4 id="related">Related</h4>
 <p><a href="/docs/ref/PageViewActivity"><code>PageViewActivity</code></a>, <a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a>.</p>
 <h3>Constructor</h3>
 
 
 <p><code>(name?: string, path?: string): ViewActivity</code></p>
+<p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:constructor"><code>AppActivity.constructor</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:autoUpdate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.autoUpdate() <span class="spec_tag">static</span></h2>
 
 
@@ -77,24 +79,28 @@
 <li><code>module</code> —  Reference to the module that should be watched for updates (build system-specific).</li>
 </ul>
 <p>Register this activity class with the application auto-update handler (for automatic reload/hot module update). When possible, updates to the module trigger updates to any existing activity instances, with new methods and a new view instance.</p>
+<hr>
 <h2 id="ViewActivity:view" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.view</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
 <p>The root component that makes up the content for this view, as a child component.</p>
+<hr>
 <h2 id="ViewActivity:placement" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.placement</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderPlacement"><code>UIRenderPlacement</code></a></p>
 <p>View placement mode, determines if and how view is rendered when activated.</p>
+<hr>
 <h2 id="ViewActivity:modalShadeOpacity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.modalShadeOpacity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Modal shade backdrop opacity behind content (0-1), if supported by placement mode.</p>
+<hr>
 <h2 id="ViewActivity:render" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.render()</h2>
 
 
@@ -102,6 +108,7 @@
 <p><code>(callback?: RenderCallback&lt;Output&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>, any&gt;&gt;): void</code></p>
 <p>Render the view for this activity and display it, if it is not currently visible.</p>
 <p>This method is called automatically after the root view component is created and/or when an application render context is made available or emits a change event, and should not be called directly.</p>
+<hr>
 <h2 id="ViewActivity:removeViewAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.removeViewAsync()</h2>
 
 
@@ -109,44 +116,66 @@
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Remove the view output that was rendered by <a href="/docs/ref/ViewActivity#ViewActivity:render"><code>ViewActivity.render</code></a>, if any.</p>
 <p>This method is called automatically after the root view component or render context is removed, and should not be called directly.</p>
+<hr>
 <h2 id="ViewActivity:restoreFocus" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.restoreFocus()</h2>
 
 
 
 <p><code>(firstFocused?: boolean): void</code></p>
 <p>Request input focus on the last (or first) focused UI component, if any.</p>
+<hr>
 <h2 id="ViewActivity:onFocusIn" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onFocusIn() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean | void</code></p>
 <p>Handle FocusIn UI event, remember first/last focused component.</p>
+<hr>
 <h2 id="ViewActivity:firstFocused" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.firstFocused</h2>
 
 
 
 <p><a href="/docs/ref/UIComponent"><code>UIComponent</code></a></p>
 <p>The UI component that was focused first, if any.</p>
+<hr>
 <h2 id="ViewActivity:lastFocused" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lastFocused</h2>
 
 
 
 <p><a href="/docs/ref/UIComponent"><code>UIComponent</code></a></p>
 <p>The UI component that was most recently focused, if any.</p>
-<h2 id="ViewActivity:showDialogAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.showDialogAsync()</h2>
+<hr>
+<h2 id="ViewActivity:showModalAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.showModalAsync()</h2>
 
 
 
-<p><code>(View: </code><a href="/docs/ref/UIRenderableConstructor"><code>UIRenderableConstructor</code></a><code>, eventHandler?: (this: </code><a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a><code>, e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; void): Promise&lt;ViewActivity&gt;</code></p>
+<p><code>&lt;ActivityT extends </code><a href="/docs/ref/ModalViewActivity"><code>ModalViewActivity</code></a><code>&gt;(View: </code><a href="/docs/ref/UIRenderableConstructor"><code>UIRenderableConstructor</code></a><code>, eventHandler?: (this: </code><a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a><code>, e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; void, BaseActivity?: typeof ModalViewActivity &amp; (new () =&gt; ActivityT)): Promise&lt;...&gt;</code></p>
 <ul>
 <li><code>View</code> —  A view component constructor.</li>
 </ul>
 <ul>
 <li><code>eventHandler</code> —  A function that is invoked for all events that are emitted by the view.</li>
 </ul>
-<p>Create an instance of given view component, wrapped in a singleton dialog view activity, and adds it to the application to be displayed immediately. The activity responds to the CloseModal event by destroying the activity, which removes the view as well.</p>
-<p><strong>Returns:</strong> A promise that resolves to the view <em>activity</em> instance after it has been activated.</p>
-<p><strong>Note:</strong> Use the <a href="/docs/ref/Application#Application:showViewActivityAsync"><code>Application.showViewActivityAsync</code></a> method, or reference an activity using a managed child property to show a view that is already encapsulated in an activity.</p>
+<ul>
+<li><code>BaseActivity</code> —  Base activity class that will be preset with given view, defaults to ModalViewActivity.</li>
+</ul>
+<p>Create a modal view activity based on the given view component, and activate it immediately. If an event handler is not specified, the activity responds to the CloseModal event (by destroying the activity and view).</p>
+<p><strong>Returns:</strong> A promise that resolves to the view activity instance after it has been activated.</p>
+<hr>
+<h2 id="ViewActivity:showDialogAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.showDialogAsync()</h2>
+
+
+
+<p><code>(View: </code><a href="/docs/ref/UIRenderableConstructor"><code>UIRenderableConstructor</code></a><code>, eventHandler?: (this: </code><a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a><code>, e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; void): Promise&lt;</code><a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a><code>&gt;</code></p>
+<ul>
+<li><code>View</code> —  A view component constructor.</li>
+</ul>
+<ul>
+<li><code>eventHandler</code> —  A function that is invoked for all events that are emitted by the view.</li>
+</ul>
+<p>Create a dialog view activity based on the given view component, and activate it immediately. If an event handler is not specified, the activity responds to the CloseModal event (by destroying the activity and view).</p>
+<p><strong>Returns:</strong> A promise that resolves to the dialog view activity instance after it has been activated.</p>
+<hr>
 <h2 id="ViewActivity:showConfirmationDialogAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.showConfirmationDialogAsync()</h2>
 
 
@@ -166,222 +195,259 @@
 </ul>
 <p>Display a confirmation/alert dialog with given content. If the ‘cancel’ button label is not provided, the dialog will only contain a ‘confirm’ button. All strings are automatically translated to the current locale using the <a href="/docs/ref/strf"><code>strf</code></a> function.</p>
 <p><strong>Returns:</strong> A promise that resolves to true if the OK button was clicked, false otherwise.</p>
+<hr>
 <h2 id="ViewActivity:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:name"><code>AppActivity.name</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:path" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.path</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:navigationTarget" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.navigationTarget</h2>
 
 
 
 <p><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:navigationTarget"><code>AppActivity.navigationTarget</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:match" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.match</h2>
 
 
 
 <p><code>Readonly&lt;MatchedPath&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:match"><code>AppActivity.match</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getParentActivity" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentActivity()</h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:getParentActivity"><code>AppActivity.getParentActivity</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getApplication" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getApplication()</h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/Application"><code>Application</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:getApplication"><code>AppActivity.getApplication</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:activateAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateAsync()</h2>
 
 
 
 <p><code>(match?: MatchedPath): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:activateAsync"><code>AppActivity.activateAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:destroyAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyAsync()</h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:destroyAsync"><code>AppActivity.destroyAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:isActive" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isActive()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:isActive"><code>AppActivity.isActive</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:activated" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activated</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:activated"><code>AppActivity.activated</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:deactivated" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.deactivated</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:deactivated"><code>AppActivity.deactivated</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onNavigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onNavigate() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/NavigationEvent"><code>NavigationEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>&amp; { getNavigationTarget?: () =&gt; string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a><code>; }&gt;): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:onNavigate"><code>AppActivity.onNavigate</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderContext"><code>UIRenderContext</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppComponent#AppComponent:renderContext"><code>AppComponent.renderContext</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:viewportContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.viewportContext</h2>
 
 
 
 <p><code>any</code></p>
 <p>Inherited from <a href="/docs/ref/AppComponent#AppComponent:viewportContext"><code>AppComponent.viewportContext</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:activationContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activationContext</h2>
 
 
 
 <p><a href="/docs/ref/AppActivationContext"><code>AppActivationContext</code></a></p>
 <p>Inherited from <a href="/docs/ref/AppComponent#AppComponent:activationContext"><code>AppComponent.activationContext</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:delegateEvent"><code>Component.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -395,24 +461,28 @@
 
 <p><code>extends </code><a href="/docs/ref/AppActivity#AppActivity:Presets"><code>AppActivity.Presets</code></a></p>
 <p>View activity presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:Presets:placement" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.placement</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderPlacement"><code>UIRenderPlacement</code></a></p>
 <p>View placement mode.</p>
+<hr>
 <h2 id="ViewActivity:Presets:modalShadeOpacity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.modalShadeOpacity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Modal shade backdrop opacity behind content (0-1), if supported by placement mode.</p>
+<hr>
 <h2 id="ViewActivity:Presets:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/AppActivity#AppActivity:Presets:name"><code>AppActivity.Presets.name</code></a>.</p>
+<hr>
 <h2 id="ViewActivity:Presets:path" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.path</h2>
 
 
@@ -439,6 +509,7 @@
 <li><a href="#ViewActivity:onFocusIn">.onFocusIn()</a></li>
 <li><a href="#ViewActivity:firstFocused">.firstFocused</a></li>
 <li><a href="#ViewActivity:lastFocused">.lastFocused</a></li>
+<li><a href="#ViewActivity:showModalAsync">.showModalAsync()</a></li>
 <li><a href="#ViewActivity:showDialogAsync">.showDialogAsync()</a></li>
 <li><a href="#ViewActivity:showConfirmationDialogAsync">.showConfirmationDialogAsync()</a></li>
 </ul>

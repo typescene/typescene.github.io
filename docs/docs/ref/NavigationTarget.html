@@ -63,13 +63,22 @@
 <h3>Constructor</h3>
 
 
-<p><code>(path: string | </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>, </code><a href="#NavigationTarget:title"><code>title</code></a><code>?: string | { toString(): string; }): NavigationTarget</code></p>
+<p><code>(path: string | </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>, title?: string | { toString(): string; }): NavigationTarget</code></p>
+<p>Create a new navigation target for given path or activity; if an activity is provided, the path is taken from its <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a> property when requested.</p>
+<hr>
 <h2 id="NavigationTarget:title" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.title</h2>
 
 
 
 <p><code>string | { toString(): string; }</code></p>
 <p>Optional name of this target, as a string or an object that can be cast to a string (e.g. <a href="/docs/ref/I18nString"><code>I18nString</code></a>, the result of <a href="/docs/ref/strf"><code>strf</code></a>).</p>
+<hr>
+<h2 id="NavigationTarget:toString" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.toString()</h2>
+
+
+
+<p><code>(): string</code></p>
+<p>Returns the path that is associated with this target.</p>
 
         </div>
 
@@ -81,6 +90,7 @@
 <ul>
 <li><a href="#NavigationTarget"><strong>class NavigationTarget</strong></a></li>
 <li><a href="#NavigationTarget:title">.title</a></li>
+<li><a href="#NavigationTarget:toString">.toString()</a></li>
 </ul>
 
                     </nav>

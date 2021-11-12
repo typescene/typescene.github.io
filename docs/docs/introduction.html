@@ -66,9 +66,10 @@
 <li><strong>Services</strong> provide access to the global state. You can think of these as objects that hold global variables and methods, accessible from elsewhere in your app. Services usually provide access to data, through Web APIs or a local database, but they may also serve another purpose, for example to provide localizations based on the user’s language.</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> This architecture is designed for <em>interactive applications or widgets</em> such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is <em>not</em> a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.  </p>
+<p><strong>Note:</strong> This architecture is designed for <em>interactive applications or widgets</em> such as desktop or mobile ‘app-like’ experiences on a single page (SPA or Electron, for example), or interactive element(s) on a static webpage. In contrast to some of the most popular JavaScript frameworks, Typescene is <em>not</em> a good fit for rendering entire Web pages with lots of content, such as blogs or corporate websites.</p>
 </blockquote>
 <h2 id="components">Components</h2>
+
 
 <p>Views, activities, services, and other components all play a specific role within an application, and Typescene includes a number of classes to provide this functionality. For example, a text label in the app’s user interface is represented by the <code>UILabel</code> class, and an activity that displays a full-screen view is an instance of the <code>PageViewActivity</code> class. The entire app is an instance of <code>Application</code>.</p>
 <p>These components work together using features that are defined by their common base class, the <code>Component</code> class itself. In particular, this class manages references <em>between</em> components, allowing them to respond to <em>events</em> emitted by other components, and <em>observe</em> property changes. These features are available for all components, but not at the level of individual objects — components are connected at the <strong>class</strong> level.</p>
@@ -88,7 +89,7 @@
 <span class="hljs-comment">// OR, without JSX syntax:</span>
 <span class="hljs-keyword">const</span> view = UICenterRow.with(
   UILabel.with({
-    <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Hello, world!&quot;</span>
+    <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Hello, world!&quot;</span>,
   })
 );
 </code></pre>
@@ -109,7 +110,7 @@
 }
 </code></pre>
 <blockquote>
-<p><strong>Referencing services:</strong> The activity class is a good place to refer to service components too, if needed. The activity defines the ‘behavior’ of the application, which often depends on the global <em>state</em> (data) or communication with other systems. This can be done by declaring properties as <a href="/docs/concepts/services">‘managed’ service references</a>.  </p>
+<p><strong>Referencing services:</strong> The activity class is a good place to refer to service components too, if needed. The activity defines the ‘behavior’ of the application, which often depends on the global <em>state</em> (data) or communication with other systems. This can be done by declaring properties as <a href="/docs/concepts/services">‘managed’ service references</a>.</p>
 </blockquote>
 <p>In more complex applications, preset activity constructors can be linked to other preset activity constructors, creating a hierarchy of activities that represent the possible ‘places’ a user might find themselves in within the app.</p>
 <p>Ultimately, all activities are linked back to the <code>Application</code> component itself. When the application is instantiated using <code>new</code>, it automatically instantiates linked activity components. In this case, there’s just one activity. The activity instantiates its view component, which makes “Hello, world!” appear on the screen.</p>
@@ -137,9 +138,7 @@ app.activate();
 <pre><code class="language-jsx"><span class="hljs-comment">// using JSX syntax:</span>
 <span class="hljs-keyword">const</span> view = (
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">centerrow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&quot;addCount()&quot;</span>&gt;</span>
-      Count: {bind(&quot;count&quot;)}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&quot;addCount()&quot;</span>&gt;</span>Count: {bind(&quot;count&quot;)}<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">centerrow</span>&gt;</span></span>
 );
 
@@ -147,14 +146,14 @@ app.activate();
 <span class="hljs-keyword">const</span> view = UICenterRow.with(
   UILabel.with({
     <span class="hljs-attr">onClick</span>: <span class="hljs-string">&quot;addCount()&quot;</span>,
-    <span class="hljs-attr">text</span>: bindf(<span class="hljs-string">&quot;Count: ${count}&quot;</span>)
+    <span class="hljs-attr">text</span>: bindf(<span class="hljs-string">&quot;Count: ${count}&quot;</span>),
   })
 );
 </code></pre>
 <p>In this example, the label text has been replaced with a <strong>binding</strong>. This means that the value of a specified property of the <em>activity</em> is observed, in this case the <code>count</code> property, and the value of the <code>text</code> property is updated accordingly whenever a change is detected.</p>
 <p>Because Typescene ‘knows’ the relationship between the activity and its view components, and the preset view constructor now contains a binding, it automatically adds an <em>observer</em> to the activity class — this exact one, for the exact properties that need to be observed once an instance is created. This reduces overhead, without requiring any further code in either the view or the activity component.</p>
 <blockquote>
-<p><strong>Note:</strong> Bindings are not just used by views to refer to data on the activity instance. For example, the ‘activation context’ (which determines when activities should activate and display their views) is created by the Application instance, but since it’s <em>bound</em> by all activities, each activity is able to observe navigation events and properties independently.  </p>
+<p><strong>Note:</strong> Bindings are not just used by views to refer to data on the activity instance. For example, the ‘activation context’ (which determines when activities should activate and display their views) is created by the Application instance, but since it’s <em>bound</em> by all activities, each activity is able to observe navigation events and properties independently.</p>
 </blockquote>
 <p>The second change in the example above is the addition of a delegated <strong>event handler</strong>, specifically for the <code>Click</code> event on the text label. The <code>Click</code> event is emitted whenever the user clicks or taps on a view element.</p>
 <p>Here, rather than writing code for an event handler directly in the view declaration, we just specify a method name, i.e. <code>onClick: &quot;addCount()&quot;</code>. This <em>delegates</em> the event to the <code>addCount</code> method of the activity. This method is then called whenever the <code>Click</code> event is emitted, passing the event as a single argument.</p>
@@ -163,13 +162,15 @@ app.activate();
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
   path = <span class="hljs-string">&quot;/&quot;</span>;
   count = <span class="hljs-number">0</span>;
-  <span class="hljs-function"><span class="hljs-title">addCount</span>(<span class="hljs-params"></span>)</span> { <span class="hljs-built_in">this</span>.count++ }
+  <span class="hljs-function"><span class="hljs-title">addCount</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.count++;
+  }
 }
 </code></pre>
 <p>The <code>addCount</code> method increments a counter whenever the label is clicked, which immediately gets reflected in the label text.</p>
 <p>What’s important to note here, is that the activity never updates the view directly — it only modifies its own properties. Similarly, the view doesn’t contain any program code. This separation of concerns helps to make Typescene apps easier to maintain: the application’s looks and its behavior are mostly independent from one another, making it easier to correct issues on either side.</p>
 <blockquote>
-<p><strong>Note:</strong> Sometimes it is necessary to add some ‘behavior’ outside of an activity, for example when creating reusable view components (like custom controls) that need to respond to user input visually, but don’t change any program state other than their own. For this purpose, Typescene provides the <code>ViewComponent</code> class, which works like an activity but can be used from within a view.  </p>
+<p><strong>Note:</strong> Sometimes it is necessary to add some ‘behavior’ outside of an activity, for example when creating reusable view components (like custom controls) that need to respond to user input visually, but don’t change any program state other than their own. For this purpose, Typescene provides the <code>ViewComponent</code> class, which works like an activity but can be used from within a view.</p>
 </blockquote>
 <h3>Conditions and lists</h3>
 
@@ -257,8 +258,20 @@ app.activate();
                               
 <h4 class="closed">Guides</h4>
                               <ul>
-                                  <li><a href="/docs/guides/ui/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui/" as="fetch" />
-<li><a href="/docs/guides/layout/">Layout</a></li><link rel="prefetch" href="/docs/guides/layout/" as="fetch" />
+                                  <li><a href="/docs/guides/basics/">Basics</a></li><link rel="prefetch" href="/docs/guides/basics/" as="fetch" />
+<li><a href="/docs/guides/ui-components/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui-components/" as="fetch" />
+<li><a href="/docs/guides/ui-layout/">UI layout</a></li><link rel="prefetch" href="/docs/guides/ui-layout/" as="fetch" />
+<li><a href="/docs/guides/view-composition/">View composition</a></li><link rel="prefetch" href="/docs/guides/view-composition/" as="fetch" />
+<li><a href="/docs/guides/forms/">Forms</a></li><link rel="prefetch" href="/docs/guides/forms/" as="fetch" />
+<li><a href="/docs/guides/modal-views/">Modal views</a></li><link rel="prefetch" href="/docs/guides/modal-views/" as="fetch" />
+<li><a href="/docs/guides/custom-views/">Custom views</a></li><link rel="prefetch" href="/docs/guides/custom-views/" as="fetch" />
+<li><a href="/docs/guides/bindings/">Bindings</a></li><link rel="prefetch" href="/docs/guides/bindings/" as="fetch" />
+<li><a href="/docs/guides/activities/">Activities</a></li><link rel="prefetch" href="/docs/guides/activities/" as="fetch" />
+<li><a href="/docs/guides/applications/">Applications</a></li><link rel="prefetch" href="/docs/guides/applications/" as="fetch" />
+<li><a href="/docs/guides/data-models/">Data models</a></li><link rel="prefetch" href="/docs/guides/data-models/" as="fetch" />
+<li><a href="/docs/guides/services/">Services</a></li><link rel="prefetch" href="/docs/guides/services/" as="fetch" />
+<li><a href="/docs/guides/i18n/">Internationalization</a></li><link rel="prefetch" href="/docs/guides/i18n/" as="fetch" />
+<li><a href="/docs/guides/libs/">Libraries</a></li><link rel="prefetch" href="/docs/guides/libs/" as="fetch" />
                               </ul>
                               
                     </nav>

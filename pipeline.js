@@ -6,6 +6,7 @@ const { Pipeline } = require("markdown-pipeline");
 // No other content is added here.
 //
 // Transforms:
+// - Change |br| to <br>
 // - Add linked files from YAML front matter `add` property
 // - Add a `toc` data property that contains Markdown text for a Table of Contents
 // - Add aliases (redirects) for a file if it an `alias` data property was set
@@ -140,11 +141,11 @@ async function tag_nav(item, next, pipeline) {
         .getAllItems()
         .filter(
           (it) =>
-            !it.data.aliasFor && !it.data.parent && it.path.startsWith(prefix)
+            !it.data.aliasFor && it.data.showInNav && it.path.startsWith(prefix)
         )
         .map((it) => [
           it === item,
-          it.output[0].path.replace(/(index)?\.html$/, ""),
+          it.output[0]?.path.replace(/(index)?\.html$/, ""),
           pipeline.escapeHTML(it.data.title),
         ]);
       return items
@@ -172,10 +173,7 @@ async function tag_refdoc(item, next, pipeline) {
     (_s, prefix) => {
       let items = pipeline
         .getAllItems()
-        .filter(
-          (it) =>
-            !it.data.aliasFor && !it.data.parent && it.path.startsWith(prefix)
-        )
+        .filter((it) => !it.data.aliasFor && it.path.startsWith(prefix))
         .map((it) => [
           it.data.reftype,
           it.output[0].path.replace(/(index)?\.html$/, ""),
@@ -206,16 +204,22 @@ async function tag_guides(item, next, pipeline) {
         .getAllItems()
         .filter(
           (it) =>
-            !it.data.aliasFor && it.data.parent && it.path.startsWith(prefix)
+            !it.data.aliasFor &&
+            !it.path.endsWith("/index") &&
+            it.path.startsWith(prefix)
         )
         .map((it) => [
           it.output[0].path.replace(/(index)?\.html$/, ""),
           pipeline.escapeHTML(it.data.title),
+          pipeline.escapeHTML(it.data.description),
         ]);
       return items
         .map(
           (it) =>
-            `<p><a class="block_link guide" href="/${it[0]}"><b>${item.data.texts.DOC_GUIDELINK}</b> ${it[1]}</a></p>`
+            `<p><a class="block_link guide" href="/${it[0]}">` +
+            `<strong>${it[1]}</strong><br>` +
+            it[2] +
+            `</a></p>`
         )
         .join("\n");
     }

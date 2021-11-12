@@ -68,240 +68,281 @@
 
 
 <p><code>(): UIControl</code></p>
+<p>Inherited from <a href="/docs/ref/Component#Component:constructor"><code>Component.constructor</code></a>.</p>
+<hr>
 <h2 id="UIControl:applyStyle" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.applyStyle() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(style?: </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a><code>): void</code></p>
 <p>Applies given style set to individual style objects (e.g. <a href="/docs/ref/UIComponent#UIComponent:dimensions"><code>UIComponent.dimensions</code></a>). This method is overridden by derived classes to copy only applicable styles.</p>
+<hr>
 <h2 id="UIControl:textStyle" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.textStyle</h2>
 
 
 
 <p><code>Readonly&lt;TextStyle&gt;</code></p>
 <p>Text style options.</p>
+<hr>
 <h2 id="UIControl:decoration" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.decoration</h2>
 
 
 
 <p><code>Readonly&lt;Decoration&gt;</code></p>
 <p>Options for the appearance of this control.</p>
+<hr>
 <h2 id="UIControl:disabled" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.disabled</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Set to true to disable this control.</p>
+<hr>
 <h2 id="UIControl:shrinkwrap" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.shrinkwrap</h2>
 
 
 
 <p><code>boolean | &quot;auto&quot;</code></p>
 <p>Set to true to shrink this element to use as little space as possible within its container, set to false to expand; defaults to true but may be overridden by individual components, e.g. <a href="/docs/ref/UIExpandedLabel"><code>UIExpandedLabel</code></a>. Overrides <code>grow</code> property of <a href="/docs/ref/UIComponent#UIComponent:dimensions"><code>UIComponent.dimensions</code></a>, unless set to <code>&quot;auto&quot;</code>.</p>
+<hr>
 <h2 id="UIControl:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, event?: any): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:propagateComponentEvent"><code>UIComponent.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIControl:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): true</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:delegateEvent"><code>UIComponent.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="UIControl:render" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.render()</h2>
 
 
 
 <p><code>(callback: RenderCallback&lt;Output&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>, any&gt;&gt;): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:render"><code>UIComponent.render</code></a>.</p>
+<hr>
 <h2 id="UIControl:isFocusable" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isFocusable()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:isFocusable"><code>UIComponent.isFocusable</code></a>.</p>
+<hr>
 <h2 id="UIControl:isKeyboardFocusable" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isKeyboardFocusable()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:isKeyboardFocusable"><code>UIComponent.isKeyboardFocusable</code></a>.</p>
+<hr>
 <h2 id="UIControl:requestFocus" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.requestFocus()</h2>
 
 
 
 <p><code>(): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:requestFocus"><code>UIComponent.requestFocus</code></a>.</p>
+<hr>
 <h2 id="UIControl:requestFocusNext" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.requestFocusNext()</h2>
 
 
 
 <p><code>(): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:requestFocusNext"><code>UIComponent.requestFocusNext</code></a>.</p>
+<hr>
 <h2 id="UIControl:requestFocusPrevious" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.requestFocusPrevious()</h2>
 
 
 
 <p><code>(): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:requestFocusPrevious"><code>UIComponent.requestFocusPrevious</code></a>.</p>
+<hr>
 <h2 id="UIControl:style" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.style</h2>
 
 
 
 <p><a href="/docs/ref/UIStyle"><code>UIStyle</code></a></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:style"><code>UIComponent.style</code></a>.</p>
+<hr>
 <h2 id="UIControl:hidden" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.hidden</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:hidden"><code>UIComponent.hidden</code></a>.</p>
+<hr>
 <h2 id="UIControl:dimensions" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.dimensions</h2>
 
 
 
 <p><code>Readonly&lt;Dimensions&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:dimensions"><code>UIComponent.dimensions</code></a>.</p>
+<hr>
 <h2 id="UIControl:position" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.position</h2>
 
 
 
 <p><code>Readonly&lt;Position&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:position"><code>UIComponent.position</code></a>.</p>
+<hr>
 <h2 id="UIControl:accessibleRole" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.accessibleRole</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:accessibleRole"><code>UIComponent.accessibleRole</code></a>.</p>
+<hr>
 <h2 id="UIControl:accessibleLabel" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.accessibleLabel</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:accessibleLabel"><code>UIComponent.accessibleLabel</code></a>.</p>
+<hr>
 <h2 id="UIControl:lastRenderOutput" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lastRenderOutput</h2>
 
 
 
 <p><code>Output&lt;this, any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:lastRenderOutput"><code>UIComponent.lastRenderOutput</code></a>.</p>
+<hr>
 <h2 id="UIControl:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="UIControl:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIControl:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIControl:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="UIControl:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UIControl:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UIControl:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UIControl:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UIControl:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UIControl:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UIControl:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UIControl:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UIControl:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIControl:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -315,66 +356,77 @@
 
 <p><code>extends </code><a href="/docs/ref/UIComponent#UIComponent:Presets"><code>UIComponent.Presets</code></a></p>
 <p>UIControl presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:textStyle" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.textStyle</h2>
 
 
 
 <p><code>Partial&lt;{} | TextStyle&gt;</code></p>
 <p>Text style options (overrides).</p>
+<hr>
 <h2 id="UIControl:Presets:decoration" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.decoration</h2>
 
 
 
 <p><code>Partial&lt;{} | Decoration&gt;</code></p>
 <p>Options for the appearance of this control (overrides).</p>
+<hr>
 <h2 id="UIControl:Presets:disabled" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.disabled</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Disable this control.</p>
+<hr>
 <h2 id="UIControl:Presets:shrinkwrap" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.shrinkwrap</h2>
 
 
 
 <p><code>boolean | &quot;auto&quot;</code></p>
 <p>Shrink or grow this control.</p>
+<hr>
 <h2 id="UIControl:Presets:style" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.style</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:style"><code>UIComponent.Presets.style</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:hidden" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.hidden</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:hidden"><code>UIComponent.Presets.hidden</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:dimensions" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.dimensions</h2>
 
 
 
 <p><code>Partial&lt;{} | Dimensions&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:dimensions"><code>UIComponent.Presets.dimensions</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:position" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.position</h2>
 
 
 
 <p><code>Partial&lt;{} | Position&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:position"><code>UIComponent.Presets.position</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:accessibleRole" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.accessibleRole</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:accessibleRole"><code>UIComponent.Presets.accessibleRole</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:accessibleLabel" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.accessibleLabel</h2>
 
 
 
 <p><code>string</code></p>
 <p>Inherited from <a href="/docs/ref/UIComponent#UIComponent:Presets:accessibleLabel"><code>UIComponent.Presets.accessibleLabel</code></a>.</p>
+<hr>
 <h2 id="UIControl:Presets:requestFocus" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.requestFocus</h2>
 
 

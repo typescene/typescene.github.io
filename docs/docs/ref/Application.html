@@ -67,56 +67,66 @@
 
 
 <p><code>(): Application</code></p>
+<p>Inherited from <a href="/docs/ref/Component#Component:constructor"><code>Component.constructor</code></a>.</p>
+<hr>
 <h2 id="Application:run" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.run() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>&lt;T extends Application&gt;(this: typeof Application, ...activities: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>&gt;[]): T</code></p>
+<p><code>&lt;T extends Application&gt;(this: typeof Application &amp; (new () =&gt; T), ...activities: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>&gt;[]): T</code></p>
 <p>Create an application that includes given activities, and start it immediately. If none of the activities has a <code>path</code> property, then all activities are activated immediately; otherwise each activity will activate itself using the current <code>activationContect</code>.</p>
 <p><strong>Returns:</strong> the application instance.</p>
 <p><strong>Note:</strong> Calling this method directly on <code>Application</code> creates an application without any context (i.e. <a href="#Application:activationContext"><code>activationContext</code></a> and <a href="#Application:renderContext"><code>renderContext</code></a>). Instead, use a constructor that is meant for a specific platform (e.g. <code>BrowserApplication</code>).</p>
+<hr>
 <h2 id="Application:active" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.active <span class="spec_tag">static</span></h2>
 
 
 
 <p><a href="/docs/ref/ManagedList"><code>ManagedList</code></a><code>&lt;Application&gt;</code></p>
 <p>All <code>Application</code> instances that are currently active.</p>
+<hr>
 <h2 id="Application:setAutoUpdateHandler" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.setAutoUpdateHandler() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>&lt;T extends ComponentConstructor&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;&gt;(f: (module: any, C: T, methodName: string &amp; keyof T) =&gt; void): void</code></p>
+<p><code>&lt;T extends </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;&gt;(f: (module: any, C: T, methodName: string &amp; keyof T) =&gt; void): void</code></p>
 <p>Set a handler that is used to register classes and modules for automatic update/reload; this method is used by e.g. <code>@typescene/webapp</code> to support Hot Module Reload.</p>
+<hr>
 <h2 id="Application:registerAutoUpdate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.registerAutoUpdate() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>&lt;T extends ComponentConstructor&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;&gt;(module: any, C: T, methodName: string &amp; keyof T): void</code></p>
+<p><code>&lt;T extends </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;&gt;(module: any, C: T, methodName: string &amp; keyof T): void</code></p>
 <p>Register given class and module for automatic update/reload; this method is used by e.g. <a href="/docs/ref/ViewActivity"><code>ViewActivity</code></a> and should not be used on its own.</p>
+<hr>
 <h2 id="Application:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>The application name.</p>
+<hr>
 <h2 id="Application:activities" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activities</h2>
 
 
 
 <p><a href="/docs/ref/AppActivityList"><code>AppActivityList</code></a></p>
 <p>List of root activities, as child components.</p>
+<hr>
 <h2 id="Application:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderContext"><code>UIRenderContext</code></a></p>
 <p>Application render context as a managed child object, propagated to all (nested) <a href="/docs/ref/AppComponent"><code>AppComponent</code></a> instances. This object is set by specialized application classes such as <code>BrowserApplication</code> to match the capabilities of the runtime platform.</p>
+<hr>
 <h2 id="Application:activationContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activationContext</h2>
 
 
 
 <p><a href="/docs/ref/AppActivationContext"><code>AppActivationContext</code></a></p>
 <p>Activity activation context as a managed child object, propagated to all (nested) <a href="/docs/ref/AppComponent"><code>AppComponent</code></a> instances. This object is set by specialized application classes such as <code>BrowserApplication</code> to match the capabilities of the runtime platform.</p>
+<hr>
 <h2 id="Application:activate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activate()</h2>
 
 
@@ -124,181 +134,211 @@
 <p><code>(): this</code></p>
 <p>Activate this application asynchronously, immediately creating all primary activities; any errors during activation are handled by logging them to the console (uses <a href="/docs/ref/UnhandledErrorEmitter"><code>UnhandledErrorEmitter</code></a>).</p>
 <p><strong>Returns:</strong> the application itself.</p>
+<hr>
 <h2 id="Application:activateAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateAsync()</h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Activate this application, immediately creating all primary activities.</p>
+<hr>
 <h2 id="Application:deactivateAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateAsync()</h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Deactivate this application, immediately destroying all actvities.</p>
+<hr>
 <h2 id="Application:destroyAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyAsync()</h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Destroy this application, immediately destroying all activities.</p>
+<hr>
 <h2 id="Application:navigate" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.navigate()</h2>
 
 
 
 <p><code>(path: string | </code><a href="/docs/ref/NavigationTarget"><code>NavigationTarget</code></a><code>, mode?: </code><a href="/docs/ref/ApplicationNavigationMode"><code>ApplicationNavigationMode</code></a><code>): this</code></p>
 <p>Navigate to given (relative) path using the current <a href="/docs/ref/Application#Application:activationContext"><code>Application.activationContext</code></a>.</p>
+<hr>
 <h2 id="Application:goBack" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.goBack()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Go back to the previous navigation path, if implemented by the current <a href="/docs/ref/Application#Application:activationContext"><code>Application.activationContext</code></a>.</p>
+<hr>
 <h2 id="Application:add" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.add()</h2>
 
 
 
 <p><code>(...activities: </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code>[]): this</code></p>
 <p>Add given activities to the application. Activities with matching paths will be activated immediately (see <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a>).</p>
+<hr>
 <h2 id="Application:showViewActivityAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.showViewActivityAsync()</h2>
 
 
 
-<p><code>&lt;TViewActivity extends AppActivity &amp; { render: Function; }&gt;(viewActivity: TViewActivity): Promise&lt;TViewActivity&gt;</code></p>
+<p><code>&lt;TViewActivity extends </code><a href="/docs/ref/AppActivity"><code>AppActivity</code></a><code> </code><code>&amp; { render: Function; }&gt;(viewActivity: TViewActivity): Promise&lt;TViewActivity&gt;</code></p>
 <p>Add given view activity to the application, and activate it immediately regardless of <a href="/docs/ref/AppActivity#AppActivity:path"><code>AppActivity.path</code></a>; this causes corresponding views to be rendered if possible.</p>
 <p><strong>Returns:</strong> A promise that resolves to the view activity after it has been activated.</p>
+<hr>
 <h2 id="Application:findService" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.findService()</h2>
 
 
 
 <p><code>(name: string): </code><a href="/docs/ref/ManagedService"><code>ManagedService</code></a></p>
 <p>Returns the currently registered service with given name, if any. This is an alias of <a href="/docs/ref/ManagedService#ManagedService:find"><code>ManagedService.find()</code></a>.</p>
+<hr>
 <h2 id="Application:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="Application:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:delegateEvent"><code>Component.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="Application:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="Application:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="Application:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="Application:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="Application:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="Application:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="Application:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="Application:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="Application:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="Application:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="Application:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="Application:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="Application:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Application:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Application:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Application:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="Application:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="Application:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="Application:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="Application:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -311,18 +351,21 @@
 
 
 <p>Application presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="Application:Presets:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Human readable application name.</p>
+<hr>
 <h2 id="Application:Presets:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderContext"><code>UIRenderContext</code></a></p>
 <p>Platform dependent application render context.</p>
+<hr>
 <h2 id="Application:Presets:activationContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.activationContext</h2>
 
 

@@ -59,7 +59,7 @@
 
 
 
-<p><code>(f: any, presets: any, ...rest: any[]): typeof </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>&amp; ComponentConstructor&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt;</code></p>
+<p><code>(f: any, presets: any, ...rest: any[]): typeof Component &amp; ComponentConstructor&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt;</code></p>
 <p>JSX support for Typescene UI components.</p>
 <hr>
 <h2 id="JSX:JSX:" class="spec"><img src="/assets/icons/spec-namespace.svg" alt="">JSX.JSX.</h2>
@@ -85,7 +85,7 @@
 
 
 
-<p><code>extends </code><a href="#JSX:FactoryType"><code>FactoryType</code></a><code>&lt;T, </code><a href="/docs/ref/ComponentConstructor#ComponentConstructor:PresetType"><code>ComponentConstructor.PresetType</code></a><code>&lt;T&gt;&gt;</code></p>
+<p><code>extends FactoryType&lt;T, </code><a href="/docs/ref/ComponentConstructor#ComponentConstructor:PresetType"><code>ComponentConstructor.PresetType</code></a><code>&lt;T&gt;&gt;</code></p>
 <p>Helper to describe a JSX component factory for a standard UI component.</p>
 <hr>
 <h2 id="JSX:ViewComponentPresetArgType" class="spec"><img src="/assets/icons/spec-type.svg" alt="">JSX.ViewComponentPresetArgType</h2>
@@ -99,7 +99,7 @@
 
 
 
-<p><code>&lt;T extends typeof Component &amp; ComponentConstructor&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt; &amp; (new () =&gt; </code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>)&gt;(C: T): </code><a href="#JSX:FactoryType"><code>FactoryType</code></a><code>&lt;T, PresetArgType&lt;T&gt;&gt; &amp; { ...; }</code></p>
+<p><code>&lt;T extends typeof Component &amp; ComponentConstructor&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt; &amp; (new () =&gt; </code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>)&gt;(C: T): FactoryType&lt;T, PresetArgType&lt;T&gt;&gt; &amp; { ...; }</code></p>
 <p>Returns JSX-compatible factory function for given component class.</p>
 
         </div>

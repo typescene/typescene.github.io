@@ -65,168 +65,197 @@
 
 
 <p><code>(): UIViewRenderer</code></p>
+<p>Inherited from <a href="/docs/ref/Component#Component:constructor"><code>Component.constructor</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:withBoundContent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.withBoundContent() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(propertyName?: string): typeof UIViewRenderer</code></p>
 <p>Returns a preset constructor for a view renderer that displays a view from a property of the bound parent component (defaults to <code>content</code>, i.e. view is set to <a href="/docs/ref/bind"><code>bind</code></a><code>(&quot;content&quot;)</code>); can be used on <a href="/docs/ref/ViewComponent"><code>ViewComponent</code></a> classes that reference content views using this property.</p>
+<hr>
 <h2 id="UIViewRenderer:managedList" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedList</h2>
 
 
 
 <p><a href="/docs/ref/ManagedList"><code>ManagedList</code></a><code>&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt;</code></p>
 <p>List of indexed views and/or view activities, <em>not</em> child components.</p>
+<hr>
 <h2 id="UIViewRenderer:managedMap" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedMap</h2>
 
 
 
 <p><a href="/docs/ref/ManagedMap"><code>ManagedMap</code></a><code>&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>&gt;</code></p>
 <p>Map of named views and/or view activities, <em>not</em> child components.</p>
+<hr>
 <h2 id="UIViewRenderer:index" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.index</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Index of the view to be rendered from <a href="#UIViewRenderer:managedList"><code>managedList</code></a> (if number) or <a href="#UIViewRenderer:managedMap"><code>managedMap</code></a> (if string), defaults to 0.</p>
+<hr>
 <h2 id="UIViewRenderer:view" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.view</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
 <p>The current view (or view activity) to be rendered, can be bound, or automatically selected using <a href="#UIViewRenderer:managedList"><code>managedList</code></a> or <a href="#UIViewRenderer:managedMap"><code>managedMap</code></a> and <a href="#UIViewRenderer:index"><code>index</code></a> properties; <em>not</em> a child component, so not destroyed automatically when changed.</p>
+<hr>
 <h2 id="UIViewRenderer:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): true</code></p>
 <p>Override event delegation, to <em>also</em> propagate events of type <a href="/docs/ref/UIComponentEvent"><code>UIComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:render" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.render()</h2>
 
 
 
 <p><code>(callback?: RenderCallback&lt;Output&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>, any&gt;&gt;): void</code></p>
 <p>Trigger asynchronous rendering for this component, and all contained components (if any).</p>
+<hr>
 <h2 id="UIViewRenderer:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -239,24 +268,28 @@
 
 
 <p>UIViewRenderer presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="UIViewRenderer:Presets:view" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.view</h2>
 
 
 
 <p><a href="/docs/ref/Binding"><code>Binding</code></a></p>
 <p>Rendered view, if bound directly (cannot be used together with <a href="#UIViewRenderer:managedList"><code>managedList</code></a> or <a href="#UIViewRenderer:managedMap"><code>managedMap</code></a> properties).</p>
+<hr>
 <h2 id="UIViewRenderer:Presets:managedList" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedList</h2>
 
 
 
 <p><a href="/docs/ref/Binding"><code>Binding</code></a></p>
 <p>List of renderable views (must be bound to either a <a href="/docs/ref/ManagedList"><code>ManagedList</code></a> or <a href="/docs/ref/AppActivityList"><code>AppActivityList</code></a>), one of which can be selected for rendering using the <a href="#UIViewRenderer:index"><code>index</code></a> property.</p>
+<hr>
 <h2 id="UIViewRenderer:Presets:managedMap" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedMap</h2>
 
 
 
 <p><a href="/docs/ref/Binding"><code>Binding</code></a></p>
 <p>Map of renderable views (must be bound to a <a href="/docs/ref/ManagedMap"><code>ManagedMap</code></a>), one of which can be selected for rendering using the <a href="#UIViewRenderer:index"><code>index</code></a> property.</p>
+<hr>
 <h2 id="UIViewRenderer:Presets:index" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.index</h2>
 
 
