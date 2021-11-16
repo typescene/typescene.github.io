@@ -7,7 +7,8 @@ description: |
 
 <section>
 
-**Page navigation**\
+### Page navigation
+
 A Typescene application can automatically activate and deactivate activities using _paths_. In the browser, the path is determined by the URL (e.g. `/some/page` or `#/some/page`). Even if the app is usually contained on a single HTML page, you can create multiple pages or screens, in addition to modal dialogs, as separate activities.
 
 To enable path-based routing, you can set the `path` property of any activity to a target path or pattern. The application will make sure that the right activity (or activities) are activated, and their views are displayed as a result.

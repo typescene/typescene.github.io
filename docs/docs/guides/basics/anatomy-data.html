@@ -62,32 +62,38 @@
         <div class="wrapper_column wrapper--guide_content">
             <section>
 
-<p><strong>Data models</strong><br>It’s important to maintain an accurate data model for any reasonably complex application. JavaScript objects and arrays provide plenty of flexibility to do so. However, by themselves, plain objects and arrays fall short in ways that make them less than ideal for representing data in a UI.</p>
+<h3>Data models</h3>
+
+
+<p>It’s important to maintain an accurate data model for any reasonably complex application. JavaScript objects and arrays provide plenty of flexibility to do so. However, by themselves, plain objects and arrays fall short in ways that make them less than ideal for representing data in a UI.</p>
 <p>Therefore, Typescene provides its own classes for modeling ‘managed’ data. These allow for observing changes and events, and ensure consistency within lists and maps.</p>
 </section>
 
 <pre><code class="language-typescript"><span class="hljs-comment">// This is perfectly fine in JS:</span>
 <span class="hljs-keyword">let</span> myArray = [{ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }, {}, , <span class="hljs-number">3</span>];
 myArray[<span class="hljs-number">1000000</span>] = <span class="hljs-string">&quot;One million&quot;</span>;
-myArray.forEach(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(v));
+myArray.forEach(<span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(v));
 <span class="hljs-comment">// ... an array with 4 values, 2 &#x27;gaps&#x27;</span>
 
 <span class="hljs-comment">// Example Typescene data structure:</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>)</span> {
-        <span class="hljs-built_in">this</span>.name = name;
-    }
-    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.name = name;
+  }
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
 }
 <span class="hljs-keyword">let</span> myList = <span class="hljs-keyword">new</span> ManagedList().restrict(Person);
 myList.add(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Alice&quot;</span>));
 myList.add(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Bob&quot;</span>));
-myList.add(<span class="hljs-number">3</span>) <span class="hljs-comment">// ...ERROR</span>
+myList.add(<span class="hljs-number">3</span>); <span class="hljs-comment">// ...ERROR</span>
 </code></pre>
 <hr>
 <section>
 
-<p><strong>Displaying data</strong><br>Because managed data models allow for observing changes, they make view bindings even more useful: view components will automatically update bound content – either when a managed list or map changes, or when a ‘Change’ event is emitted.</p>
+<h3>Displaying data</h3>
+
+
+<p>Because managed data models allow for observing changes, they make view bindings even more useful: view components will automatically update bound content – either when a managed list or map changes, or when a ‘Change’ event is emitted.</p>
 </section>
 
 <pre><code class="language-typescript"><span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> record list used from activity, shown in view</span>

@@ -18,7 +18,8 @@ Learn how Typescene displays and updates your application's UI using view compon
 
 <section>
 
-**Title**<br>
+### Title
+
 Description.
 
 </section>

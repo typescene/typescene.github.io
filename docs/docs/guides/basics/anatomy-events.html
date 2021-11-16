@@ -62,7 +62,10 @@
         <div class="wrapper_column wrapper--guide_content">
             <section>
 
-<p>**What are events?**<br>Events are <em>signals</em> that are sent from a component to other components, i.e. those that hold a reference to it.</p>
+<h3>What are events?</h3>
+
+
+<p>Events are <em>signals</em> that are sent from a component to other components, i.e. those that hold a reference to it.</p>
 <p>Events are represented as objects: instances of the <code>ManagedEvent</code> class, or one of the specialized classes that extend it. Each class may have different properties, but all events have a <code>name</code> property.</p>
 </section>
 
@@ -87,7 +90,10 @@
 <hr>
 <section>
 
-<p><strong>Handling view events with presets</strong><br>The most common use case for events is handling user input. The easiest way to set this up, is by including event <em>presets</em> in the view declaration (call to <code>with</code>).</p>
+<h3>Handling view events with presets</h3>
+
+
+<p>The most common use case for events is handling user input. The easiest way to set this up, is by including event <em>presets</em> in the view declaration (call to <code>with</code>).</p>
 <p>Event presets specify that when an event is emitted by one component, it should immediately <em>also</em> emit another event, with a new name. The event can then easily be handled by the activity using that name.</p>
 <p><strong>Note:</strong> There are of course other ways to handle events, and the default behavior can be overridden, too. This example just shows the most basic event handling code between views and activities.</p>
 </section>

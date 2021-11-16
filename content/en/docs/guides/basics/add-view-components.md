@@ -7,7 +7,8 @@ description: |
 
 <section>
 
-**View components**<br>
+### View components
+
 To manage parts of the UI that are _reused_ throughout your application, you can use the `ViewComponent` class.
 
 Custom view components contain their own hierarchy of UI components, which may contain bindings -- just like a view activity. However view components don't need to be activated and deactivated independently, which makes them behave like built-in components such as `UIButton` and `UICell`.

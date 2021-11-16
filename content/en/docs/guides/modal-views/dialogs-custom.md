@@ -9,7 +9,8 @@ See also view activities
 
 <section>
 
-**Title**<br>
+### Title
+
 Description.
 
 </section>

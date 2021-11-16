@@ -18,7 +18,8 @@ The `UILabel` component is a view component. Learn how Typescene displays and up
 
 <section>
 
-**Title**<br>
+### Title
+
 Description.
 
 </section>

@@ -9,7 +9,8 @@ See also i18n
 
 <section>
 
-**Title**<br>
+### Title
+
 Description.
 
 </section>

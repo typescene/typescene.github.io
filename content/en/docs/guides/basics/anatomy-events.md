@@ -7,7 +7,8 @@ description: |
 
 <section>
 
-**What are events?**\
+### What are events?
+
 Events are _signals_ that are sent from a component to other components, i.e. those that hold a reference to it.
 
 Events are represented as objects: instances of the `ManagedEvent` class, or one of the specialized classes that extend it. Each class may have different properties, but all events have a `name` property.
@@ -38,7 +39,8 @@ class MyComponent extends Component {
 
 <section>
 
-**Handling view events with presets**\
+### Handling view events with presets
+
 The most common use case for events is handling user input. The easiest way to set this up, is by including event _presets_ in the view declaration (call to `with`).
 
 Event presets specify that when an event is emitted by one component, it should immediately _also_ emit another event, with a new name. The event can then easily be handled by the activity using that name.

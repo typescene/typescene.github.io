@@ -7,7 +7,7 @@ description: |
 
 <section>
 
-**Note:**\
+**Note:**<br>
 For a more in-depth explanation, start with this introductory article about the Typescene framework.
 
 </section>
@@ -18,7 +18,8 @@ For a more in-depth explanation, start with this introductory article about the 
 
 <section>
 
-**A simple app**\
+### A simple app
+
 This is a simple Typescene application. It has three parts:
 
 - The **view** describes the UI as a set of nested components.
@@ -60,7 +61,8 @@ const app = BrowserApplication.run(
 
 <section>
 
-**JSX files**<br>
+### JSX files
+
 Typescene also supports 'JSX'-style syntax for views. This makes views look like HTML, but under the hood each tag is simply translated to a method call.
 
 The file extension for a JavaScript or TypeScript file containing JSX views **must** be `jsx` or `tsx`, respectively. When starting a new project, you'll need to decide between JSX and pure JS/TS views.

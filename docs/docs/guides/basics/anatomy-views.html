@@ -63,15 +63,17 @@
             <section>
 
 <p><strong>Note:</strong><br>
-For a more in-depth explanation, refer to this article about views.</p>
+for a more in-depth explanation, refer to this article about views.</p>
 </section>
 
 <p><a href="/docs/concepts/views" class="block_link doc"><strong>Concepts &gt; Views</strong><br>Views represent the user interface of a Typescene application</a></p>
 <hr>
 <section>
 
-<p><strong>View structure</strong><br>
-A Typescene app is displayed (or ‘rendered’) using a <strong>hierarchy</strong> of UI components such as buttons, text labels, dividers, and various containers.</p>
+<h3>View structure</h3>
+
+
+<p>A Typescene app is displayed (or ‘rendered’) using a <strong>hierarchy</strong> of UI components such as buttons, text labels, dividers, and various containers.</p>
 <p>In the application source code, this parent-child structure is <em>described</em> using method calls. Note that this doesn’t include any code that deals with user input or program state.</p>
 </section>
 
@@ -89,8 +91,10 @@ A Typescene app is displayed (or ‘rendered’) using a <strong>hierarchy</stro
 <hr>
 <section>
 
-<p><strong>Optional: JSX syntax</strong><br>
-Typescene also supports JSX / TSX syntax. JSX looks like HTML, but each tag is simply transformed into a method call under the hood.</p>
+<h3>Optional: JSX syntax</h3>
+
+
+<p>Typescene also supports JSX / TSX syntax. JSX looks like HTML, but each tag is simply transformed into a method call under the hood.</p>
 </section>
 
 <pre><code class="language-jsx"><span class="hljs-comment">// Same as above:</span>
@@ -135,8 +139,10 @@ myRedLabel.text; <span class="hljs-comment">// =&gt; &quot;Hello&quot;</span>
 <hr>
 <section>
 
-<p><strong>Referencing views</strong><br>
-You’ll rarely need to instantiate a view class with <code>new</code> yourself. Instead, you’ll get to pass the view <em>class</em> to an activity or custom view component. Those will use the preset class to create a view instance automatically when needed, and listen for events (read more about events later on).</p>
+<h3>Referencing views</h3>
+
+
+<p>You’ll rarely need to instantiate a view class with <code>new</code> yourself. Instead, you’ll get to pass the view <em>class</em> to an activity or custom view component. Those will use the preset class to create a view instance automatically when needed, and listen for events (read more about events later on).</p>
 </section>
 
 <pre><code class="language-typescript"><span class="hljs-comment">// Create a preset activity using this view class:</span>
@@ -151,8 +157,10 @@ You’ll rarely need to instantiate a view class with <code>new</code> yourself.
 <hr>
 <section>
 
-<p><strong>Bindings</strong><br>
-To update view components (instances) after they’ve been rendered on screen, you can’t just update the original preset <em>class</em> anymore.</p>
+<h3>Bindings</h3>
+
+
+<p>To update view components (instances) after they’ve been rendered on screen, you can’t just update the original preset <em>class</em> anymore.</p>
 <p>Instead, Typescene apps use ‘bindings’ on presets. It automatically <strong>links</strong> each view instance property that was assigned a binding in its preset class, to one of the activity’s properties. After that, updating the property of the activity will also update the corresponding view property.</p>
 </section>
 
@@ -160,7 +168,7 @@ To update view components (instances) after they’ve been rendered on screen, y
   UILabel.with({
     <span class="hljs-comment">// Bind `text` to the `message` property below:</span>
     <span class="hljs-attr">text</span>: bind(<span class="hljs-string">&quot;message&quot;</span>),
-    <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">bold</span>: <span class="hljs-literal">true</span> }
+    <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">bold</span>: <span class="hljs-literal">true</span> },
   })
 );
 

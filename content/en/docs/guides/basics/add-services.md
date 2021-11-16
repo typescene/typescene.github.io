@@ -7,7 +7,8 @@ description: |
 
 <section>
 
-**Data sources**<br>
+### Data sources
+
 Services are components that can be made available from _any_ other component within your app. As such, they work well for representing sources (and destinations) of data such as databases and APIs, when combined with records, lists, and maps.
 
 </section>
@@ -20,7 +21,8 @@ Services are components that can be made available from _any_ other component wi
 
 <section>
 
-**Other uses**<br>
+### Other uses
+
 Services can also be used to centralize business logic or program state. Anything that doesn't depend on or 'belong to' the current activity is usually better managed using a service.
 
 </section>

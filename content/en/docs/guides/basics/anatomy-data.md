@@ -7,7 +7,8 @@ description: |
 
 <section>
 
-**Data models**\
+### Data models
+
 It's important to maintain an accurate data model for any reasonably complex application. JavaScript objects and arrays provide plenty of flexibility to do so. However, by themselves, plain objects and arrays fall short in ways that make them less than ideal for representing data in a UI.
 
 Therefore, Typescene provides its own classes for modeling 'managed' data. These allow for observing changes and events, and ensure consistency within lists and maps.
@@ -18,27 +19,28 @@ Therefore, Typescene provides its own classes for modeling 'managed' data. These
 // This is perfectly fine in JS:
 let myArray = [{ a: 1 }, {}, , 3];
 myArray[1000000] = "One million";
-myArray.forEach(v => console.log(v));
+myArray.forEach((v) => console.log(v));
 // ... an array with 4 values, 2 'gaps'
 
 // Example Typescene data structure:
 class Person extends ManagedRecord {
-	constructor(name: string) {
-		this.name = name;
-	}
-	name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  name: string;
 }
 let myList = new ManagedList().restrict(Person);
 myList.add(new Person("Alice"));
 myList.add(new Person("Bob"));
-myList.add(3) // ...ERROR
+myList.add(3); // ...ERROR
 ```
 
 ---
 
 <section>
 
-**Displaying data**\
+### Displaying data
+
 Because managed data models allow for observing changes, they make view bindings even more useful: view components will automatically update bound content -- either when a managed list or map changes, or when a 'Change' event is emitted.
 
 </section>

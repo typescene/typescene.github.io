@@ -9,7 +9,8 @@ See also themes
 
 <section>
 
-**Title**<br>
+### Title
+
 Description.
 
 </section>

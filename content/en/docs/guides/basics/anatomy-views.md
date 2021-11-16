@@ -8,7 +8,7 @@ description: |
 <section>
 
 **Note:**<br>
-For a more in-depth explanation, refer to this article about views.
+for a more in-depth explanation, refer to this article about views.
 
 </section>
 
@@ -18,7 +18,8 @@ For a more in-depth explanation, refer to this article about views.
 
 <section>
 
-**View structure**<br>
+### View structure
+
 A Typescene app is displayed (or 'rendered') using a **hierarchy** of UI components such as buttons, text labels, dividers, and various containers.
 
 In the application source code, this parent-child structure is _described_ using method calls. Note that this doesn't include any code that deals with user input or program state.
@@ -42,7 +43,8 @@ const myView = UICell.with(
 
 <section>
 
-**Optional: JSX syntax**<br>
+### Optional: JSX syntax
+
 Typescene also supports JSX / TSX syntax. JSX looks like HTML, but each tag is simply transformed into a method call under the hood.
 
 </section>
@@ -98,7 +100,8 @@ console.log(v.content.first().height); // => 80
 
 <section>
 
-**Referencing views**<br>
+### Referencing views
+
 You'll rarely need to instantiate a view class with `new` yourself. Instead, you'll get to pass the view _class_ to an activity or custom view component. Those will use the preset class to create a view instance automatically when needed, and listen for events (read more about events later on).
 
 </section>
@@ -118,7 +121,8 @@ class MyActivity extends PageViewActivity.with(myView) {
 
 <section>
 
-**Bindings**<br>
+### Bindings
+
 To update view components (instances) after they've been rendered on screen, you can't just update the original preset _class_ anymore.
 
 Instead, Typescene apps use 'bindings' on presets. It automatically **links** each view instance property that was assigned a binding in its preset class, to one of the activity's properties. After that, updating the property of the activity will also update the corresponding view property.
@@ -130,7 +134,7 @@ const myView = UICell.with(
   UILabel.with({
     // Bind `text` to the `message` property below:
     text: bind("message"),
-    textStyle: { bold: true }
+    textStyle: { bold: true },
   })
 );
 
