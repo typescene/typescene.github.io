@@ -67,20 +67,24 @@
 
 
 <p><code>(): Component</code></p>
+<p>Create a new component.</p>
+<hr>
 <h2 id="Component:with" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.with() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>[1]. &lt;TComponentCtor extends ComponentConstructor&lt;Component&gt;&gt;(this: WithPresetType&lt;TComponentCtor&gt;, ...rest: PresetRestType&lt;TComponentCtor&gt;): TComponentCtor</code><br><code>[2]. &lt;TComponentCtor extends ComponentConstructor&lt;Component&gt;&gt;(this: WithPresetType&lt;TComponentCtor&gt;, presets: new () =&gt; any, ...rest: PresetRestType&lt;TComponentCtor&gt;): &quot;INVALID_PRESET_ARGUMENT&quot;</code><br><code>[3]. &lt;TComponentCtor extends ComponentConstructor&lt;Component&gt;&gt;(this: WithPresetType&lt;...&gt;, presets: PresetArgType&lt;TComponentCtor&gt;, ...rest: PresetRestType&lt;TComponentCtor&gt;): TComponentCtor</code></p>
+<p><code>[1]. &lt;TComponentCtor extends </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;&gt;(this: WithPresetType&lt;TComponentCtor&gt;, ...components: PresetRestType&lt;TComponentCtor&gt;): TComponentCtor</code><br><code>[2]. &lt;TComponentCtor extends </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;&gt;(this: WithPresetType&lt;TComponentCtor&gt;, presets: new () =&gt; any, ...components: PresetRestType&lt;TComponentCtor&gt;): &quot;INVALID_PRESET_ARGUMENT&quot;</code><br><code>[3]. &lt;TComponentCtor extends </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;&gt;(this: WithPresetType&lt;...&gt;, presets: PresetArgType&lt;TComponentCtor&gt;, ...components: PresetRestType&lt;TComponentCtor&gt;): TComponentCtor</code></p>
 <p>Create a new component constructor, which automatically initializes new instances with given properties, bindings, event handlers, and other values.</p>
+<hr>
 <h2 id="Component:preset" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.preset() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>(presets: object, ...rest: unknown[]): Function</code></p>
+<p><code>(presets: object, ...components: unknown[]): Function</code></p>
 <p>Add bindings, components, and event handlers from given presets to the current component constructor. This method is called by <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> with the same arguments, and should not be called directly.</p>
 <p>Component classes may override this method and return the result of <code>super.preset(...)</code>, to add further presets and bindings using static methods on this component class.</p>
 <p><strong>Returns:</strong> A function (<em>must</em> be typed as <code>Function</code> even in derived classes) that is called by the constructor for each new instance, to apply remaining values from the preset object to the component object that is passed through <code>this</code>.</p>
+<hr>
 <h2 id="Component:presetBinding" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.presetBinding() <span class="spec_tag">static</span></h2>
 
 
@@ -88,6 +92,7 @@
 <p><code>&lt;TComponent extends Component&gt;(this: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TComponent&gt;, propertyName: string, binding: </code><a href="/docs/ref/Binding"><code>Binding</code></a><code>, applyBoundValue?: (this: TComponent, boundValue: any, oldValue?: any) =&gt; any): void</code></p>
 <p>Add given binding to this component constructor, so that the property with given name <em>on all instances</em> will be updated with value(s) taken from the bound parent object. Optionally given function is used to set the property value using the updated (bound) value; otherwise, values are copied directly except for arrays, which are used to replace the values in a managed list (see <a href="/docs/ref/ManagedList#ManagedList:replace"><code>ManagedList.replace</code></a>).</p>
 <p><strong>Note:</strong> This method is used by <a href="#Component:preset"><code>preset</code></a> when the argument to <a href="#Component:with"><code>.with()</code></a> includes a binding (see <a href="/docs/ref/bind"><code>bind</code></a>). This method should not be used directly unless passing a binding to <a href="#Component:with"><code>.with()</code></a> is not possible.</p>
+<hr>
 <h2 id="Component:presetBindingsFrom" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.presetBindingsFrom() <span class="spec_tag">static</span></h2>
 
 
@@ -95,20 +100,23 @@
 <p><code>(...constructors: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): void</code></p>
 <p>Inherit bindings from given component constructor(s) on this constructor. Inherited bindings will be bound to the same bound parent object as bindings passed to <a href="#Component:with"><code>.with()</code></a> directly, to update bound properties of (nested) child instances.</p>
 <p><strong>Note:</strong> This method must be used by a custom <a href="#Component:preset"><code>preset</code></a> function if the preset component (may) have managed child objects (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a>) of the given type and the constructor is not passed to <code>super.preset(...)</code> or <a href="#Component:presetBoundComponent"><code>presetBoundComponent</code></a><code>(...)</code>. Alternatively, use the <a href="/docs/ref/_component"><code>@component</code></a> decorator on properties that refer to child components, which also presets bindings from a given component type.</p>
+<hr>
 <h2 id="Component:presetBoundComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.presetBoundComponent() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>(propertyName: string, ...constructors: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): </code><a href="#Component:BoundComposition"><code>BoundComposition</code></a></p>
+<p><code>(propertyName: string, ...constructors: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): BoundComposition</code></p>
 <p>Make this component the <em>bound</em> parent component for given child component type(s). When a component is assigned to given property, making it a child component, its bindings are bound to the current instance (i.e. the bound parent).</p>
 <p><strong>Returns:</strong> An object that represents the bound parent-child composition, and contains methods that can be used to fine-tune binding behavior.</p>
 <p><strong>Note:</strong> Given property <em>must</em> already be designated as a managed child property (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> decorator). Do <strong>not</strong> use this method on properties that are already decorated using the <a href="/docs/ref/_component"><code>@component</code></a> decorator.</p>
+<hr>
 <h2 id="Component:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Returns true if the class that this instance has been created from was itself created using <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> somewhere along the prototype chain.</p>
+<hr>
 <h2 id="Component:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
@@ -118,18 +126,21 @@
 <p>Additionally, if the event is of type <a href="/docs/ref/ActionEvent"><code>ActionEvent</code></a>, and if a handler method was not found, or if it did not return <code>true</code>, then the event is re-emitted on the component itself (also known as ‘propagated’) – allowing it to be handled by other components, usually by a parent component.</p>
 <p>This method is used as a default handler for <a href="/docs/ref/_delegateEvents"><code>@delegateEvents</code></a>. It can be overridden if events should be handled differently in specific cases. A return value other than <code>true</code> indicates that the event is neither handled by a method that returned <code>true</code> itself, nor propagated.</p>
 <p><strong>Note:</strong> In case the event name starts with a lowercase letter (a-z), the handler method should still include a capital letter (e.g. <code>onDoSomething()</code> for an event named ‘doSomething’). However, it is <em>not</em> recommended to use event names that start with lowercase letters.</p>
+<hr>
 <h2 id="Component:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
 <p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Returns the current parent component. If a class reference is specified, finds the nearest parent of given type. See <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> decorator.</p>
+<hr>
 <h2 id="Component:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
 <p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Returns the parent component that is the source of all bound values on this component. See <a href="/docs/ref/_component"><code>@component</code></a> decorator, and <a href="#Component:presetBoundComponent"><code>presetBoundComponent()</code></a>.</p>
+<hr>
 <h2 id="Component:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
@@ -137,6 +148,7 @@
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Emit an action event (see <a href="/docs/ref/ActionEvent"><code>ActionEvent</code></a>), to signal the result of a user action that should be handled by a parent component.</p>
 <p><strong>Note:</strong> The event is frozen using <a href="/docs/ref/ManagedEvent#ManagedEvent:freeze"><code>ManagedEvent.freeze()</code></a> so that its properties cannot be modified even if the event is reused by parent component(s).</p>
+<hr>
 <h2 id="Component:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
@@ -147,96 +159,112 @@
 <p>Create and emit an event with given name, a reference to this component, and an optional inner (propagated) event. The base implementation emits a plain <a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a>, but this method may be overridden to emit other events.</p>
 <p><strong>Note:</strong> If the component is already in the ‘destroyed’ state (see <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>), then no event is emitted and this method returns immediately.</p>
 <p><strong>Note:</strong> This method is used by classes created using <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a> if an event handler is specified using the <code>{ ... onEventName: &quot;OtherEvent&quot; }</code> pattern.</p>
+<hr>
 <h2 id="Component:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="Component:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="Component:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="Component:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="Component:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="Component:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="Component:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="Component:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="Component:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Component:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Component:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="Component:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="Component:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="Component:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="Component:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="Component:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -252,13 +280,16 @@
 <h3>Constructor</h3>
 
 
-<p><code>(Composite: typeof Component, ...include: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): </code><a href="#Component:BoundComposition"><code>BoundComposition</code></a></p>
+<p><code>(Composite: typeof Component, ...include: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;Component&gt;[]): BoundComposition</code></p>
+<p>Create a new component.</p>
+<hr>
 <h2 id="Component:BoundComposition:getBindings" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBindings()</h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/Binding"><code>Binding</code></a><code>[]</code></p>
 <p>Returns a list of all bindings that should be bound to the composite parent.</p>
+<hr>
 <h2 id="Component:BoundComposition:limitBindings" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.limitBindings()</h2>
 
 

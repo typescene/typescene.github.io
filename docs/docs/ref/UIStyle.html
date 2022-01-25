@@ -63,92 +63,106 @@
 <h3>Constructor</h3>
 
 
-<p><code>(name?: string, base?: UIStyle, ...styles: Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;[]): UIStyle</code></p>
+<p><code>(name?: string, base?: UIStyle, ...styles: Partial&lt;StyleObjects&gt;[]): UIStyle</code></p>
+<p>Create a new style set with given base style and (partial) style object(s), if any.</p>
+<hr>
 <h2 id="UIStyle:create" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.create() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>[1]. (styles?: Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;): UIStyle</code><br><code>[2]. (name: string, styles: Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;): UIStyle</code></p>
+<p><code>[1]. (styles?: Partial&lt;StyleObjects&gt;): UIStyle</code><br><code>[2]. (name: string, styles: Partial&lt;StyleObjects&gt;): UIStyle</code></p>
 <p><strong>[1]</strong> Create a new anonymous style set from scratch using given style objects</p>
 <p><strong>[2]</strong> Create a new style set from scratch using given style objects, with given name.</p>
+<hr>
 <h2 id="UIStyle:group" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.group() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>&lt;PropertyNamesT extends string&gt;(...styles: { [P in PropertyNamesT]?: UIStyle | Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;; }[]): { [P in PropertyNamesT]: UIStyle; }</code></p>
+<p><code>&lt;PropertyNamesT extends string&gt;(...styles: { [P in PropertyNamesT]?: UIStyle | Partial&lt;StyleObjects&gt;; }[]): { [P in PropertyNamesT]: UIStyle; }</code></p>
 <p>Create an object that contains all of the given styles and/or styles from other groups; if the object contains a property that already existed in a given group, the original style is <em>extended</em> (see <a href="#UIStyle:extend"><code>extend()</code></a>).</p>
+<hr>
 <h2 id="UIStyle:isStyleOverride" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isStyleOverride() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>&lt;K extends keyof StyleObjects&gt;(object?: </code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>[K], style?: UIStyle): boolean</code></p>
+<p><code>&lt;K extends keyof StyleObjects&gt;(object?: StyleObjects[K], style?: UIStyle): boolean</code></p>
 <p>Returns true if given object does <em>not</em> belong to given instance of <code>UIStyle</code>.</p>
+<hr>
 <h2 id="UIStyle:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>Human readable name for this style.</p>
+<hr>
 <h2 id="UIStyle:id" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.id</h2>
 
 
 
 <p><code>string</code></p>
 <p>Arbitrary ID for this style, contains sanitized <a href="#UIStyle:name"><code>name</code></a> token.</p>
+<hr>
 <h2 id="UIStyle:ids" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.ids</h2>
 
 
 
 <p><code>readonly string[]</code></p>
 <p>List of IDs which includes the current ID as well as inherited IDs.</p>
+<hr>
 <h2 id="UIStyle:inherited" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.inherited</h2>
 
 
 
 <p><code>readonly UIStyle[]</code></p>
 <p>List of inherited styles.</p>
+<hr>
 <h2 id="UIStyle:conditionalStyles" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.conditionalStyles</h2>
 
 
 
-<p><a href="#UIStyle:ConditionalStyles"><code>ConditionalStyles</code></a></p>
+<p><code>ConditionalStyles</code></p>
 <p>Referenced conditional styles (should be added using <a href="/docs/ref/UIStyle#UIStyle:addState"><code>UIStyle.addState</code></a>).</p>
+<hr>
 <h2 id="UIStyle:mixin" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.mixin()</h2>
 
 
 
-<p><code>(style: UIStyle): UIStyle</code></p>
+<p><code>(...styles: UIStyle[]): UIStyle</code></p>
 <p>Returns a new style set that contains all current styles as well as the styles from given <code>UIStyle</code> instance; the result is reused when the exact same style sets are mixed again.</p>
+<hr>
 <h2 id="UIStyle:extend" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.extend()</h2>
 
 
 
-<p><code>(objects: Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;, </code><a href="#UIStyle:name"><code>name</code></a><code>?: string): UIStyle</code></p>
+<p><code>(objects: Partial&lt;StyleObjects&gt;, name?: string): UIStyle</code></p>
 <p>Returns a new style set that contains all current styles as well as given styles (objects), with a new ID and optionally a new name. Creates a new instance each time, unlike <a href="#UIStyle:mixin"><code>mixin</code></a>.</p>
+<hr>
 <h2 id="UIStyle:addState" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addState()</h2>
 
 
 
-<p><code>(name: keyof ConditionalStyles, objects: Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;): this</code></p>
+<p><code>(name: keyof ConditionalStyles, objects: Partial&lt;StyleObjects&gt;): this</code></p>
 <p>Add or extend a conditional style with given style set.</p>
+<hr>
 <h2 id="UIStyle:getStyles" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getStyles()</h2>
 
 
 
-<p><code>(): Readonly&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;</code></p>
+<p><code>(): Readonly&lt;StyleObjects&gt;</code></p>
 <p>Returns all individual style objects as read-only objects.</p>
+<hr>
 <h2 id="UIStyle:getOwnStyles" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getOwnStyles()</h2>
 
 
 
-<p><code>(): Partial&lt;</code><a href="#UIStyle:StyleObjects"><code>StyleObjects</code></a><code>&gt;</code></p>
+<p><code>(): Partial&lt;StyleObjects&gt;</code></p>
 <p>Returns all styles that are unique to this instance, as read-only objects.</p>
 <hr>
 <h2 id="UIStyle:Offsets" class="spec"><img src="/assets/icons/spec-type.svg" alt="">UIStyle.Offsets</h2>
 
 
 
-<p><code>type Offsets = string | number | {</code><br><code>        x?: string | number;</code><br><code>        y?: string | number;</code><br><code>        top?: string | number;</code><br><code>        bottom?: string | number;</code><br><code>        left?: string | number;</code><br><code>        right?: string | number;</code><br><code>    };</code></p>
+<p><code>type Offsets = string | number | {</code><br><code>        x?: string | number;</code><br><code>        y?: string | number;</code><br><code>        top?: string | number;</code><br><code>        bottom?: string | number;</code><br><code>        left?: string | number;</code><br><code>        right?: string | number;</code><br><code>        start?: string | number;</code><br><code>        end?: string | number;</code><br><code>    };</code></p>
 <p>Type definition for padding, margin, or border measurements.</p>
 <hr>
 <h2 id="UIStyle:ConditionalStyles" class="spec"><img src="/assets/icons/spec-interface.svg" alt="">UIStyle.ConditionalStyles</h2>
@@ -162,35 +176,40 @@
 
 
 <p>Collection of individual objects that represent a (partial) style.</p>
+<hr>
 <h2 id="UIStyle:StyleObjects:dimensions" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.dimensions</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:Dimensions"><code>Dimensions</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;Dimensions&gt;</code></p>
 <p>Options for the dimensions of a UI component.</p>
+<hr>
 <h2 id="UIStyle:StyleObjects:position" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.position</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:Position"><code>Position</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;Position&gt;</code></p>
 <p>Options for component positioning within parent component(s).</p>
+<hr>
 <h2 id="UIStyle:StyleObjects:textStyle" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.textStyle</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:TextStyle"><code>TextStyle</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;TextStyle&gt;</code></p>
 <p>Options for styles of a UI component that shows text.</p>
+<hr>
 <h2 id="UIStyle:StyleObjects:decoration" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.decoration</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:Decoration"><code>Decoration</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;Decoration&gt;</code></p>
 <p>Options for the appearance of UI components, including miscellaneous CSS attributes and class names.</p>
+<hr>
 <h2 id="UIStyle:StyleObjects:containerLayout" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.containerLayout</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:ContainerLayout"><code>ContainerLayout</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;ContainerLayout&gt;</code></p>
 <p>Options for layout of child components of a container component.</p>
 <hr>
 <h2 id="UIStyle:Dimensions" class="spec"><img src="/assets/icons/spec-interface.svg" alt="">UIStyle.Dimensions</h2>
@@ -198,48 +217,56 @@
 
 
 <p>Options for the dimensions of a UI component.</p>
+<hr>
 <h2 id="UIStyle:Dimensions:width" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.width</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Outer width of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:height" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.height</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Outer height of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:minWidth" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.minWidth</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Minimum width of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:maxWidth" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.maxWidth</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Maximum width of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:minHeight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.minHeight</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Minimum height of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:maxHeight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.maxHeight</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Maximum height of the element, as specified (in dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:grow" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.grow</h2>
 
 
 
 <p><code>number</code></p>
 <p>Growth quotient (0 for no growth, higher values for faster growth when needed).</p>
+<hr>
 <h2 id="UIStyle:Dimensions:shrink" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.shrink</h2>
 
 
@@ -252,120 +279,160 @@
 
 
 <p>Options for component positioning within parent component(s).</p>
+<hr>
 <h2 id="UIStyle:Position:gravity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.gravity</h2>
 
 
 
 <p><code>&quot;&quot; | &quot;start&quot; | &quot;stretch&quot; | &quot;end&quot; | &quot;center&quot; | &quot;baseline&quot; | &quot;overlay&quot;</code></p>
 <p>Position of the component in the direction perpendicular to the distribution axis of the parent component, or <code>overlay</code> if the component should be placed on top of other components (i.e. CSS absolute positioning).</p>
+<hr>
 <h2 id="UIStyle:Position:top" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.top</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Top anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>).</p>
+<hr>
 <h2 id="UIStyle:Position:bottom" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.bottom</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Bottom anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>).</p>
+<hr>
 <h2 id="UIStyle:Position:left" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.left</h2>
 
 
 
 <p><code>string | number</code></p>
-<p>Left anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>).</p>
+<p>Left anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>), same as <code>start</code> for LTR text direction.</p>
+<hr>
 <h2 id="UIStyle:Position:right" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.right</h2>
 
 
 
 <p><code>string | number</code></p>
-<p>Right anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>).</p>
+<p>Right anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>), same as <code>end</code> for LTR text direction.</p>
+<hr>
+<h2 id="UIStyle:Position:start" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.start</h2>
+
+
+
+<p><code>string | number</code></p>
+<p>Start anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>), same as <code>left</code> for LTR text direction.</p>
+<hr>
+<h2 id="UIStyle:Position:end" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.end</h2>
+
+
+
+<p><code>string | number</code></p>
+<p>End anchor: relative distance, or absolute position if <code>gravity</code> is ‘overlay’ (in dp or string with unit, defaults to <code>auto</code>), same as <code>right</code> for LTR text direction.</p>
 <hr>
 <h2 id="UIStyle:TextStyle" class="spec"><img src="/assets/icons/spec-interface.svg" alt="">UIStyle.TextStyle</h2>
 
 
 
 <p>Options for styles of a UI component that shows text.</p>
+<hr>
+<h2 id="UIStyle:TextStyle:direction" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.direction</h2>
+
+
+
+<p><code>&quot;rtl&quot; | &quot;ltr&quot;</code></p>
+<p>Text direction (rtl or ltr).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:align" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.align</h2>
 
 
 
 <p><code>string</code></p>
 <p>Text alignment (CSS).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:color" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.color</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a></p>
 <p>Text color (<a href="/docs/ref/UIColor"><code>UIColor</code></a> or string).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:fontFamily" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.fontFamily</h2>
 
 
 
 <p><code>string</code></p>
 <p>Font family (CSS).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:fontSize" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.fontSize</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Font size (dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:fontWeight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.fontWeight</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Font weight (CSS).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:letterSpacing" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.letterSpacing</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Letter spacing (dp or string with unit).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:lineHeight" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lineHeight</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Line height (CSS relative to font size, <em>not</em> in dp).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:lineBreakMode" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lineBreakMode</h2>
 
 
 
 <p><code>&quot;&quot; | &quot;normal&quot; | &quot;nowrap&quot; | &quot;pre&quot; | &quot;pre-wrap&quot; | &quot;pre-line&quot; | &quot;ellipsis&quot; | &quot;clip&quot;</code></p>
 <p>Line break handling mode (CSS white-space).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:bold" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.bold</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for bold text (overrides <code>fontWeight</code> value).</p>
+<hr>
 <h2 id="UIStyle:TextStyle:italic" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.italic</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for italic text.</p>
+<hr>
 <h2 id="UIStyle:TextStyle:uppercase" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.uppercase</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for all-uppercase text.</p>
+<hr>
 <h2 id="UIStyle:TextStyle:smallCaps" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.smallCaps</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for text using small caps.</p>
+<hr>
 <h2 id="UIStyle:TextStyle:underline" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.underline</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for underlined text.</p>
+<hr>
 <h2 id="UIStyle:TextStyle:strikeThrough" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.strikeThrough</h2>
 
 
@@ -378,66 +445,77 @@
 
 
 <p>Options for the appearance of UI components, including miscellaneous CSS attributes and class names.</p>
+<hr>
 <h2 id="UIStyle:Decoration:background" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.background</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a></p>
 <p>Background style or color (<a href="/docs/ref/UIColor"><code>UIColor</code></a> or string).</p>
+<hr>
 <h2 id="UIStyle:Decoration:textColor" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.textColor</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a></p>
 <p>Text color (<a href="/docs/ref/UIColor"><code>UIColor</code></a> or string); this may be overridden by <a href="/docs/ref/UIStyle#UIStyle:TextStyle:color"><code>UIStyle.TextStyle.color</code></a> if specified on the same component or a child component.</p>
+<hr>
 <h2 id="UIStyle:Decoration:borderColor" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.borderColor</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a></p>
 <p>Border color (<a href="/docs/ref/UIColor"><code>UIColor</code></a> or string).</p>
+<hr>
 <h2 id="UIStyle:Decoration:borderStyle" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.borderStyle</h2>
 
 
 
 <p><code>string</code></p>
 <p>Border style (CSS), defaults to “solid”.</p>
+<hr>
 <h2 id="UIStyle:Decoration:borderThickness" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.borderThickness</h2>
 
 
 
-<p><a href="#UIStyle:Offsets"><code>Offsets</code></a></p>
+<p><code>Offsets</code></p>
 <p>Border thickness (in dp or CSS string, or separate offset values).</p>
+<hr>
 <h2 id="UIStyle:Decoration:borderRadius" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.borderRadius</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Border radius (in dp or CSS string).</p>
+<hr>
 <h2 id="UIStyle:Decoration:padding" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.padding</h2>
 
 
 
-<p><a href="#UIStyle:Offsets"><code>Offsets</code></a></p>
+<p><code>Offsets</code></p>
 <p>Padding within control element (in dp or CSS string, or separate offset values).</p>
+<hr>
 <h2 id="UIStyle:Decoration:dropShadow" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.dropShadow</h2>
 
 
 
 <p><code>number</code></p>
 <p>Drop shadow distance (0-1).</p>
+<hr>
 <h2 id="UIStyle:Decoration:opacity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.opacity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Opacity (0-1).</p>
+<hr>
 <h2 id="UIStyle:Decoration:css" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.css</h2>
 
 
 
 <p><code>Partial&lt;CSSStyleDeclaration&gt;</code></p>
 <p>Miscellaneous CSS attributes.</p>
+<hr>
 <h2 id="UIStyle:Decoration:cssClassNames" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.cssClassNames</h2>
 
 
@@ -450,41 +528,47 @@
 
 
 <p>Options for layout of child components of a container component (only exists on <a href="/docs/ref/UIContainer"><code>UIContainer</code></a> instances).</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:axis" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.axis</h2>
 
 
 
 <p><code>&quot;&quot; | &quot;horizontal&quot; | &quot;vertical&quot;</code></p>
 <p>Axis along which content is distributed (defaults to vertical).</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:distribution" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.distribution</h2>
 
 
 
 <p><code>&quot;&quot; | &quot;start&quot; | &quot;end&quot; | &quot;center&quot; | &quot;fill&quot; | &quot;space-around&quot;</code></p>
 <p>Positioning of content along the distribution axis (defaults to start).</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:gravity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.gravity</h2>
 
 
 
 <p><code>&quot;&quot; | &quot;start&quot; | &quot;stretch&quot; | &quot;end&quot; | &quot;center&quot; | &quot;baseline&quot;</code></p>
 <p>Positioning of content perpendicular to the distribution axis (defaults to stretch).</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:wrapContent" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.wrapContent</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if content should wrap to new line/column if needed (defaults to false).</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:clip" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.clip</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True if content should be clipped within this container.</p>
+<hr>
 <h2 id="UIStyle:ContainerLayout:separator" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.separator</h2>
 
 
 
-<p><code>Readonly&lt;</code><a href="#UIStyle:SeparatorOptions"><code>SeparatorOptions</code></a><code>&gt;</code></p>
+<p><code>Readonly&lt;SeparatorOptions&gt;</code></p>
 <p>Options for separator between each component.</p>
 <hr>
 <h2 id="UIStyle:SeparatorOptions" class="spec"><img src="/assets/icons/spec-interface.svg" alt="">UIStyle.SeparatorOptions</h2>
@@ -492,30 +576,35 @@
 
 
 <p>Separator style, for use with containers and lists.</p>
+<hr>
 <h2 id="UIStyle:SeparatorOptions:vertical" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.vertical</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>True for vertical line, or width-only spacer.</p>
+<hr>
 <h2 id="UIStyle:SeparatorOptions:space" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.space</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Width/height of separator space (CSS length or dp).</p>
+<hr>
 <h2 id="UIStyle:SeparatorOptions:lineThickness" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lineThickness</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Separator line thickness (CSS length or dp).</p>
+<hr>
 <h2 id="UIStyle:SeparatorOptions:lineColor" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lineColor</h2>
 
 
 
 <p><code>string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a></p>
 <p>Line separator color (<a href="/docs/ref/UIColor"><code>UIColor</code></a> or string), defaults to <code>@separator</code>.</p>
+<hr>
 <h2 id="UIStyle:SeparatorOptions:lineMargin" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lineMargin</h2>
 
 
@@ -571,7 +660,10 @@
 <li><a href="#UIStyle:Position:bottom">.bottom</a></li>
 <li><a href="#UIStyle:Position:left">.left</a></li>
 <li><a href="#UIStyle:Position:right">.right</a></li>
+<li><a href="#UIStyle:Position:start">.start</a></li>
+<li><a href="#UIStyle:Position:end">.end</a></li>
 <li><a href="#UIStyle:TextStyle"><strong>UIStyle.TextStyle</strong></a></li>
+<li><a href="#UIStyle:TextStyle:direction">.direction</a></li>
 <li><a href="#UIStyle:TextStyle:align">.align</a></li>
 <li><a href="#UIStyle:TextStyle:color">.color</a></li>
 <li><a href="#UIStyle:TextStyle:fontFamily">.fontFamily</a></li>

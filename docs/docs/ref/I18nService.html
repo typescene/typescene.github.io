@@ -67,42 +67,50 @@
 
 
 <p><code>(name?: string): I18nService</code></p>
+<p>Inherited from <a href="/docs/ref/ManagedService#ManagedService:constructor"><code>ManagedService.constructor</code></a>.</p>
+<hr>
 <h2 id="I18nService:get" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.get() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(): I18nService</code></p>
 <p>Returns the currently registered I18n service, if any.</p>
+<hr>
 <h2 id="I18nService:register" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.register()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Register this service, making it available through properties decorated with the <a href="/docs/ref/_service"><code>@service</code></a> decorator until the service object is destroyed (either directly using <code>.destroyManagedAsync()</code>, or when another service is registered with the same name).</p>
+<hr>
 <h2 id="I18nService:name" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.name</h2>
 
 
 
 <p><code>string</code></p>
 <p>The name of this service, set only once by the service constructor. The preferred format for service names is <code>Namespace.CamelCaseName</code>.</p>
+<hr>
 <h2 id="I18nService:locale" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.locale <span class="spec_tag">abstract</span></h2>
 
 
 
 <p><code>string</code></p>
 <p>Locale identifier (e.g. <code>en-US</code>).</p>
+<hr>
 <h2 id="I18nService:decimalSeparator" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.decimalSeparator</h2>
 
 
 
 <p><code>string</code></p>
 <p>Decimal separator used by <a href="/docs/ref/strf"><code>strf</code></a> and <a href="/docs/ref/bindf"><code>bindf</code></a>; defaults to <code>.</code>.</p>
+<hr>
 <h2 id="I18nService:loadTexts" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.loadTexts() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(source: string[][]): void</code></p>
 <p>Load translations for use by <a href="#I18nService:getText"><code>getText</code></a>; given source must be an array of tuples (i.e. arrays with 2 elements: the original key or string in the source language, and its translation).</p>
+<hr>
 <h2 id="I18nService:getText" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getText()</h2>
 
 
@@ -111,6 +119,7 @@
 <p>Returns a translation for given string. The string may contain formatting placeholders such as %s, these should exist in the translation as well, although their order may be changed.</p>
 <p>If a translation is not found, the input string is returned as-is.</p>
 <p><strong>Note:</strong> This method is called automatically by <a href="/docs/ref/strf"><code>strf</code></a> and <a href="/docs/ref/bindf"><code>bindf</code></a>, and it should not be necessary to call this method directly.</p>
+<hr>
 <h2 id="I18nService:getPlural" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getPlural()</h2>
 
 
@@ -118,6 +127,7 @@
 <p><code>(n: number, forms: string[]): string</code></p>
 <p>Pick one of the given plural forms, based on given number. Can be overridden for languages that have plural forms that are different from English and Germanic languages.</p>
 <p><strong>Note:</strong> This method is called automatically by <a href="/docs/ref/strf"><code>strf</code></a> and <a href="/docs/ref/bindf"><code>bindf</code></a>, and it should not be necessary to call this method directly.</p>
+<hr>
 <h2 id="I18nService:format" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.format() <span class="spec_tag">abstract</span></h2>
 
 
@@ -125,96 +135,112 @@
 <p><code>(value: any, ...type: string[]): string</code></p>
 <p>Returns a formatted string for given value, using given type specification(s) if needed, e.g. <code>date</code>, <code>datetime</code>, etc.</p>
 <p><strong>Note:</strong> This method is called automatically by <a href="/docs/ref/strf"><code>strf</code></a>, <a href="/docs/ref/bind"><code>bind</code></a>, and <a href="/docs/ref/bindf"><code>bindf</code></a>. Any types supported here can be used with the <code>|local:...</code> binding filter and <code>%{local:...}</code> string format placeholder.</p>
+<hr>
 <h2 id="I18nService:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="I18nService:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="I18nService:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="I18nService:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="I18nService:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="I18nService:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="I18nService:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="I18nService:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="I18nService:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="I18nService:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 

@@ -1,4 +1,5 @@
 ---
+showInNav: true
 template: doc_article
 title: Lists and maps
 description: Detailed description of lists and maps
@@ -12,7 +13,9 @@ In JavaScript, creating a list of values is a simple task. Arrays hold any type 
 
 ```typescript
 let data = ["a", "b", "c"];
-data.forEach(d => { console.log(d) });
+data.forEach((d) => {
+  console.log(d);
+});
 ```
 
 In a front-end framework however, JavaScript arrays cause some issues. For one, their values are not checked: they might include a mix of strings, numbers, objects, and other types of values. Any value can be assigned to _any_ array index at any time. This means that they may include duplicates, undefined values, and _gaps_ (which occur when a certain array index is not set at all, which is not the same as setting the array property to `undefined`).
@@ -23,16 +26,12 @@ Therefore, Typescene implements two different types of lists of its own, which a
 [**ManagedMap**<br>Represents a set of components that are indexed using a string value](/docs/ref/ManagedList){:.block_link.class}
 
 ```typescript
-let list = new ManagedList(
-  new Component(),
-  new Component(),
-  new Component()
-);
+let list = new ManagedList(new Component(), new Component(), new Component());
 let first = list.first();
 let second = list.get(1);
 let third = list.last();
 
-let map = new ManagedMap()
+let map = new ManagedMap();
 map.set("One", new ManagedList());
 let one = map.get("One");
 ```
@@ -47,14 +46,14 @@ The `restrict` method on both lists and maps restricts the type of component obj
 [**ManagedMap.restrict()**<br>Restrict objects within this map to be of a given type (class)](/docs/ref/ManagedMap#ManagedMap:restrict){:.block_link.method}
 
 ```typescript
-class MyComponent extends Component { }
-class SameComponent extends MyComponent { }
-class OtherComponent extends Component { }
+class MyComponent extends Component {}
+class SameComponent extends MyComponent {}
+class OtherComponent extends Component {}
 
 let list = new ManagedList().restrict(MyComponent);
-list.add(new MyComponent());  // OK
-list.add(new SameComponent());  // OK
-list.add(new OtherComponent());  // ERROR
+list.add(new MyComponent()); // OK
+list.add(new SameComponent()); // OK
+list.add(new OtherComponent()); // ERROR
 ```
 
 ### Nested lists/maps
@@ -69,34 +68,34 @@ The [`ManagedRecord`](/docs/ref/ManagedRecord) class implements several methods 
 
 [**ManagedRecord**<br>Represents data that is managed as a component, often within a list structure](/docs/ref/ManagedRecord){:.block_link.class}
 
-* [`record.getParentRecord()`](/docs/ref/ManagedRecord#ManagedRecord:getParentRecord) — retrieves the ‘parent’ instance (containing a property that has been marked with the `@managedChild` decorator which indirectly references the record) of the `ManagedRecord` class itself, even if the parent record references a list/map that _contains_ this record.
-* [`record.getNextSibling()`](/docs/ref/ManagedRecord#ManagedRecord:getNextSibling) — retrieves the next record in a parent list (i.e. a list that is assigned to a property marked with `@managedChild` in another record).
-* [`record.getPreviousSibling()`](/docs/ref/ManagedRecord#ManagedRecord:getNextSibling) — retrieves the previous record in a parent list.
+- [`record.getParentRecord()`](/docs/ref/ManagedRecord#ManagedRecord:getParentRecord) — retrieves the ‘parent’ instance (containing a property that has been marked with the `@managedChild` decorator which indirectly references the record) of the `ManagedRecord` class itself, even if the parent record references a list/map that _contains_ this record.
+- [`record.getNextSibling()`](/docs/ref/ManagedRecord#ManagedRecord:getNextSibling) — retrieves the next record in a parent list (i.e. a list that is assigned to a property marked with `@managedChild` in another record).
+- [`record.getPreviousSibling()`](/docs/ref/ManagedRecord#ManagedRecord:getNextSibling) — retrieves the previous record in a parent list.
 
 ### Parent-child references
 
 Often, components within a list should be considered to be fully ‘contained’ by the component that includes the list itself — for example in the case of a row of buttons on screen, the buttons certainly belong to the row; moving or removing the row should also move the buttons within. Similarly, a list of addresses may ‘belong’ to a contact record.
 
-For this reason, component lists/maps extend parent-child relationships to all components within the list, _if_ the list itself is assigned to a property marked with [`@managedChild`](/docs/ref/managedChild) (refer to  [Components](/docs/concepts/components) for details on how this property decorator works).
+For this reason, component lists/maps extend parent-child relationships to all components within the list, _if_ the list itself is assigned to a property marked with [`@managedChild`](/docs/ref/managedChild) (refer to [Components](/docs/concepts/components) for details on how this property decorator works).
 
 ```typescript
 class PersonAddress extends ManagedRecord {
   street: string;
-  // ... etc. 
+  // ... etc.
 }
 
 class PersonContact extends ManagedRecord {
   name: string;
   // ... etc.
-  
+
   @managedChild
   addresses = new ManagedList().restrict(PersonAddress);
 }
 
 let contact = new PersonContact();
-let address = new PersonAddress(); //  ... etc  
+let address = new PersonAddress(); //  ... etc
 contact.addresses.add(address);
-contact.addresses.first().getParentComponent()  // contact
+contact.addresses.first().getParentComponent(); // contact
 ```
 
 ### Weak parent-child references
@@ -109,9 +108,7 @@ To mark a property containing a list or map as parent-child reference, but _not_
 class PersonContact extends ManagedRecord {
   // ...
   @managedChild
-  colleagues = new ManagedList()
-    .restrict(PersonContact)
-    .weakRef();
+  colleagues = new ManagedList().restrict(PersonContact).weakRef();
 }
 ```
 
@@ -137,12 +134,12 @@ list.add(new MyComponent());
 list.insert(new MyComponent(), b);
 ```
 
-[**ManagedList.add()**<br>Add one or more objects (or managed lists or maps) to the end of this list](/docs/ref/ManagedList#ManagedList:add){:.block_link.method}
+[**ManagedList.add()**<br>Add one or more objects (or managed lists or maps) to the end of this list](/docs/ref/ManagedList#ManagedList:add){:.block*link.method}
 [**ManagedList.insert()**<br>Insert an object before another object in this list](/docs/ref/ManagedList#ManagedList:insert){:.block_link.method}
 [**ManagedList.remove()**<br>Remove an object from this list](/docs/ref/ManagedList#ManagedList:remove){:.block_link.method}
 [**ManagedList.clear()**<br>Remove all objects from this list](/docs/ref/ManagedList#ManagedList:clear){:.block_link.method}
 [**ManagedList.splice()**<br>Add and/or remove objects at the same time](/docs/ref/ManagedList#ManagedList:splice){:.block_link.method}
-[**ManagedList.replace()**<br>Replace _all_ items in this list with a given set of new items, in one go](/docs/ref/ManagedList#ManagedList:replace){:.block_link.method}
+[**ManagedList.replace()**<br>Replace \_all* items in this list with a given set of new items, in one go](/docs/ref/ManagedList#ManagedList:replace){:.block_link.method}
 
 ### Iteration
 
@@ -150,7 +147,9 @@ You can loop over all objects in a list using a standard `for...of` statement.
 
 ```typescript
 class SomeComponent extends Component {
-  constructor(public s: string) { super() }
+  constructor(public s: string) {
+    super();
+  }
 }
 let list = new ManagedList(
   new SomeComponent("a"),
@@ -175,8 +174,8 @@ Alternatively, you can use the following methods to iterate over the objects in 
 
 Lists emit a [`ManagedListChangeEvent`](/docs/ref/ManagedListChangeEvent) event when objects are added, removed, or moved.
 
-* When an object is added, the object itself is referenced by the `object` property of the [`ManagedObjectAddedEvent`](/docs/ref/ManagedObjectAddedEvent) event.
-* When an object has been removed, the removed object is referenced by the `object` property of the [`ManagedObjectRemovedEvent`](/docs/ref/ManagedObjectRemovedEvent) event.
+- When an object is added, the object itself is referenced by the `object` property of the [`ManagedObjectAddedEvent`](/docs/ref/ManagedObjectAddedEvent) event.
+- When an object has been removed, the removed object is referenced by the `object` property of the [`ManagedObjectRemovedEvent`](/docs/ref/ManagedObjectRemovedEvent) event.
 
 Furthermore, lists can be made to ‘propagate’ (i.e. re-emit) all events that are emitted by objects within the list, using the [`propagateEvents`](/docs/ref/ManagedList#ManagedList:propagateEvents) method.
 
@@ -185,23 +184,23 @@ Furthermore, lists can be made to ‘propagate’ (i.e. re-emit) all events that
 ```typescript
 class PersonContact extends ManagedRecord {
   @managed
-  friends = new ManagedList()
-    .restrict(PersonContact)
-    .propagateEvents();
+  friends = new ManagedList().restrict(PersonContact).propagateEvents();
 }
-PersonContact.addObserver(class {
-  constructor(public contact: PersonContact) { }
-  onFriendsChange() {
-    // ...[1] 
+PersonContact.addObserver(
+  class {
+    constructor(public contact: PersonContact) {}
+    onFriendsChange() {
+      // ...[1]
+    }
   }
-})
+);
 ```
 
 In the code above, the `onFriendsChange` method [1] is called when:
 
-* the friends list is assigned the first time (an empty list),
-* any objects are added to, removed from, or moved within the friends list,
-* any object _within_ the friends list emits a change event — since those events are immediately also emitted by the list itself.
+- the friends list is assigned the first time (an empty list),
+- any objects are added to, removed from, or moved within the friends list,
+- any object _within_ the friends list emits a change event — since those events are immediately also emitted by the list itself.
 
 ### Views and bindings
 
@@ -211,11 +210,11 @@ In the code above, the `onFriendsChange` method [1] is called when:
 
 Note that Typescene will _automatically_ convert arrays to objects in a managed list when updating a binding.
 
-* If the existing property value of a bound property (e.g. the `items` property of a `UIListController` view component) is _already_ an instance of `ManagedList`, **and**
-* if the bound value (i.e. the value of the bound parent’s property) is a `ManagedList`, **then** the list reference itself is copied to the target component.
-* if the bound value is `undefined`, **then** the list is cleared.
-* if the bound value is an array of `ManagedObject` instances (e.g. components), **then** all objects in the list are replaced with the objects from the array.
-* if the bound value is an array of other values (e.g. strings), **then** those values are encapsulated in an anonymous component type first, whose `valueOf()` method returns the original value.
+- If the existing property value of a bound property (e.g. the `items` property of a `UIListController` view component) is _already_ an instance of `ManagedList`, **and**
+- if the bound value (i.e. the value of the bound parent’s property) is a `ManagedList`, **then** the list reference itself is copied to the target component.
+- if the bound value is `undefined`, **then** the list is cleared.
+- if the bound value is an array of `ManagedObject` instances (e.g. components), **then** all objects in the list are replaced with the objects from the array.
+- if the bound value is an array of other values (e.g. strings), **then** those values are encapsulated in an anonymous component type first, whose `valueOf()` method returns the original value.
 
 This makes it possible to bind the `items` property of a list view either to a ‘real’ list of components, or to a simple array:
 
@@ -226,17 +225,17 @@ const view = UICell.with(
     { items: bind("items") },
     UIListCellAdapter.with(
       UIRow.with(
-        UILabel.with(bind("value"))  // a, b, c
+        UILabel.with(bind("value")) // a, b, c
       )
     )
   )
-)
+);
 
 class MyActivity extends PageViewActivity.with(view) {
   // ...
-  
+
   // plain array elements get converted:
-  items = ["a", "b", "c"]
+  items = ["a", "b", "c"];
 }
 ```
 
@@ -281,7 +280,7 @@ map.set("3", new SomeComponent("Three"));
 map.forEach((key, component) => {
   console.log(key + ": " + component.s);
   // => 1: One
-  // ...etc 
+  // ...etc
 }
 ```
 
@@ -289,8 +288,8 @@ map.forEach((key, component) => {
 
 Maps emit a [`ManagedListChangeEvent`](/docs/ref/ManagedListChangeEvent) event when objects are added, removed, or moved — similar to lists.
 
-* When an object is added, the object itself is referenced by the `object` property of the [`ManagedObjectAddedEvent`](/docs/ref/ManagedObjectAddedEvent) event, and the key is stored in the `key` property.
-* When an object has been removed, the removed object is referenced by the `object` property of the [`ManagedObjectRemovedEvent`](/docs/ref/ManagedObjectRemovedEvent) event, and the key is stored in the `key` property.
+- When an object is added, the object itself is referenced by the `object` property of the [`ManagedObjectAddedEvent`](/docs/ref/ManagedObjectAddedEvent) event, and the key is stored in the `key` property.
+- When an object has been removed, the removed object is referenced by the `object` property of the [`ManagedObjectRemovedEvent`](/docs/ref/ManagedObjectRemovedEvent) event, and the key is stored in the `key` property.
 
 Furthermore, maps can also be made to ‘propagate’ (i.e. re-emit) all events that are emitted by objects within the map, using the [`propagateEvents`](/docs/ref/ManagedList#ManagedList:propagateEvents) method (see Lists above for an example).
 
@@ -302,6 +301,6 @@ Furthermore, maps can also be made to ‘propagate’ (i.e. re-emit) all events 
 
 Find out how lists and maps are used by Typescene to store application components.
 
-* Learn more about [views](/docs/concepts/views), which represent the user interface as a tree structure of components.
-* Learn more about [activities](/docs/concepts/activities), which encapsulate views and represent the possible states of an application.
-* Learn more about [services](/docs/concepts/services), which encapsulate the application’s global state, available from within all other components.
+- Learn more about [views](/docs/concepts/views), which represent the user interface as a tree structure of components.
+- Learn more about [activities](/docs/concepts/activities), which encapsulate views and represent the possible states of an application.
+- Learn more about [services](/docs/concepts/services), which encapsulate the application’s global state, available from within all other components.

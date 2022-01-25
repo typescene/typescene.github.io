@@ -65,42 +65,50 @@
 
 
 <p><code>(source?: string, defaultValue?: any): Binding</code></p>
+<p>Create a new binding for given property and default value. See <a href="/docs/ref/bind"><code>bind</code></a>.</p>
+<hr>
 <h2 id="Binding:isBinding" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isBinding() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(value: any): value is Binding</code></p>
 <p>Returns true if given value is an instance of <code>Binding</code>.</p>
+<hr>
 <h2 id="Binding:isComponentBinding" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isComponentBinding()</h2>
 
 
 
 <p><code>(): true</code></p>
 <p>Method for duck typing, always returns true.</p>
+<hr>
 <h2 id="Binding:id" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.id</h2>
 
 
 
 <p><code>string</code></p>
 <p>Unique ID for this binding.</p>
+<hr>
 <h2 id="Binding:propertyName" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.propertyName</h2>
 
 
 
 <p><code>string</code></p>
 <p>Name of the property that should be observed for this binding (highest level only, does not include names of nested properties or keys).</p>
+<hr>
 <h2 id="Binding:bindings" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.bindings</h2>
 
 
 
 <p><code>readonly Binding[]</code></p>
 <p>Nested bindings, if any (e.g. for string format bindings, see <a href="/docs/ref/bindf"><code>bindf</code></a>).</p>
+<hr>
 <h2 id="Binding:parent" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.parent</h2>
 
 
 
 <p><code>Binding</code></p>
 <p>Parent binding, if any (e.g. for nested bindings in string format bindings).</p>
+<hr>
 <h2 id="Binding:addFilter" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addFilter()</h2>
 
 
@@ -109,12 +117,14 @@
 <p>Add a filter to this binding, which transforms values to a specific type or format, optionally localized using the currently registered <a href="/docs/ref/I18nService"><code>I18nService</code></a>. Filters can be chained by adding multiple filters in order of execution.</p>
 <p>The argument may be any of the format placeholders that are available for <a href="/docs/ref/strf"><code>strf</code></a>, except for comments and plural forms – without the leading <code>%</code> sign or grouping <code>{</code> and <code>}</code>, e.g. <code>s</code>, <code>+8i</code>, <code>.5f</code>, <code>?</code>, and <code>local:date</code>.</p>
 <p><strong>Note:</strong> Filters can also be specified after the <code>|</code> (pipe) separator in string argument given to the <code>Binding</code> constructor, or <a href="/docs/ref/bind"><code>bind</code></a> function.</p>
+<hr>
 <h2 id="Binding:then" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.then()</h2>
 
 
 
 <p><code>(trueValue: any): this</code></p>
 <p>Add a boolean transform to this binding: use the given value <em>instead</em> of the bound value if that is equal to true (according to the <code>==</code> operator).</p>
+<hr>
 <h2 id="Binding:else" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.else()</h2>
 
 
@@ -122,18 +132,21 @@
 <p><code>(falseValue: any): this</code></p>
 <p>Add a boolean transform to this binding: use the given value <em>instead</em> of the bound value if that is equal to false (according to the <code>==</code> operator).</p>
 <p><strong>Note:</strong> Alternatively, use the <code>defaultValue</code> argument to <a href="/docs/ref/bind"><code>bind()</code></a> to specify a default value without an extra step.</p>
+<hr>
 <h2 id="Binding:match" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.match()</h2>
 
 
 
 <p><code>(...values: any[]): this</code></p>
 <p>Add a filter to this binding to compare the bound value to the given value(s), the result is always either <code>true</code> (at least one match) or <code>false</code> (none match).</p>
+<hr>
 <h2 id="Binding:nonMatch" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.nonMatch()</h2>
 
 
 
 <p><code>(...values: any[]): this</code></p>
 <p>Add a filter to this binding to compare the bound value to the given value(s), the result is always either <code>true</code> (none match) or <code>false</code> (at least one match).</p>
+<hr>
 <h2 id="Binding:and" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.and()</h2>
 
 
@@ -141,6 +154,7 @@
 <p><code>[1]. (source: Binding): this</code><br><code>[2]. (source: string, defaultValue?: any): this</code></p>
 <p>Add an ‘and’ term to this binding (i.e. logical and, like <code>&amp;&amp;</code> operator).</p>
 <p><strong>Note:</strong> The combined binding can only be bound to a single component, e.g. within a list view cell, bindings targeting both the list element and the activity can <strong>not</strong> be combined using this method.</p>
+<hr>
 <h2 id="Binding:or" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.or()</h2>
 
 
@@ -148,12 +162,14 @@
 <p><code>[1]. (source: Binding): this</code><br><code>[2]. (source: string, defaultValue?: any): this</code></p>
 <p>Add an ‘or’ term to this binding (i.e. logical or, like <code>||</code> operator).</p>
 <p><strong>Note:</strong> The combined binding can only be bound to a single component, e.g. within a list view cell, bindings targeting both the list element and the activity can <strong>not</strong> be combined using this method.</p>
+<hr>
 <h2 id="Binding:debuggerLog" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.debuggerLog()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Log a message to the console whenever the value of this binding changes, for debugging purposes.</p>
+<hr>
 <h2 id="Binding:toString" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.toString()</h2>
 
 

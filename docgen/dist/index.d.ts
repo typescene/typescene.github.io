@@ -6,6 +6,7 @@ interface ConfigSource {
     template: string;
     out: string;
     json_out: string;
+    debug_out: string;
     base_url: string;
 }
 /** Process given source and add documentation pages to the pipeline */

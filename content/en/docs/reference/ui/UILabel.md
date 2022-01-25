@@ -6,6 +6,6 @@ The `UILabel` component displays a piece of text in a single line, or wrapped ac
 
 # UILabel
 
-#### See Also
+#### Related
 
 `UICloseLabel`, `UIExpandedLabel`, `UIParagraph`, `UIHeading1`, `UIHeading2`, `UIHeading3`.

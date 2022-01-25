@@ -55,7 +55,7 @@ function compressContent(content) {
 /** Process given source and add documentation pages to the pipeline */
 function generateDocs(pipeline, config) {
     let packagePath = path.join(__dirname, "../../node_modules", config.module);
-    let packageJSON = fs_1.readFileSync(path.join(packagePath, "package.json")).toString();
+    let packageJSON = (0, fs_1.readFileSync)(path.join(packagePath, "package.json")).toString();
     let packageInfo = JSON.parse(packageJSON);
     // read declaration files and parse their types/JSDoc
     let parser = new DeclarationFileParser_1.DeclarationFileParser(path.join(packagePath, packageInfo.typings));
@@ -64,7 +64,7 @@ function generateDocs(pipeline, config) {
     let content = [];
     for (let node of index) {
         for (let c of node.content) {
-            if (c.spec.deprecated)
+            if (c.spec.deprecated || c.spec.name === "constructor")
                 continue;
             if (c.id.endsWith(".") || c.spec.inherited)
                 continue;
@@ -74,7 +74,20 @@ function generateDocs(pipeline, config) {
         }
     }
     content.sort((a, b) => (a === b ? 0 : a > b ? 1 : -1));
-    let jsonItem = new markdown_pipeline_1.Pipeline.Item("@symbols");
+    // add symbols file to pipeline for analysis
+    if (config.debug_out) {
+        let symbolsItem = new markdown_pipeline_1.Pipeline.Item("@symbols");
+        symbolsItem.output.push({
+            path: config.debug_out,
+            data: JSON.stringify({
+                version: packageInfo.version,
+                content: content,
+            }, undefined, "  "),
+        });
+        pipeline.add(symbolsItem);
+    }
+    // add compressed symbols file to pipeine
+    let jsonItem = new markdown_pipeline_1.Pipeline.Item("@symbols.compressed");
     jsonItem.output.push({
         path: config.json_out,
         data: JSON.stringify({

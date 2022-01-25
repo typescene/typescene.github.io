@@ -60,179 +60,209 @@
 
 
 <p><code>extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>implements </code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
-<p>Represents a menu that can be displayed on screen. The menu itself is built up dynamically using a platform dependent builder class.</p>
+<p>Represents a menu that can be displayed on screen. The menu itself is built up dynamically using a platform dependent builder class. Commonly, this class is used as a preset within a <a href="/docs/ref/UIModalController"><code>UIModalController</code></a>.</p>
 <h3>Constructor</h3>
 
 
 <p><code>(): UIMenu</code></p>
+<p>Create a new renderable menu; should not be called directly.</p>
+<hr>
 <h2 id="UIMenu:builder" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.builder</h2>
 
 
 
 <p><a href="/docs/ref/UIMenuBuilder"><code>UIMenuBuilder</code></a></p>
 <p>Menu builder, can be used to build up the menu before it is displayed, e.g. when handing the Build event.</p>
+<hr>
 <h2 id="UIMenu:render" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.render()</h2>
 
 
 
 <p><code>(callback: RenderCallback&lt;Output&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>, any&gt;&gt;): void</code></p>
 <p>Build the current menu and render it using <a href="/docs/ref/UIMenu#UIMenu:builder"><code>UIMenu.builder</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onSelectMenuItem" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onSelectMenuItem() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(e: </code><a href="/docs/ref/UIMenuItemSelectedEvent"><code>UIMenuItemSelectedEvent</code></a><code>): boolean</code></p>
+<p><code>(e: </code><a href="/docs/ref/UIMenuItemSelectedEvent"><code>UIMenuItemSelectedEvent</code></a><code>): boolean | void</code></p>
 <p>Handle SelectMenuItem events by setting the <a href="#UIMenu:selected"><code>selected</code></a> property to the key of the selected item, and then propagating the event on this component itself.</p>
+<hr>
 <h2 id="UIMenu:menu" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.menu</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a></p>
 <p>The last menu that was built, as a child object.</p>
+<hr>
 <h2 id="UIMenu:gravity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.gravity</h2>
 
 
 
 <p><code>&quot;start&quot; | &quot;stretch&quot; | &quot;end&quot;</code></p>
 <p>Menu gravity in relation to reference component (start/stretch/end).</p>
+<hr>
 <h2 id="UIMenu:options" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.options</h2>
 
 
 
 <p><code>{ key: string; text: </code><a href="/docs/ref/Stringable"><code>Stringable</code></a><code>; }[]</code></p>
 <p>List of initial menu options; for advanced menus use <code>onBuild</code> to build the menu dynamically.</p>
+<hr>
 <h2 id="UIMenu:selected" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.selected</h2>
 
 
 
 <p><code>string</code></p>
 <p>The key of the menu item that was last selected, if any.</p>
+<hr>
 <h2 id="UIMenu:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): boolean | void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:delegateEvent"><code>Component.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="UIMenu:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UIMenu:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UIMenu:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UIMenu:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UIMenu:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UIMenu:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UIMenu:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UIMenu:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UIMenu:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIMenu:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -245,24 +275,28 @@
 
 
 <p>UIMenu presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="UIMenu:Presets:options" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.options</h2>
 
 
 
 <p><code>{ key: string; text: </code><a href="/docs/ref/Stringable"><code>Stringable</code></a><code>; }[]</code></p>
 <p>List of menu options; for advanced menus use <code>onBuild</code> to build the menu dynamically.</p>
+<hr>
 <h2 id="UIMenu:Presets:gravity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.gravity</h2>
 
 
 
 <p><code>&quot;start&quot; | &quot;stretch&quot; | &quot;end&quot;</code></p>
 <p>Menu gravity in relation to reference component (start/stretch/end).</p>
+<hr>
 <h2 id="UIMenu:Presets:onBuild" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.onBuild</h2>
 
 
 
 <p><a href="/docs/ref/ComponentEventHandler"><code>ComponentEventHandler</code></a><code>&lt;UIMenu, </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;&gt;</code></p>
 <p>Event handler that is invoked every time just before the menu is rendered.</p>
+<hr>
 <h2 id="UIMenu:Presets:onSelectMenuItem" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.onSelectMenuItem</h2>
 
 

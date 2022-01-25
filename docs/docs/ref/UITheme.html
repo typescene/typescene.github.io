@@ -64,36 +64,42 @@
 
 
 <p><code>(): UITheme</code></p>
+<hr>
 <h2 id="UITheme:current" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.current <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>UITheme</code></p>
 <p>The current theme. This value may be changed but it is not observed, use <a href="/docs/ref/Application#Application:renderContext"><code>Application.renderContext</code></a> to re-render UI components after changing the theme. Use <a href="#UITheme:clone"><code>clone()</code></a> to initialize a new theme instance.</p>
+<hr>
 <h2 id="UITheme:getStyle" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getStyle() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(name: string, mixin?: string): </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a></p>
 <p>Returns a <a href="/docs/ref/UIStyle"><code>UIStyle</code></a> instance consisting of given named style(s), combined using <a href="/docs/ref/UIStyle#UIStyle:mixin"><code>UIStyle.mixin</code></a><code>(...)</code>.</p>
+<hr>
 <h2 id="UITheme:getTextColor" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getTextColor() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(bg: string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a><code>): string</code></p>
 <p>Returns a suitable text color for given background color (mostly black, or mostly white).</p>
+<hr>
 <h2 id="UITheme:isBrightColor" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isBrightColor() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(color: string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a><code>): boolean</code></p>
 <p>Returns true if the pseudo-luminance of given color (in hex format <code>#112233</code> or <code>#123</code> or rgb(a) format <code>rgb(255, 255, 255)</code> or hsl format <code>hsl(255, 0%, 0%)</code>) is greater than 55%; can be used e.g. to decide on a contrasting text color for a given background color.</p>
+<hr>
 <h2 id="UITheme:mixColors" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.mixColors() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>(color1: string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a><code>, color2: string | </code><a href="/docs/ref/UIColor"><code>UIColor</code></a><code>, p: number): string</code></p>
 <p>Returns a color in rgb(a) format (e.g. <code>rgb(40,60,255)</code> <code>rgba(40,60,255,.5)</code>) that lies between given colors (in hex format <code>#112233</code> or <code>#123</code> or rgb(a) format <code>rgb(255, 255, 255)</code>) at given point (0-1, with 0 being the same as the first color, 1 being the same as the second color, and 0.5 being an equal mix).</p>
+<hr>
 <h2 id="UITheme:replaceColor" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.replaceColor() <span class="spec_tag">static</span></h2>
 
 
@@ -116,59 +122,68 @@
 <li><p><code>@green.text</code> is substituted with a contrasting text color (mostly-opaque white or black) that is readable on the color <code>green</code>.</p>
 </li>
 </ul>
+<hr>
 <h2 id="UITheme:clone" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.clone()</h2>
 
 
 
 <p><code>(): UITheme</code></p>
 <p>Create a new theme with the same properties, colors, icons, and styles (i.e. a ‘deep’ copy).</p>
+<hr>
 <h2 id="UITheme:modalDialogShadeOpacity" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.modalDialogShadeOpacity</h2>
 
 
 
 <p><code>number</code></p>
 <p>Dialog backdrop shader opacity (for <a href="/docs/ref/DialogViewActivity"><code>DialogViewActivity</code></a>), defaults to 0.3.</p>
+<hr>
 <h2 id="UITheme:spacing" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.spacing</h2>
 
 
 
 <p><code>string | number</code></p>
 <p>Default spacing between components in rows and columns, defaults to 8.</p>
+<hr>
 <h2 id="UITheme:ConfirmationDialogBuilder" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.ConfirmationDialogBuilder</h2>
 
 
 
 <p><code>new () =&gt; </code><a href="/docs/ref/ConfirmationDialogBuilder"><code>ConfirmationDialogBuilder</code></a></p>
 <p>Default confirmation/alert dialog builder used by <a href="/docs/ref/ViewActivity#ViewActivity:showConfirmationDialogAsync"><code>ViewActivity.showConfirmationDialogAsync</code></a>.</p>
+<hr>
 <h2 id="UITheme:MenuBuilder" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.MenuBuilder</h2>
 
 
 
 <p><code>new () =&gt; </code><a href="/docs/ref/UIMenuBuilder"><code>UIMenuBuilder</code></a></p>
 <p>Default platform dependent menu builder.</p>
+<hr>
 <h2 id="UITheme:colors" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.colors</h2>
 
 
 
 <p><code>{ [name: string]: string; }</code></p>
 <p>Set of predefined colors.</p>
+<hr>
 <h2 id="UITheme:icons" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.icons</h2>
 
 
 
 <p><code>{ [name: string]: string; }</code></p>
 <p>Named icons that can be used on labels or buttons.</p>
+<hr>
 <h2 id="UITheme:styles" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.styles</h2>
 
 
 
 <p><code>{ [name: string]: </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a><code>; }</code></p>
 <p>Set of named style <em>mixins</em> that can be applied to a UI component. These include default styles such as ‘control’, ‘container’, ‘button’, ‘textfield’, etc., but may also include custom styles so that they can be referenced by name.</p>
+<hr>
 <h2 id="UITheme:setStyle" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.setStyle()</h2>
 
 
 
-<p><code>(name: string, </code><a href="#UITheme:styles"><code>styles</code></a><code>: Partial&lt;StyleObjects&gt;): </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a></p>
+<p><code>(name: string, styles: Partial&lt;StyleObjects&gt;): </code><a href="/docs/ref/UIStyle"><code>UIStyle</code></a></p>
 <p>Add or extend a named style in <a href="#UITheme:styles"><code>styles</code></a> with given style set; returns the new <a href="/docs/ref/UIStyle"><code>UIStyle</code></a> instance.</p>
 
         </div>

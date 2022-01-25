@@ -1,4 +1,5 @@
 ---
+showInNav: true
 output: docs/js-ts.html
 template: doc_article
 title: JavaScript vs TypeScript
@@ -15,17 +16,23 @@ TypeScript includes 'type annotations', which informs the compiler of expected r
 
 ```typescript
 // typescript function
-function usingTypeScript(p: number): string { /* ... */ }
+function usingTypeScript(p: number): string {
+  /* ... */
+}
 
 // this can be rewritten as:
-function usingJavaScript(p) { /* ... */ }
+function usingJavaScript(p) {
+  /* ... */
+}
 ```
 
-However, some editors (e.g. Visual Studio Code) will still use the type information that is available from the `typescene` module itself for its auto-completion features. This will not affect the resulting JavaScript code.
+Some editors (e.g. Visual Studio Code) will still use the type information that is available from the `typescene` module itself for its auto-completion features. This will not affect the resulting JavaScript code.
 
 ## Class properties {#properties}
 
-When defining classes, TypeScript allows properties to be listed in the main body of the class, with optional initializers.
+Modern versions of JavaScript and TypeScript both support classes. However, TypeScript allows properties to be listed in the main body of the class, while JavaScript does not.
+
+Since property declarations without initializers are pointless in JavaScript anyway, they can be left out. Initializers should be moved to the constructor function:
 
 ```typescript
 // TypeScript class:
@@ -33,11 +40,7 @@ class MyComponent extends Component {
   foo = 123;
   bar?: string;
 }
-```
 
-The property declarations can be left out in JavaScript, although initializers should be moved to the constructor function:
-
-```js
 // JavaScript class:
 class MyComponent extends Component {
   constructor() {
@@ -49,19 +52,19 @@ class MyComponent extends Component {
 
 ## Property decorators {#decorators}
 
-Typescene defines a number of 'decorators', which are used to modify the attributes of a property on all instances of a class. This includes the `managed`, `managedChild`, `managedDependency`, and `service` decorators.
+Typescene provides 'decorators' to modify the attributes of a property on all instances of a class. These include e.g. `@managed`, `@component`, and `@service`.
 
 ```typescript
 // TypeScript decorators:
 class MyComponent extends Component {
-  @managed
+  @component
   ref = new MyOtherComponent();
 }
 ```
 
-To achieve the same effect, the decorator functions can be called on their own, passing in the class prototype and property name (option 1 below). However, for cleaner code, these functions can _also_ be called on component instances -- albeit at a slight performance loss (option 2 below).
+To achieve the same effect in JavaScript, decorator functions should be called on their own, passing in the class prototype and property name as arguments (option 1 below). However, for cleaner code, these functions can _also_ be called on component instances—at a slight performance cost (option 2 below).
 
-```js
+```javascript
 // option 1:
 class MyComponent extends Component {
   constructor() {
@@ -69,13 +72,13 @@ class MyComponent extends Component {
     this.ref = new MyOtherComponent();
   }
 }
-managed(MyComponent.prototype, "ref");
+component(MyComponent.prototype, "ref");
 
 // option 2:
 class MyComponent extends Component {
   constructor() {
     super();
-    managed(this, "ref");
+    component(this, "ref");
     this.ref = new MyOtherComponent();
   }
 }
@@ -83,11 +86,11 @@ class MyComponent extends Component {
 
 ## Classes {#classes}
 
-While not recommended (and in most cases, not necessary), it is possible to use Typescene without the use of the `class` keyword.
+While not recommended (and in most cases, unnecessary), it is possible to use Typescene without the use of the `class` keyword altogether.
 
 You can use pure functions and prototypes instead, but remember to (A) call the original constructor, (B) set the correct prototype, and (C) copy static methods on extended classes as well:
 
-```js
+```javascript
 // import Typescene classes:
 var UILabel = typescene.UILabel;
 var PageViewActivity = typescene.PageViewActivity;
@@ -99,16 +102,16 @@ var view = UILabel.withText("Hello, world!");
 // create a JavaScript 'class' analog:
 var _super = PageViewActivity.with(view).prototype;
 function MyActivity() {
-  _super.constructor.call(this);  // (A)
+  _super.constructor.call(this); // (A)
   this.path = "/";
 }
-MyActivity.prototype = Object.create(_super);  // (B)
+MyActivity.prototype = Object.create(_super); // (B)
 for (var p in _super.constructor) {
   if (Object.hasOwnProperty.call(_super.constructor, p)) {
-    MyActivity[p] = _super.constructor[p];  // (C)
+    MyActivity[p] = _super.constructor[p]; // (C)
   }
 }
 BrowserApplication.run(MyActivity);
 ```
 
-It is highly recommended to use the modern `class` syntax, either by targeting modern platforms if possible, _or_ by using a transpiler such as the Babel toolkit. This makes the code above unnecessary.
+It is highly recommended to use the modern `class` syntax, either by targeting modern platforms if possible, _or_ by using a transpiler such as the Babel toolkit. This makes your code much easier to understand and less error-prone.

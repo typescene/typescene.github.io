@@ -10,14 +10,14 @@ class MiscContent {
     }
     /** Read all files in given directory, and parse additional content */
     readDir(p) {
-        let files = fs_1.readdirSync(p);
+        let files = (0, fs_1.readdirSync)(p);
         for (let name of files) {
             let fileName = path.join(p, name);
-            if (fs_1.statSync(fileName).isDirectory()) {
+            if ((0, fs_1.statSync)(fileName).isDirectory()) {
                 this.readDir(fileName);
                 continue;
             }
-            let text = fs_1.readFileSync(fileName).toString();
+            let text = (0, fs_1.readFileSync)(fileName).toString();
             for (let part of text.split(/[\n\r]+\-{3,}[\n\r]+/)) {
                 let id;
                 part = part.replace(/^\#+\s*([^\n\r]+)[\n\r]+/, (_s, t) => {

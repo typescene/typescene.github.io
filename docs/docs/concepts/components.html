@@ -104,9 +104,9 @@
 </ul>
 <pre><code class="language-typescript"><span class="hljs-comment">// property values are checked</span>
 <span class="hljs-keyword">let</span> c = <span class="hljs-keyword">new</span> MyComponent();
-c.other = <span class="hljs-keyword">new</span> MyOtherComponent()  <span class="hljs-comment">// fine</span>
-c.other = <span class="hljs-number">123</span>  <span class="hljs-comment">// ERROR</span>
-c.other = someDestroyedComponent  <span class="hljs-comment">// ERROR</span>
+c.other = <span class="hljs-keyword">new</span> MyOtherComponent(); <span class="hljs-comment">// fine</span>
+c.other = <span class="hljs-number">123</span>; <span class="hljs-comment">// ERROR</span>
+c.other = someDestroyedComponent; <span class="hljs-comment">// ERROR</span>
 </code></pre>
 <h3>Parent-child references</h3>
 
@@ -115,7 +115,7 @@ c.other = someDestroyedComponent  <span class="hljs-comment">// ERROR</span>
 <p><a href="/docs/ref/managed" class="block_link decorator"><strong>@managedChild</strong><br>Property decorator: turn a property into a managed parent-child reference</a></p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
   <span class="hljs-comment">// ...</span>
-  
+
   <span class="hljs-meta">@managedChild</span>
   child = <span class="hljs-keyword">new</span> MyOtherComponent();
 }
@@ -124,31 +124,26 @@ c.other = someDestroyedComponent  <span class="hljs-comment">// ERROR</span>
 <p>When the parent component is destroyed, <em>or</em> when the same property of the parent component no longer references the child component, the child component is destroyed immediately.</p>
 <pre><code class="language-typescript"><span class="hljs-keyword">let</span> c = <span class="hljs-keyword">new</span> MyComponent();
 <span class="hljs-keyword">let</span> child = c.child;
-c.child = <span class="hljs-literal">undefined</span>;  <span class="hljs-comment">// no longer referenced</span>
+c.child = <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// no longer referenced</span>
 <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-built_in">console</span>.log(
-    child.managedState === ManagedState.DESTROYED
-  ); <span class="hljs-comment">// =&gt; true</span>
+  <span class="hljs-built_in">console</span>.log(child.managedState === ManagedState.DESTROYED); <span class="hljs-comment">// =&gt; true</span>
 }, <span class="hljs-number">1</span>);
 </code></pre>
-<h3>Tree structures </h3>
+<h3>Tree structures</h3>
 
 
 <p>To represent a tree structure, you can use Typescene’s <a href="/docs/concepts/lists-maps">List and Map</a> classes together with the <code>@managedChild</code> decorator. Lists and maps will automatically extend parent-child relationships to the objects they contain. Specifically, when a <code>@managedChild</code> property refers to a list or map, each of the objects within the list/map becomes a child component:</p>
 <ul>
 <li>When the parent object is destroyed, the list/map is destroyed along with the objects it contains.</li>
 <li>When the parent object no longer references the list/map, it is destroyed along with the objects it contains.</li>
-<li>When an object is removed from the list/map, it is destroyed immediately. </li>
+<li>When an object is removed from the list/map, it is destroyed immediately.</li>
 </ul>
 <p>For example, view components contained by <code>UIRow</code> and <code>UIColumn</code> components are <em>child</em> components, even if they are referenced indirectly through a <code>ManagedList</code> in the <code>content</code> property.</p>
 <p>The following example shows how child components in a list are destroyed when they are no longer part of the list.</p>
 <pre><code class="language-typescript"><span class="hljs-comment">// child gets destroyed when removed from a list:</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyListComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
   <span class="hljs-meta">@managedChild</span>
-  list = <span class="hljs-keyword">new</span> ManagedList(
-    <span class="hljs-keyword">new</span> MyComponent(),
-    <span class="hljs-keyword">new</span> MyComponent()
-  );
+  list = <span class="hljs-keyword">new</span> ManagedList(<span class="hljs-keyword">new</span> MyComponent(), <span class="hljs-keyword">new</span> MyComponent());
 }
 
 <span class="hljs-keyword">let</span> listComponent = <span class="hljs-keyword">new</span> MyListComponent();
@@ -156,10 +151,8 @@ c.child = <span class="hljs-literal">undefined</span>;  <span class="hljs-commen
 listComponent.list.clear(); <span class="hljs-comment">// items are destroyed</span>
 
 <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-built_in">console</span>.log(
-    firstChild.managedState === ManagedState.DESTROYED
-  ); <span class="hljs-comment">// =&gt; true</span>
-}, <span class="hljs-number">1</span>)
+  <span class="hljs-built_in">console</span>.log(firstChild.managedState === ManagedState.DESTROYED); <span class="hljs-comment">// =&gt; true</span>
+}, <span class="hljs-number">1</span>);
 </code></pre>
 <p><a href="/docs/concepts/lists-maps" class="block_link doc"><strong>See also:</strong> Concepts &gt; Lists and maps</a></p>
 <h2 id="events">Events</h2>
@@ -169,9 +162,9 @@ listComponent.list.clear(); <span class="hljs-comment">// items are destroyed</s
 <p>You can emit your own events: any instance of the <code>ManagedEvent</code> class can be emitted using the <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>emit()</code></a> method of a component. For components that hold some type of data, the <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>emitChange()</code></a> method provides an efficient way to emit a ‘Change’ event — signaling that the data has changed — without having to construct the event object itself.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:emit" class="block_link method"><strong>ManagedObject.emit()</strong><br>Emit an event</a>
 <a href="/docs/ref/ManagedObject#ManagedObject:emitChange" class="block_link method"><strong>ManagedObject.emitChange()</strong><br>Emit a change event (instance of <code>ManagedChangeEvent</code>)</a></p>
-<pre><code class="language-typescript"><span class="hljs-keyword">let</span> c = <span class="hljs-keyword">new</span> MyComponent()
+<pre><code class="language-typescript"><span class="hljs-keyword">let</span> c = <span class="hljs-keyword">new</span> MyComponent();
 c.emit(<span class="hljs-keyword">new</span> ManagedEvent(<span class="hljs-string">&quot;Hello&quot;</span>));
-c.emit(<span class="hljs-string">&quot;Hello&quot;</span>);  <span class="hljs-comment">// same thing</span>
+c.emit(<span class="hljs-string">&quot;Hello&quot;</span>); <span class="hljs-comment">// same thing</span>
 c.emitChange();
 </code></pre>
 <h3>Handling events</h3>
@@ -191,8 +184,8 @@ c.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">e<
   <span class="hljs-comment">// ... otherwise, return nothing</span>
 });
 
-c.child.emit(<span class="hljs-string">&quot;Hello&quot;</span>)  <span class="hljs-comment">// propagated on c</span>
-c.child.emitChange()  <span class="hljs-comment">// not propagated on c</span>
+c.child.emit(<span class="hljs-string">&quot;Hello&quot;</span>); <span class="hljs-comment">// propagated on c</span>
+c.child.emitChange(); <span class="hljs-comment">// not propagated on c</span>
 </code></pre>
 <p>You can use the <code>propagateChildEvents</code> callback to take any action before the event is propagated, if at all. This makes it the simplest way to handle events, as long as the event source is referenced through a managed child reference property.</p>
 <blockquote>
@@ -251,8 +244,8 @@ ObservedComponent.addObserver(<span class="hljs-class"><span class="hljs-keyword
 
 <p>To keep track of component references internally, Typescene uses a unique ID that’s assigned to every component instance as soon as it is created. This number is available through the read-only <code>managedId</code> field.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:managedId" class="block_link property"><strong>ManagedObject.managedId</strong><br>Unique object identifier</a></p>
-<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ }
-<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> MyComponent().managedId)  <span class="hljs-comment">// e.g. 16</span>
+<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{}
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> MyComponent().managedId); <span class="hljs-comment">// e.g. 16</span>
 </code></pre>
 <p>The <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>managedState</code></a> field is another read-only component field. This represents the current ‘state’ of the component, i.e. one of the values defined on the <a href="/docs/ref/ManagedState"><code>ManagedState</code></a> enumeration object.</p>
 <p><a href="/docs/ref/ManagedObject#ManagedObject:managedState" class="block_link property"><strong>ManagedObject.managedState</strong><br>The current lifecycle state</a></p>
@@ -315,7 +308,9 @@ button2.label = <span class="hljs-string">&quot;OK&quot;</span>;
 <span class="hljs-keyword">let</span> button1 = <span class="hljs-keyword">new</span> UIButton();
 button1.label = <span class="hljs-string">&quot;Cancel&quot;</span>;
 row.content.add(button1, button2);
-row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> { <span class="hljs-comment">/* etc... */</span> })
+row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+  <span class="hljs-comment">/* etc... */</span>
+});
 </code></pre>
 <p>However, that’s not efficient at all, and especially with more components it’s easy to make mistakes. If event handlers modify components, or add or remove them, it’s difficult to understand what the final result looks like.</p>
 <p>As an alternative, Typescene lets you <em>declare</em> components, before creating any instances using <code>new</code>. A <em>declaration</em> for the row in the example above becomes much simpler:</p>
@@ -324,7 +319,7 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
   { <span class="hljs-attr">height</span>: <span class="hljs-number">48</span> },
   UIPrimaryButton.withLabel(<span class="hljs-string">&quot;OK&quot;</span>),
   UIButton.withLabel(<span class="hljs-string">&quot;Cancel&quot;</span>)
-)
+);
 
 <span class="hljs-keyword">let</span> row = <span class="hljs-keyword">new</span> preset();
 </code></pre>
@@ -337,9 +332,9 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
 <pre><code class="language-typescript"><span class="hljs-keyword">let</span> MyButton = UIButton.with({ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Cancel&quot;</span> });
 
 <span class="hljs-keyword">let</span> btn1 = <span class="hljs-keyword">new</span> MyButton();
-<span class="hljs-built_in">console</span>.log(btn1.label);  <span class="hljs-comment">// =&gt; &quot;Cancel&quot;</span>
+<span class="hljs-built_in">console</span>.log(btn1.label); <span class="hljs-comment">// =&gt; &quot;Cancel&quot;</span>
 <span class="hljs-keyword">let</span> btn2 = <span class="hljs-keyword">new</span> MyButton();
-<span class="hljs-built_in">console</span>.log(btn2.label);  <span class="hljs-comment">// =&gt; &quot;Cancel&quot;</span>
+<span class="hljs-built_in">console</span>.log(btn2.label); <span class="hljs-comment">// =&gt; &quot;Cancel&quot;</span>
 </code></pre>
 <p>However, some properties aren’t just copied. Components can define their own preset logic, but there are two exceptions that are shared by all components: <em>bindings</em> and <em>event handlers</em>.</p>
 <h3>Bindings</h3>
@@ -354,10 +349,10 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
   UICenterRow.with(
     UILabel.with({
       <span class="hljs-attr">text</span>: bind(<span class="hljs-string">&quot;labelText&quot;</span>),
-      <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> }
+      <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> },
     })
   )
-)
+);
 </code></pre>
 <p>This enables the following behavior:</p>
 <ol>
@@ -389,10 +384,10 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
     <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Click me&quot;</span>,
     <span class="hljs-attr">onClick</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
       <span class="hljs-comment">// ... user clicked the button</span>
-      <span class="hljs-built_in">console</span>.log(e.name)  <span class="hljs-comment">// =&gt; &quot;Click&quot;</span>
-    }
+      <span class="hljs-built_in">console</span>.log(e.name); <span class="hljs-comment">// =&gt; &quot;Click&quot;</span>
+    },
   })
-)
+);
 </code></pre>
 <p>However, in practice this not only makes (view) code more difficult to read, but also makes it more likely that business logic finds its way into other parts of the program — something that should generally be avoided.</p>
 <p>Instead, the <code>onClick</code> property may be set to a string in one of the following formats:</p>
@@ -405,17 +400,17 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> view = UIRow.with(
   UIButton.with({
     <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Click me&quot;</span>,
-    <span class="hljs-attr">onClick</span>: <span class="hljs-string">&quot;addCount()&quot;</span>
+    <span class="hljs-attr">onClick</span>: <span class="hljs-string">&quot;addCount()&quot;</span>,
   }),
-  UILabel.withText(
-    bindf(<span class="hljs-string">&quot;You clicked %i times&quot;</span>, <span class="hljs-string">&quot;count&quot;</span>)
-  )
-)
+  UILabel.withText(bindf(<span class="hljs-string">&quot;You clicked %i times&quot;</span>, <span class="hljs-string">&quot;count&quot;</span>))
+);
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
   path = <span class="hljs-string">&quot;/&quot;</span>;
   count = <span class="hljs-number">0</span>;
-  <span class="hljs-function"><span class="hljs-title">addCount</span>(<span class="hljs-params"></span>)</span> { <span class="hljs-built_in">this</span>.count++ }
+  <span class="hljs-function"><span class="hljs-title">addCount</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.count++;
+  }
 }
 </code></pre>
 <h2 id="custom">Custom presets</h2>
@@ -425,16 +420,16 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
 <p>For example, the <code>style</code> property passed to UI components is <em>not</em> directly copied to the resulting component — since that would completely override existing styles. Instead, the given styles are combined with the existing styles of that component.</p>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> styles = UIStyle.group({
   <span class="hljs-attr">red</span>: { <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> } },
-  <span class="hljs-attr">bold</span>: { <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">bold</span>: <span class="hljs-literal">true</span> } }
-})
+  <span class="hljs-attr">bold</span>: { <span class="hljs-attr">textStyle</span>: { <span class="hljs-attr">bold</span>: <span class="hljs-literal">true</span> } },
+});
 
 <span class="hljs-keyword">const</span> MyRedButton = UIButton.with({
   <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;Click me&quot;</span>,
-  <span class="hljs-attr">style</span>: styles.red  <span class="hljs-comment">// red text</span>
-})
+  <span class="hljs-attr">style</span>: styles.red, <span class="hljs-comment">// red text</span>
+});
 <span class="hljs-keyword">const</span> MyBoldRedButton = MyRedButton.with({
-  <span class="hljs-attr">style</span>: styles.bold  <span class="hljs-comment">// red and bold</span>
-})
+  <span class="hljs-attr">style</span>: styles.bold, <span class="hljs-comment">// red and bold</span>
+});
 </code></pre>
 <h3>Overriding preset methods</h3>
 
@@ -458,25 +453,26 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
     <span class="hljs-comment">// for each instance by the new constructor:</span>
     <span class="hljs-keyword">let</span> f = <span class="hljs-built_in">super</span>.preset(args);
     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-built_in">this</span>: UIButton</span>) </span>{
-      f.call(<span class="hljs-built_in">this</span>);  <span class="hljs-comment">// apply default behavior first</span>
+      f.call(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// apply default behavior first</span>
 
       <span class="hljs-comment">// `this` refers to the button instance now</span>
       <span class="hljs-keyword">if</span> (args.fancy) {
         <span class="hljs-built_in">this</span>.label = <span class="hljs-built_in">String</span>(<span class="hljs-built_in">this</span>.label).toUpperCase();
       }
-    }
+    };
   }
 }
 
 <span class="hljs-keyword">let</span> B = MyButton.with({ <span class="hljs-attr">label</span>: <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-attr">fancy</span>: <span class="hljs-literal">true</span> });
 <span class="hljs-keyword">let</span> button = <span class="hljs-keyword">new</span> B();
-<span class="hljs-built_in">console</span>.log(button.label);  <span class="hljs-comment">// =&gt; &quot;A&quot;</span>
+<span class="hljs-built_in">console</span>.log(button.label); <span class="hljs-comment">// =&gt; &quot;A&quot;</span>
 </code></pre>
 <p>Similarly, you can take any content (other arguments passed to <code>with</code>) as an array of constructors, and change or add to the array:</p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRow</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">UIRow</span> </span>{
   <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">preset</span>(<span class="hljs-params">
     args: UICell.Presets,
-    ...content: <span class="hljs-built_in">Array</span>&lt;UIRenderableConstructor | <span class="hljs-literal">undefined</span>&gt;</span>)</span> {
+    ...content: <span class="hljs-built_in">Array</span>&lt;UIRenderableConstructor | <span class="hljs-literal">undefined</span>&gt;
+  </span>)</span> {
     content.reverse();
     <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.preset(args, ...content);
   }
@@ -489,8 +485,8 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
 <p>Bound properties can be limited to a specific set of properties — for example, this is how the <a href="/docs/ref/UIListCellAdapter"><code>UIListCellAdapter</code></a> class enables bindings to the <code>object</code>, <code>value</code>, <code>selected</code>, and <code>hovered</code> properties <em>of the list cell</em> while all other bindings still refer to the previously bound parent component, as illustrated below.</p>
 <pre><code class="language-typescript"><span class="hljs-keyword">const</span> view = UICell.with(
   UIListController.with(
-    { <span class="hljs-attr">items</span>: bind(<span class="hljs-string">&quot;items&quot;</span>) },  <span class="hljs-comment">// a, b, c</span>
-    
+    { <span class="hljs-attr">items</span>: bind(<span class="hljs-string">&quot;items&quot;</span>) }, <span class="hljs-comment">// a, b, c</span>
+
     <span class="hljs-comment">// this class *limits* bindings:</span>
     UIListCellAdapter.with(
       UIRow.with(
@@ -501,12 +497,12 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
       )
     )
   )
-)
+);
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
   path = <span class="hljs-string">&quot;/&quot;</span>;
-  greeting = <span class="hljs-string">&quot;Hello, world!&quot;</span>
-  items = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]
+  greeting = <span class="hljs-string">&quot;Hello, world!&quot;</span>;
+  items = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
 }
 </code></pre>
 <p>The following methods should be used within the <code>preset</code> method if a component accepts further component declarations as arguments to <code>with</code> (similar to <code>UIListCellAdapter</code> above) which may include bindings to properties of the component <em>itself</em>.</p>
@@ -555,8 +551,20 @@ row.propagateChildEvents(<span class="hljs-function">(<span class="hljs-params">
                               
 <h4 class="closed">Guides</h4>
                               <ul>
-                                  <li><a href="/docs/guides/ui/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui/" as="fetch" />
-<li><a href="/docs/guides/layout/">Layout</a></li><link rel="prefetch" href="/docs/guides/layout/" as="fetch" />
+                                  <li><a href="/docs/guides/basics/">Basics</a></li><link rel="prefetch" href="/docs/guides/basics/" as="fetch" />
+<li><a href="/docs/guides/ui-components/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui-components/" as="fetch" />
+<li><a href="/docs/guides/ui-layout/">UI layout</a></li><link rel="prefetch" href="/docs/guides/ui-layout/" as="fetch" />
+<li><a href="/docs/guides/view-composition/">View composition</a></li><link rel="prefetch" href="/docs/guides/view-composition/" as="fetch" />
+<li><a href="/docs/guides/forms/">Forms</a></li><link rel="prefetch" href="/docs/guides/forms/" as="fetch" />
+<li><a href="/docs/guides/modal-views/">Modal views</a></li><link rel="prefetch" href="/docs/guides/modal-views/" as="fetch" />
+<li><a href="/docs/guides/custom-views/">Custom views</a></li><link rel="prefetch" href="/docs/guides/custom-views/" as="fetch" />
+<li><a href="/docs/guides/bindings/">Bindings</a></li><link rel="prefetch" href="/docs/guides/bindings/" as="fetch" />
+<li><a href="/docs/guides/activities/">Activities</a></li><link rel="prefetch" href="/docs/guides/activities/" as="fetch" />
+<li><a href="/docs/guides/applications/">Applications</a></li><link rel="prefetch" href="/docs/guides/applications/" as="fetch" />
+<li><a href="/docs/guides/data-models/">Data models</a></li><link rel="prefetch" href="/docs/guides/data-models/" as="fetch" />
+<li><a href="/docs/guides/services/">Services</a></li><link rel="prefetch" href="/docs/guides/services/" as="fetch" />
+<li><a href="/docs/guides/i18n/">Internationalization</a></li><link rel="prefetch" href="/docs/guides/i18n/" as="fetch" />
+<li><a href="/docs/guides/libs/">Libraries</a></li><link rel="prefetch" href="/docs/guides/libs/" as="fetch" />
                               </ul>
                               
                     </nav>

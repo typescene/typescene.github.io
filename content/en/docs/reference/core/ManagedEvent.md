@@ -12,6 +12,6 @@
 
 # ManagedChangeEvent
 
-#### See Also
+#### Related
 
 `CHANGE`, `ManagedListChangeEvent`

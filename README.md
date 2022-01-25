@@ -8,16 +8,26 @@ This site is fully managed through a Github repository. If you encounter any iss
 
 ### Content Generation
 
-Reference documentation is generated automatically from `.d.ts` files and some additional Markdown content. The documentation generator is located in the `docgen` folder.
+Reference documentation is generated automatically from `.d.ts` files and some additional Markdown content. The documentation generator is located in the `docgen/` folder.
 
-The source code for the search widget is included in the `docwidget` folder.
+The source code for the search widget is included in the `docwidget/` folder.
 
 Static content is built using the [`markdown-pipeline`](https://www.npmjs.com/package/markdown-pipeline) tool, from the following sources:
 
-* Comments and types in Typescene package `.d.ts` files, augmented with Markdown content from the `content/reference` folder. Source code for this documentation generation step is in the `docgen` folder.
-* Search widget, source code in the `docwidget` folder (built separately).
-* Documentation pages, Markdown content in the `content/docs` folder.
-* Guides, Markdown content in the `content/guides` folder.
-* Static assets in the `assets` folder.
-* Home page, with content in `content/index.md` and a special template.
-* 404 page, with content in `content/404.md`
+- Comments and types in Typescene package `.d.ts` files, augmented with Markdown content from the `content/en/docs/reference` folder.
+- Search widget output (built separately).
+- Documentation pages, Markdown content in the `content/en/docs` folder.
+- Guides, Markdown content in the `content/en/guides` folder.
+- Static assets in the `assets/` folder.
+- Home page, with content in `content/en/index.md` and a special template.
+- 404 page, with content in `content/en/404.md`
+
+### Running locally
+
+To test changes to the website, run the following commands and use e.g. `npx serve docs` to serve the website locally.
+
+```
+npm install
+npm run build
+npm run watch
+```

@@ -35,12 +35,16 @@ class PageGenerator {
         // piece all content together
         for (let i = 0; i < this.doc.content.length; i++) {
             let c = this.doc.content[i];
+            // skip constructors (not shown as separate functions)
+            if (c.spec.name === "constructor" &&
+                c.spec.type === DeclarationFileParser_1.SpecNodeType.MethodDeclaration)
+                continue;
             // skip non-root namespace node
             if (c.id === this.doc.id + "." && i > 0)
                 continue;
-            // add horizontal line above all namespaced nodes
-            if (c.spec.namespaced)
-                content.push("---", "");
+            // add horizontal line above next nodes
+            if (i && c.id)
+                content.push("---");
             // add heading with icon and tag(s)
             let icon = "/assets/icons/spec-" + c.spec.type + ".svg";
             let tags = "";
@@ -60,7 +64,7 @@ class PageGenerator {
                     "",
                     c.spec.spec
                         .split("\n")
-                        .map((s) => this._addIdLinks("`" + s + "`"))
+                        .map((s) => this._addIdLinks("`" + s + "`", false))
                         .join("<br>"),
                     "",
                 ]
@@ -68,40 +72,21 @@ class PageGenerator {
                     ? [
                         "",
                         c.spec.inherit
-                            .map((s) => this._addIdLinks("`" + s + "`"))
+                            .map((s) => this._addIdLinks("`" + s + "`", false))
                             .join("<code> </code>"),
                         "",
                     ]
-                    : []));
-            let params = [];
-            let notes = [];
-            for (let d of c.docs) {
-                let txt = this._addIdLinks(d.doc).replace(/\n(?!\n)/g, "\n\n") + "\n\n";
-                switch (d.tag) {
-                    case "param":
-                        params.push(`- \`${d.name}\` — ${txt}`);
-                        break;
-                    case "return":
-                        notes.push(`**Returns:** ${txt}`, "");
-                        break;
-                    case "note":
-                        notes.push(`**Note:** ${txt}`, "");
-                        break;
-                    case "deprecated":
-                        notes.push(`**Deprecated:** ${txt}`, "");
-                        break;
-                    default:
-                        notes.push(txt, "");
-                }
-            }
-            content.push(...params, "", ...notes);
+                    : []), ...this._getDocSectionContent(c.docs));
             // add miscellaneous content
             let misc = this._misc.getContentFor(c.id);
             if (misc) {
                 content.push(this._addIdLinks(misc), "");
             }
             if (c.spec.spec && c.spec.type === DeclarationFileParser_1.SpecNodeType.ClassDeclaration) {
-                content.push("### Constructor", "", this._addIdLinks("`" + c.spec.spec + "`"), "");
+                content.push("### Constructor", "", this._addIdLinks("`" + c.spec.spec + "`", false), "");
+                let constructorMethod = this.doc.content.filter((c) => { var _a; return ((_a = c.spec) === null || _a === void 0 ? void 0 : _a.name) === "constructor"; })[0];
+                if (constructorMethod)
+                    content.push(...this._getDocSectionContent(constructorMethod.docs));
             }
         }
         // add nav and pageintro properties
@@ -109,6 +94,30 @@ class PageGenerator {
         this._addPageIntro();
         // return markdown content itself
         return content;
+    }
+    _getDocSectionContent(docs) {
+        let params = [];
+        let notes = [];
+        for (let d of docs) {
+            let txt = this._addIdLinks(d.doc).replace(/\n(?!\n)/g, "\n\n") + "\n\n";
+            switch (d.tag) {
+                case "param":
+                    params.push(`- \`${d.name}\` — ${txt}`);
+                    break;
+                case "return":
+                    notes.push(`**Returns:** ${txt}`, "");
+                    break;
+                case "note":
+                    notes.push(`**Note:** ${txt}`, "");
+                    break;
+                case "deprecated":
+                    notes.push(`**Deprecated:** ${txt}`, "");
+                    break;
+                default:
+                    notes.push(txt, "");
+            }
+        }
+        return [...params, "", ...notes];
     }
     /** Returns an enhanced version of the name from given spec node that represents its type */
     _getTypedName(spec) {
@@ -157,6 +166,8 @@ class PageGenerator {
             // skip non-root namespace nodes
             if (c.id === this.doc.id + "." && declHeader)
                 continue;
+            if (c.spec.name === "constructor")
+                continue;
             // add subheadings
             if (!inheritHeader && c.spec.inherited) {
                 nav.push("\n  #### Inherited");
@@ -190,11 +201,9 @@ class PageGenerator {
         }
     }
     /** Turn IDs in given string into markdown links */
-    _addIdLinks(str) {
+    _addIdLinks(str, includeNested = true) {
         return str.replace(/`[^`\n]+`/g, (code) => code
-            .replace(
-        // v-- symbols or start,    v-- keywords                          v-- token   v-- brackets
-        /((?:(?:[\:|>,]\s+)|\<|`)(?:extends\s+|implements\s+|typeof\s+)?)([\@\w\.]+(?:\(\))?)(\s+)?/g, (s, impl, token, spaces) => {
+            .replace(/([:|>,=]\s*|\<|`(?:extends|implements)\s+|`|(?:extends|implements|typeof)\s+)([\@\w\.]+(?:\(\))?)(\s+)?/g, (s, impl, token, spaces) => {
             let t = token.replace(/^[\@\.]/, "").replace(/\(\)$/, "");
             spaces = spaces ? "<code>" + spaces + "</code>" : "";
             if (t !== this.doc.id) {
@@ -207,7 +216,8 @@ class PageGenerator {
                         url += navId(t);
                     return `${impl || ""}\`[\`${token}\`](${url})${spaces}\``;
                 }
-                else if (this._parser.isDefined(this.doc.id + "." + t)) {
+                else if (includeNested &&
+                    this._parser.isDefined(this.doc.id + "." + t)) {
                     return `${impl || ""}\`[\`${token}\`](${navId(this.doc.id + "." + t)})${spaces}\``;
                 }
                 else if (s.length === code.length + 2) {

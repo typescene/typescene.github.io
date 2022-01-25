@@ -19,7 +19,7 @@ These articles describe important concepts in detail. Read this to understand th
 
 ### Guides
 
-Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks (in development).
+Choose one of these sections for short and to-the-point guides, with code examples that demonstrate common app development tasks.
 
 - {{nav:content/en/docs/guides/}}
 

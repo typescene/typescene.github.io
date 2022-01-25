@@ -66,222 +66,260 @@
 
 
 <p><code>(content?: </code><a href="/docs/ref/UIContainer"><code>UIContainer</code></a><code>): UIListController</code></p>
+<p>Inherited from <a href="/docs/ref/UIRenderableController#UIRenderableController:constructor"><code>UIRenderableController.constructor</code></a>.</p>
+<hr>
 <h2 id="UIListController:onFocusIn" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onFocusIn() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean</code></p>
+<p><code>(e: </code><a href="/docs/ref/ComponentEvent"><code>ComponentEvent</code></a><code>&lt;</code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;): boolean | void</code></p>
 <p>Handle FocusIn events, saving the index of the focused item or restoring focus on the item that was focused last.</p>
+<hr>
 <h2 id="UIListController:onArrowUpKeyPress" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onArrowUpKeyPress() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(): boolean</code></p>
+<p><code>(): boolean | void</code></p>
 <p>Handle ArrowUpKeyPress events, focusing the previous list item.</p>
+<hr>
 <h2 id="UIListController:onArrowDownKeyPress" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onArrowDownKeyPress() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>(): boolean</code></p>
+<p><code>(): boolean | void</code></p>
 <p>Handle ArrowDownKeyPress events, focusing the next list item.</p>
+<hr>
 <h2 id="UIListController:enableArrowKeyFocus" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.enableArrowKeyFocus</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Set to true to enable selection (focus movement) using up/down arrow keys.</p>
+<hr>
 <h2 id="UIListController:items" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.items</h2>
 
 
 
 <p><a href="/docs/ref/ManagedList"><code>ManagedList</code></a><code>&lt;</code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;</code></p>
 <p>List of objects, each object is used to construct one content component.</p>
+<hr>
 <h2 id="UIListController:firstIndex" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.firstIndex</h2>
 
 
 
 <p><code>number</code></p>
 <p>Index of first item to be shown in the list (for e.g. pagination, or sliding window positioning), defaults to 0.</p>
+<hr>
 <h2 id="UIListController:maxItems" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.maxItems</h2>
 
 
 
 <p><code>number</code></p>
 <p>Maximum number of items to be shown in the list (for e.g. pagination, or sliding window positioning), defaults to <code>undefined</code> to show all items.</p>
+<hr>
 <h2 id="UIListController:lastFocusedIndex" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.lastFocusedIndex</h2>
 
 
 
 <p><code>number</code></p>
 <p>Last focused index, if any.</p>
+<hr>
 <h2 id="UIListController:getIndexOfComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getIndexOfComponent()</h2>
 
 
 
 <p><code>(component?: </code><a href="/docs/ref/Component"><code>Component</code></a><code>): number</code></p>
 <p>Returns the list index of given component, or of the component that it is contained in; or returns -1 if given component is not found in the list.</p>
+<hr>
 <h2 id="UIListController:restoreFocus" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.restoreFocus()</h2>
 
 
 
 <p><code>(): void</code></p>
 <p>Request input focus for the last focused list component, or the first item, if possible.</p>
+<hr>
 <h2 id="UIListController:focusPreviousItem" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.focusPreviousItem()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Request input focus for the item before the currently focused item; returns true if such an item exists, false if the currently focused item is already the first item or there are no items in the list.</p>
+<hr>
 <h2 id="UIListController:focusNextItem" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.focusNextItem()</h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Request input focus for the item after the currently focused item; returns true if such an item exists, false if the currently focused item is already the last item or if there are no items in the list.</p>
+<hr>
 <h2 id="UIListController:renderContext" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.renderContext</h2>
 
 
 
 <p><a href="/docs/ref/UIRenderContext"><code>UIRenderContext</code></a></p>
 <p>Inherited from <a href="/docs/ref/UIRenderableController#UIRenderableController:renderContext"><code>UIRenderableController.renderContext</code></a>.</p>
+<hr>
 <h2 id="UIListController:content" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.content</h2>
 
 
 
 <p><code>TContent</code></p>
 <p>Inherited from <a href="/docs/ref/UIRenderableController#UIRenderableController:content"><code>UIRenderableController.content</code></a>.</p>
+<hr>
 <h2 id="UIListController:delegateEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.delegateEvent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, propertyName: string): true</code></p>
 <p>Inherited from <a href="/docs/ref/UIRenderableController#UIRenderableController:delegateEvent"><code>UIRenderableController.delegateEvent</code></a>.</p>
+<hr>
 <h2 id="UIListController:render" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.render()</h2>
 
 
 
 <p><code>(callback?: RenderCallback&lt;Output&lt;</code><a href="/docs/ref/UIRenderable"><code>UIRenderable</code></a><code>, any&gt;&gt;): void</code></p>
 <p>Inherited from <a href="/docs/ref/UIRenderableController#UIRenderableController:render"><code>UIRenderableController.render</code></a>.</p>
+<hr>
 <h2 id="UIListController:isPresetComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.isPresetComponent() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): boolean</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:isPresetComponent"><code>Component.isPresetComponent</code></a>.</p>
+<hr>
 <h2 id="UIListController:getParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component = Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code> </code><code>= </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getParentComponent"><code>Component.getParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIListController:getBoundParentComponent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getBoundParentComponent()</h2>
 
 
 
-<p><code>&lt;TParent extends Component&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/Component"><code>Component</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ComponentConstructor"><code>ComponentConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:getBoundParentComponent"><code>Component.getBoundParentComponent</code></a>.</p>
+<hr>
 <h2 id="UIListController:emitAction" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitAction()</h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, context?: </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:emitAction"><code>Component.emitAction</code></a>.</p>
+<hr>
 <h2 id="UIListController:propagateComponentEvent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateComponentEvent() <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(name: string, inner?: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>): void</code></p>
 <p>Inherited from <a href="/docs/ref/Component#Component:propagateComponentEvent"><code>Component.propagateComponentEvent</code></a>.</p>
+<hr>
 <h2 id="UIListController:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="UIListController:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="UIListController:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="UIListController:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="UIListController:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="UIListController:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="UIListController:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="UIListController:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="UIListController:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="UIListController:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -294,30 +332,35 @@
 
 
 <p>UIListController presets type, for use with <a href="/docs/ref/Component#Component:with"><code>Component.with</code></a>.</p>
+<hr>
 <h2 id="UIListController:Presets:items" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.items</h2>
 
 
 
 <p><code>Iterable&lt;</code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;</code></p>
 <p>List of items: initial values, or a list binding.</p>
+<hr>
 <h2 id="UIListController:Presets:enableArrowKeyFocus" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.enableArrowKeyFocus</h2>
 
 
 
 <p><code>boolean</code></p>
 <p>Set to true to enable selection (focus movement) using up/down arrow keys.</p>
+<hr>
 <h2 id="UIListController:Presets:firstIndex" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.firstIndex</h2>
 
 
 
 <p><code>number</code></p>
 <p>Index of first item to be shown in the list (for e.g. pagination, or sliding window positioning), defaults to 0.</p>
+<hr>
 <h2 id="UIListController:Presets:maxItems" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.maxItems</h2>
 
 
 
 <p><code>number</code></p>
 <p>Maximum number of items to be shown in the list (for e.g. pagination, or sliding window positioning), defaults to <code>undefined</code> to show all items.</p>
+<hr>
 <h2 id="UIListController:Presets:onListItemsChange" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.onListItemsChange</h2>
 
 

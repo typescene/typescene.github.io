@@ -4,7 +4,6 @@ const { generateDocs } = require("../../docgen/dist");
 const lang_texts = {
   DOCS: "Docs",
   DOC_BACKLINK: "Documentation",
-  DOC_GUIDELINK: "Guide:",
   DOC_GUIDES: "Guides",
   DOC_REF: "Reference",
   DOC_TOC: "Contents",
@@ -51,8 +50,7 @@ module.exports.start = function (pipeline) {
     "docs/concepts/views.md",
     "docs/concepts/activities.md",
     "docs/concepts/services.md",
-    "docs/guides/ui/index.md",
-    "docs/guides/layout/index.md"
+    "docs/guides.md"
   );
 
   // add generated documentation
@@ -62,6 +60,7 @@ module.exports.start = function (pipeline) {
     template: "doc_ref",
     out: "docs/ref",
     json_out: "assets/ref.json",
+    debug_out: "assets/ref.uncompressed.json",
     base_url: "/docs/ref/",
   });
 };

@@ -67,17 +67,46 @@
 
 
 <p><code>(..._data: any[]): AppException</code></p>
+<hr>
+<h2 id="AppException:group" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.group() <span class="spec_tag">static</span></h2>
+
+
+
+<p><code>&lt;CodeStrT extends string&gt;(src: { [code in CodeStrT]: </code><a href="/docs/ref/I18nString"><code>I18nString</code></a><code>; }): { [code in CodeStrT]: ClassType&lt;code&gt;; }</code></p>
+<p>Create an object that contains multiple <code>AppException</code> classes, indexed by code. Given messages must be of type <a href="/docs/ref/I18nString"><code>I18nString</code></a>, i.e. the result of a call to <a href="/docs/ref/strf"><code>strf()</code></a>, to allow dynamic localization when the error object is created.</p>
+<hr>
 <h2 id="AppException:type" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.type() <span class="spec_tag">static</span></h2>
 
 
 
-<p><code>(code: string, message: string): { new (data?: string | number): AppException; code: string; }</code></p>
-<p>Create an <code>AppException</code> class that sets given code and message when instantiated. Given message is formatted using <a href="/docs/ref/strf"><code>strf</code></a> when an error object is created, with constructor parameters passed through as values.</p>
+<p><code>(code: string, message: string | { toString(): string; }): ClassType&lt;string&gt;</code></p>
+<p>Create an <code>AppException</code> class that sets given code and message when instantiated. Given message is formatted (as if used in a call to <a href="/docs/ref/strf"><code>strf</code></a>) each time an error object is created, with constructor parameters passed through as values.</p>
+<hr>
 <h2 id="AppException:code" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.code <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>string</code></p>
+<p>Known error code for all instances of this error; should be checked instead of using the <code>instanceof</code> operator.</p>
+<hr>
+<h2 id="AppException:message" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.message <span class="spec_tag">abstract</span></h2>
+
+
+
+<p><code>string</code></p>
+<p>Error message, generated using <a href="/docs/ref/I18nString"><code>I18nString</code></a> from the error message that was specified when this error type was created, and constructor argument(s), if any.</p>
+<hr>
+<h2 id="AppException:ClassType" class="spec"><img src="/assets/icons/spec-interface.svg" alt="">AppException.ClassType</h2>
+
+
+
+<p>Type definition for a class that is created using <a href="/docs/ref/AppException#AppException:type"><code>AppException.type</code></a>, which can be used to construct error instances with a particular code (string).</p>
+<hr>
+<h2 id="AppException:ClassType:code" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.code</h2>
+
+
+
+<p><code>CodeT</code></p>
 <p>Known error code for all instances of this error; should be checked instead of using the <code>instanceof</code> operator.</p>
 
         </div>
@@ -89,8 +118,15 @@
                         <h4 id="declarations">Declarations</h4>
 <ul>
 <li><a href="#AppException"><strong>class AppException</strong></a></li>
+<li><a href="#AppException:group">.group()</a></li>
 <li><a href="#AppException:type">.type()</a></li>
 <li><a href="#AppException:code">.code</a></li>
+<li><a href="#AppException:message">.message</a></li>
+</ul>
+<h4 id="namespaced">Namespaced</h4>
+<ul>
+<li><a href="#AppException:ClassType"><strong>AppException.ClassType</strong></a></li>
+<li><a href="#AppException:ClassType:code">.code</a></li>
 </ul>
 
                     </nav>

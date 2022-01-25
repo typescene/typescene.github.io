@@ -287,7 +287,7 @@ class DeclarationFileParser {
             node.heritageClauses && node.heritageClauses.map((cl) => cl.getText());
         // add constructor spec
         result.spec = signaturesToString(typeSymbol.getConstructSignatures(), this.checker);
-        // add all members as nested documenation nodes
+        // add all members as nested documentation nodes
         result.nodes = flatten(node.members.map((node) => this._recurse(id, node)));
         return result;
     }
@@ -312,16 +312,32 @@ class DeclarationFileParser {
         result.nodes = flatten(node.getChildren().map((node) => this._recurse(id, node)));
         return result;
     }
+    /** Produce a `SpecNode` for a class constructor */
+    _createConstructorSpecNode(id, node) {
+        // check if node already exists
+        id += ".constructor";
+        if (this._nodes[id])
+            return;
+        // create a spec node and add JSDoc text/tags
+        let result = (this._nodes[id] = new SpecNode(id, "constructor", SpecNodeType.MethodDeclaration));
+        let docnode = node.symbol.getDocumentationComment(this.checker);
+        this._addDocumentation(result, displayPartsToString(docnode));
+        ts.getJSDocTags(node).forEach((tag) => this._addDocumentation(result, tag));
+        result.protectedModifier = this._hasModifier(node, "protected");
+        result.staticModifier = this._hasModifier(node, "static");
+        result.abstractModifier = this._hasModifier(node, "abstract");
+        return result;
+    }
     /** Produce a `SpecNode` for given method declaration */
     _createMethodSpecNode(id, node) {
         let symbol = node.name && this.checker.getSymbolAtLocation(node.name);
-        let typeSymbol = symbol &&
-            symbol.valueDeclaration &&
-            this.checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
+        let typeSymbol = symbol && this.checker.getTypeOfSymbolAtLocation(symbol, node);
         if (!symbol || !typeSymbol)
             return;
         // check if node already exists
         let name = symbol.getName();
+        if (name.startsWith("__@iterator"))
+            name = "[Iterator]";
         id += (id ? "." : "") + name;
         if (this._nodes[id] &&
             this._nodes[id].type === SpecNodeType.MethodDeclaration)
@@ -420,6 +436,8 @@ class DeclarationFileParser {
             case ts.SyntaxKind.NamespaceExportDeclaration:
             case ts.SyntaxKind.ModuleDeclaration:
                 return this._createNamespaceSpecNode(id, node);
+            case ts.SyntaxKind.Constructor:
+                return this._createConstructorSpecNode(id, node);
             case ts.SyntaxKind.MethodDeclaration:
             case ts.SyntaxKind.MethodSignature:
                 return this._createMethodSpecNode(id, node);

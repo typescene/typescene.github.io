@@ -38,7 +38,7 @@ export class Application extends Component {
 
 # bind
 
-#### See Also
+#### Related
 
 `bindf`, `Binding.addFilter` (includes a list of available filters)
 
@@ -46,6 +46,6 @@ export class Application extends Component {
 
 # bindf
 
-#### See Also
+#### Related
 
 `bind`, `Binding.addFilter` (includes a list of available filters)

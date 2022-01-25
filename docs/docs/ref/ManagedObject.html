@@ -65,6 +65,8 @@
 
 
 <p><code>(): ManagedObject</code></p>
+<p>Create a new managed object instance.</p>
+<hr>
 <h2 id="ManagedObject:addObserver" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addObserver() <span class="spec_tag">static</span></h2>
 
 
@@ -87,18 +89,21 @@
 </li>
 </ul>
 <p><strong>Note:</strong> Observer classes may be nested inside of the observed class, which provides access to private and protected methods; see <a href="/docs/ref/_observe"><code>@observe</code></a>.</p>
+<hr>
 <h2 id="ManagedObject:addEventHandler" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.addEventHandler() <span class="spec_tag">static</span></h2>
 
 
 
 <p><code>&lt;T extends ManagedObject&gt;(this: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;T&gt;, handler: (this: T, e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; void): </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;T&gt;</code></p>
 <p>Attach an event handler function, to be invoked for all events that are emitted <em>on all instances</em> of this class <em>and</em> derived classes. Given function is invoked in the context (<code>this</code> variable) of the emitting object, with the emitted event as a single parameter.</p>
+<hr>
 <h2 id="ManagedObject:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Unique ID of this managed object (read only).</p>
+<hr>
 <h2 id="ManagedObject:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
@@ -107,6 +112,7 @@
 <p>The current lifecycle state of this managed object.</p>
 <p><strong>Note:</strong> This property is read-only. To change the state of a managed object (i.e. to move its lifecycle between active/inactive and destroyed states), use the <a href="#ManagedObject:activateManagedAsync"><code>activateManagedAsync</code></a>, <a href="#ManagedObject:deactivateManagedAsync"><code>deactivateManagedAsync</code></a>, and <a href="#ManagedObject:destroyManagedAsync"><code>destroyManagedAsync</code></a> methods. If any additional logic is required when moving between states, override the <a href="#ManagedObject:onManagedStateActivatingAsync"><code>onManagedStateActivatingAsync</code></a>, <a href="#ManagedObject:onManagedStateActiveAsync"><code>onManagedStateActiveAsync</code></a>, <a href="#ManagedObject:onManagedStateDeactivatingAsync"><code>onManagedStateDeactivatingAsync</code></a>, <a href="#ManagedObject:onManagedStateInactiveAsync"><code>onManagedStateInactiveAsync</code></a> and/or <a href="#ManagedObject:onManagedStateDestroyingAsync"><code>onManagedStateDestroyingAsync</code></a> methods in any class that derives from <code>ManagedObject</code>.</p>
 <p><strong>Note:</strong> This property <em>cannot</em> be observed directly. Observer classes (see <a href="#ManagedObject:addObserver"><code>addObserver</code></a>) should use methods such as <code>onActive</code> to observe lifecycle state.</p>
+<hr>
 <h2 id="ManagedObject:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
@@ -114,12 +120,14 @@
 <p><code>(): number</code></p>
 <p>Returns the current number of managed references that point to this object.</p>
 <p><strong>Note:</strong> Observers (see <a href="#ManagedObject:addObserver"><code>addObserver</code></a>) may use an <code>onReferenceCountChangeAsync</code> method to observe this value asynchronously.</p>
+<hr>
 <h2 id="ManagedObject:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): ManagedObject[]</code></p>
 <p>Returns an array of unique managed objects that contain managed references to this object (see <a href="/docs/ref/_managed"><code>@managed</code></a>, <a href="/docs/ref/_managedChild"><code>@managedChild</code></a>, and <a href="/docs/ref/_component"><code>@component</code></a> decorators).</p>
+<hr>
 <h2 id="ManagedObject:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
@@ -129,20 +137,23 @@
 <p>If a class argument is specified, parent references are recursed until a parent of given type is found.</p>
 <p>The object itself is never returned, even if it contains a managed child reference that points to itself.</p>
 <p><strong>Note:</strong> The reference to the managed parent (but not its events) can be observed (see <a href="#ManagedObject:addObserver"><code>addObserver</code></a>) using an <code>onManagedParentChange</code> or <code>onManagedParentChangeAsync</code> method on the observer.</p>
+<hr>
 <h2 id="ManagedObject:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Emit an event. If an event constructor is given, a new instance is created using given constructor arguments (rest parameters). If an event name (string) is given, a new plain event is created with given name.</p>
 <p>For ways to handle events, see <a href="/docs/ref/_delegateEvents"><code>@delegateEvents</code></a> (for events that are emitted by referenced objects) or <a href="/docs/ref/ManagedObject#ManagedObject:addEventHandler"><code>ManagedObject.addEventHandler</code></a> and <a href="/docs/ref/ManagedObject#ManagedObject:addObserver"><code>ManagedObject.addObserver</code></a> (static methods for class-based event handling).</p>
 <p><strong>Note:</strong> There is a limit to the number of events that can be emitted recursively; avoid calling this method on the same object from <em>within</em> a synchronous event handler.</p>
+<hr>
 <h2 id="ManagedObject:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Emit a change event (see <a href="/docs/ref/ManagedChangeEvent"><code>ManagedChangeEvent</code></a>), to signal that the internal state of the emitting object has changed. The <code>name</code> parameter is optional; if left out, the <a href="/docs/ref/CHANGE"><code>CHANGE</code></a> event (instance) is emitted directly.</p>
+<hr>
 <h2 id="ManagedObject:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
@@ -150,18 +161,21 @@
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Propagate events from managed child objects that are <em>referenced</em> as properties of this object (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> and <a href="/docs/ref/_component"><code>@component</code></a> decorators) by emitting the same events on this object itself.</p>
 <p><strong>Deprecated:</strong> in favor of <a href="/docs/ref/_delegateEvents"><code>@delegateEvents</code></a> since version 3.1.</p>
+<hr>
 <h2 id="ManagedObject:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Activate this object (i.e. change state to <code>ManagedState.ACTIVATING</code> and then to <code>ManagedState.ACTIVATED</code>); the <a href="#ManagedObject:onManagedStateActivatingAsync"><code>onManagedStateActivatingAsync</code></a> and <a href="#ManagedObject:onManagedStateActiveAsync"><code>onManagedStateActiveAsync</code></a> methods are called in this process.</p>
+<hr>
 <h2 id="ManagedObject:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Deactivate this object, if it is currently active (i.e. change state to <code>ManagedState.DEACTIVATING</code> and then to <code>ManagedState.DEACTIVATED</code>); the <a href="#ManagedObject:onManagedStateDeactivatingAsync"><code>onManagedStateDeactivatingAsync</code></a> and <a href="#ManagedObject:onManagedStateInactiveAsync"><code>onManagedStateInactiveAsync</code></a> methods are called in this process.</p>
+<hr>
 <h2 id="ManagedObject:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
@@ -169,30 +183,35 @@
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Destroy this managed object (i.e. change state to <code>ManagedState.DESTROYING</code> and then to <code>ManagedState.DESTROYED</code>, clear all managed references from and to this object, and destroy all managed children); the <a href="#ManagedObject:onManagedStateDestroyingAsync"><code>onManagedStateDestroyingAsync</code></a> method is called in the process.</p>
 <p><strong>Note:</strong> Managed child objects are automatically destroyed when [1] their parent’s reference (decorated with <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> or <a href="/docs/ref/_component"><code>@component</code></a>) is cleared or otherwise changed, or [2] the child object is removed from a managed list or map that is itself a managed child, or [3] when the parent object itself is destroyed.</p>
+<hr>
 <h2 id="ManagedObject:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Callback invoked when changing state to ‘active’, can be overridden to perform any actions before activating.</p>
+<hr>
 <h2 id="ManagedObject:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Callback invoked immediately after state has changed to ‘active’ and before any other state transitions, can be overridden.</p>
+<hr>
 <h2 id="ManagedObject:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Callback invoked when changing state to ‘inactive’, can be overridden to perform any actions before deactivating.</p>
+<hr>
 <h2 id="ManagedObject:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Callback invoked immediately after state has changed to ‘inactive’ and before any other state transitions, can be overridden.</p>
+<hr>
 <h2 id="ManagedObject:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 

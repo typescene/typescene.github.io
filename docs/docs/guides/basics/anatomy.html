@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Get started with an overview of a simple Typescene application.
+">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typescene - Understanding the anatomy of an app</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96048899-3');
+    </script>
+    <!-- end GA -->
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
+    <link rel="canonical" href="https://typescene.dev/docs/guides/basics/anatomy">
+</head>
+<body>
+    <nav class="topnav">
+        <section class="wrapper">
+            <a href="/" class="logo_link">
+                <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+                <span class="topnav_title">Typescene</span>
+            </a>
+            <ul class="topnav_links">
+                <li><a href="#" onclick="return showDocWidget()"><img src="/assets/icons/search-reverse.svg" alt="" width=16 style="position: relative; top: .125rem">&nbsp; Docs</a></li>
+                <li class="hide_small"><a href="https://github.com/typescene/typescene" target="_blank" rel="noopener">Github</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs">Documentation</a>
+          &nbsp;|&nbsp;
+          Guides
+          &gt;
+          <a href="/docs/guides/basics/index.html">
+              Basics
+          </a>
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page wrapper--guide">
+    <div class="pagetitle_container">
+        <h1>Understanding the anatomy of an app</h1>
+        <p class="style--pageintro">Get started with an overview of a simple Typescene application.
+</p>
+    </div>
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper--guide_content">
+            <section>
+
+<p><strong>Note:</strong><br>
+For a more in-depth explanation, start with this introductory article about the Typescene framework.</p>
+</section>
+
+<p><a href="/docs/introduction" class="block_link doc"><strong>Overview &gt; Introduction</strong><br>Start here for an in-depth explanation of the Typescene framework</a></p>
+<hr>
+<section>
+
+<h3>A simple app</h3>
+
+
+<p>This is a simple Typescene application. It has three parts:</p>
+<ul>
+<li>The <strong>view</strong> describes the UI as a set of nested components.</li>
+<li>The <strong>activity</strong> represents the current state. It displays and updates the view, and handles events.</li>
+<li>The <strong>application</strong> coordinates rendering and navigation.</li>
+</ul>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// simple-app.ts</span>
+
+<span class="hljs-comment">// Part 1 - View:</span>
+<span class="hljs-keyword">const</span> view = UICell.with(
+  UILabel.with({
+    <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Click me!&quot;</span>,
+  })
+);
+
+<span class="hljs-comment">// Part 2 - Activity:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
+  <span class="hljs-comment">// The current state:</span>
+  timesClicked = <span class="hljs-number">0</span>;
+
+  <span class="hljs-comment">// Event handler:</span>
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.timesClicked++;
+    alert(<span class="hljs-string">&quot;You clicked &quot;</span> + <span class="hljs-built_in">this</span>.timesClicked + <span class="hljs-string">&quot; time(s).&quot;</span>);
+  }
+}
+
+<span class="hljs-comment">// Part 3 - Application:</span>
+<span class="hljs-keyword">const</span> app = BrowserApplication.run(
+  MyActivity
+  <span class="hljs-comment">/* , ... add more activities here ... */</span>
+);
+</code></pre>
+<hr>
+<section>
+
+<h3>JSX files</h3>
+
+
+<p>Typescene also supports ‘JSX’-style syntax for views. This makes views look like HTML, but under the hood each tag is simply translated to a method call.</p>
+<p>The file extension for a JavaScript or TypeScript file containing JSX views <strong>must</strong> be <code>jsx</code> or <code>tsx</code>, respectively. When starting a new project, you’ll need to decide between JSX and pure JS/TS views.</p>
+</section>
+
+<pre><code class="language-jsx"><span class="hljs-comment">// simple-app.tsx</span>
+
+<span class="hljs-comment">// Part 1 - View in JSX (optional)</span>
+<span class="hljs-keyword">const</span> view = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">cell</span>&gt;</span></span>
+);
+
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<hr>
+<footer>
+
+<h3>Next</h3>
+
+
+<p><a class="block_link guide" href="/docs/guides/basics/anatomy-views"><strong>Understanding views</strong><br>Learn how user interfaces are described using view components.
+</a></p>
+<p><a class="block_link guide" href="/docs/guides/basics/anatomy-events"><strong>Understanding events</strong><br>Learn how events can be used in views and other components.
+</a></p>
+<p><a class="block_link guide" href="/docs/guides/basics/anatomy-data"><strong>Understanding data models</strong><br>Learn how to model data using records and lists.
+</a></p>
+</footer>
+
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />
+
+    <footer class="footer">
+        <section class="wrapper">
+            <div class="wrapper_columns">
+                <div class="wrapper_column">
+                    © Copyright 2021 Typescene contributors
+                </div>
+                <div class="wrapper_column wrapper_column--oppose style--light">
+                    Find Typescene on
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a> and
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/assets/default.js"></script>
+    <script src="/assets/docwidget.js"></script>
+</body>
+</html>

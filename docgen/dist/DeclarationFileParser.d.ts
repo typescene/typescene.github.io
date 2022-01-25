@@ -78,6 +78,8 @@ export declare class DeclarationFileParser {
     private _createClassSpecNode;
     /** Produce a `SpecNode` for given interface declaration */
     private _createInterfaceSpecNode;
+    /** Produce a `SpecNode` for a class constructor */
+    private _createConstructorSpecNode;
     /** Produce a `SpecNode` for given method declaration */
     private _createMethodSpecNode;
     /** Produce a `SpecNode` for given property declaration */

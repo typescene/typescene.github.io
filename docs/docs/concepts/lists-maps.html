@@ -61,22 +61,20 @@
 
 <p>In JavaScript, creating a list of values is a simple task. Arrays hold any type of data, and they are easily created using the <code>[</code> and <code>]</code> operators, so they are usually the best solution if you need to iterate (loop) over a set of values.</p>
 <pre><code class="language-typescript"><span class="hljs-keyword">let</span> data = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
-data.forEach(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> { <span class="hljs-built_in">console</span>.log(d) });
+data.forEach(<span class="hljs-function">(<span class="hljs-params">d</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(d);
+});
 </code></pre>
 <p>In a front-end framework however, JavaScript arrays cause some issues. For one, their values are not checked: they might include a mix of strings, numbers, objects, and other types of values. Any value can be assigned to <em>any</em> array index at any time. This means that they may include duplicates, undefined values, and <em>gaps</em> (which occur when a certain array index is not set at all, which is not the same as setting the array property to <code>undefined</code>).</p>
 <p>Therefore, Typescene implements two different types of lists of its own, which are much stricter about their contents than regular JavaScript arrays and objects.</p>
 <p><a href="/docs/ref/ManagedList" class="block_link class"><strong>ManagedList</strong><br>Represents an ordered set of components</a>
 <a href="/docs/ref/ManagedList" class="block_link class"><strong>ManagedMap</strong><br>Represents a set of components that are indexed using a string value</a></p>
-<pre><code class="language-typescript"><span class="hljs-keyword">let</span> list = <span class="hljs-keyword">new</span> ManagedList(
-  <span class="hljs-keyword">new</span> Component(),
-  <span class="hljs-keyword">new</span> Component(),
-  <span class="hljs-keyword">new</span> Component()
-);
+<pre><code class="language-typescript"><span class="hljs-keyword">let</span> list = <span class="hljs-keyword">new</span> ManagedList(<span class="hljs-keyword">new</span> Component(), <span class="hljs-keyword">new</span> Component(), <span class="hljs-keyword">new</span> Component());
 <span class="hljs-keyword">let</span> first = list.first();
 <span class="hljs-keyword">let</span> second = list.get(<span class="hljs-number">1</span>);
 <span class="hljs-keyword">let</span> third = list.last();
 
-<span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> ManagedMap()
+<span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> ManagedMap();
 map.set(<span class="hljs-string">&quot;One&quot;</span>, <span class="hljs-keyword">new</span> ManagedList());
 <span class="hljs-keyword">let</span> one = map.get(<span class="hljs-string">&quot;One&quot;</span>);
 </code></pre>
@@ -87,14 +85,14 @@ map.set(<span class="hljs-string">&quot;One&quot;</span>, <span class="hljs-keyw
 <p>The <code>restrict</code> method on both lists and maps restricts the type of component objects that can be added to the list — ensuring that all items in the list/map are instantiated by a particular class (or sub class).</p>
 <p><a href="/docs/ref/ManagedList#ManagedList:restrict" class="block_link method"><strong>ManagedList.restrict()</strong><br>Restrict objects within this list to be of a given type (class)</a>
 <a href="/docs/ref/ManagedMap#ManagedMap:restrict" class="block_link method"><strong>ManagedMap.restrict()</strong><br>Restrict objects within this map to be of a given type (class)</a></p>
-<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ }
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SameComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyComponent</span> </span>{ }
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OtherComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ }
+<pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SameComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyComponent</span> </span>{}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OtherComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{}
 
 <span class="hljs-keyword">let</span> list = <span class="hljs-keyword">new</span> ManagedList().restrict(MyComponent);
-list.add(<span class="hljs-keyword">new</span> MyComponent());  <span class="hljs-comment">// OK</span>
-list.add(<span class="hljs-keyword">new</span> SameComponent());  <span class="hljs-comment">// OK</span>
-list.add(<span class="hljs-keyword">new</span> OtherComponent());  <span class="hljs-comment">// ERROR</span>
+list.add(<span class="hljs-keyword">new</span> MyComponent()); <span class="hljs-comment">// OK</span>
+list.add(<span class="hljs-keyword">new</span> SameComponent()); <span class="hljs-comment">// OK</span>
+list.add(<span class="hljs-keyword">new</span> OtherComponent()); <span class="hljs-comment">// ERROR</span>
 </code></pre>
 <h3>Nested lists/maps</h3>
 
@@ -115,24 +113,24 @@ list.add(<span class="hljs-keyword">new</span> OtherComponent());  <span class="
 
 
 <p>Often, components within a list should be considered to be fully ‘contained’ by the component that includes the list itself — for example in the case of a row of buttons on screen, the buttons certainly belong to the row; moving or removing the row should also move the buttons within. Similarly, a list of addresses may ‘belong’ to a contact record.</p>
-<p>For this reason, component lists/maps extend parent-child relationships to all components within the list, <em>if</em> the list itself is assigned to a property marked with <a href="/docs/ref/managedChild"><code>@managedChild</code></a> (refer to  <a href="/docs/concepts/components">Components</a> for details on how this property decorator works).</p>
+<p>For this reason, component lists/maps extend parent-child relationships to all components within the list, <em>if</em> the list itself is assigned to a property marked with <a href="/docs/ref/managedChild"><code>@managedChild</code></a> (refer to <a href="/docs/concepts/components">Components</a> for details on how this property decorator works).</p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonAddress</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
   <span class="hljs-attr">street</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-comment">// ... etc. </span>
+  <span class="hljs-comment">// ... etc.</span>
 }
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonContact</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
   <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
   <span class="hljs-comment">// ... etc.</span>
-  
+
   <span class="hljs-meta">@managedChild</span>
   addresses = <span class="hljs-keyword">new</span> ManagedList().restrict(PersonAddress);
 }
 
 <span class="hljs-keyword">let</span> contact = <span class="hljs-keyword">new</span> PersonContact();
-<span class="hljs-keyword">let</span> address = <span class="hljs-keyword">new</span> PersonAddress(); <span class="hljs-comment">//  ... etc  </span>
+<span class="hljs-keyword">let</span> address = <span class="hljs-keyword">new</span> PersonAddress(); <span class="hljs-comment">//  ... etc</span>
 contact.addresses.add(address);
-contact.addresses.first().getParentComponent()  <span class="hljs-comment">// contact</span>
+contact.addresses.first().getParentComponent(); <span class="hljs-comment">// contact</span>
 </code></pre>
 <h3>Weak parent-child references</h3>
 
@@ -142,9 +140,7 @@ contact.addresses.first().getParentComponent()  <span class="hljs-comment">// co
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonContact</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
   <span class="hljs-comment">// ...</span>
   <span class="hljs-meta">@managedChild</span>
-  colleagues = <span class="hljs-keyword">new</span> ManagedList()
-    .restrict(PersonContact)
-    .weakRef();
+  colleagues = <span class="hljs-keyword">new</span> ManagedList().restrict(PersonContact).weakRef();
 }
 </code></pre>
 <blockquote>
@@ -166,18 +162,20 @@ list.add(<span class="hljs-keyword">new</span> MyComponent());
 <span class="hljs-comment">// insert an item *before* `b`</span>
 list.insert(<span class="hljs-keyword">new</span> MyComponent(), b);
 </code></pre>
-<p><a href="/docs/ref/ManagedList#ManagedList:add" class="block_link method"><strong>ManagedList.add()</strong><br>Add one or more objects (or managed lists or maps) to the end of this list</a>
+<p><a href="/docs/ref/ManagedList#ManagedList:add" class="block*link method"><strong>ManagedList.add()</strong><br>Add one or more objects (or managed lists or maps) to the end of this list</a>
 <a href="/docs/ref/ManagedList#ManagedList:insert" class="block_link method"><strong>ManagedList.insert()</strong><br>Insert an object before another object in this list</a>
 <a href="/docs/ref/ManagedList#ManagedList:remove" class="block_link method"><strong>ManagedList.remove()</strong><br>Remove an object from this list</a>
 <a href="/docs/ref/ManagedList#ManagedList:clear" class="block_link method"><strong>ManagedList.clear()</strong><br>Remove all objects from this list</a>
 <a href="/docs/ref/ManagedList#ManagedList:splice" class="block_link method"><strong>ManagedList.splice()</strong><br>Add and/or remove objects at the same time</a>
-<a href="/docs/ref/ManagedList#ManagedList:replace" class="block_link method"><strong>ManagedList.replace()</strong><br>Replace <em>all</em> items in this list with a given set of new items, in one go</a></p>
+<a href="/docs/ref/ManagedList#ManagedList:replace" class="block_link method"><strong>ManagedList.replace()</strong><br>Replace _all* items in this list with a given set of new items, in one go</a></p>
 <h3>Iteration</h3>
 
 
 <p>You can loop over all objects in a list using a standard <code>for...of</code> statement.</p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> s: <span class="hljs-built_in">string</span></span>)</span> { <span class="hljs-built_in">super</span>() }
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> s: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">super</span>();
+  }
 }
 <span class="hljs-keyword">let</span> list = <span class="hljs-keyword">new</span> ManagedList(
   <span class="hljs-keyword">new</span> SomeComponent(<span class="hljs-string">&quot;a&quot;</span>),
@@ -207,16 +205,16 @@ list.insert(<span class="hljs-keyword">new</span> MyComponent(), b);
 <p><a href="/docs/ref/ManagedList#ManagedList:propagateEvents" class="block_link method"><strong>ManagedList.propagateEvents()</strong><br>Propagate events from all objects in this list</a></p>
 <pre><code class="language-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonContact</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
   <span class="hljs-meta">@managed</span>
-  friends = <span class="hljs-keyword">new</span> ManagedList()
-    .restrict(PersonContact)
-    .propagateEvents();
+  friends = <span class="hljs-keyword">new</span> ManagedList().restrict(PersonContact).propagateEvents();
 }
-PersonContact.addObserver(<span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> contact: PersonContact</span>)</span> { }
-  <span class="hljs-function"><span class="hljs-title">onFriendsChange</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-comment">// ...[1] </span>
+PersonContact.addObserver(
+  <span class="hljs-class"><span class="hljs-keyword">class</span> </span>{
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> contact: PersonContact</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">onFriendsChange</span>(<span class="hljs-params"></span>)</span> {
+      <span class="hljs-comment">// ...[1]</span>
+    }
   }
-})
+);
 </code></pre>
 <p>In the code above, the <code>onFriendsChange</code> method [1] is called when:</p>
 <ul>
@@ -244,17 +242,17 @@ PersonContact.addObserver(<span class="hljs-class"><span class="hljs-keyword">cl
     { <span class="hljs-attr">items</span>: bind(<span class="hljs-string">&quot;items&quot;</span>) },
     UIListCellAdapter.with(
       UIRow.with(
-        UILabel.with(bind(<span class="hljs-string">&quot;value&quot;</span>))  <span class="hljs-comment">// a, b, c</span>
+        UILabel.with(bind(<span class="hljs-string">&quot;value&quot;</span>)) <span class="hljs-comment">// a, b, c</span>
       )
     )
   )
-)
+);
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PageViewActivity</span>.<span class="hljs-title">with</span>(<span class="hljs-title">view</span>) </span>{
   <span class="hljs-comment">// ...</span>
-  
+
   <span class="hljs-comment">// plain array elements get converted:</span>
-  items = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]
+  items = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
 }
 </code></pre>
 <h2 id="maps">Maps</h2>
@@ -290,7 +288,7 @@ map.set(<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-keywor
 map.forEach(<span class="hljs-function">(<span class="hljs-params">key, component</span>) =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(key + <span class="hljs-string">&quot;: &quot;</span> + component.s);
   <span class="hljs-comment">// =&gt; 1: One</span>
-  <span class="hljs-comment">// ...etc </span>
+  <span class="hljs-comment">// ...etc</span>
 }
 </code></pre>
 <h3>Events</h3>
@@ -344,8 +342,20 @@ map.forEach(<span class="hljs-function">(<span class="hljs-params">key, componen
                               
 <h4 class="closed">Guides</h4>
                               <ul>
-                                  <li><a href="/docs/guides/ui/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui/" as="fetch" />
-<li><a href="/docs/guides/layout/">Layout</a></li><link rel="prefetch" href="/docs/guides/layout/" as="fetch" />
+                                  <li><a href="/docs/guides/basics/">Basics</a></li><link rel="prefetch" href="/docs/guides/basics/" as="fetch" />
+<li><a href="/docs/guides/ui-components/">UI components</a></li><link rel="prefetch" href="/docs/guides/ui-components/" as="fetch" />
+<li><a href="/docs/guides/ui-layout/">UI layout</a></li><link rel="prefetch" href="/docs/guides/ui-layout/" as="fetch" />
+<li><a href="/docs/guides/view-composition/">View composition</a></li><link rel="prefetch" href="/docs/guides/view-composition/" as="fetch" />
+<li><a href="/docs/guides/forms/">Forms</a></li><link rel="prefetch" href="/docs/guides/forms/" as="fetch" />
+<li><a href="/docs/guides/modal-views/">Modal views</a></li><link rel="prefetch" href="/docs/guides/modal-views/" as="fetch" />
+<li><a href="/docs/guides/custom-views/">Custom views</a></li><link rel="prefetch" href="/docs/guides/custom-views/" as="fetch" />
+<li><a href="/docs/guides/bindings/">Bindings</a></li><link rel="prefetch" href="/docs/guides/bindings/" as="fetch" />
+<li><a href="/docs/guides/activities/">Activities</a></li><link rel="prefetch" href="/docs/guides/activities/" as="fetch" />
+<li><a href="/docs/guides/applications/">Applications</a></li><link rel="prefetch" href="/docs/guides/applications/" as="fetch" />
+<li><a href="/docs/guides/data-models/">Data models</a></li><link rel="prefetch" href="/docs/guides/data-models/" as="fetch" />
+<li><a href="/docs/guides/services/">Services</a></li><link rel="prefetch" href="/docs/guides/services/" as="fetch" />
+<li><a href="/docs/guides/i18n/">Internationalization</a></li><link rel="prefetch" href="/docs/guides/i18n/" as="fetch" />
+<li><a href="/docs/guides/libs/">Libraries</a></li><link rel="prefetch" href="/docs/guides/libs/" as="fetch" />
                               </ul>
                               
                     </nav>

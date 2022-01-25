@@ -66,18 +66,29 @@
 
 
 <p><code>(format: string | { toString(): string; }, values?: any[]): I18nString</code></p>
+<p>Create a new encapsulated string; should not be used directly, see <a href="/docs/ref/strf"><code>strf()</code></a> instead.</p>
+<hr>
 <h2 id="I18nString:format" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.format</h2>
 
 
 
 <p><code>{ toString(): string; }</code></p>
 <p>Original format string.</p>
+<hr>
 <h2 id="I18nString:text" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.text</h2>
 
 
 
 <p><code>string</code></p>
 <p>Translated format string, if any.</p>
+<hr>
+<h2 id="I18nString:toString" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.toString()</h2>
+
+
+
+<p><code>(): string</code></p>
+<p>Returns the resulting string.</p>
+<hr>
 <h2 id="I18nString:update" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.update()</h2>
 
 
@@ -96,6 +107,7 @@
 <li><a href="#I18nString"><strong>class I18nString</strong></a></li>
 <li><a href="#I18nString:format">.format</a></li>
 <li><a href="#I18nString:text">.text</a></li>
+<li><a href="#I18nString:toString">.toString()</a></li>
 <li><a href="#I18nString:update">.update()</a></li>
 </ul>
 

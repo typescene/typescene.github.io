@@ -65,7 +65,9 @@
 <h3>Constructor</h3>
 
 
-<p><code>&lt;T extends ManagedObject = ManagedObject&gt;(): ManagedMap&lt;T&gt;</code></p>
+<p><code>&lt;T extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(): ManagedMap&lt;T&gt;</code></p>
+<p>Create an empty map.</p>
+<hr>
 <h2 id="ManagedMap:propagateEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateEvents()</h2>
 
 
@@ -76,36 +78,41 @@
 <p><strong>[2]</strong> Propagate events from all objects in this map by emitting the same events on the map object itself.</p>
 <p>If one or more event classes are specified, only events that extend given event types are propagated.</p>
 <p><strong>Note:</strong> Calling this method a second time <em>replaces</em> the current propagation rule/function.</p>
+<hr>
 <h2 id="ManagedMap:restrict" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.restrict()</h2>
 
 
 
-<p><code>&lt;T extends ManagedObject&gt;(classType: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;T&gt;): ManagedMap&lt;T&gt;</code></p>
+<p><code>&lt;T extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(classType: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;T&gt;): ManagedMap&lt;T&gt;</code></p>
 <p>Ensure that objects in this map are all instances of given class (or a sub class), and restrict newly mapped objects to instances of given class. Given class must be a sub class of <a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:get" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.get()</h2>
 
 
 
 <p><code>(key: string): T</code></p>
 <p>Returns the current object mapped to given key, if any.</p>
+<hr>
 <h2 id="ManagedMap:has" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.has()</h2>
 
 
 
 <p><code>(key: string): boolean</code></p>
 <p>Returns true if any object is currently mapped to given key.</p>
+<hr>
 <h2 id="ManagedMap:unset" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.unset()</h2>
 
 
 
-<p><code>(key: string): void</code></p>
+<p><code>(key: string): this</code></p>
 <p>Remove the mapping for given key.</p>
 <p><strong>Note:</strong> Does not throw an error if given key was not mapped to any object at all.</p>
+<hr>
 <h2 id="ManagedMap:set" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.set()</h2>
 
 
 
-<p><code>(key: string, target?: T): void | this</code></p>
+<p><code>(key: string, target?: T): this</code></p>
 <ul>
 <li><code>key</code> —  The key to be mapped to given object.</li>
 </ul>
@@ -114,30 +121,35 @@
 </ul>
 <p>Map given object (or managed list or map) to given key, removing the existing mapping between the same key and any other object, if any.</p>
 <p>Objects may be mapped to multiple keys at the same time, unless the <code>ManagedMap</code> instance itself is a child object of a managed object or list (see <a href="/docs/ref/_managedChild"><code>@managedChild</code></a> decorator).</p>
+<hr>
 <h2 id="ManagedMap:remove" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.remove()</h2>
 
 
 
 <p><code>(target: T): this</code></p>
 <p>Remove given object from this map (same as calling <a href="#ManagedMap:unset"><code>unset</code></a><code>(...)</code> on all keys that refer to given object).</p>
+<hr>
 <h2 id="ManagedMap:clear" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.clear()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Remove all objects from this map.</p>
+<hr>
 <h2 id="ManagedMap:objects" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.objects()</h2>
 
 
 
 <p><code>(): T[]</code></p>
 <p>Returns a list of all (unique) objects in this map.</p>
+<hr>
 <h2 id="ManagedMap:keys" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.keys()</h2>
 
 
 
 <p><code>(): string[]</code></p>
 <p>Returns a list of all keys in this map.</p>
+<hr>
 <h2 id="ManagedMap:forEach" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.forEach()</h2>
 
 
@@ -148,120 +160,140 @@
 </ul>
 <p>Iterates over the keys in this list and invokes given callback for each key and object.</p>
 <p><strong>Note:</strong> The behavior of this method is undefined if objects are inserted by the callback function.</p>
+<hr>
 <h2 id="ManagedMap:includes" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.includes()</h2>
 
 
 
 <p><code>(target: T): boolean</code></p>
 <p>Returns true if given object is currently contained in this map.</p>
+<hr>
 <h2 id="ManagedMap:toObject" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.toObject()</h2>
 
 
 
 <p><code>(): { [index: string]: T; }</code></p>
 <p>Returns an object with properties for all keys and objects in this map.</p>
+<hr>
 <h2 id="ManagedMap:toJSON" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.toJSON()</h2>
 
 
 
 <p><code>(): any</code></p>
 <p>Returns an object representation of this map (alias of <a href="#ManagedMap:toObject"><code>toObject</code></a> method).</p>
+<hr>
 <h2 id="ManagedMap:weakRef" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.weakRef()</h2>
 
 
 
 <p><code>(): this</code></p>
 <p>Stop newly referenced objects from becoming child objects <em>even if</em> this <code>ManagedMap</code> instance itself is held through a child reference (by a parent object); this can be used to automatically dereference objects when the parent object is destroyed.</p>
+<hr>
 <h2 id="ManagedMap:managedId" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedId</h2>
 
 
 
 <p><code>number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedId"><code>ManagedObject.managedId</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:managedState" class="spec"><img src="/assets/icons/spec-property.svg" alt="">.managedState</h2>
 
 
 
 <p><a href="/docs/ref/ManagedState"><code>ManagedState</code></a></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:managedState"><code>ManagedObject.managedState</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:getReferenceCount" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getReferenceCount() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): number</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getReferenceCount"><code>ManagedObject.getReferenceCount</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:getManagedReferrers" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedReferrers() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>[]</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedReferrers"><code>ManagedObject.getManagedReferrers</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:getManagedParent" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.getManagedParent() <span class="spec_tag">protected</span></h2>
 
 
 
-<p><code>&lt;TParent extends ManagedObject = ManagedObject&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
+<p><code>&lt;TParent extends </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedObject"><code>ManagedObject</code></a><code>&gt;(ParentClass?: </code><a href="/docs/ref/ManagedObjectConstructor"><code>ManagedObjectConstructor</code></a><code>&lt;TParent&gt;): TParent</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:getManagedParent"><code>ManagedObject.getManagedParent</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:emit" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emit()</h2>
 
 
 
-<p><code>&lt;TEvent extends ManagedEvent = ManagedEvent, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
+<p><code>&lt;TEvent extends </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code> </code><code>= </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>, TConstructorArgs extends any[] = any[]&gt;(e: string | TEvent | (new (...args: TConstructorArgs) =&gt; TEvent), ...constructorArgs: TConstructorArgs): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emit"><code>ManagedObject.emit</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:emitChange" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.emitChange()</h2>
 
 
 
 <p><code>(name?: string): void</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:emitChange"><code>ManagedObject.emitChange</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:propagateChildEvents" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.propagateChildEvents() <span class="spec_tag">protected</span> <span class="spec_tag spec_tag--deprecated">deprecated</span></h2>
 
 
 
 <p><code>(...types: ((new (...args: any[]) =&gt; </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) | ((e: </code><a href="/docs/ref/ManagedEvent"><code>ManagedEvent</code></a><code>) =&gt; any))[]): this</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:propagateChildEvents"><code>ManagedObject.propagateChildEvents</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:activateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.activateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;any&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:activateManagedAsync"><code>ManagedObject.activateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:deactivateManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.deactivateManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:deactivateManagedAsync"><code>ManagedObject.deactivateManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:destroyManagedAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.destroyManagedAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:destroyManagedAsync"><code>ManagedObject.destroyManagedAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:onManagedStateActivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActivatingAsync"><code>ManagedObject.onManagedStateActivatingAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:onManagedStateActiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateActiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateActiveAsync"><code>ManagedObject.onManagedStateActiveAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:onManagedStateDeactivatingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDeactivatingAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateDeactivatingAsync"><code>ManagedObject.onManagedStateDeactivatingAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:onManagedStateInactiveAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateInactiveAsync() <span class="spec_tag">protected</span></h2>
 
 
 
 <p><code>(): Promise&lt;void&gt;</code></p>
 <p>Inherited from <a href="/docs/ref/ManagedObject#ManagedObject:onManagedStateInactiveAsync"><code>ManagedObject.onManagedStateInactiveAsync</code></a>.</p>
+<hr>
 <h2 id="ManagedMap:onManagedStateDestroyingAsync" class="spec"><img src="/assets/icons/spec-method.svg" alt="">.onManagedStateDestroyingAsync() <span class="spec_tag">protected</span></h2>
 
 

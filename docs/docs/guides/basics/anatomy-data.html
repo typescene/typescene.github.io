@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Learn how to model data using records and lists.
+">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typescene - Understanding data models</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96048899-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96048899-3');
+    </script>
+    <!-- end GA -->
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,300i|IBM+Plex+Sans:200,300,500,800,200i,300i,500i" rel="stylesheet">
+    <link rel="canonical" href="https://typescene.dev/docs/guides/basics/anatomy-data">
+</head>
+<body>
+    <nav class="topnav">
+        <section class="wrapper">
+            <a href="/" class="logo_link">
+                <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+                <span class="topnav_title">Typescene</span>
+            </a>
+            <ul class="topnav_links">
+                <li><a href="#" onclick="return showDocWidget()"><img src="/assets/icons/search-reverse.svg" alt="" width=16 style="position: relative; top: .125rem">&nbsp; Docs</a></li>
+                <li class="hide_small"><a href="https://github.com/typescene/typescene" target="_blank" rel="noopener">Github</a></li>
+            </ul>
+        </section>
+    </nav>
+
+    
+<div id="breadcrumb_bar">
+  <section class="wrapper">
+      <a href="/" class="logo_link" id="breadcrumb_logo" hidden>
+          <img src="/assets/logo_small.png" alt="Typescene logo" class="topnav_logo">
+      </a>
+      <span>
+          <a href="/docs">Documentation</a>
+          &nbsp;|&nbsp;
+          Guides
+          &gt;
+          <a href="/docs/guides/basics/index.html">
+              Basics
+          </a>
+      </span>
+  </section>
+</div>
+<article class="wrapper wrapper--page wrapper--guide">
+    <div class="pagetitle_container">
+        <h1>Understanding data models</h1>
+        <p class="style--pageintro">Learn how to model data using records and lists.
+</p>
+    </div>
+    <div class="wrapper_columns">
+        <div class="wrapper_column wrapper--guide_content">
+            <section>
+
+<h3>Data models</h3>
+
+
+<p>It’s important to maintain an accurate data model for any reasonably complex application. JavaScript objects and arrays provide plenty of flexibility to do so. However, by themselves, plain objects and arrays fall short in ways that make them less than ideal for representing data in a UI.</p>
+<p>Therefore, Typescene provides its own classes for modeling ‘managed’ data. These allow for observing changes and events, and ensure consistency within lists and maps.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// This is perfectly fine in JS:</span>
+<span class="hljs-keyword">let</span> myArray = [{ <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }, {}, , <span class="hljs-number">3</span>];
+myArray[<span class="hljs-number">1000000</span>] = <span class="hljs-string">&quot;One million&quot;</span>;
+myArray.forEach(<span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(v));
+<span class="hljs-comment">// ... an array with 4 values, 2 &#x27;gaps&#x27;</span>
+
+<span class="hljs-comment">// Example Typescene data structure:</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ManagedRecord</span> </span>{
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.name = name;
+  }
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+<span class="hljs-keyword">let</span> myList = <span class="hljs-keyword">new</span> ManagedList().restrict(Person);
+myList.add(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Alice&quot;</span>));
+myList.add(<span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Bob&quot;</span>));
+myList.add(<span class="hljs-number">3</span>); <span class="hljs-comment">// ...ERROR</span>
+</code></pre>
+<hr>
+<section>
+
+<h3>Displaying data</h3>
+
+
+<p>Because managed data models allow for observing changes, they make view bindings even more useful: view components will automatically update bound content – either when a managed list or map changes, or when a ‘Change’ event is emitted.</p>
+</section>
+
+<pre><code class="language-typescript"><span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> record list used from activity, shown in view</span>
+</code></pre>
+<footer>
+
+<h3>Related</h3>
+
+
+<p>For much more information about managed data models, refer to these in-depth articles:</p>
+<p><a href="/docs/concepts/components" class="block_link doc"><strong>Component</strong><br>Components are the main building blocks of a Typescene application</a></p>
+<p><a href="/docs/concepts/lists-maps" class="block_link doc"><strong>Lists and maps</strong><br>Managed lists and maps represent ordered and associative sets of objects</a></p>
+<h3>Next</h3>
+
+
+<p><a class="block_link guide" href="/docs/guides/basics/add-activities"><strong>Adding activities</strong><br>Extend your app with multiple activities.
+</a></p>
+<p><a class="block_link guide" href="/docs/guides/basics/add-view-components"><strong>Adding view components</strong><br>Extend your app with reusable views.
+</a></p>
+<p><a class="block_link guide" href="/docs/guides/basics/add-services"><strong>Adding services</strong><br>Extend your app with services to use data models across activities and views.
+</a></p>
+</footer>
+
+        </div>
+    </div>
+</article>
+<link rel="prefetch" href="/docs/" as="fetch" />
+
+    <footer class="footer">
+        <section class="wrapper">
+            <div class="wrapper_columns">
+                <div class="wrapper_column">
+                    © Copyright 2021 Typescene contributors
+                </div>
+                <div class="wrapper_column wrapper_column--oppose style--light">
+                    Find Typescene on
+    <a href="https://twitter.com/typescene" target="_blank" rel="noopener">Twitter</a> and
+    <a href="https://github.com/typescene" target="_blank" rel="noopener">Github</a>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="/assets/default.js"></script>
+    <script src="/assets/docwidget.js"></script>
+</body>
+</html>

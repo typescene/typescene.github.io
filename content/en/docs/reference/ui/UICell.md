@@ -6,6 +6,6 @@ The `UICell` component groups other components together within its own boundarie
 
 # UICell
 
-#### See Also
+#### Related
 
 `UICoverCell`, `UIFlowCell`, `UIListCellAdapter`.
