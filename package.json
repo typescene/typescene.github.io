@@ -18,7 +18,7 @@
   "author": "Jelmer Cormont",
   "license": "MIT",
   "dependencies": {
-    "markdown-pipeline": "^1.0.3"
+    "markdown-pipeline": "^3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",
